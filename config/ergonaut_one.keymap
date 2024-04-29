@@ -7,9 +7,15 @@
 #define RSE 2
 #define ADJ 3
 
-&lt { quick-tap-ms = <200>; };
+&lt {
+    quick-tap-ms = <200>;
+    flavor = "balanced";
+};
 
-&mt { quick-tap-ms = <200>; };
+&mt {
+    quick-tap-ms = <200>;
+    flavor = "balanced";
+};
 
 / {
     conditional_layers {
@@ -26,37 +32,37 @@
 
         default_layer {
             bindings = <
-&mt LGUI RBKT    &kp Q         &kp W  &kp E          &kp R                &kp T                &kp Y                    &kp U              &kp I            &kp O    &kp P            &kp LBKT
-&mt LCTRL GRAVE  &mt LSHIFT A  &kp S  &kp D          &kp F                &kp G                &kp H                    &kp J              &kp K            &kp L    &mt RSHIFT SEMI  &mt RCTRL SQT
-&mt LALT MINUS   &kp Z         &kp X  &kp C          &kp V                &kp B                &kp N                    &kp M              &kp COMMA        &kp DOT  &kp FSLH         &mt RALT BSLH
-                                      &mt LCTRL TAB  &mt LEFT_META SPACE  &mt LEFT_ALT ESCAPE  &mt RIGHT_ALT BACKSPACE  &mt LEFT_META RET  &mt RCTRL MINUS
+&kp RIGHT_BRACKET  &kp Q         &kp W        &kp E             &kp R                &kp T             &kp Y                    &kp U              &kp I                    &kp O        &kp P            &kp LBKT
+&kp GRAVE          &mt LSHIFT A  &mt LCTRL S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &lt 1 J            &lt 2 K                  &mt RCTRL L  &mt RSHIFT SEMI  &kp APOSTROPHE
+&kp EQUAL          &kp Z         &kp X        &kp C             &kp V                &kp B             &kp N                    &kp M              &kp COMMA                &kp DOT      &kp FSLH         &kp BACKSLASH
+                                              &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL MINUS  &mt LEFT_META RET  &mt RIGHT_ALT BACKSPACE
             >;
         };
 
         lower_layer {
             bindings = <
-&mt LGUI F1     &kp F2    &kp F3  &kp F4    &kp F5    &kp F6     &kp F7     &kp F8    &kp F9    &kp F10   &kp F11   &kp F12
-&mt LCTRL PLUS  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &mt RCTRL MINUS
-&mt LALT EQUAL  &kp N1    &kp N2  &kp N3    &kp N4    &kp N5     &kp N6     &kp N7    &kp N8    &kp N9    &kp N0    &kp RALT
-                                  &trans    &trans    &trans     &trans     &trans    &trans
+&mt LGUI F1     &kp F2        &kp F3     &kp EXCLAMATION       &kp F5          &kp F6                 &kp F7        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp F11   &kp F12
+&kp AT_SIGN     &kp QUESTION  &kp ASTRK  &kp PERCENT           &kp DLLR        &kp HASH               &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp RPAR  &mt RCTRL MINUS
+&mt LALT EQUAL  &kp N1        &kp N2     &kp QUESTION          &kp AMPERSAND   &kp N5                 &kp N6        &kp N7        &kp N8        &kp N9        &kp N0    &kp RALT
+                                         &kp LEFT_PARENTHESIS  &kp UNDERSCORE  &kp RIGHT_PARENTHESIS  &trans        &kp NUMBER_0  &kp DELETE
             >;
         };
 
         raise_layer {
             bindings = <
-&mt LGUI KP_NUM  &kp KP_SLASH     &kp KP_N7  &kp KP_N8  &kp KP_N9  &kp KP_MINUS  &kp C_VOL_UP  &kp HOME  &kp PSCRN  &kp PG_UP  &kp SLCK         &kp CLCK
-&mt LCTRL EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5  &kp KP_N6  &kp KP_PLUS   &kp C_MUTE    &kp LEFT  &kp UP     &kp RIGHT  &kp INS          &mt RCTRL K_APP
-&kp LALT         &kp KP_N0        &kp KP_N1  &kp KP_N2  &kp KP_N3  &kp KP_DOT    &kp C_VOL_DN  &kp END   &kp DOWN   &kp PG_DN  &kp PAUSE_BREAK  &kp RALT
-                                             &trans     &trans     &trans        &trans        &trans    &trans
+&mt LGUI KP_NUM  &kp KP_SLASH     &kp KP_N7  &kp KP_N8         &kp KP_N9  &kp KP_MINUS       &kp C_VOL_UP  &kp PAGE_UP    &kp UP    &kp INSERT  &kp SLCK         &kp CLCK
+&mt LCTRL EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5         &kp KP_N6  &kp KP_PLUS        &kp HOME      &kp LEFT       &kp DOWN  &kp RIGHT   &kp INS          &mt RCTRL K_APP
+&kp LALT         &kp KP_N0        &kp KP_N1  &kp KP_N2         &kp KP_N3  &kp KP_DOT         &kp C_VOL_DN  &kp PAGE_DOWN  &kp DOWN  &kp PG_DN   &kp PAUSE_BREAK  &kp RALT
+                                             &kp LEFT_BRACKET  &trans     &kp RIGHT_BRACKET  &trans        &trans         &trans
             >;
         };
 
         adjust_layer {
             bindings = <
-&bootloader  &none         &none         &none         &none         &none         &none         &none         &none         &none         &none         &bootloader
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &bt BT_CLR
-&sys_reset   &none         &none         &none         &none         &none         &none         &none         &none         &none         &none         &sys_reset
-                                         &trans        &none         &trans        &none         &trans        &trans
+&bootloader  &none         &none         &none           &none         &none            &kp C_VOLUME_UP    &kp F4   &kp F5   &kp F6  &none       &bootloader
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4     &kp K_MUTE         &kp F1   &kp F2   &kp F3  &kp C_MUTE  &bt BT_CLR
+&sys_reset   &none         &none         &none           &none         &none            &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none       &sys_reset
+                                         &kp LEFT_BRACE  &none         &kp RIGHT_BRACE  &kp F10            &kp F11  &kp F12
             >;
         };
     };
