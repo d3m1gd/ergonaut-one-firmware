@@ -32,28 +32,28 @@
 
         default_layer {
             bindings = <
-&kp RIGHT_BRACKET     &kp Q             &kp W        &kp E             &kp R                &kp T             &kp Y                    &kp U              &kp I                    &kp O        &kp P                  &kp LBKT
-&mt LEFT_SHIFT GRAVE  &mt LSHIFT A      &mt LCTRL S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &lt 1 J            &lt 2 K                  &mt RCTRL L  &mt RSHIFT SEMI        &mt RIGHT_SHIFT APOSTROPHE
-&mt LEFT_SHIFT EQUAL  &mt LEFT_SHIFT Z  &kp X        &kp C             &kp V                &kp B             &kp N                    &kp M              &kp COMMA                &kp DOT      &mt RIGHT_SHIFT SLASH  &mt RIGHT_SHIFT BACKSLASH
-                                                     &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL MINUS  &mt LEFT_META RET  &mt RIGHT_ALT BACKSPACE
+&kp RIGHT_BRACKET     &kp Q             &kp W             &kp E             &kp R                &kp T             &kp Y                    &kp U              &kp I                    &kp O              &kp P                  &kp LBKT
+&mt LEFT_SHIFT GRAVE  &mt LSHIFT A      &mt LEFT_SHIFT S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &lt 1 J            &lt 2 K                  &mt RIGHT_SHIFT L  &mt RSHIFT SEMI        &mt RIGHT_SHIFT APOSTROPHE
+&mt LEFT_SHIFT EQUAL  &mt LEFT_SHIFT Z  &kp X             &kp C             &kp V                &kp B             &kp N                    &kp M              &kp COMMA                &kp DOT            &mt RIGHT_SHIFT SLASH  &mt RIGHT_SHIFT BACKSLASH
+                                                          &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL MINUS  &mt LEFT_META RET  &mt RIGHT_ALT BACKSPACE
             >;
         };
 
         lower_layer {
             bindings = <
-&mt LGUI F1     &kp F2        &kp F3     &kp EXCLAMATION       &kp F5          &kp F6                 &kp F7        &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp F11   &kp F12
-&kp AT_SIGN     &kp QUESTION  &kp ASTRK  &kp PERCENT           &kp DLLR        &kp HASH               &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp RPAR  &mt RCTRL MINUS
-&mt LALT EQUAL  &kp N1        &kp N2     &kp QUESTION          &kp AMPERSAND   &kp N5                 &kp N6        &kp N7        &kp N8        &kp N9        &kp N0    &kp RALT
-                                         &kp LEFT_PARENTHESIS  &kp UNDERSCORE  &kp RIGHT_PARENTHESIS  &trans        &kp NUMBER_0  &kp DELETE
+&mt LGUI F1     &kp F2         &kp F3     &kp EXCLAMATION       &kp F5          &kp F6                 &kp NUMBER_0  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp F11       &kp F12
+&kp AT_SIGN     &kp AMPERSAND  &kp ASTRK  &kp PERCENT           &kp DLLR        &kp HASH               &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp NUMBER_4  &mt RCTRL MINUS
+&mt LALT EQUAL  &kp N1         &kp N2     &kp QUESTION          &kp AMPERSAND   &kp N5                 &kp NUMBER_0  &kp N7        &kp N8        &kp N9        &kp N0        &kp RALT
+                                          &kp LEFT_PARENTHESIS  &kp UNDERSCORE  &kp RIGHT_PARENTHESIS  &trans        &kp NUMBER_0  &kp DELETE
             >;
         };
 
         raise_layer {
             bindings = <
-&kp A            &kp KP_SLASH     &kp KP_N7  &kp KP_N8         &kp KP_N9  &kp KP_MINUS       &kp C_VOL_UP  &kp PAGE_UP    &kp HOME  &kp INSERT  &kp SLCK         &kp K_MUTE
-&mt LCTRL EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5         &kp KP_N6  &kp KP_PLUS        &kp LEFT      &kp DOWN       &kp UP    &kp RIGHT   &kp INS          &mt RCTRL K_APP
-&kp LALT         &kp KP_N0        &kp KP_N1  &kp KP_N2         &kp KP_N3  &kp KP_DOT         &kp C_VOL_DN  &kp PAGE_DOWN  &kp END   &kp PG_DN   &kp PAUSE_BREAK  &kp RALT
-                                             &kp LEFT_BRACKET  &trans     &kp RIGHT_BRACKET  &trans        &trans         &trans
+&kp A            &kp KP_SLASH     &kp KP_N7  &kp KP_N8         &kp KP_N9  &kp KP_MINUS       &kp C_VOL_UP  &kp HOME  &kp PAGE_UP    &kp INSERT       &kp SLCK         &kp K_MUTE
+&mt LCTRL EQUAL  &kp KP_MULTIPLY  &kp KP_N4  &kp KP_N5         &kp KP_N6  &kp KP_PLUS        &kp LEFT      &kp DOWN  &kp UP         &kp RIGHT        &kp INS          &mt RCTRL K_APP
+&kp LALT         &kp KP_N0        &kp KP_N1  &kp KP_N2         &kp KP_N3  &kp KP_DOT         &kp C_VOL_DN  &kp END   &kp PAGE_DOWN  &kp PRINTSCREEN  &kp PAUSE_BREAK  &kp RALT
+                                             &kp LEFT_BRACKET  &trans     &kp RIGHT_BRACKET  &trans        &trans    &trans
             >;
         };
 
