@@ -41,18 +41,18 @@
 
         lower_layer {
             bindings = <
-&mt LGUI F1     &kp F2         &kp F3                &kp EXCLAMATION                &kp F5          &kp F6                 &kp NUMBER_0  &kp NUMBER_4    &kp NUMBER_5    &kp NUMBER_6              &kp F11       &kp F12
-&kp AT_SIGN     &kp AMPERSAND  &mt LEFT_SHIFT ASTRK  &lt 2 PERCENT                  &lt 1 DLLR      &kp HASH               &kp NUMBER_0  &lt 1 NUMBER_1  &lt 2 NUMBER_2  &mt RIGHT_SHIFT NUMBER_3  &kp NUMBER_4  &mt RCTRL MINUS
-&mt LALT EQUAL  &kp N1         &kp N2                &kp QUESTION                   &kp AMPERSAND   &kp N5                 &kp NUMBER_0  &kp N7          &kp N8          &kp N9                    &kp N0        &bootloader
-                                                     &mt LEFT_ALT LEFT_PARENTHESIS  &mt LEFT_META UNDERSCORE  &mt LCTRL RIGHT_PARENTHESIS  &trans        &mt RIGHT_CONTROL NUMBER_0    &kp DELETE
+&mt LGUI F1     &kp F2         &kp F3                &kp EXCLAMATION                &kp F5                    &kp F6                       &kp NUMBER_0  &kp NUMBER_4                &kp NUMBER_5    &kp NUMBER_6              &kp F11       &kp F12
+&kp AT_SIGN     &kp AMPERSAND  &mt LEFT_SHIFT ASTRK  &lt 2 PERCENT                  &lt 1 DOLLAR              &kp POUND                    &kp NUMBER_0  &lt 1 NUMBER_1              &lt 2 NUMBER_2  &mt RIGHT_SHIFT NUMBER_3  &kp NUMBER_4  &mt RCTRL MINUS
+&mt LALT EQUAL  &kp N1         &kp N2                &kp QUESTION                   &kp CARET                 &kp N5                       &kp NUMBER_0  &kp N7                      &kp N8          &kp N9                    &kp N0        &bootloader
+                                                     &mt LEFT_ALT LEFT_PARENTHESIS  &mt LEFT_META UNDERSCORE  &mt LCTRL RIGHT_PARENTHESIS  &trans        &mt RIGHT_CONTROL NUMBER_0  &kp DELETE
             >;
         };
 
         raise_layer {
             bindings = <
-&kp A            &kp KP_SLASH     &kp KP_N7             &kp KP_N8                  &kp KP_N9    &kp KP_MINUS       &kp C_VOL_UP  &kp HOME    &kp PAGE_UP    &kp INSERT             &kp SLCK         &kp K_MUTE
-&mt LCTRL EQUAL  &kp KP_MULTIPLY  &mt LEFT_SHIFT KP_N4  &lt 2 KP_N5                &lt 1 KP_N6  &kp KP_PLUS        &kp LEFT      &lt 1 DOWN  &lt 2 UP       &mt RIGHT_SHIFT RIGHT  &kp INS          &mt RCTRL K_APP
-&kp LALT         &kp KP_N0        &kp KP_N1             &kp KP_N2                  &kp KP_N3    &kp KP_DOT         &kp C_VOL_DN  &kp END     &kp PAGE_DOWN  &kp PRINTSCREEN        &kp PAUSE_BREAK  &kp RALT
+&kp A            &kp KP_SLASH     &kp KP_N7             &kp KP_N8                  &kp KP_N9    &kp KP_MINUS             &kp C_VOL_UP  &kp HOME    &kp PAGE_UP    &kp INSERT             &kp SLCK         &kp K_MUTE
+&mt LCTRL EQUAL  &kp KP_MULTIPLY  &mt LEFT_SHIFT KP_N4  &lt 2 KP_N5                &lt 1 KP_N6  &kp KP_PLUS              &kp LEFT      &lt 1 DOWN  &lt 2 UP       &mt RIGHT_SHIFT RIGHT  &kp INS          &mt RCTRL K_APP
+&kp LALT         &kp KP_N0        &kp KP_N1             &kp KP_N2                  &kp KP_N3    &kp KP_DOT               &kp C_VOL_DN  &kp END     &kp PAGE_DOWN  &kp PRINTSCREEN        &kp PAUSE_BREAK  &kp RALT
                                                         &mt LEFT_ALT LEFT_BRACKET  &trans       &mt LCTRL RIGHT_BRACKET  &trans        &trans      &trans
             >;
         };
