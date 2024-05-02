@@ -60,7 +60,7 @@
         adjust_layer {
             bindings = <
 &bootloader  &none         &none         &none           &none         &none            &kp C_VOLUME_UP    &kp F4   &kp F5   &kp F6  &none       &bootloader
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4     &kp K_MUTE         &kp F1   &kp F2   &kp F3  &kp C_MUTE  &bt BT_CLR
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4     &kp K_MUTE         &kp F1   &kp F2   &kp F3  &kp C_MUTE  &bt BT_CLR_ALL
 &sys_reset   &none         &none         &none           &none         &none            &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none       &sys_reset
                                          &kp LEFT_BRACE  &none         &kp RIGHT_BRACE  &kp F10            &kp F11  &kp F12
             >;
