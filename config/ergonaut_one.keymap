@@ -32,18 +32,18 @@
 
         default_layer {
             bindings = <
-&kp RIGHT_BRACKET  &kp Q         &kp W             &kp E             &kp R                &kp T             &kp Y                    &kp U              &kp I                    &kp O              &kp P                      &kp LBKT
-&kp GRAVE          &mt LSHIFT A  &mt LEFT_SHIFT S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &lt 1 J            &lt 2 K                  &mt RIGHT_SHIFT L  &mt RIGHT_SHIFT SEMICOLON  &kp APOSTROPHE
-&kp EQUAL          &kp Z         &kp X             &kp C             &kp V                &kp B             &kp N                    &kp M              &kp COMMA                &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                   &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL MINUS  &mt LEFT_META RET  &mt RIGHT_ALT BACKSPACE
+&kp RIGHT_BRACKET  &kp Q         &kp W             &kp E             &kp R                &kp T             &kp Y                    &kp U                &kp I                    &kp O              &kp P                      &kp LBKT
+&kp GRAVE          &mt LSHIFT A  &mt LEFT_SHIFT S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &lt 1 J              &lt 2 K                  &mt RIGHT_SHIFT L  &mt RIGHT_SHIFT SEMICOLON  &kp APOSTROPHE
+&kp EQUAL          &kp Z         &kp X             &kp C             &kp V                &kp B             &kp N                    &kp M                &kp COMMA                &kp DOT            &kp SLASH                  &kp BACKSLASH
+                                                   &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &mt LEFT_META SPACE  &mt RIGHT_ALT BACKSPACE
             >;
         };
 
         lower_layer {
             bindings = <
-&mt LGUI F1     &kp F2         &kp F3                &kp EXCLAMATION                &kp AT_SIGN               &kp F6                       &kp NUMBER_0  &kp NUMBER_1             &kp NUMBER_2          &kp NUMBER_3              &kp F11       &kp F12
-&kp AT_SIGN     &kp AMPERSAND  &mt LEFT_SHIFT ASTRK  &lt 2 PERCENT                  &lt 1 DOLLAR              &kp POUND                    &kp NUMBER_0  &lt 1 NUMBER_4           &lt 2 NUMBER_5        &mt RIGHT_SHIFT NUMBER_6  &kp NUMBER_4  &mt RCTRL MINUS
-&mt LALT EQUAL  &kp N1         &kp N2                &kp QUESTION                   &kp CARET                 &kp N5                       &kp NUMBER_0  &kp N7                   &kp N8                &kp N9                    &kp N0        &bootloader
+&mt LGUI F1     &kp F2         &kp F3                &kp EXCLAMATION                &kp AT_SIGN               &kp F6                       &kp NUMBER_0  &kp NUMBER_1             &kp NUMBER_2          &kp NUMBER_3              &kp F11    &kp F12
+&kp AT_SIGN     &kp AMPERSAND  &mt LEFT_SHIFT ASTRK  &lt 2 PERCENT                  &lt 1 DOLLAR              &kp POUND                    &kp PLUS      &lt 1 NUMBER_4           &lt 2 NUMBER_5        &mt RIGHT_SHIFT NUMBER_6  &kp MINUS  &mt RCTRL MINUS
+&mt LALT EQUAL  &kp N1         &kp N2                &kp QUESTION                   &kp CARET                 &kp N5                       &kp NUMBER_0  &kp N7                   &kp N8                &kp N9                    &kp N0     &bootloader
                                                      &mt LEFT_ALT LEFT_PARENTHESIS  &mt LEFT_META UNDERSCORE  &mt LCTRL RIGHT_PARENTHESIS  &trans        &mt RIGHT_META NUMBER_0  &mt RIGHT_ALT DELETE
             >;
         };
