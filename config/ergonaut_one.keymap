@@ -28,9 +28,9 @@
     };
 
     behaviors {
-        lht: lht {
+        lmt: lmt {
             compatible = "zmk,behavior-hold-tap";
-            label = "Left Hold Tap";
+            label = "Left Mod Tap";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -41,10 +41,35 @@
             quick-tap-ms = <300>;
         };
 
-        rht: rht {
+        rmt: rmt {
             compatible = "zmk,behavior-hold-tap";
-            label = "Right Hold Tap";
+            label = "Right Mod Tap";
             bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            quick-tap-ms = <300>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36>;
+        };
+
+        llt: llt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Left Layer Tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <400>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <30 31 32 33 35 34 23 6 7 9 10 11 19 20 21 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41>;
+            quick-tap-ms = <300>;
+            bindings = <&mo>, <&kp>;
+        };
+
+        rlt: rlt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Right Layer Tap";
+            bindings = <&mo>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <400>;
@@ -60,17 +85,17 @@
 
         default_layer {
             bindings = <
-&kp RIGHT_BRACKET      &kp Q              &kp W              &kp E             &kp R                &kp T             &kp Y                    &kp U                &kp I                    &kp O               &kp P                       &kp LBKT
-&kp GRAVE              &lht LEFT_SHIFT A  &lht LEFT_SHIFT S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &lt 1 J              &lt 2 K                  &rht RIGHT_SHIFT L  &rht RIGHT_SHIFT SEMICOLON  &kp APOSTROPHE
-&lht LEFT_SHIFT EQUAL  &kp Z              &kp X              &kp C             &kp V                &kp B             &kp N                    &kp M                &kp COMMA                &kp DOT             &kp SLASH                   &rht RSHIFT BACKSLASH
-                                                             &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &mt LEFT_META SPACE  &mt RIGHT_ALT BACKSPACE
+&kp RIGHT_BRACKET      &kp Q              &kp W              &kp E             &kp R                &kp T             &kp Y                    &kp U                 &kp I             &kp O             &kp P                       &kp LBKT
+&kp GRAVE              &lmt LEFT_SHIFT A  &lmt LEFT_SHIFT S  &lt 2 D           &lt 1 F              &kp G             &kp H                    &rmt RIGHT_CONTROL J  &rmt LEFT_GUI K   &rmt RIGHT_ALT L  &rmt RIGHT_SHIFT SEMICOLON  &kp APOSTROPHE
+&lmt LEFT_SHIFT EQUAL  &kp Z              &kp X              &kp C             &kp V                &kp B             &kp N                    &kp M                 &kp COMMA         &kp DOT           &kp SLASH                   &rmt RSHIFT BACKSLASH
+                                                             &mt LEFT_ALT TAB  &mt LEFT_META SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &rlt 1 SPACE          &rlt 2 BACKSPACE
             >;
         };
 
         lower_layer {
             bindings = <
 &trans  &trans  &trans  &trans                         &trans               &trans                       &kp NUMBER_0  &kp NUMBER_1             &kp NUMBER_2          &kp NUMBER_3              &kp F11            &kp F12
-&trans  &trans  &trans  &trans                         &trans               &trans                       &kp PLUS      &lt 1 NUMBER_4           &lt 2 NUMBER_5        &mt RIGHT_SHIFT NUMBER_6  &rht RSHIFT MINUS  &trans
+&trans  &trans  &trans  &trans                         &trans               &trans                       &kp PLUS      &lt 1 NUMBER_4           &lt 2 NUMBER_5        &mt RIGHT_SHIFT NUMBER_6  &rmt RSHIFT MINUS  &trans
 &trans  &trans  &trans  &trans                         &trans               &trans                       &kp NUMBER_0  &kp N7                   &kp N8                &kp N9                    &kp N0             &trans
                         &mt LEFT_ALT LEFT_PARENTHESIS  &mt LEFT_META MINUS  &mt LCTRL RIGHT_PARENTHESIS  &trans        &mt RIGHT_META NUMBER_0  &mt RIGHT_ALT DELETE
             >;
@@ -79,7 +104,7 @@
         raise_layer {
             bindings = <
 &trans  &kp KP_SLASH  &kp KP_N7  &trans                     &kp KP_N9                 &kp KP_MINUS             &trans    &kp PAGE_DOWN  &kp PAGE_UP  &kp INSERT              &trans           &kp K_MUTE
-&trans  &trans        &trans     &trans                     &trans                    &trans                   &kp LEFT  &lt 1 DOWN     &lt 2 UP     &rht RIGHT_SHIFT RIGHT  &trans           &trans
+&trans  &trans        &trans     &trans                     &trans                    &trans                   &kp LEFT  &lt 1 DOWN     &lt 2 UP     &rmt RIGHT_SHIFT RIGHT  &trans           &trans
 &trans  &trans        &trans     &kp KP_N2                  &kp KP_N3                 &kp KP_DOT               &trans    &kp HOME       &kp END      &kp PRINTSCREEN         &kp PAUSE_BREAK  &trans
                                  &mt LEFT_ALT LEFT_BRACKET  &mt LEFT_META UNDERSCORE  &mt LCTRL RIGHT_BRACKET  &trans    &trans         &trans
             >;
