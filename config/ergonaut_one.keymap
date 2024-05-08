@@ -85,27 +85,27 @@
 
         default_layer {
             bindings = <
-&kp RIGHT_BRACKET      &kp Q              &kp W            &kp E             &kp R                &kp T             &kp Y                    &kp U                 &kp I             &kp O             &kp P                       &kp LBKT
-&kp GRAVE              &lmt LEFT_SHIFT A  &lmt LEFT_ALT S  &lmt LEFT_META D  &lmt LEFT_CONTROL F  &kp G             &kp H                    &rmt RIGHT_CONTROL J  &rmt LEFT_META K  &rmt RIGHT_ALT L  &rmt RIGHT_SHIFT SEMICOLON  &kp APOSTROPHE
-&lmt LEFT_SHIFT EQUAL  &kp Z              &kp X            &kp C             &kp V                &kp B             &kp N                    &kp M                 &kp COMMA         &kp DOT           &kp SLASH                   &rmt RSHIFT BACKSLASH
+&kp RIGHT_BRACKET      &kp Q              &kp W            &kp E             &kp R                &kp T             &kp Y                    &kp U                 &kp I             &kp O            &kp P                       &kp LBKT
+&kp GRAVE              &lmt LEFT_SHIFT A  &lmt LEFT_ALT S  &lmt LEFT_META D  &lmt LEFT_CONTROL F  &kp G             &kp H                    &rmt RIGHT_CONTROL J  &rmt LEFT_META K  &rmt LEFT_ALT L  &rmt RIGHT_SHIFT SEMICOLON  &kp APOSTROPHE
+&lmt LEFT_SHIFT EQUAL  &kp Z              &kp X            &kp C             &kp V                &kp B             &kp N                    &kp M                 &kp COMMA         &kp DOT          &kp SLASH                   &rmt RSHIFT BACKSLASH
                                                            &llt 2 TAB        &llt 1 SPACE         &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &rlt 1 SPACE          &rlt 2 BACKSPACE
             >;
         };
 
         lower_layer {
             bindings = <
-&trans  &trans  &trans  &kp LEFT_BRACKET                 &kp RIGHT_BRACKET                    &trans  &trans    &kp NUMBER_1                 &kp NUMBER_2             &kp NUMBER_3               &trans             &trans
-&trans  &trans  &trans  &lmt LEFT_META LEFT_PARENTHESIS  &lmt LEFT_CONTROL RIGHT_PARENTHESIS  &trans  &kp PLUS  &rmt RIGHT_CONTROL NUMBER_4  &rmt LEFT_META NUMBER_5  &rmt RIGHT_SHIFT NUMBER_6  &rmt RSHIFT MINUS  &trans
-&trans  &trans  &trans  &kp LEFT_BRACE                   &kp RIGHT_BRACE                      &trans  &trans    &kp N7                       &kp N8                   &kp N9                     &trans             &trans
+&trans  &trans  &trans  &kp LEFT_BRACKET                 &kp RIGHT_BRACKET                    &trans  &trans    &kp NUMBER_1                 &kp NUMBER_2             &kp NUMBER_3            &trans             &trans
+&trans  &trans  &trans  &lmt LEFT_META LEFT_PARENTHESIS  &lmt LEFT_CONTROL RIGHT_PARENTHESIS  &trans  &kp PLUS  &rmt RIGHT_CONTROL NUMBER_4  &rmt LEFT_META NUMBER_5  &rmt LEFT_ALT NUMBER_6  &rmt RSHIFT MINUS  &trans
+&trans  &trans  &trans  &kp LEFT_BRACE                   &kp RIGHT_BRACE                      &trans  &trans    &kp N7                       &kp N8                   &kp N9                  &trans             &trans
                         &trans                           &trans                               &trans  &trans    &rlt 1 KP_N0                 &rlt 2 DELETE
             >;
         };
 
         raise_layer {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp PAGE_DOWN            &kp PAGE_UP        &kp INSERT              &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt RIGHT_CONTROL DOWN  &rmt LEFT_META UP  &rmt RIGHT_SHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp HOME                 &kp END            &kp PRINTSCREEN         &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp PAGE_DOWN            &kp PAGE_UP        &kp INSERT           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt RIGHT_CONTROL DOWN  &rmt LEFT_META UP  &rmt LEFT_ALT RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp HOME                 &kp END            &kp PRINTSCREEN      &trans  &trans
                         &trans  &trans  &trans  &trans    &trans                   &trans
             >;
         };
