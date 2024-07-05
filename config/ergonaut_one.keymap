@@ -23,6 +23,8 @@
     /delete-property/ quick-release;
 };
 
+&sk { lazy; };
+
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
@@ -156,6 +158,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
+            quick-tap-ms = <200>;
         };
     };
 
