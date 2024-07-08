@@ -168,10 +168,10 @@
             quick-release;
         };
 
-        htkpsl: htkpsl {
+        htkpsll: htkpsll {
             compatible = "zmk,behavior-hold-tap";
-            label = "KepPress StickyLayer";
-            bindings = <&sl>, <&kp>;
+            label = "KepPress StickyLayerLong";
+            bindings = <&sll>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -261,10 +261,10 @@
 
         BASE {
             bindings = <
-&kp RIGHT_BRACKET        &htkpkpnr LC(Q) Q  &kp W  &kp E        &kp R         &kp T             &kp Y                    &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lst LEFT_SHIFT GRAVE    &lst LSHFT A       &kp S  &htkpsl 6 D  &kp F         &kp G             &kp H                    &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z              &kp X  &kp C        &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &rst RIGHT_CONTROL BACKSLASH
-                                                   &llt 2 TAB   &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &htslsl 5 4              &htkpkp MINUS BACKSPACE
+&kp RIGHT_BRACKET        &htkpkpnr LC(Q) Q  &kp W  &kp E         &kp R         &kp T             &kp Y                    &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&lst LEFT_SHIFT GRAVE    &lst LSHFT A       &kp S  &htkpsll 6 D  &kp F         &kp G             &kp H                    &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
+&lst LEFT_CONTROL EQUAL  &kp Z              &kp X  &kp C         &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &rst RIGHT_CONTROL BACKSLASH
+                                                   &llt 2 TAB    &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &htslsl 5 4              &htkpkp MINUS BACKSPACE
             >;
         };
 
