@@ -217,14 +217,14 @@
         kpsls: kpsls {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
-            bindings = <&macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_param_1to1 &sls MACRO_PLACEHOLDER>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &sls MACRO_PLACEHOLDER>;
             label = "KeyPress Sticky Layer Short";
         };
 
         kpsl: kpsl {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
-            bindings = <&macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_param_1to1 &sl MACRO_PLACEHOLDER>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &sl MACRO_PLACEHOLDER>;
             label = "KeyPress StickyLayer";
         };
     };
