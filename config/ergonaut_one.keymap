@@ -105,7 +105,7 @@
             hold-trigger-on-release;
         };
 
-        slsl: slsl {
+        htslsl: htslsl {
             compatible = "zmk,behavior-hold-tap";
             label = "Hold Tap 2Sticky  Layers";
             bindings = <&sl>, <&sl>;
@@ -115,7 +115,7 @@
             flavor = "tap-preferred";
         };
 
-        kpkp: kpkp {
+        htkpkp: htkpkp {
             compatible = "zmk,behavior-hold-tap";
             label = "HoldTap 2KeyPress";
             bindings = <&kp>, <&kp>;
@@ -126,7 +126,7 @@
             quick-tap-ms = <200>;
         };
 
-        kpkpnr: kpkpnr {
+        htkpkpnr: htkpkpnr {
             compatible = "zmk,behavior-hold-tap";
             label = "2key press no repeat";
             bindings = <&kpnr>, <&kp>;
@@ -137,7 +137,7 @@
             flavor = "tap-preferred";
         };
 
-        kpcaps: kpcaps {
+        htkpcaps: htkpcaps {
             compatible = "zmk,behavior-hold-tap";
             label = "keypress caps behavior";
             bindings = <&caps_word>, <&kp>;
@@ -148,7 +148,7 @@
             flavor = "tap-preferred";
         };
 
-        kptog: kptog {
+        htkptog: htkptog {
             compatible = "zmk,behavior-hold-tap";
             label = "KeyPress ToggleLayer";
             bindings = <&tog>, <&kp>;
@@ -165,6 +165,26 @@
             bindings = <&mo>;
             #binding-cells = <1>;
             release-after-ms = <200>;
+            quick-release;
+        };
+
+        htkpsl: htkpsl {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KepPress StickyLayer";
+            bindings = <&sl>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        sll: sll {
+            compatible = "zmk,behavior-sticky-key";
+            label = "Sticky Layer Long";
+            bindings = <&mo>;
+            #binding-cells = <1>;
+            release-after-ms = <2000>;
             quick-release;
         };
     };
@@ -227,6 +247,13 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &sl MACRO_PLACEHOLDER>;
             label = "KeyPress StickyLayer";
         };
+
+        kpsll: kpsll {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &sll MACRO_PLACEHOLDER>;
+            label = "KPSLL";
+        };
     };
 
     keymap {
@@ -234,10 +261,10 @@
 
         BASE {
             bindings = <
-&kp RIGHT_BRACKET        &kpkpnr LC(Q) Q  &kp W  &kp E       &kp R         &kp T             &kp Y                    &kpkpnr EXCLAMATION U  &kpkpnr AT_SIGN I       &kpkpnr HASH O   &kp P                    &kp LBKT
-&lst LEFT_SHIFT GRAVE    &lst LSHFT A     &kp S  &kpsl D 6   &kp F         &kp G             &kp H                    &kpkpnr DOLLAR J       &kpkpnr PERCENT K       &kpkpnr CARET L  &kpkpnr COLON SEMICOLON  &kpcaps 0 APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z            &kp X  &kp C       &kp V         &kp B             &kp N                    &kpkpnr AMPERSAND M    &kpkpnr ASTERISK COMMA  &kp DOT          &kp SLASH                &rst RIGHT_CONTROL BACKSLASH
-                                                 &llt 2 TAB  &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &slsl 5 4              &kpkp MINUS BACKSPACE
+&kp RIGHT_BRACKET        &htkpkpnr LC(Q) Q  &kp W  &kp E        &kp R         &kp T             &kp Y                    &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&lst LEFT_SHIFT GRAVE    &lst LSHFT A       &kp S  &htkpsl 6 D  &kp F         &kp G             &kp H                    &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
+&lst LEFT_CONTROL EQUAL  &kp Z              &kp X  &kp C        &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &rst RIGHT_CONTROL BACKSLASH
+                                                   &llt 2 TAB   &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &htslsl 5 4              &htkpkp MINUS BACKSPACE
             >;
         };
 
@@ -279,10 +306,10 @@
 
         NUM {
             bindings = <
-&trans  &trans  &trans  &trans          &trans     &trans  &trans  &kp N1  &kp N2  &kp N3  &trans  &trans
-&trans  &trans  &trans  &kp UNDERSCORE  &kp MINUS  &trans  &trans  &kp N4  &kp N5  &kp N6  &trans  &trans
-&trans  &trans  &trans  &trans          &trans     &trans  &trans  &kp N7  &kp N8  &kp N9  &trans  &trans
-                        &trans          &trans     &tog 5  &trans  &kp N0  &trans
+&trans  &trans  &trans  &trans          &trans     &trans        &trans  &kpsll N1 5  &kpsl N2 5  &kpsl N3 5  &trans  &trans
+&trans  &trans  &trans  &kp UNDERSCORE  &kp MINUS  &trans        &trans  &kpsl N4 5   &kpsl N5 5  &kpsl N6 5  &trans  &trans
+&trans  &trans  &trans  &trans          &trans     &trans        &trans  &kpsl N7 5   &kpsl N8 5  &kpsl N9 5  &trans  &trans
+                        &trans          &trans     &kp K_CANCEL  &trans  &kpsl N0 5   &trans
             >;
         };
 
