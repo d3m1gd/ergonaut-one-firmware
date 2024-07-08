@@ -105,7 +105,7 @@
             hold-trigger-on-release;
         };
 
-        ht2sl: ht2sl {
+        slsl: slsl {
             compatible = "zmk,behavior-hold-tap";
             label = "Hold Tap 2Sticky  Layers";
             bindings = <&sl>, <&sl>;
@@ -115,36 +115,9 @@
             flavor = "tap-preferred";
         };
 
-        zCapNum: zCapNum {
-            compatible = "zmk,behavior-caps-word";
-            label = "Cap Numbers";
-            #binding-cells = <0>;
-            continue-list = <MINUS UNDERSCORE N1 N2 N3 N4 N5 N6 N7 N8 N9 N0 EQUAL STAR AMPERSAND>;
-        };
-
-        htMinusUnder: htMinusUnderscore {
+        kpkp: kpkp {
             compatible = "zmk,behavior-hold-tap";
-            label = "HoldTap MinusUnder";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        htKeyMinusUnder: htKeyMinusUnder {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HoldTap Key MinusUnder";
-            bindings = <&htMinusUnder>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        ht2Key: ht2Key {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HoldTap 2Key";
+            label = "HoldTap 2KeyPress";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -181,6 +154,13 @@
             bindings = <&kp SPACE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
             label = "SPACEAND";
         };
+
+        noslcaps: nosl {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp K_CANCEL &caps_word>;
+            label = "NOSL";
+        };
     };
 
     keymap {
@@ -188,10 +168,10 @@
 
         default_layer {
             bindings = <
-&kp RIGHT_BRACKET        &kp Q              &kp W            &kp E             &kp R                &kp T             &kp Y                    &kp U                 &kp I                    &kp O            &kp P                       &kp LBKT
-&lst LEFT_SHIFT GRAVE    &lst LEFT_SHIFT A  &lmt LEFT_ALT S  &lmt LEFT_META D  &lmt LEFT_CONTROL F  &kp G             &kp H                    &rmt RIGHT_CONTROL J  &rmt UNDERSCORE K        &rmt LEFT_ALT L  &rst RIGHT_SHIFT SEMICOLON  &rst RIGHT_SHIFT APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z              &kp X            &kp C             &kp V                &kp B             &kp N                    &kp M                 &kp COMMA                &kp DOT          &kp SLASH                   &rst RIGHT_CONTROL BACKSLASH
-                                                             &llt 2 TAB        &llt 1 SPACE         &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &ht2sl 5 4            &ht2Key MINUS BACKSPACE
+&kp RIGHT_BRACKET        &kp Q              &kp W            &kp E             &kp R                &kp T             &kp Y                    &kp U                 &kp I                  &kp O            &kp P                       &kp LBKT
+&lst LEFT_SHIFT GRAVE    &lst LEFT_SHIFT A  &lmt LEFT_ALT S  &lmt LEFT_META D  &lmt LEFT_CONTROL F  &kp G             &kp H                    &rmt RIGHT_CONTROL J  &rmt UNDERSCORE K      &rmt LEFT_ALT L  &rst RIGHT_SHIFT SEMICOLON  &rst RIGHT_SHIFT APOSTROPHE
+&lst LEFT_CONTROL EQUAL  &kp Z              &kp X            &kp C             &kp V                &kp B             &kp N                    &kp M                 &kp COMMA              &kp DOT          &kp SLASH                   &rst RIGHT_CONTROL BACKSLASH
+                                                             &llt 2 TAB        &llt 1 SPACE         &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &slsl 5 4             &kpkp MINUS BACKSPACE
             >;
         };
 
@@ -224,10 +204,10 @@
 
         layer_4 {
             bindings = <
-&trans      &spaceand Q          &trans             &trans             &trans                 &trans    &spaceand Y    &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
-&caps_word  &slmod 4 LEFT_SHIFT  &slmod 4 LEFT_ALT  &slmod 4 LEFT_GUI  &slmod 4 LEFT_CONTROL  &lazygit  &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
-&trans      &trans               &trans             &kp LS(INSERT)     &kp LS(LC(V))          &trans    &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
-                                                    &trans             &trans                 &trans    &kp LG(SPACE)  &kp LG(N0)  &trans
+&trans     &spaceand Q          &trans             &trans             &trans                 &trans     &spaceand Y    &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
+&noslcaps  &slmod 4 LEFT_SHIFT  &slmod 4 LEFT_ALT  &slmod 4 LEFT_GUI  &slmod 4 LEFT_CONTROL  &lazygit   &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
+&trans     &trans               &trans             &kp LS(INSERT)     &kp LS(LC(V))          &trans     &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
+                                                   &trans             &kp UNDER              &kp MINUS  &kp LG(SPACE)  &kp LG(N0)  &trans
             >;
         };
 
