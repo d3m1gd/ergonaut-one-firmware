@@ -186,7 +186,6 @@
             bindings = <&mo>;
             #binding-cells = <1>;
             release-after-ms = <2000>;
-            ignore-modifiers;
             quick-release;
         };
 
@@ -277,9 +276,45 @@
             layers = <0>;
         };
 
+        cad {
+            bindings = <&skl LS(LEFT_GUI)>;
+            key-positions = <15 13>;
+            layers = <0>;
+        };
+
+        caf {
+            bindings = <&skl LS(LEFT_CONTROL)>;
+            key-positions = <13 16>;
+            layers = <0>;
+        };
+
+        cas {
+            bindings = <&skl LS(LEFT_ALT)>;
+            key-positions = <14 13>;
+            layers = <0>;
+        };
+
         csf {
-            bindings = <&skl LC(LEFT_ALT)>;
+            bindings = <&skl LA(LEFT_CONTROL)>;
             key-positions = <16 14>;
+            layers = <0>;
+        };
+
+        csdf {
+            bindings = <&skl LA(LG(LEFT_CONTROL))>;
+            key-positions = <16 14 15>;
+            layers = <0>;
+        };
+
+        casd {
+            bindings = <&skl LA(LS(LEFT_GUI))>;
+            key-positions = <14 15 13>;
+            layers = <0>;
+        };
+
+        casf {
+            bindings = <&skl LA(LS(LEFT_CONTROL))>;
+            key-positions = <14 13 16>;
             layers = <0>;
         };
     };
