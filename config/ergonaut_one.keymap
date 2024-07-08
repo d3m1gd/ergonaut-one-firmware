@@ -169,7 +169,7 @@
             label = "SPACE_Q";
         };
 
-        bg_lazygit: bg_lazygit {
+        lazygit: bg_lazygit {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(Z) &kp L &kp A &kp Z &kp Y &kp G &kp I &kp T &kp SEMI &kp SPACE &kp F &kp G &kp RET>;
@@ -191,9 +191,30 @@
                 <&macro_param_1to1 &mo MACRO_PLACEHOLDER &macro_param_2to1 &sk MACRO_PLACEHOLDER>,
                 <&macro_pause_for_release>,
                 <&macro_release>,
-                <&macro_param_1to1 &mo MACRO_PLACEHOLDER>;
+                <&macro_param_2to1 &sk MACRO_PLACEHOLDER &macro_param_1to1 &mo MACRO_PLACEHOLDER>;
 
             label = "SLMOD";
+        };
+
+        slmodx: slmodx {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings =
+                <&kp K_CANCEL>,
+                <&macro_press>,
+                <&macro_param_1to1 &mo MACRO_PLACEHOLDER &macro_param_2to1 &sk MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_2to1 &sk MACRO_PLACEHOLDER &macro_param_1to1 &mo MACRO_PLACEHOLDER>;
+
+            label = "SLMODX";
+        };
+
+        spaceand: spaceand {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&kp SPACE &macro_param_1to1 &kp MACRO_PLACEHOLDER>;
+            label = "SPACEAND";
         };
     };
 
@@ -238,10 +259,10 @@
 
         layer_4 {
             bindings = <
-&trans      &space_q             &trans    &trans          &trans                 &trans       &space_y       &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
-&caps_word  &slmod 4 LEFT_SHIFT  &sk LALT  &sk LGUI        &slmod 4 LEFT_CONTROL  &bg_lazygit  &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
-&trans      &trans               &trans    &kp LS(INSERT)  &kp LS(LC(V))          &trans       &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
-                                           &trans          &trans                 &trans       &kp LG(SPACE)  &kp LG(N0)  &trans
+&trans      &spaceand Q          &trans              &trans              &trans                 &trans    &spaceand Y    &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
+&caps_word  &slmod 4 LEFT_SHIFT  &slmodx 4 LEFT_ALT  &slmodx 4 LEFT_GUI  &slmod 4 LEFT_CONTROL  &lazygit  &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
+&trans      &trans               &trans              &kp LS(INSERT)      &kp LS(LC(V))          &trans    &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
+                                                     &trans              &trans                 &trans    &kp LG(SPACE)  &kp LG(N0)  &trans
             >;
         };
 
