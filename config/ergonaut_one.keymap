@@ -147,6 +147,26 @@
             quick-tap-ms = <200>;
             flavor = "tap-preferred";
         };
+
+        kptog: kptog {
+            compatible = "zmk,behavior-hold-tap";
+            label = "KeyPress ToggleLayer";
+            bindings = <&tog>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        sls: sls {
+            compatible = "zmk,behavior-sticky-key";
+            label = "Short Sticky Layer";
+            bindings = <&mo>;
+            #binding-cells = <1>;
+            release-after-ms = <200>;
+            quick-release;
+        };
     };
 
     macros {
@@ -193,17 +213,31 @@
 
             label = "NOREP";
         };
+
+        kpsls: dblon {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_param_1to1 &sls MACRO_PLACEHOLDER>;
+            label = "DBLON";
+        };
+
+        kpsl: kpsl {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_param_1to1 &sl MACRO_PLACEHOLDER>;
+            label = "KPSL";
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+        BASE {
             bindings = <
-&kp RIGHT_BRACKET        &kpkpnr LC(Q) Q  &kp W  &kp E                 &kp R            &kp T             &kp Y                    &kpkpnr EXCLAMATION U  &kpkpnr AT_SIGN I       &kpkpnr HASH O   &kp P                    &kp LBKT
-&lst LEFT_SHIFT GRAVE    &lst LSHFT A     &kp S  &kpkpnr UNDERSCORE D  &kpkpnr MINUS F  &kp G             &kp H                    &kpkpnr DOLLAR J       &kpkpnr PERCENT K       &kpkpnr CARET L  &kpkpnr COLON SEMICOLON  &kpcaps 0 APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z            &kp X  &kp C                 &kp V            &kp B             &kp N                    &kpkpnr AMPERSAND M    &kpkpnr ASTERISK COMMA  &kp DOT          &kp SLASH                &rst RIGHT_CONTROL BACKSLASH
-                                                 &llt 2 TAB            &llt 1 SPACE     &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &slsl 5 4              &kpkp MINUS BACKSPACE
+&kp RIGHT_BRACKET        &kpkpnr LC(Q) Q  &kp W  &kp E       &kp R         &kp T             &kp Y                    &kpkpnr EXCLAMATION U  &kpkpnr AT_SIGN I       &kpkpnr HASH O   &kp P                    &kp LBKT
+&lst LEFT_SHIFT GRAVE    &lst LSHFT A     &kp S  &kpsl D 6   &kp F         &kp G             &kp H                    &kpkpnr DOLLAR J       &kpkpnr PERCENT K       &kpkpnr CARET L  &kpkpnr COLON SEMICOLON  &kpcaps 0 APOSTROPHE
+&lst LEFT_CONTROL EQUAL  &kp Z            &kp X  &kp C       &kp V         &kp B             &kp N                    &kpkpnr AMPERSAND M    &kpkpnr ASTERISK COMMA  &kp DOT          &kp SLASH                &rst RIGHT_CONTROL BACKSLASH
+                                                 &llt 2 TAB  &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &slsl 5 4              &kpkp MINUS BACKSPACE
             >;
         };
 
@@ -234,21 +268,30 @@
             >;
         };
 
-        layer_4 {
+        QUICK {
             bindings = <
-&trans     &spaceand Q          &trans             &trans             &trans                 &trans     &spaceand Y    &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
-&noslcaps  &slmod 4 LEFT_SHIFT  &slmod 4 LEFT_ALT  &slmod 4 LEFT_GUI  &slmod 4 LEFT_CONTROL  &lazygit   &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
-&trans     &trans               &trans             &kp LS(INSERT)     &kp LS(LC(V))          &trans     &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
-                                                   &trans             &kp UNDER              &kp MINUS  &kp LG(SPACE)  &kp LG(N0)  &trans
+&trans     &spaceand Q          &trans             &trans             &trans                 &trans        &spaceand Y    &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
+&noslcaps  &slmod 4 LEFT_SHIFT  &slmod 4 LEFT_ALT  &slmod 4 LEFT_GUI  &slmod 4 LEFT_CONTROL  &lazygit      &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
+&trans     &trans               &trans             &kp LS(INSERT)     &kp LS(LC(V))          &trans        &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
+                                                   &kpsls MINUS 4     &kpsls UNDER 4         &kp K_CANCEL  &kp LG(SPACE)  &kp LG(N0)  &trans
             >;
         };
 
-        layer_5 {
+        NUM {
             bindings = <
 &trans  &trans  &trans  &trans          &trans     &trans  &trans  &kp N1  &kp N2  &kp N3  &trans  &trans
 &trans  &trans  &trans  &kp UNDERSCORE  &kp MINUS  &trans  &trans  &kp N4  &kp N5  &kp N6  &trans  &trans
 &trans  &trans  &trans  &trans          &trans     &trans  &trans  &kp N7  &kp N8  &kp N9  &trans  &trans
                         &trans          &trans     &tog 5  &trans  &kp N0  &trans
+            >;
+        };
+
+        META {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &kpsl H 6  &kpsl J 6  &kpsl K 6  &kpsl L 6  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans     &trans     &trans     &trans  &trans
+                        &trans  &trans  &kp K_CANCEL  &trans     &trans     &trans
             >;
         };
     };
