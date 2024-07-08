@@ -137,17 +137,6 @@
             flavor = "tap-preferred";
         };
 
-        kpkpnrpt: kpkpnrpt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "2 key press no repeat long";
-            bindings = <&norepeat>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         kpcaps: kpcaps {
             compatible = "zmk,behavior-hold-tap";
             label = "keypress caps behavior";
@@ -195,19 +184,6 @@
             label = "NOSL";
         };
 
-        norepeat: norepeat {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings =
-                <&macro_press>,
-                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-                <&macro_release>,
-                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
-                <&macro_pause_for_release>;
-
-            label = "NOREPEAT";
-        };
-
         norep: norep {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -224,10 +200,10 @@
 
         default_layer {
             bindings = <
-&kp RIGHT_BRACKET        &kpkpnr LC(Q) Q  &kp W  &kp E       &kp R         &kp T             &kp Y                    &kp U              &kp I                  &kp O            &kp P                    &kp LBKT
-&lst LEFT_SHIFT GRAVE    &kp A            &kp S  &kp D       &kp F         &kp G             &kp H                    &kpkpnrpt MINUS J  &kpkpnr UNDERSCORE K   &rmt LEFT_ALT L  &kpkpnr COLON SEMICOLON  &kpcaps 0 APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z            &kp X  &kp C       &kp V         &kp B             &kp N                    &kp M              &kp COMMA              &kp DOT          &kp SLASH                &rst RIGHT_CONTROL BACKSLASH
-                                                 &llt 2 TAB  &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &slsl 5 4          &kpkp MINUS BACKSPACE
+&kp RIGHT_BRACKET        &kpkpnr LC(Q) Q  &kp W  &kp E                 &kp R            &kp T             &kp Y                    &kpkpnr EXCLAMATION U  &kpkpnr AT_SIGN I       &kpkpnr HASH O   &kp P                    &kp LBKT
+&lst LEFT_SHIFT GRAVE    &lst LSHFT A     &kp S  &kpkpnr UNDERSCORE D  &kpkpnr MINUS F  &kp G             &kp H                    &kpkpnr DOLLAR J       &kpkpnr PERCENT K       &kpkpnr CARET L  &kpkpnr COLON SEMICOLON  &kpcaps 0 APOSTROPHE
+&lst LEFT_CONTROL EQUAL  &kp Z            &kp X  &kp C                 &kp V            &kp B             &kp N                    &kpkpnr AMPERSAND M    &kpkpnr ASTERISK COMMA  &kp DOT          &kp SLASH                &rst RIGHT_CONTROL BACKSLASH
+                                                 &llt 2 TAB            &llt 1 SPACE     &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &slsl 5 4              &kpkp MINUS BACKSPACE
             >;
         };
 
