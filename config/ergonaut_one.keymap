@@ -351,10 +351,10 @@
 
         lower_layer {
             bindings = <
-&trans  &trans  &trans  &kp LEFT_BRACKET                 &kp RIGHT_BRACKET                    &trans  &trans     &kp NUMBER_1                 &kp NUMBER_2             &kp NUMBER_3            &trans             &trans
-&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &trans   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
-&trans  &trans  &trans  &kp LEFT_BRACE                   &kp RIGHT_BRACE                      &trans  &trans  &kp N7                       &kp N8                   &kp N9                  &trans             &trans
-                        &trans                           &trans                               &trans  &trans     &kp N0                       &kp DELETE
+&trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans
+&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
+&trans  &trans  &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans  &trans  &kp N7        &kp N8        &kp N9        &trans  &trans
+                        &trans                &trans                 &trans  &trans  &kp N0        &kp DELETE
             >;
         };
 
@@ -367,12 +367,12 @@
             >;
         };
 
-        adjust_layer {
+        BTFN {
             bindings = <
-&bootloader  &bt BT_CLR_ALL  &trans        &trans        &trans        &trans        &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &trans  &bootloader
-&bt BT_CLR   &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &trans  &trans
-&sys_reset   &trans          &trans        &trans        &trans        &trans        &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &trans  &sys_reset
-                                           &trans        &caps_word    &trans        &kp F10            &kp F11  &kp F12
+&bootloader  &bt BT_CLR_ALL  &none         &none         &none         &none         &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &none  &bootloader
+&none        &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &none  &none
+&sys_reset   &bt BT_CLR      &none         &none         &none         &none         &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none  &sys_reset
+                                           &none         &none         &none         &kp F10            &kp F11  &kp F12
             >;
         };
 
