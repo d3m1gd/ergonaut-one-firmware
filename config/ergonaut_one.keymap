@@ -352,8 +352,8 @@
         lower_layer {
             bindings = <
 &trans  &trans  &trans  &kp LEFT_BRACKET                 &kp RIGHT_BRACKET                    &trans  &trans     &kp NUMBER_1                 &kp NUMBER_2             &kp NUMBER_3            &trans             &trans
-&trans  &trans  &trans  &lmt LEFT_META LEFT_PARENTHESIS  &lmt LEFT_CONTROL RIGHT_PARENTHESIS  &trans  &kp PLUS   &rmt RIGHT_CONTROL NUMBER_4  &rmt LEFT_META NUMBER_5  &rmt LEFT_ALT NUMBER_6  &rmt RSHIFT MINUS  &trans
-&trans  &trans  &trans  &kp LEFT_BRACE                   &kp RIGHT_BRACE                      &trans  &kp EQUAL  &kp N7                       &kp N8                   &kp N9                  &trans             &trans
+&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &trans   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
+&trans  &trans  &trans  &kp LEFT_BRACE                   &kp RIGHT_BRACE                      &trans  &trans  &kp N7                       &kp N8                   &kp N9                  &trans             &trans
                         &trans                           &trans                               &trans  &trans     &kp N0                       &kp DELETE
             >;
         };
