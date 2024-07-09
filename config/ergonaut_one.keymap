@@ -198,6 +198,17 @@
             ignore-modifiers;
             quick-release;
         };
+
+        hthomekp: hthomekp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HTHOMEKP";
+            bindings = <&homeconfig>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <350>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
+        };
     };
 
     macros {
@@ -258,6 +269,13 @@
             #binding-cells = <2>;
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &sll MACRO_PLACEHOLDER>;
             label = "KPSLL";
+        };
+
+        homeconfig: homeconfig {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp DQT &kp FSLH>;
+            label = "HOMECONFIG";
         };
     };
 
@@ -326,7 +344,7 @@
             bindings = <
 &kp RIGHT_BRACKET        &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                    &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
 &lst LEFT_SHIFT GRAVE    &lst LSHFT A       &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                    &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z              &kp X  &kp C            &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &rst RIGHT_CONTROL BACKSLASH
+&lst LEFT_CONTROL EQUAL  &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &rst RIGHT_CONTROL BACKSLASH
                                                    &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &htslsl 5 4              &htkpkp MINUS BACKSPACE
             >;
         };
