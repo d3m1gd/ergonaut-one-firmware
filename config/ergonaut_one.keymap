@@ -387,10 +387,10 @@
 
         NUM {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N1 5  &kpsl N2 5  &kpsl N3 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsl N4 5   &kpsl N5 5  &kpsl N6 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsl N7 5   &kpsl N8 5  &kpsl N9 5  &trans  &trans
-                        &trans  &trans  &kp K_CANCEL  &trans  &kpsl N0 5   &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N1 5   &kpsll N2 5  &kpsll N3 5  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N4 5   &kpsll N5 5  &kpsll N6 5  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N7 5   &kpsll N8 5  &kpsll N9 5  &trans  &trans
+                        &trans  &trans  &kp K_CANCEL  &trans  &kpsll N0 5   &trans
             >;
         };
 
