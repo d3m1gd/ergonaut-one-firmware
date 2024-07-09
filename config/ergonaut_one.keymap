@@ -378,19 +378,19 @@
 
         QUICK {
             bindings = <
-&trans     &spaceand Q      &trans         &trans          &trans             &trans        &spaceand Y    &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &trans     &trans
-&noslcaps  &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &lazygit      &trans         &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &kp MINUS  &trans
-&trans     &trans           &trans         &kp LS(INSERT)  &kp LS(LC(V))      &trans        &trans         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans     &trans
-                                           &kpsls MINUS 4  &kpsls UNDER 4     &kp K_CANCEL  &kp LG(SPACE)  &kp LG(N0)  &trans
+&kp LG(N0)  &spaceand Q      &trans         &trans          &trans             &trans        &spaceand Y        &kp LG(N1)     &kp LG(N2)      &kp LG(N3)  &trans              &trans
+&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &lazygit      &kpsls LG(PLUS) 4  &kp LG(N4)     &kp LG(N5)      &kp LG(N6)  &kpsls LG(MINUS) 4  &kp LG(C)
+&trans      &trans           &trans         &kp LS(INSERT)  &kp LS(LC(V))      &trans        &trans             &kp LG(N7)     &kp LG(N8)      &kp LG(N9)  &trans              &trans
+                                            &kpsls MINUS 4  &kpsls UNDER 4     &kp K_CANCEL  &kpsl BACKSPACE 4  &kp LG(SPACE)  &kpsl DELETE 4
             >;
         };
 
         NUM {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N1 5   &kpsll N2 5  &kpsll N3 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N4 5   &kpsll N5 5  &kpsll N6 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N7 5   &kpsll N8 5  &kpsll N9 5  &trans  &trans
-                        &trans  &trans  &kp K_CANCEL  &trans  &kpsll N0 5   &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
+                        &trans  &trans  &kp K_CANCEL  &trans  &kpsll N0 5  &trans
             >;
         };
 
