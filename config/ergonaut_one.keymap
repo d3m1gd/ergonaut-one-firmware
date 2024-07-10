@@ -386,10 +386,10 @@
 
         BASE {
             bindings = <
-&htkpkpnr LS(TAB) TAB      &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                       &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lshkp LEFT_SHIFT GRAVE    &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                       &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
-&lshkp LEFT_CONTROL EQUAL  &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                       &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                     &llt 2 RETURN    &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL K_CANCEL  &htslsl 5 4              &sll 5
+&htkpkpnr LS(TAB) TAB        &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&lshkp LEFT_SHIFT BACKSPACE  &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
+&lshkp LEFT_CONTROL DELETE   &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
+                                                       &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 4                   &sll 5
             >;
         };
 
@@ -431,10 +431,10 @@
 
         NUM {
             bindings = <
-&trans  &trans  &kp RIGHT_BRACE  &kp RBKT  &kp RIGHT_PARENTHESIS  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
-&trans  &trans  &trans           &trans    &trans                 &lazygit      &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
-&trans  &trans  &trans           &trans    &trans                 &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
-                                 &trans    &trans                 &kp K_CANCEL  &trans  &kpsll N0 5  &trans
+&trans  &trans  &kp RIGHT_BRACE  &kp RBKT          &kp RIGHT_PARENTHESIS  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
+&trans  &trans  &kp GRAVE        &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES      &lazygit      &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
+&trans  &trans  &trans           &trans            &trans                 &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
+                                 &trans            &trans                 &kp K_CANCEL  &trans  &kpsll N0 5  &trans
             >;
         };
 
