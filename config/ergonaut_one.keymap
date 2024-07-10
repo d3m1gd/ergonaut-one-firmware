@@ -79,9 +79,9 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 36 37 38>;
         };
 
-        lst: lst {
+        lshkp: lshkp {
             compatible = "zmk,behavior-hold-tap";
-            label = "Left Shift Tap";
+            label = "Left Shift KeyPress";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -342,10 +342,10 @@
 
         BASE {
             bindings = <
-&kp RIGHT_BRACKET        &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                    &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lst LEFT_SHIFT GRAVE    &lst LSHFT A       &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                    &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
-&lst LEFT_CONTROL EQUAL  &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &rst RIGHT_CONTROL BACKSLASH
-                                                   &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &htslsl 5 4              &htkpkp MINUS BACKSPACE
+&kp RIGHT_BRACKET          &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                    &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&lshkp LEFT_SHIFT GRAVE    &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                    &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
+&lshkp LEFT_CONTROL EQUAL  &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                    &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
+                                                     &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL ENTER  &htslsl 5 4              &none
             >;
         };
 
@@ -378,17 +378,17 @@
 
         QUICK {
             bindings = <
-&kp LG(N0)  &spaceand Q      &trans         &trans          &trans             &trans        &spaceand Y        &kp LG(N1)     &kp LG(N2)      &kp LG(N3)  &trans              &trans
-&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &lazygit      &kpsls LG(PLUS) 4  &kp LG(N4)     &kp LG(N5)      &kp LG(N6)  &kpsls LG(MINUS) 4  &kp LG(C)
-&trans      &trans           &trans         &kp LS(INSERT)  &kp LS(LC(V))      &trans        &trans             &kp LG(N7)     &kp LG(N8)      &kp LG(N9)  &trans              &trans
-                                            &kpsls MINUS 4  &kpsls UNDER 4     &kp K_CANCEL  &kpsl BACKSPACE 4  &kp LG(SPACE)  &kpsl DELETE 4
+&kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &trans        &spaceand Y        &kp LG(N1)     &kp LG(N2)      &kp LG(N3)  &trans              &trans
+&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans        &kpsls LG(PLUS) 4  &kp LG(N4)     &kp LG(N5)      &kp LG(N6)  &kpsls LG(MINUS) 4  &kp LG(C)
+&trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans        &trans             &kp LG(N7)     &kp LG(N8)      &kp LG(N9)  &trans              &trans
+                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &kp K_CANCEL  &kpsl BACKSPACE 4  &kp LG(SPACE)  &kpsl DELETE 4
             >;
         };
 
         NUM {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &lazygit      &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
                         &trans  &trans  &kp K_CANCEL  &trans  &kpsll N0 5  &trans
             >;
