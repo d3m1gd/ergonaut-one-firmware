@@ -285,10 +285,27 @@
                 <&macro_press>,
                 <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
                 <&macro_tap>,
                 <&macro_param_2to1 &sl MACRO_PLACEHOLDER>;
 
             label = "KeyPress Repeat StickyLayer";
+        };
+
+        kprsls: kprsls {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings =
+                <&macro_press>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_pause_for_release>,
+                <&macro_release>,
+                <&macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_tap>,
+                <&macro_param_2to1 &sls MACRO_PLACEHOLDER>;
+
+            label = "KPRSLS";
         };
     };
 
@@ -391,10 +408,10 @@
 
         QUICK {
             bindings = <
-&kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &trans        &spaceand Y         &kp LG(N1)     &kp LG(N2)       &kp LG(N3)  &trans             &trans
-&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans        &kpsl LG(PLUS) 4    &kp LG(N4)     &kp LG(N5)       &kp LG(N6)  &kpsl LG(MINUS) 4  &kp LG(C)
-&trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans        &trans              &kp LG(N7)     &kp LG(N8)       &kp LG(N9)  &trans             &trans
-                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &kp K_CANCEL  &kprsl BACKSPACE 4  &kp LG(SPACE)  &kprsl DELETE 4
+&kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &trans        &spaceand Y          &kp LG(N1)     &kp LG(N2)        &kp LG(N3)  &trans             &trans
+&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans        &kpsl LG(PLUS) 4     &kp LG(N4)     &kp LG(N5)        &kp LG(N6)  &kpsl LG(MINUS) 4  &kp LG(C)
+&trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans        &trans               &kp LG(N7)     &kp LG(N8)        &kp LG(N9)  &trans             &trans
+                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &kp K_CANCEL  &kprsls BACKSPACE 4  &kp LG(SPACE)  &kprsls DELETE 4
             >;
         };
 
