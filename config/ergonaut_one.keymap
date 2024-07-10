@@ -164,9 +164,8 @@
             label = "Short Sticky Layer";
             bindings = <&mo>;
             #binding-cells = <1>;
-            release-after-ms = <200>;
+            release-after-ms = <500>;
             quick-release;
-            ignore-modifiers;
         };
 
         htkpsll: htkpsll {
@@ -208,6 +207,15 @@
             tapping-term-ms = <350>;
             quick-tap-ms = <200>;
             flavor = "tap-preferred";
+        };
+
+        slxs: slxs {
+            compatible = "zmk,behavior-sticky-key";
+            label = "Sticky Layer Extra Short";
+            bindings = <&mo>;
+            #binding-cells = <1>;
+            release-after-ms = <200>;
+            quick-release;
         };
     };
 
@@ -368,7 +376,7 @@
 
         btfn {
             bindings = <&sll 3>;
-            key-positions = <0 12 24>;
+            key-positions = <2 3 4 5>;
             layers = <0>;
         };
     };
