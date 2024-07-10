@@ -386,19 +386,19 @@
 
         BASE {
             bindings = <
-&kp RIGHT_BRACKET          &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                       &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&htkpkpnr LS(TAB) TAB      &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                       &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
 &lshkp LEFT_SHIFT GRAVE    &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                       &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
 &lshkp LEFT_CONTROL EQUAL  &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                       &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                     &llt 2 RETURN    &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL K_CANCEL  &htslsl 5 4              &none
+                                                     &llt 2 RETURN    &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL K_CANCEL  &htslsl 5 4              &sll 5
             >;
         };
 
         lower_layer {
             bindings = <
-&trans  &trans  &trans  &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans
-&trans  &trans  &trans  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
-&trans  &trans  &trans  &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans  &trans  &kp N7        &kp N8        &kp N9        &trans  &trans
-                        &trans                &trans                 &trans  &trans  &kp N0        &kp DELETE
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp N7        &kp N8        &kp N9        &trans  &trans
+                        &trans  &trans  &trans  &trans  &kp N0        &kp DELETE
             >;
         };
 
@@ -422,19 +422,19 @@
 
         QUICK {
             bindings = <
-&kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &trans        &spaceand Y          &kp LG(N1)     &kp LG(N2)        &kp LG(N3)  &trans             &trans
-&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans        &kpsl LG(PLUS) 4     &kp LG(N4)     &kp LG(N5)        &kp LG(N6)  &kpsl LG(MINUS) 4  &kp LG(C)
-&trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans        &trans               &kp LG(N7)     &kp LG(N8)        &kp LG(N9)  &trans             &trans
-                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &kp K_CANCEL  &kprsls BACKSPACE 4  &kp LG(SPACE)  &kprsls DELETE 4
+&kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &kp LG(RETURN)  &spaceand Y          &kp LG(N1)     &kp LG(N2)        &kp LG(N3)  &trans             &trans
+&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans          &kpsl LG(PLUS) 4     &kp LG(N4)     &kp LG(N5)        &kp LG(N6)  &kpsl LG(MINUS) 4  &kp LG(C)
+&trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans          &trans               &kp LG(N7)     &kp LG(N8)        &kp LG(N9)  &trans             &trans
+                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &kp K_CANCEL    &kprsls BACKSPACE 4  &kp LG(SPACE)  &kprsls DELETE 4
             >;
         };
 
         NUM {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &lazygit      &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
-                        &trans  &trans  &kp K_CANCEL  &trans  &kpsll N0 5  &trans
+&trans  &trans  &kp RIGHT_BRACE  &kp RBKT  &kp RIGHT_PARENTHESIS  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
+&trans  &trans  &trans           &trans    &trans                 &lazygit      &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
+&trans  &trans  &trans           &trans    &trans                 &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
+                                 &trans    &trans                 &kp K_CANCEL  &trans  &kpsll N0 5  &trans
             >;
         };
 
