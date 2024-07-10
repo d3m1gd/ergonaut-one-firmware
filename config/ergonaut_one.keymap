@@ -315,6 +315,13 @@
 
             label = "KPRSLS";
         };
+
+        kpslxs: kpslxs {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &slxs MACRO_PLACEHOLDER>;
+            label = "KPSLXS";
+        };
     };
 
     combos {
@@ -425,25 +432,25 @@
 &kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &kp LG(RETURN)  &spaceand Y          &kp LG(N1)     &kp LG(N2)        &kp LG(N3)  &trans             &trans
 &noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans          &kpsl LG(PLUS) 4     &kp LG(N4)     &kp LG(N5)        &kp LG(N6)  &kpsl LG(MINUS) 4  &kp LG(C)
 &trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans          &trans               &kp LG(N7)     &kp LG(N8)        &kp LG(N9)  &trans             &trans
-                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &kp K_CANCEL    &kprsls BACKSPACE 4  &kp LG(SPACE)  &kprsls DELETE 4
+                                                               &kpsls MINUS 4                        &kpsls UNDER 4                                &trans          &kprsls BACKSPACE 4  &kp LG(SPACE)  &kprsls DELETE 4
             >;
         };
 
         NUM {
             bindings = <
-&trans  &trans  &kp RIGHT_BRACE  &kp RBKT          &kp RIGHT_PARENTHESIS  &trans        &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
-&trans  &trans  &kp GRAVE        &kp SINGLE_QUOTE  &kp DOUBLE_QUOTES      &lazygit      &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
-&trans  &trans  &trans           &trans            &trans                 &trans        &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
-                                 &trans            &trans                 &kp K_CANCEL  &trans  &kpsll N0 5  &trans
+&trans  &trans  &kp RIGHT_BRACE  &kp RBKT                &kpslxs RIGHT_PARENTHESIS 5  &trans    &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
+&trans  &trans  &kpslxs GRAVE 5  &kpslxs SINGLE_QUOTE 5  &kpslxs DOUBLE_QUOTES 5      &lazygit  &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
+&trans  &trans  &trans           &trans                  &trans                       &trans    &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
+                                 &trans                  &trans                       &trans    &trans  &kpsll N0 5  &trans
             >;
         };
 
         META {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &kpsl H 6  &kpsl J 6  &kpsl K 6  &kpsl L 6  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans     &trans     &trans     &trans  &trans
-                        &trans  &trans  &kp K_CANCEL  &trans     &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kpsl H 6  &kpsl J 6  &kpsl K 6  &kpsl L 6  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans     &trans  &trans
+                        &trans  &trans  &trans  &trans     &trans     &trans
             >;
         };
     };
