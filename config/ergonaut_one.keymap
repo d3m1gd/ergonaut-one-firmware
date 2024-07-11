@@ -278,8 +278,6 @@
             #binding-cells = <0>;
             bindings = <&kp LC(Z) &kp L &kp A &kp Z &kp Y &kp G &kp I &kp T &kp SEMI &kp SPACE &kp F &kp G &kp RET>;
             label = "LAZYGIT";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         sksls: slmod {
@@ -339,8 +337,6 @@
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp DQT &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp FSLH>;
             label = "HOMECONFIG";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         kprsl: kprsl {
@@ -392,8 +388,6 @@
             #binding-cells = <0>;
             bindings = <&kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE>;
             label = "DEVNULL1";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         devnull2: devnull2 {
@@ -401,8 +395,6 @@
             #binding-cells = <0>;
             bindings = <&kp N2 &kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE>;
             label = "DEVNULL2";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         devnull3: devnull3 {
@@ -410,8 +402,6 @@
             #binding-cells = <0>;
             bindings = <&kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE &kp N2 &kp GT &kp AMPS &kp N1 &kp SPACE>;
             label = "DEVNULL3";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         quoted: quoted {
@@ -419,8 +409,6 @@
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp LEFT_ARROW>;
             label = "QUOTED";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         varred: varred {
@@ -428,8 +416,6 @@
             #binding-cells = <0>;
             bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RBRC &kp LEFT_ARROW>;
             label = "VARRED";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         parened: parened {
@@ -437,8 +423,6 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
             label = "PARENED";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         braced: braced {
@@ -446,8 +430,6 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;
             label = "BRACED";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         bracketed: bracketed {
@@ -455,8 +437,6 @@
             #binding-cells = <0>;
             bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;
             label = "BRACKETED";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         goequals: goequals {
@@ -464,8 +444,6 @@
             #binding-cells = <0>;
             bindings = <&kp COLON &kp EQUAL>;
             label = "GOEQUALS";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         quoteds: quoteds {
@@ -473,8 +451,6 @@
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp LEFT_ARROW>;
             label = "QUOTEDS";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         quotedb: quotedb {
@@ -482,8 +458,6 @@
             #binding-cells = <0>;
             bindings = <&kp GRAVE &kp GRAVE &kp LEFT_ARROW>;
             label = "QUOTEDB";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         quotedbbb: quotedbbb {
@@ -491,8 +465,6 @@
             #binding-cells = <0>;
             bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT_ARROW &kp LEFT_ARROW &kp LEFT_ARROW>;
             label = "QUOTEDBBB";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
 
         redirect21: redirect21 {
@@ -500,8 +472,6 @@
             #binding-cells = <0>;
             bindings = <&kp N2 &kp GT &kp AMPS &kp N1 &kp SPACE>;
             label = "REDIRECT21";
-            wait-ms = <10>;
-            tap-ms = <10>;
         };
     };
 
