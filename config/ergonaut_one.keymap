@@ -425,7 +425,7 @@
         quoted: quoted {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT_ARROW>;
+            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW>;
             label = "QUOTED";
         };
 
@@ -467,7 +467,7 @@
         quoteds: quoteds {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT_ARROW>;
+            bindings = <&kp SINGLE_QUOTE &kp SINGLE_QUOTE &kp LEFT_ARROW>;
             label = "QUOTEDS";
         };
 
@@ -586,7 +586,7 @@
 &htkpkpnr LS(TAB) TAB         &kp Q           &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
 &lshkp LEFT_SHIFT BACKSPACE   &lshkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &qcaps
 &lshkp LEFT_CONTROL K_CANCEL  &kp Z           &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                     &htmosll 2 5     &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 4                   &sll 0
+                                                     &htmosll 2 5     &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 4                   &sll 5
             >;
         };
 
@@ -628,10 +628,10 @@
 
         NUM {
             bindings = <
-&kp LEFT_PARENTHESIS  &none      &none  &none        &none          &none           &kpsll N0 5    &kpsll N1 5      &kpsll N2 5  &kpsll N3 5  &kp DOUBLE_QUOTES  &kpsl RIGHT_PARENTHESIS 5
+&kp LEFT_PARENTHESIS  &none      &none  &none        &none          &none           &kpsll N0 5    &kpsll N1 5      &kpsll N2 5  &kpsll N3 5  &kp DOUBLE_QUOTES  &kpsls RIGHT_PARENTHESIS 5
 &kp LEFT_BRACKET      &kp TILDE  &none  &none        &none          &kpsll MINUS 5  &kpsll PLUS 5  &kpsll N4 5      &kpsll N5 5  &kpsll N6 5  &kp SINGLE_QUOTE   &kp RIGHT_BRACKET
 &kp LEFT_BRACE        &none      &none  &none        &none          &none           &equals        &kpsll N7 5      &kpsll N8 5  &kpsll N9 5  &kp GRAVE          &kp RIGHT_BRACE
-                                        &kpsl TAB 5  &kpsl SPACE 5  &none           &none          &kpsll KP_DOT 5  &none
+                                        &kpsl TAB 5  &kpsl SPACE 5  &kp K_CANCEL    &none          &kpsll KP_DOT 5  &none
             >;
         };
 
