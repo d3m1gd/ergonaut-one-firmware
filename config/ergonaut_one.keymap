@@ -108,7 +108,7 @@
         htslsl: htslsl {
             compatible = "zmk,behavior-hold-tap";
             label = "Hold Tap 2Sticky  Layers";
-            bindings = <&sl>, <&sll>;
+            bindings = <&sl>, <&sl>;
 
             #binding-cells = <2>;
             tapping-term-ms = <300>;
@@ -184,7 +184,7 @@
             label = "Sticky Layer Long";
             bindings = <&mo>;
             #binding-cells = <1>;
-            release-after-ms = <2000>;
+            release-after-ms = <1500>;
             quick-release;
         };
 
@@ -216,6 +216,53 @@
             #binding-cells = <1>;
             release-after-ms = <200>;
             quick-release;
+        };
+
+        htsllsll: htsllsll {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HoldTap 2 Sticky Layer Long";
+            bindings = <&sll>, <&sll>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "tap-preferred";
+        };
+
+        qcaps: qcaps {
+            compatible = "zmk,behavior-tap-dance";
+            label = "QCAPS";
+            #binding-cells = <0>;
+            bindings = <&kp SINGLE_QUOTE>, <&caps_word>;
+
+            tapping-term-ms = <100>;
+        };
+
+        qqqq: qqqq {
+            compatible = "zmk,behavior-tap-dance";
+            label = "QQQQ";
+            #binding-cells = <0>;
+            bindings = <&quoted>, <&quoteds>, <&quotedb>, <&quotedbbb>;
+        };
+
+        pipe: pipe {
+            compatible = "zmk,behavior-tap-dance";
+            label = "PIPE";
+            #binding-cells = <0>;
+            bindings = <&kp PIPE>, <&kp BACKSLASH>;
+        };
+
+        devnull: devnull {
+            compatible = "zmk,behavior-tap-dance";
+            label = "DEVNULL";
+            #binding-cells = <0>;
+            bindings = <&devnull1>, <&devnull2>, <&devnull3>, <&redirect21>;
+        };
+
+        wrapped: wrapped {
+            compatible = "zmk,behavior-tap-dance";
+            label = "WRAPPED";
+            #binding-cells = <0>;
+            bindings = <&parened>, <&bracketed>, <&braced>;
         };
     };
 
@@ -322,6 +369,130 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &slxs MACRO_PLACEHOLDER>;
             label = "KPSLXS";
         };
+
+        unicode: unicode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LC(LS(U))>;
+            label = "UNICODE";
+        };
+
+        devnull1: devnull1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE>;
+            label = "DEVNULL1";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        devnull2: devnull2 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N2 &kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE>;
+            label = "DEVNULL2";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        devnull3: devnull3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE &kp N2 &kp GT &kp AMPS &kp N1 &kp SPACE>;
+            label = "DEVNULL3";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        quoted: quoted {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp LEFT_ARROW>;
+            label = "QUOTED";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        varred: varred {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RBRC &kp LEFT_ARROW>;
+            label = "VARRED";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        parened: parened {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
+            label = "PARENED";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        braced: braced {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;
+            label = "BRACED";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        bracketed: bracketed {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;
+            label = "BRACKETED";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        goequals: goequals {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp COLON &kp EQUAL>;
+            label = "GOEQUALS";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        quoteds: quoteds {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp LEFT_ARROW>;
+            label = "QUOTEDS";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        quotedb: quotedb {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT_ARROW>;
+            label = "QUOTEDB";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        quotedbbb: quotedbbb {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT_ARROW &kp LEFT_ARROW &kp LEFT_ARROW>;
+            label = "QUOTEDBBB";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
+
+        redirect21: redirect21 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N2 &kp GT &kp AMPS &kp N1 &kp SPACE>;
+            label = "REDIRECT21";
+            wait-ms = <10>;
+            tap-ms = <10>;
+        };
     };
 
     combos {
@@ -367,24 +538,31 @@
             bindings = <&skl LA(LG(LEFT_CONTROL))>;
             key-positions = <16 14 15>;
             layers = <0>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <500>;
         };
 
         casd {
             bindings = <&skl LA(LS(LEFT_GUI))>;
             key-positions = <14 15 13>;
             layers = <0>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <500>;
         };
 
         casf {
             bindings = <&skl LA(LS(LEFT_CONTROL))>;
             key-positions = <14 13 16>;
             layers = <0>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <500>;
         };
 
-        btfn {
-            bindings = <&sll 3>;
+        sys {
+            bindings = <&sll 7>;
             key-positions = <4 5>;
             layers = <0>;
+            require-prior-idle-ms = <500>;
         };
     };
 
@@ -394,63 +572,81 @@
         BASE {
             bindings = <
 &htkpkpnr LS(TAB) TAB        &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lshkp LEFT_SHIFT BACKSPACE  &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &htkpcaps 0 APOSTROPHE
+&lshkp LEFT_SHIFT BACKSPACE  &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &qcaps
 &lshkp LEFT_CONTROL DELETE   &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                       &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 4                   &sll 5
+                                                       &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &htsllsll 5 4            &sll 8
             >;
         };
 
-        lower_layer {
+        UNO {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp N7        &kp N8        &kp N9        &trans  &trans
-                        &trans  &trans  &trans  &trans  &kp N0        &kp DELETE
+&none  &none  &none  &none  &none  &none  &none  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &kp N7        &kp N8        &kp N9        &none  &none
+                     &none  &none  &none  &none  &kp N0        &kp DELETE
             >;
         };
 
-        raise_layer {
+        DUO {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp PAGE_DOWN            &kp PAGE_UP        &kp INSERT           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt RIGHT_CONTROL DOWN  &rmt LEFT_META UP  &rmt LEFT_ALT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &kp HOME                 &kp END            &kp PRINTSCREEN      &trans  &trans
-                        &trans  &trans  &trans  &trans    &kp N0                   &kp DELETE
+&none  &none  &none  &none  &none  &none  &none     &kp PAGE_DOWN            &kp PAGE_UP        &kp INSERT           &none  &none
+&none  &none  &none  &none  &none  &none  &kp LEFT  &rmt RIGHT_CONTROL DOWN  &rmt LEFT_META UP  &rmt LEFT_ALT RIGHT  &none  &none
+&none  &none  &none  &none  &none  &none  &none     &kp HOME                 &kp END            &kp PRINTSCREEN      &none  &none
+                     &none  &none  &none  &none     &kp N0                   &kp DELETE
             >;
         };
 
         BTFN {
             bindings = <
-&bootloader  &bt BT_CLR_ALL  &none         &none         &none         &none         &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &none  &bootloader
-&none        &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &none  &none
-&sys_reset   &bt BT_CLR      &none         &none         &none         &none         &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none  &sys_reset
+&bootloader  &bt BT_CLR_ALL  &none         &none         &none         &none         &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
+&none        &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &none             &none
+&sys_reset   &bt BT_CLR      &none         &none         &none         &none         &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none             &sys_reset
                                            &none         &none         &none         &kp F10            &kp F11  &kp F12
             >;
         };
 
         QUICK {
             bindings = <
-&kp LG(N0)  &spaceand Q      &htkpkpnr RIGHT_BRACE LEFT_BRACE  &htkpkpnr RIGHT_BRACKET LEFT_BRACKET  &htkpkpnr RIGHT_PARENTHESIS LEFT_PARENTHESIS  &kp LG(RETURN)  &spaceand Y          &kp LG(N1)     &kp LG(N2)        &kp LG(N3)  &trans             &trans
-&noslcaps   &skl LEFT_SHIFT  &skl LEFT_ALT                     &skl LEFT_GUI                         &skl LEFT_CONTROL                             &trans          &kpsl LG(PLUS) 4     &kp LG(N4)     &kp LG(N5)        &kp LG(N6)  &kpsl LG(MINUS) 4  &kp LG(C)
-&trans      &trans           &trans                            &kp LS(INSERT)                        &kp LS(LC(V))                                 &trans          &trans               &kp LG(N7)     &kp LG(N8)        &kp LG(N9)  &trans             &trans
-                                                               &kpslxs MINUS 4                       &kpslxs UNDER 4                               &trans          &kprsls BACKSPACE 4  &kp LG(SPACE)  &kprsls DELETE 4
+&kp LG(N0)  &spaceand Q      &none          &qqqq           &wrapped           &kp LG(RETURN)     &spaceand Y       &kp LG(N1)     &kp LG(N2)  &kp LG(N3)  &none  &none
+&none       &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kpsl LG(MINUS) 4  &kpsl LG(PLUS) 4  &kp LG(N4)     &kp LG(N5)  &kp LG(N6)  &pipe  &none
+&devnull    &none            &none          &kp LS(INSERT)  &kp LS(LC(V))      &none              &none             &kp LG(N7)     &kp LG(N8)  &kp LG(N9)  &none  &none
+                                            &none           &kpslxs UNDER 4    &none              &kp LG(C)         &kp LG(SPACE)  &kp LG(N0)
             >;
         };
 
         NUM {
             bindings = <
-&trans  &trans  &kp RIGHT_BRACE  &kp RBKT                &kpslxs RIGHT_PARENTHESIS 5  &trans    &trans  &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &trans  &trans
-&trans  &trans  &kpslxs GRAVE 5  &kpslxs SINGLE_QUOTE 5  &kpslxs DOUBLE_QUOTES 5      &lazygit  &trans  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &trans  &trans
-&trans  &trans  &trans           &trans                  &trans                       &trans    &trans  &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &trans  &trans
-                                 &trans                  &trans                       &trans    &trans  &kpsll N0 5  &trans
+&kp LEFT_PARENTHESIS  &none  &none            &none                   &none                    &none           &none          &kpsll N1 5  &kpsll N2 5  &kpsll N3 5  &none  &kp RIGHT_PARENTHESIS
+&kp LEFT_BRACKET      &none  &kpslxs GRAVE 5  &kpslxs SINGLE_QUOTE 5  &kpslxs DOUBLE_QUOTES 5  &kpsll MINUS 5  &kpsll PLUS 5  &kpsll N4 5  &kpsll N5 5  &kpsll N6 5  &none  &kp RIGHT_BRACKET
+&kp LEFT_BRACE        &none  &none            &none                   &none                    &none           &kp EQUAL      &kpsll N7 5  &kpsll N8 5  &kpsll N9 5  &none  &kp RIGHT_BRACE
+                                              &none                   &kpslxs MINUS 5          &none           &none          &kpsll N0 5  &kp KP_DOT
             >;
         };
 
         META {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans     &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kpsl H 6  &kpsl J 6  &kpsl K 6  &kpsl L 6  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans     &trans     &trans     &trans     &trans  &trans
-                        &trans  &trans  &trans  &trans     &trans     &trans
+&none  &none  &none  &none  &none  &none  &none      &none      &none      &none      &none  &none
+&none  &none  &none  &none  &none  &none  &kpsl H 6  &kpsl J 6  &kpsl K 6  &kpsl L 6  &none  &none
+&none  &none  &none  &none  &none  &none  &none      &none      &none      &none      &none  &none
+                     &none  &none  &none  &none      &none      &none
+            >;
+        };
+
+        SYS {
+            bindings = <
+&bootloader  &bt BT_CLR_ALL  &none         &none         &none         &none         &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
+&none        &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &none             &none
+&sys_reset   &bt BT_CLR      &none         &none         &none         &none         &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none             &sys_reset
+                                           &none         &none         &none         &kp F10            &kp F11  &kp F12
+            >;
+        };
+
+        PROG {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &devnull1  &devnull2  &devnull3  &trans     &trans
+&trans  &trans  &trans  &trans  &qqqq   &trans  &kp PLUS  &varred    &trans     &trans     &kp MINUS  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans     &trans
+                        &trans  &trans  &trans  &trans    &trans     &trans
             >;
         };
     };
