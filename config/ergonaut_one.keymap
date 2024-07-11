@@ -234,7 +234,7 @@
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE>, <&caps_word>;
 
-            tapping-term-ms = <100>;
+            tapping-term-ms = <300>;
         };
 
         qqqq: qqqq {
@@ -242,6 +242,8 @@
             label = "QQQQ";
             #binding-cells = <0>;
             bindings = <&quoted>, <&quoteds>, <&quotedb>, <&quotedbbb>;
+
+            tapping-term-ms = <300>;
         };
 
         pipe: pipe {
@@ -249,6 +251,8 @@
             label = "PIPE";
             #binding-cells = <0>;
             bindings = <&kp PIPE>, <&kp BACKSLASH>;
+
+            tapping-term-ms = <300>;
         };
 
         devnull: devnull {
@@ -263,6 +267,8 @@
             label = "WRAPPED";
             #binding-cells = <0>;
             bindings = <&parened>, <&bracketed>, <&braced>;
+
+            tapping-term-ms = <300>;
         };
     };
 
