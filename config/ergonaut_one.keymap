@@ -193,7 +193,7 @@
             label = "Sticky Key Long";
             bindings = <&kp>;
             #binding-cells = <1>;
-            release-after-ms = <2000>;
+            release-after-ms = <1500>;
             ignore-modifiers;
             quick-release;
         };
@@ -214,7 +214,7 @@
             label = "Sticky Layer Extra Short";
             bindings = <&mo>;
             #binding-cells = <1>;
-            release-after-ms = <200>;
+            release-after-ms = <150>;
             quick-release;
         };
 
@@ -277,7 +277,9 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LC(Z) &kp L &kp A &kp Z &kp Y &kp G &kp I &kp T &kp SEMI &kp SPACE &kp F &kp G &kp RET>;
-            label = "BG_LAZYGIT";
+            label = "LAZYGIT";
+            wait-ms = <10>;
+            tap-ms = <10>;
         };
 
         sksls: slmod {
@@ -335,8 +337,10 @@
         homeconfig: homeconfig {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp DQT &kp FSLH>;
+            bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp DQT &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp FSLH>;
             label = "HOMECONFIG";
+            wait-ms = <10>;
+            tap-ms = <10>;
         };
 
         kprsl: kprsl {
@@ -577,19 +581,19 @@
 
         BASE {
             bindings = <
-&htkpkpnr LS(TAB) TAB        &htkpkpnr LC(Q) Q  &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lshkp LEFT_SHIFT BACKSPACE  &lshkp LSHFT A     &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &qcaps
-&lshkp LEFT_CONTROL DELETE   &kp Z              &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                       &llt 2 TAB       &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &htsllsll 5 4            &sll 8
+&htkpkpnr LS(TAB) TAB        &kp Q           &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&lshkp LEFT_SHIFT BACKSPACE  &lshkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &qcaps
+&lshkp LEFT_CONTROL DELETE   &kp Z           &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
+                                                    &llt 2 K_CANCEL  &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 4                   &sll 9
             >;
         };
 
         UNO {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &kp N7        &kp N8        &kp N9        &none  &none
-                     &none  &none  &none  &none  &kp N0        &kp DELETE
+&none  &none  &none  &none  &none  &none  &none  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &none   &none
+&none  &none  &none  &none  &none  &none  &none  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp N0  &none
+&none  &none  &none  &none  &none  &none  &none  &kp N7        &kp N8        &kp N9        &none   &none
+                     &none  &none  &none  &none  &none         &none
             >;
         };
 
@@ -613,10 +617,10 @@
 
         QUICK {
             bindings = <
-&kp LG(N0)  &spaceand Q      &none          &qqqq           &wrapped           &kp LG(RETURN)     &spaceand Y       &kp LG(N1)     &kp LG(N2)  &kp LG(N3)  &none  &none
-&none       &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kpsl LG(MINUS) 4  &kpsl LG(PLUS) 4  &kp LG(N4)     &kp LG(N5)  &kp LG(N6)  &pipe  &none
-&devnull    &none            &none          &kp LS(INSERT)  &kp LS(LC(V))      &none              &none             &kp LG(N7)     &kp LG(N8)  &kp LG(N9)  &none  &none
-                                            &none           &kpslxs UNDER 4    &none              &kp LG(C)         &kp LG(SPACE)  &kp LG(N0)
+&kp LG(N0)       &spaceand Q      &none          &qqqq           &wrapped           &kp LG(RETURN)  &spaceand Y  &kp LG(N1)     &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls DELETE 4  &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kp MINUS       &kp PLUS     &kp LG(N4)     &kp LG(N5)  &kp LG(N6)  &pipe  &none
+&devnull         &none            &none          &kp LS(INSERT)  &kp LS(LC(V))      &none           &none        &kp LG(N7)     &kp LG(N8)  &kp LG(N9)  &none  &none
+                                                 &none           &kpslxs UNDER 4    &none           &kp LG(C)    &kp LG(SPACE)  &kp LG(N0)
             >;
         };
 
@@ -653,6 +657,15 @@
 &trans  &trans  &trans  &trans  &qqqq   &trans  &kp PLUS  &varred    &trans     &trans     &kp MINUS  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans     &trans
                         &trans  &trans  &trans  &trans    &trans     &trans
+            >;
+        };
+
+        WIN {
+            bindings = <
+&kp LG(N0)       &spaceand Q      &none          &qqqq           &wrapped           &kp LG(RETURN)     &spaceand Y       &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls DELETE 4  &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kpsl LG(MINUS) 4  &kpsl LG(PLUS) 4  &kp LG(N4)  &kp LG(N5)  &kp LG(N6)  &pipe  &none
+&devnull         &none            &none          &kp LS(INSERT)  &kp LS(LC(V))      &none              &none             &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
+                                                 &none           &kpslxs UNDER 4    &none              &kp LG(C)         &kp LG(N0)  &kp LG(N0)
             >;
         };
     };
