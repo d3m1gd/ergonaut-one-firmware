@@ -288,6 +288,20 @@
             flavor = "tap-preferred";
             bindings = <&mo>, <&sll>;
         };
+
+        shiftlang: shiftlang {
+            compatible = "zmk,behavior-tap-dance";
+            label = "SHIFTLANG";
+            #binding-cells = <0>;
+            bindings = <&skl LEFT_SHIFT>, <&kp LG(SPACE)>;
+        };
+
+        mod5C: mod5C {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MOD5C";
+            #binding-cells = <0>;
+            bindings = <&kp LG(N5)>, <&kp LG(C)>;
+        };
     };
 
     macros {
@@ -619,19 +633,19 @@
 
         QUICK {
             bindings = <
-&kp LG(N0)       &spaceand Q      &redir         &qqqq           &wrapped           &kp LG(RETURN)   &kp LG(N0)      &kp LG(N1)     &kp LG(N2)  &kp LG(N3)  &none  &none
-&kpsls DELETE 4  &skl LEFT_SHIFT  &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kpslxs MINUS 4  &kpslxs PLUS 4  &kp LG(N4)     &kp LG(N5)  &kp LG(N6)  &pipe  &none
-&redir           &none            &none          &kp LS(INSERT)  &kp LS(LC(V))      &none            &none           &kp LG(N7)     &kp LG(N8)  &kp LG(N9)  &none  &none
-                                                 &none           &kpslxs UNDER 4    &none            &kp LG(C)       &kp LG(SPACE)  &none
+&kp LG(N0)       &spaceand Q  &redir         &qqqq           &wrapped           &kp LG(RETURN)   &kp LG(N0)      &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls DELETE 4  &none        &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kpslxs MINUS 4  &kpslxs PLUS 4  &kp LG(N4)  &mod5C      &kp LG(N6)  &pipe  &none
+&redir           &none        &none          &kp LS(INSERT)  &kp LS(LC(V))      &none            &none           &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
+                                             &none           &kpslxs UNDER 4    &none            &none           &shiftlang  &none
             >;
         };
 
         NUM {
             bindings = <
-&kp LEFT_PARENTHESIS  &none      &none  &none        &none          &none           &kpsll N0 5    &kpsll N1 5      &kpsll N2 5  &kpsll N3 5  &kp DOUBLE_QUOTES  &kpsls RIGHT_PARENTHESIS 5
-&kp LEFT_BRACKET      &kp TILDE  &none  &none        &none          &kpsll MINUS 5  &kpsll PLUS 5  &kpsll N4 5      &kpsll N5 5  &kpsll N6 5  &kp SINGLE_QUOTE   &kp RIGHT_BRACKET
-&kp LEFT_BRACE        &none      &none  &none        &none          &none           &equals        &kpsll N7 5      &kpsll N8 5  &kpsll N9 5  &kp GRAVE          &kp RIGHT_BRACE
-                                        &kpsl TAB 5  &kpsl SPACE 5  &kp K_CANCEL    &none          &kpsll KP_DOT 5  &none
+&kp LEFT_PARENTHESIS  &none      &none  &none        &none          &none           &kpsll N0 5    &kpsll N1 5   &kpsll N2 5  &kpsll N3 5  &kp DOUBLE_QUOTES  &kpsls RIGHT_PARENTHESIS 5
+&kp LEFT_BRACKET      &kp TILDE  &none  &none        &none          &kpsll MINUS 5  &kpsll PLUS 5  &kpsll N4 5   &kpsll N5 5  &kpsll N6 5  &kp SINGLE_QUOTE   &kp RIGHT_BRACKET
+&kp LEFT_BRACE        &none      &none  &none        &none          &none           &equals        &kpsll N7 5   &kpsll N8 5  &kpsll N9 5  &kp GRAVE          &kp RIGHT_BRACE
+                                        &kpsl TAB 5  &kpsl SPACE 5  &kp K_CANCEL    &none          &kpsll DOT 5  &none
             >;
         };
 
