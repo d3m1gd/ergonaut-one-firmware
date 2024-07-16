@@ -214,7 +214,7 @@
             label = "Sticky Layer Extra Short";
             bindings = <&mo>;
             #binding-cells = <1>;
-            release-after-ms = <150>;
+            release-after-ms = <200>;
             quick-release;
         };
 
