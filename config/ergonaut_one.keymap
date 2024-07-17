@@ -18,14 +18,7 @@
 };
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        tri-layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 
     behaviors {
         lmt: lmt {
@@ -592,7 +585,7 @@
         };
 
         sys {
-            bindings = <&sll 6>;
+            bindings = <&sll 5>;
             key-positions = <4 5>;
             layers = <0>;
             require-prior-idle-ms = <500>;
@@ -605,9 +598,9 @@
         BASE {
             bindings = <
 &kp TAB                       &kp Q           &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lshkp LEFT_SHIFT BACKSPACE   &lshkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &qcaps
+&lshkp LEFT_SHIFT BACKSPACE   &lshkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &kp SINGLE_QUOTE
 &lshkp LEFT_CONTROL K_CANCEL  &kp Z           &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                     &htmosl 2 5      &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 4                   &shiftcaps
+                                                     &htmosl 2 4      &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 3                   &shiftcaps
             >;
         };
 
@@ -629,30 +622,21 @@
             >;
         };
 
-        BTFN {
-            bindings = <
-&bootloader  &bt BT_CLR_ALL  &none         &none         &none         &none         &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
-&none        &bt BT_SEL 0    &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &none             &none
-&sys_reset   &bt BT_CLR      &none         &none         &none         &none         &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none             &sys_reset
-                                           &none         &none         &none         &kp F10            &kp F11  &kp F12
-            >;
-        };
-
         QUICK {
             bindings = <
-&kpsls LS(TAB) 4  &spaceand Q  &redir         &qqqq            &wrapped           &none   &kp LG(N0)      &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
-&kpsls DELETE 4   &none        &skl LEFT_ALT  &skl LEFT_GUI    &skl LEFT_CONTROL  &none   &kpslxs PLUS 4  &kp LG(N4)  &mod5C      &kp LG(N6)  &pipe  &none
-&redir            &none        &none          &kp LS(INSERT)   &kp LS(LC(V))      &none   &equals         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
-                                              &kpslxs MINUS 4  &kpslxs UNDER 4    &trans  &trans          &langor     &none
+&kpsls LS(TAB) 3  &spaceand Q  &redir         &qqqq            &wrapped           &kp SINGLE_QUOTE   &kp LG(N0)     &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls DELETE 3   &none        &skl LEFT_ALT  &skl LEFT_GUI    &skl LEFT_CONTROL  &kp DOUBLE_QUOTES  &kpsls PLUS 3  &kp LG(N4)  &mod5C      &kp LG(N6)  &pipe  &none
+&redir            &none        &none          &kp LS(INSERT)   &kp LS(LC(V))      &kp GRAVE          &equals        &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
+                                              &kpslxs MINUS 3  &kpslxs UNDER 3    &trans             &trans         &langor     &none
             >;
         };
 
         NUM {
             bindings = <
-&kp LEFT_PARENTHESIS  &none      &none  &none            &none   &none   &kpsll N0 5    &kpsll N1 5   &kpsll N2 5  &kpsll N3 5  &kp SINGLE_QUOTE   &kpsls RIGHT_PARENTHESIS 5
-&kp LEFT_BRACKET      &kp TILDE  &none  &none            &none   &none   &kpsll PLUS 5  &kpsll N4 5   &kpsll N5 5  &kpsll N6 5  &kp DOUBLE_QUOTES  &kp RIGHT_BRACKET
-&kp LEFT_BRACE        &none      &none  &none            &none   &none   &equals        &kpsll N7 5   &kpsll N8 5  &kpsll N9 5  &kp GRAVE          &kp RIGHT_BRACE
-                                        &kpslxs MINUS 5  &trans  &trans  &trans         &kpsll DOT 5  &none
+&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpsll N0 4    &kpsll N1 4   &kpsll N2 4  &kpsll N3 4  &kp SINGLE_QUOTE   &kp RIGHT_BRACKET
+&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpsll PLUS 4  &kpsll N4 4   &kpsll N5 4  &kpsll N6 4  &kp DOUBLE_QUOTES  &kpsls RIGHT_PARENTHESIS 4
+&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals        &kpsll N7 4   &kpsll N8 4  &kpsll N9 4  &kp GRAVE          &kp RIGHT_BRACE
+                                        &kpslxs MINUS 4  &trans  &trans             &trans         &kpsll DOT 4  &none
             >;
         };
 
