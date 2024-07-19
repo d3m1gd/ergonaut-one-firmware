@@ -17,6 +17,8 @@
     flavor = "tap-preferred";
 };
 
+&caps_word { continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_ARROW RIGHT_ARROW UP_ARROW DOWN_ARROW PAGE_UP PAGE_DOWN>; };
+
 / {
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
@@ -28,7 +30,7 @@
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "tap-preferred";
+            flavor = "balanced";
             hold-trigger-on-release;
             hold-trigger-key-positions = <30 31 32 33 35 34 23 6 7 9 10 11 19 20 21 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41 30 31 39 40 41>;
             quick-tap-ms = <200>;
@@ -59,22 +61,9 @@
             bindings = <&mo>, <&kp>;
         };
 
-        rlt: rlt {
+        lhtkpkp: lhtkpkp {
             compatible = "zmk,behavior-hold-tap";
-            label = "Right Layer Tap";
-            bindings = <&mo>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            hold-trigger-on-release;
-            quick-tap-ms = <200>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 36 37 38>;
-        };
-
-        lshkp: lshkp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Left Shift KeyPress";
+            label = "Left HoldTap 2KeyPress";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
@@ -83,40 +72,6 @@
             hold-trigger-key-positions = <30 31 32 33 35 34 23 6 7 9 10 11 19 20 21 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 30 31 36 37 38>;
             quick-tap-ms = <200>;
             hold-trigger-on-release;
-        };
-
-        rst: rst {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Right Shift Tap";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            quick-tap-ms = <200>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 40 41 39>;
-            hold-trigger-on-release;
-        };
-
-        htslsl: htslsl {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Hold Tap 2Sticky  Layers";
-            bindings = <&sl>, <&sl>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "tap-preferred";
-        };
-
-        htkpkp: htkpkp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HoldTap 2KeyPress";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <200>;
         };
 
         htkpkpnr: htkpkpnr {
@@ -130,28 +85,6 @@
             flavor = "tap-preferred";
         };
 
-        htkpcaps: htkpcaps {
-            compatible = "zmk,behavior-hold-tap";
-            label = "keypress caps behavior";
-            bindings = <&caps_word>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        htkptog: htkptog {
-            compatible = "zmk,behavior-hold-tap";
-            label = "KeyPress ToggleLayer";
-            bindings = <&tog>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         sls: sls {
             compatible = "zmk,behavior-sticky-key";
             label = "Short Sticky Layer";
@@ -159,17 +92,6 @@
             #binding-cells = <1>;
             release-after-ms = <500>;
             quick-release;
-        };
-
-        htkpsll: htkpsll {
-            compatible = "zmk,behavior-hold-tap";
-            label = "KepPress StickyLayerLong";
-            bindings = <&sll>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
         };
 
         sll: sll {
@@ -211,28 +133,9 @@
             quick-release;
         };
 
-        htsllsll: htsllsll {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HoldTap 2 Sticky Layer Long";
-            bindings = <&sll>, <&sll>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "tap-preferred";
-        };
-
-        qcaps: qcaps {
+        multiquote: multiquote {
             compatible = "zmk,behavior-tap-dance";
-            label = "QCAPS";
-            #binding-cells = <0>;
-            bindings = <&kp SINGLE_QUOTE>, <&caps_word>;
-
-            tapping-term-ms = <300>;
-        };
-
-        qqqq: qqqq {
-            compatible = "zmk,behavior-tap-dance";
-            label = "QQQQ";
+            label = "MULTIQUOTE";
             #binding-cells = <0>;
             bindings = <&quoted>, <&quoteds>, <&quotedb>, <&quotedbbb>;
 
@@ -255,9 +158,9 @@
             bindings = <&redir1>, <&redir2>, <&redir3>, <&redir21>;
         };
 
-        wrapped: wrapped {
+        multiparen: multiparen {
             compatible = "zmk,behavior-tap-dance";
-            label = "WRAPPED";
+            label = "MULTIPAREN";
             #binding-cells = <0>;
             bindings = <&parened>, <&bracketed>, <&braced>;
 
@@ -590,6 +493,18 @@
             layers = <0>;
             require-prior-idle-ms = <500>;
         };
+
+        lenter {
+            bindings = <&kp RETURN>;
+            key-positions = <37 38>;
+            layers = <0>;
+        };
+
+        rspace {
+            bindings = <&kp SPACE>;
+            key-positions = <39 40>;
+            layers = <0>;
+        };
     };
 
     keymap {
@@ -597,10 +512,10 @@
 
         BASE {
             bindings = <
-&kp TAB                       &kp Q           &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
-&lshkp LEFT_SHIFT BACKSPACE   &lshkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &kp SINGLE_QUOTE
-&lshkp LEFT_CONTROL K_CANCEL  &kp Z           &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                     &htmosl 2 4      &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &sll 3                   &shiftcaps
+&kp TAB                         &kp Q             &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
+&lhtkpkp LEFT_SHIFT BACKSPACE   &lhtkpkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &kp SINGLE_QUOTE
+&lhtkpkp LEFT_CONTROL K_CANCEL  &kp Z             &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
+                                                         &htmosl 2 4      &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &htmosl 1 3              &shiftcaps
             >;
         };
 
@@ -624,18 +539,18 @@
 
         QUICK {
             bindings = <
-&kpsls LS(TAB) 3  &spaceand Q  &redir         &qqqq            &wrapped           &kp SINGLE_QUOTE   &kp LG(N0)     &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls LS(TAB) 3  &spaceand Q  &redir         &multiquote      &multiparen        &kp SINGLE_QUOTE   &kp LG(N0)     &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
 &kpsls DELETE 3   &none        &skl LEFT_ALT  &skl LEFT_GUI    &skl LEFT_CONTROL  &kp DOUBLE_QUOTES  &kpsls PLUS 3  &kp LG(N4)  &mod5C      &kp LG(N6)  &pipe  &none
 &redir            &none        &none          &kp LS(INSERT)   &kp LS(LC(V))      &kp GRAVE          &equals        &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
                                               &kpslxs MINUS 3  &kpslxs UNDER 3    &trans             &trans         &langor     &none
             >;
         };
 
-        NUM {
+        PROG {
             bindings = <
-&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpsll N0 4    &kpsll N1 4   &kpsll N2 4  &kpsll N3 4  &kp SINGLE_QUOTE   &kp RIGHT_BRACKET
-&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpsll PLUS 4  &kpsll N4 4   &kpsll N5 4  &kpsll N6 4  &kp DOUBLE_QUOTES  &kpsls RIGHT_PARENTHESIS 4
-&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals        &kpsll N7 4   &kpsll N8 4  &kpsll N9 4  &kp GRAVE          &kp RIGHT_BRACE
+&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpsll N0 4    &kpsll N1 4   &kpsll N2 4  &kpsll N3 4  &none  &kp RIGHT_BRACKET
+&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpsll PLUS 4  &kpsll N4 4   &kpsll N5 4  &kpsll N6 4  &none  &kpsls RIGHT_PARENTHESIS 4
+&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals        &kpsll N7 4   &kpsll N8 4  &kpsll N9 4  &none  &kp RIGHT_BRACE
                                         &kpslxs MINUS 4  &trans  &trans             &trans         &kpsll DOT 4  &none
             >;
         };
