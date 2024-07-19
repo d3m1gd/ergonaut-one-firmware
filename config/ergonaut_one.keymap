@@ -548,10 +548,10 @@
 
         PROG {
             bindings = <
-&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpsll N0 4    &kpsll N1 4   &kpsll N2 4  &kpsll N3 4  &none  &kp RIGHT_BRACKET
-&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpsll PLUS 4  &kpsll N4 4   &kpsll N5 4  &kpsll N6 4  &none  &kpsls RIGHT_PARENTHESIS 4
-&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals        &kpsll N7 4   &kpsll N8 4  &kpsll N9 4  &none  &kp RIGHT_BRACE
-                                        &kpslxs MINUS 4  &trans  &trans             &trans         &kpsll DOT 4  &none
+&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpslxs N0 4    &kpslxs N1 4   &kpslxs N2 4  &kpslxs N3 4  &none  &kp RIGHT_BRACKET
+&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpslxs PLUS 4  &kpslxs N4 4   &kpslxs N5 4  &kpslxs N6 4  &none  &kpsls RIGHT_PARENTHESIS 4
+&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals         &kpslxs N7 4   &kpslxs N8 4  &kpslxs N9 4  &none  &kp RIGHT_BRACE
+                                        &kpslxs MINUS 4  &trans  &trans             &trans          &kpslxs DOT 4  &none
             >;
         };
 
