@@ -515,11 +515,11 @@
 &kp TAB                         &kp Q             &kp W  &kp E            &kp R         &kp T             &kp Y                     &htkpkpnr EXCLAMATION U  &htkpkpnr AT_SIGN I       &htkpkpnr HASH O   &kp P                      &kp LBKT
 &lhtkpkp LEFT_SHIFT BACKSPACE   &lhtkpkp LSHFT A  &kp S  &lmt LEFT_GUI D  &kp F         &kp G             &kp H                     &htkpkpnr DOLLAR J       &htkpkpnr PERCENT K       &htkpkpnr CARET L  &htkpkpnr COLON SEMICOLON  &kp SINGLE_QUOTE
 &lhtkpkp LEFT_CONTROL K_CANCEL  &kp Z             &kp X  &hthomekp 0 C    &kp V         &kp B             &kp N                     &htkpkpnr AMPERSAND M    &htkpkpnr ASTERISK COMMA  &kp DOT            &kp SLASH                  &kp BACKSLASH
-                                                         &htmosl 2 4      &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &htmosl 1 3              &shiftcaps
+                                                         &htmosl 3 2      &llt 1 SPACE  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &htmosl 1 4              &shiftcaps
             >;
         };
 
-        UNO {
+        NUM {
             bindings = <
 &none  &none  &none  &none  &none  &none  &kp N0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &none  &none
 &none  &none  &none  &none  &none  &none  &none   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &none  &none
@@ -528,7 +528,16 @@
             >;
         };
 
-        DUO {
+        PROG {
+            bindings = <
+&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpslxs N0 2    &kpslxs EXCLAMATION 2  &kpslxs AT_SIGN 2  &kpslxs HASH 2      &none  &kp RIGHT_BRACKET
+&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpslxs PLUS 2  &kpslxs DOLLAR 2       &kpslxs PERCENT 2  &kpslxs CARET 2     &none  &kpsls RIGHT_PARENTHESIS 2
+&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals         &kpslxs AMPERSAND 2    &kpslxs STAR 2     &kpslxs K_CANCEL 2  &none  &kp RIGHT_BRACE
+                                        &kpslxs MINUS 2  &trans  &trans             &trans          &kpslxs DOT 2          &none
+            >;
+        };
+
+        MOVE {
             bindings = <
 &none  &none  &none  &none  &none  &none  &none     &kp PAGE_DOWN            &kp PAGE_UP        &kp INSERT           &none  &none
 &none  &none  &none  &none  &none  &none  &kp LEFT  &rmt RIGHT_CONTROL DOWN  &rmt LEFT_META UP  &rmt LEFT_ALT RIGHT  &none  &none
@@ -539,28 +548,19 @@
 
         QUICK {
             bindings = <
-&kpsls LS(TAB) 3  &spaceand Q  &redir         &multiquote      &multiparen        &kp SINGLE_QUOTE   &kp LG(N0)     &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
-&kpsls DELETE 3   &none        &skl LEFT_ALT  &skl LEFT_GUI    &skl LEFT_CONTROL  &kp DOUBLE_QUOTES  &kpsls PLUS 3  &kp LG(N4)  &mod5C      &kp LG(N6)  &pipe  &none
+&kpsls LS(TAB) 4  &spaceand Q  &redir         &multiquote      &multiparen        &kp SINGLE_QUOTE   &kp LG(N0)     &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls DELETE 4   &none        &skl LEFT_ALT  &skl LEFT_GUI    &skl LEFT_CONTROL  &kp DOUBLE_QUOTES  &kpsls PLUS 4  &kp LG(N4)  &mod5C      &kp LG(N6)  &pipe  &none
 &redir            &none        &none          &kp LS(INSERT)   &kp LS(LC(V))      &kp GRAVE          &equals        &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
-                                              &kpslxs MINUS 3  &kpslxs UNDER 3    &trans             &trans         &langor     &none
-            >;
-        };
-
-        PROG {
-            bindings = <
-&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpslxs N0 4    &kpslxs N1 4   &kpslxs N2 4  &kpslxs N3 4  &none  &kp RIGHT_BRACKET
-&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpslxs PLUS 4  &kpslxs N4 4   &kpslxs N5 4  &kpslxs N6 4  &none  &kpsls RIGHT_PARENTHESIS 4
-&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals         &kpslxs N7 4   &kpslxs N8 4  &kpslxs N9 4  &none  &kp RIGHT_BRACE
-                                        &kpslxs MINUS 4  &trans  &trans             &trans          &kpslxs DOT 4  &none
+                                              &kpslxs MINUS 4  &kpslxs UNDER 4    &trans             &trans         &langor     &none
             >;
         };
 
         SYS {
             bindings = <
-&bootloader  &none         &none         &none           &none         &bootloader   &kp C_VOLUME_UP    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
-&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &kp K_MUTE         &kp F4   &kp F5   &kp F6  &none             &none
-&sys_reset   &bt BT_CLR    &none         &bt BT_CLR_ALL  &none         &none         &kp C_VOLUME_DOWN  &kp F7   &kp F8   &kp F9  &none             &sys_reset
-                                         &none           &none         &none         &kp F10            &kp F11  &kp F12
+&bootloader  &none         &none         &none           &none         &none         &kpsls C_VOLUME_UP 5    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
+&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &kpsls K_MUTE 5         &kp F4   &kp F5   &kp F6  &none             &none
+&sys_reset   &bt BT_CLR    &none         &bt BT_CLR_ALL  &none         &none         &kpsls C_VOLUME_DOWN 5  &kp F7   &kp F8   &kp F9  &none             &sys_reset
+                                         &none           &none         &none         &kp F10                 &kp F11  &kp F12
             >;
         };
     };
