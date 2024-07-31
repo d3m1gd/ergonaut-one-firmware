@@ -530,10 +530,10 @@
 
         PROG {
             bindings = <
-&kp LEFT_BRACKET      &none      &none  &none            &none   &kp SINGLE_QUOTE   &kpslxs N0 2    &kpslxs EXCLAMATION 2  &kpslxs AT_SIGN 2  &kpslxs HASH 2      &none  &kp RIGHT_BRACKET
-&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none            &none   &kp DOUBLE_QUOTES  &kpslxs PLUS 2  &kpslxs DOLLAR 2       &kpslxs PERCENT 2  &kpslxs CARET 2     &none  &kpsls RIGHT_PARENTHESIS 2
-&kp LEFT_BRACE        &none      &none  &none            &none   &kp GRAVE          &equals         &kpslxs AMPERSAND 2    &kpslxs STAR 2     &kpslxs K_CANCEL 2  &none  &kp RIGHT_BRACE
-                                        &kpslxs MINUS 2  &trans  &trans             &trans          &kpslxs DOT 2          &none
+&kp LEFT_BRACKET      &none      &none  &none           &none   &kp SINGLE_QUOTE   &kpslxs N0 2    &kpslxs EXCLAMATION 2  &kpslxs AT_SIGN 2  &kpslxs HASH 2      &none  &kp RIGHT_BRACKET
+&kp LEFT_PARENTHESIS  &kp TILDE  &none  &none           &none   &kp DOUBLE_QUOTES  &kpslxs PLUS 2  &kpslxs DOLLAR 2       &kpslxs PERCENT 2  &kpslxs CARET 2     &none  &kpsls RIGHT_PARENTHESIS 2
+&kp LEFT_BRACE        &none      &none  &none           &none   &kp GRAVE          &equals         &kpslxs AMPERSAND 2    &kpslxs STAR 2     &kpslxs K_CANCEL 2  &none  &kp RIGHT_BRACE
+                                        &kpsls MINUS 6  &trans  &trans             &trans          &kpslxs DOT 2          &none
             >;
         };
 
@@ -548,10 +548,10 @@
 
         QUICK {
             bindings = <
-&kpsls LS(TAB) 4  &spaceand Q  &redir         &multiquote      &multiparen        &kp SINGLE_QUOTE   &kp LG(N0)      &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
-&kpsls DELETE 4   &none        &skl LEFT_ALT  &skl LEFT_GUI    &skl LEFT_CONTROL  &kp DOUBLE_QUOTES  &kpslxs PLUS 4  &kp LG(N4)  &mod5C      &kp LG(N6)  &none  &none
-&redir            &none        &none          &kp LS(INSERT)   &kp LS(LC(V))      &kp GRAVE          &equals         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
-                                              &kpslxs MINUS 4  &kpslxs UNDER 4    &trans             &trans          &langor     &none
+&kpsls LS(TAB) 4  &spaceand Q  &redir         &multiquote     &multiparen        &kp SINGLE_QUOTE   &kp LG(N0)      &kp LG(N1)  &kp LG(N2)  &kp LG(N3)  &none  &none
+&kpsls DELETE 4   &none        &skl LEFT_ALT  &skl LEFT_GUI   &skl LEFT_CONTROL  &kp DOUBLE_QUOTES  &kpslxs PLUS 4  &kp LG(N4)  &mod5C      &kp LG(N6)  &none  &none
+&redir            &none        &none          &kp LS(INSERT)  &kp LS(LC(V))      &kp GRAVE          &equals         &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &none  &none
+                                              &kpsls MINUS 6  &kpslxs UNDER 4    &trans             &trans          &langor     &none
             >;
         };
 
@@ -561,6 +561,15 @@
 &none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &kpsls K_MUTE 5         &kp F4   &kp F5   &kp F6  &none             &none
 &sys_reset   &bt BT_CLR    &none         &bt BT_CLR_ALL  &none         &none         &kpsls C_VOLUME_DOWN 5  &kp F7   &kp F8   &kp F9  &none             &sys_reset
                                          &none           &none         &none         &kp F10                 &kp F11  &kp F12
+            >;
+        };
+
+        minus {
+            bindings = <
+&trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans          &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &kpsls MINUS 6  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
