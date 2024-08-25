@@ -15,7 +15,7 @@
 
 &mt {
     quick-tap-ms = <200>;
-    flavor = "balanced";
+    flavor = "tap-preferred";
 };
 
 &caps_word { continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_ARROW RIGHT_ARROW UP_ARROW DOWN_ARROW PAGE_UP PAGE_DOWN>; };
@@ -462,22 +462,6 @@
             layers = <0>;
         };
 
-        cs {
-            bindings = <&skl LEFT_ALT>;
-            key-positions = <14 37>;
-            timeout-ms = <100>;
-            require-prior-idle-ms = <500>;
-            layers = <0>;
-        };
-
-        cd {
-            bindings = <&skl LEFT_GUI>;
-            key-positions = <37 15>;
-            timeout-ms = <100>;
-            require-prior-idle-ms = <500>;
-            layers = <0>;
-        };
-
         lspace {
             bindings = <&kp SPACE>;
             key-positions = <37 36>;
@@ -495,10 +479,10 @@
 
         BASE {
             bindings = <
-&kp TAB                         &kp Q        &kp W                &kp E            &kp R    &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P      &kp LBKT
-&lhtkpkp LEFT_SHIFT BACKSPACE   &mt LSHFT A  &lhtkpkp LEFT_ALT S  &lmt LEFT_GUI D  &kp F    &kp G             &kp H                     &kp J        &kp K       &kp L    &kp COLON  &kp SINGLE_QUOTE
-&lhtkpkp LEFT_CONTROL K_CANCEL  &kp Z        &kp X                &hthomekp 0 C    &kp V    &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH  &kp BACKSLASH
-                                                                  &lt 3 MINUS      &ll 1 2  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
+&kp TAB                         &kp Q        &kp W           &kp E           &kp R    &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P      &kp LBKT
+&lhtkpkp LEFT_SHIFT BACKSPACE   &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D  &kp F    &kp G             &kp H                     &kp J        &kp K       &kp L    &kp COLON  &kp SINGLE_QUOTE
+&lhtkpkp LEFT_CONTROL K_CANCEL  &kp Z        &kp X           &hthomekp 0 C   &kp V    &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH  &kp BACKSLASH
+                                                             &lt 3 MINUS     &ll 1 2  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
             >;
         };
 
