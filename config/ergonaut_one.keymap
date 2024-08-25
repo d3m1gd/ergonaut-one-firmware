@@ -114,10 +114,10 @@
             quick-release;
         };
 
-        hthomekp: hthomekp {
+        txdgconfig: txdgconfig {
             compatible = "zmk,behavior-hold-tap";
-            label = "HTHOMEKP";
-            bindings = <&homeconfig>, <&kp>;
+            label = "Tap XDG Config";
+            bindings = <&xdgconfig>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <350>;
@@ -222,7 +222,7 @@
             label = "KPSLL";
         };
 
-        homeconfig: homeconfig {
+        xdgconfig: homeconfig {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp DQT &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp FSLH>;
@@ -479,10 +479,10 @@
 
         BASE {
             bindings = <
-&kp TAB                         &kp Q        &kp W           &kp E           &kp R    &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P      &kp LBKT
-&lhtkpkp LEFT_SHIFT BACKSPACE   &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D  &kp F    &kp G             &kp H                     &kp J        &kp K       &kp L    &kp COLON  &kp SINGLE_QUOTE
-&lhtkpkp LEFT_CONTROL K_CANCEL  &kp Z        &kp X           &hthomekp 0 C   &kp V    &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH  &kp BACKSLASH
-                                                             &lt 3 MINUS     &ll 1 2  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
+&kp TAB               &kp Q        &kp W           &kp E            &kp R    &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P      &kp LBKT
+&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &kp F    &kp G             &kp H                     &kp J        &kp K       &kp L    &kp COLON  &kp SINGLE_QUOTE
+&mt LCTRL EQUAL       &kp Z        &kp X           &txdgconfig 0 C  &kp V    &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH  &kp BACKSLASH
+                                                   &lt 3 MINUS      &ll 1 2  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
             >;
         };
 
