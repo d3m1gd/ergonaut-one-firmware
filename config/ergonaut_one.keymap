@@ -481,14 +481,14 @@
             bindings = <
 &kp TAB               &kp Q        &kp W           &kp E            &kp R        &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P          &kp LBKT
 &mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &mt LCTRL F  &kp G             &kp H                     &kp J        &kp K       &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
-&mt LCTRL EQUAL       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH      &kp BACKSLASH
+&mt LCTRL MINUS       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH      &kp BACKSLASH
                                                    &ll 3 3          &ll 1 2      &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
             >;
         };
 
         NUM {
             bindings = <
-&tsls LS(TAB) 8  &trans  &kp HOME       &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans     &kp RIGHT_BRACKET
+&tsls LS(TAB) 8  &trans  &kp HOME       &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL  &kp RIGHT_BRACKET
 &tsls DELETE 9   &trans  &mt LALT LEFT  &mt LGUI DOWN  &kp RIGHT       &kp PG_DN  &kp LEFT_BRACE   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COLON  &kp DOUBLE_QUOTES
 &trans           &trans  &trans         &trans         &kp LS(INSERT)  &trans     &kp RIGHT_BRACE  &kp N7        &kp N8        &kp N9        &trans     &kp PIPE
                                         &kp MINUS      &kp UNDERSCORE  &kp PLUS   &trans           &kp DOT       &trans
@@ -497,7 +497,7 @@
 
         PROG {
             bindings = <
-&tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &trans     &kp RIGHT_BRACKET
+&tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &kp EQUAL  &kp RIGHT_BRACKET
 &tsls DELETE 9   &kp TILDE  &trans  &kp GRAVE      &kp DOUBLE_QUOTES   &trans        &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &kp COLON  &kp DOUBLE_QUOTES
 &trans           &trans     &trans  &trans         &trans              &trans        &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &trans     &kp PIPE
                                     &tsls MINUS 5  &tsls UNDERSCORE 6  &tsls PLUS 7  &trans                      &kp DOT               &trans
