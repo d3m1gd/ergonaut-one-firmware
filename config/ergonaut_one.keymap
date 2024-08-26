@@ -479,37 +479,37 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q        &kp W           &kp E            &kp R    &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P          &kp LBKT
-&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &kp F    &kp G             &kp H                     &kp J        &kp K       &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
-&mt LCTRL EQUAL       &kp Z        &kp X           &txdgconfig 0 C  &kp V    &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH      &kp BACKSLASH
-                                                   &lt 3 MINUS      &ll 1 2  &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
+&kp TAB               &kp Q        &kp W           &kp E            &kp R        &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P          &kp LBKT
+&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &mt LCTRL F  &kp G             &kp H                     &kp J        &kp K       &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
+&mt LCTRL EQUAL       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH      &kp BACKSLASH
+                                                   &ll 3 3          &ll 1 2      &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
             >;
         };
 
         NUM {
             bindings = <
-&tsls LS(TAB) 7  &trans  &kp HOME       &kp UP         &kp END         &kp PG_UP  &kp N0                &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans                 &kp RIGHT_BRACKET
-&tsls DELETE 8   &trans  &mt LALT LEFT  &mt LGUI DOWN  &kp RIGHT       &kp PG_DN  &kp LEFT_PARENTHESIS  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp RIGHT_PARENTHESIS  &trans
-&trans           &trans  &trans         &trans         &kp LS(INSERT)  &trans     &kp LEFT_BRACE        &kp N7        &kp N8        &kp N9        &kp RIGHT_BRACE        &trans
-                                        &trans         &kp UNDERSCORE  &kp PLUS   &trans                &kp DOT       &trans
+&tsls LS(TAB) 8  &trans  &kp HOME       &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &trans     &kp RIGHT_BRACKET
+&tsls DELETE 9   &trans  &mt LALT LEFT  &mt LGUI DOWN  &kp RIGHT       &kp PG_DN  &kp LEFT_BRACE   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COLON  &kp DOUBLE_QUOTES
+&trans           &trans  &trans         &trans         &kp LS(INSERT)  &trans     &kp RIGHT_BRACE  &kp N7        &kp N8        &kp N9        &trans     &kp PIPE
+                                        &kp MINUS      &kp UNDERSCORE  &kp PLUS   &trans           &kp DOT       &trans
             >;
         };
 
         PROG {
             bindings = <
-&tsls LS(TAB) 7  &trans     &trans  &trans     &trans              &trans        &tslxs N0 2           &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2      &kp PRINTSCREEN        &kp RIGHT_BRACKET
-&tsls DELETE 8   &kp TILDE  &trans  &kp GRAVE  &kp DOUBLE_QUOTES   &trans        &kp LEFT_PARENTHESIS  &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2     &kp RIGHT_PARENTHESIS  &trans
-&trans           &trans     &trans  &trans     &trans              &trans        &kp LEFT_BRACE        &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs K_CANCEL 2  &kp RIGHT_BRACE        &trans
-                                    &trans     &tsls UNDERSCORE 5  &tsls PLUS 6  &trans                &kp DOT               &trans
+&tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &trans     &kp RIGHT_BRACKET
+&tsls DELETE 9   &kp TILDE  &trans  &kp GRAVE      &kp DOUBLE_QUOTES   &trans        &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &kp COLON  &kp DOUBLE_QUOTES
+&trans           &trans     &trans  &trans         &trans              &trans        &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &trans     &kp PIPE
+                                    &tsls MINUS 5  &tsls UNDERSCORE 6  &tsls PLUS 7  &trans                      &kp DOT               &trans
             >;
         };
 
         QUICK {
             bindings = <
-&tsls LS(TAB) 7  &trans  &trans  &trans  &trans  &trans  &kp LG(N0)  &null1      &null2      &null12     &trans  &trans
-&tsls DELETE 8   &trans  &trans  &trans  &trans  &trans  &trans      &redir21    &mod5C      &kp LG(N6)  &trans  &trans
-&trans           &trans  &trans  &trans  &trans  &trans  &trans      &kp LG(N7)  &kp LG(N8)  &kp LG(N9)  &trans  &trans
-                                 &trans  &trans  &trans  &kp F10     &kp F11     &kp F12
+&tsls LS(TAB) 8  &trans  &trans  &trans     &trans  &tsls C_VOLUME_UP 3    &null12  &null1   &null2   &redir21  &kp PRINTSCREEN  &trans
+&tsls DELETE 9   &trans  &trans  &trans     &trans  &tsls C_VOLUME_DOWN 3  &trans   &trans   &trans   &trans    &trans           &trans
+&trans           &trans  &trans  &kp LG(C)  &trans  &tslxs C_PLAY_PAUSE 3  &trans   &trans   &trans   &trans    &trans           &trans
+                                 &trans     &trans  &trans                 &kp F10  &kp F11  &kp F12
             >;
         };
 
@@ -522,12 +522,21 @@
             >;
         };
 
+        minus {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
         under {
             bindings = <
 &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &rsls 5  &trans  &trans  &trans  &trans
+                        &trans  &rsls 6  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -536,13 +545,13 @@
 &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &rsls 6  &trans  &trans  &trans
+                        &trans  &trans  &rsls 7  &trans  &trans  &trans
             >;
         };
 
         tab {
             bindings = <
-&rsls 7  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&rsls 8  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                          &trans  &trans  &trans  &trans  &trans  &trans
@@ -552,7 +561,7 @@
         delete {
             bindings = <
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&rsls 8  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&rsls 9  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                          &trans  &trans  &trans  &trans  &trans  &trans
             >;
