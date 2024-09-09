@@ -497,7 +497,7 @@
 
         PROG {
             bindings = <
-&tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tslxs EQUAL 2  &kp RIGHT_BRACKET
+&tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tsls EQUAL 10  &kp RIGHT_BRACKET
 &tsls DELETE 9   &kp TILDE  &trans  &trans         &kp GRAVE           &trans        &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &kp DOUBLE_QUOTES
 &trans           &trans     &trans  &trans         &trans              &trans        &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &trans          &kp PIPE
                                     &tsls MINUS 5  &tsls UNDERSCORE 6  &tsls PLUS 7  &trans                      &kp DOT               &trans
@@ -564,6 +564,15 @@
 &rsls 9  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                          &trans  &trans  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        equals {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rsls 10  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
     };
