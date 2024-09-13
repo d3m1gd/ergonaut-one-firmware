@@ -571,7 +571,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &rsls 10  &trans
 &trans  &trans  &trans  &trans  &rsls 10  &trans  &trans  &trans  &trans  &trans  &trans    &rsls 10
-&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans    &trans
+&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans    &rsls 10
                         &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
