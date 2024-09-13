@@ -488,9 +488,9 @@
 
         NUM {
             bindings = <
-&tsls LS(TAB) 8  &trans  &kp HOME       &kp UP         &kp END          &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL  &kp RIGHT_BRACKET
-&tsls DELETE 9   &trans  &mt LALT LEFT  &mt LGUI DOWN  &mt LCTRL RIGHT  &kp PG_DN  &kp LEFT_BRACE   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COLON  &kp DOUBLE_QUOTES
-&trans           &trans  &trans         &trans         &kp LS(INSERT)   &trans     &kp RIGHT_BRACE  &kp N7        &kp N8        &kp N9        &trans     &kp PIPE
+&tsls LS(TAB) 8  &trans  &kp HOME       &kp UP         &kp END          &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp RIGHT_BRACKET
+&tsls DELETE 9   &trans  &mt LALT LEFT  &mt LGUI DOWN  &mt LCTRL RIGHT  &kp PG_DN  &kp LEFT_BRACE   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COLON      &kp DOUBLE_QUOTES
+&trans           &trans  &trans         &trans         &kp LS(INSERT)   &trans     &kp RIGHT_BRACE  &kp N7        &kp N8        &kp N9        &kp LS(SLASH)  &kp PIPE
                                         &kp MINUS      &kp UNDERSCORE   &kp PLUS   &trans           &kp DOT       &trans
             >;
         };
@@ -498,8 +498,8 @@
         PROG {
             bindings = <
 &tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tsls EQUAL 10  &kp RIGHT_BRACKET
-&tsls DELETE 9   &kp TILDE  &trans  &trans         &kp GRAVE           &trans        &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &kp DOUBLE_QUOTES
-&trans           &trans     &trans  &trans         &trans              &trans        &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &trans          &kp PIPE
+&tsls DELETE 9   &kp TILDE  &trans  &trans         &tsls GRAVE 10      &trans        &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &tsls DOUBLE_QUOTES 10
+&trans           &trans     &trans  &trans         &trans              &trans        &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &kp LS(SLASH)   &tsls PIPE 10
                                     &tsls MINUS 5  &tsls UNDERSCORE 6  &tsls PLUS 7  &trans                      &kp DOT               &trans
             >;
         };
@@ -569,10 +569,10 @@
 
         equals {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &rsls 10  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans
-                        &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &rsls 10  &trans
+&trans  &trans  &trans  &trans  &rsls 10  &trans  &trans  &trans  &trans  &trans  &trans    &rsls 10
+&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans    &trans
+                        &trans  &trans    &trans  &trans  &trans  &trans
             >;
         };
     };
