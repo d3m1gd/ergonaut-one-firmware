@@ -479,9 +479,9 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q        &kp W           &kp E            &kp R        &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P          &kp LBKT
-&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &mt LCTRL F  &kp G             &kp H                     &kp J        &kp K       &kp L    &kp SEMICOLON  &kp SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH      &kp BACKSLASH
+&kp TAB               &kp Q        &kp W           &kp E            &kp R        &kp T             &kp Y                     &kp U        &kp I       &kp O    &kp P                      &kp LBKT
+&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &mt LCTRL F  &kp G             &kp H                     &kp J        &kp K       &kp L    &mt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
+&mt LCTRL MINUS       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M        &kp COMMA   &kp DOT  &kp SLASH                  &kp BACKSLASH
                                                    &ll 3 3          &ll 1 2      &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
             >;
         };
@@ -500,7 +500,7 @@
 &tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans        &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tsls EQUAL 10  &kp RIGHT_BRACKET
 &tsls DELETE 9   &kp TILDE  &trans  &trans         &tsls GRAVE 10      &trans        &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &tsls DOUBLE_QUOTES 10
 &trans           &trans     &trans  &trans         &trans              &trans        &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &kp LS(SLASH)   &tsls PIPE 10
-                                    &tsls MINUS 5  &tsls UNDERSCORE 6  &tsls PLUS 7  &trans                      &kp DOT               &trans
+                                    &tsls MINUS 5  &tsls UNDERSCORE 6  &tsls PLUS 7  &trans                      &trans                &trans
             >;
         };
 
