@@ -506,7 +506,7 @@
 
         QUICK {
             bindings = <
-&tsls LS(TAB) 8  &trans  &trans  &trans     &trans  &tsls C_VOLUME_UP 3    &null12  &null1   &null2   &redir21  &kp PRINTSCREEN  &trans
+&tsls LS(TAB) 8  &trans  &trans  &trans     &trans  &tsls C_VOLUME_UP 3    &null12  &null1   &null2   &redir21  &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
 &tsls DELETE 9   &trans  &trans  &trans     &trans  &tsls C_VOLUME_DOWN 3  &trans   &trans   &trans   &trans    &trans           &trans
 &trans           &trans  &trans  &kp LG(C)  &trans  &tslxs C_PLAY_PAUSE 3  &trans   &trans   &trans   &trans    &trans           &trans
                                  &trans     &trans  &trans                 &kp F10  &kp F11  &kp F12
