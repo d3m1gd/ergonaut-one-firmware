@@ -480,10 +480,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q        &kp W           &kp E            &kp R        &kp T             &kp Y                     &kp U        &kp I           &kp O           &kp P                      &kp LBKT
-&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &mt LCTRL F  &kp G             &kp H                     &mt RCTRL J  &mt LEFT_WIN K  &mt LEFT_ALT L  &mt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M        &kp COMMA       &kp DOT         &kp SLASH                  &kp BACKSLASH
-                                                   &ll 3 3          &ll 1 2      &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
+&kp TAB               &kp Q        &kp W           &kp E            &kp R        &kp T             &kp Y                     &kp U         &kp I            &kp O            &kp P                       &kp LBKT
+&mt LSHIFT BACKSPACE  &mt LSHFT A  &mt LEFT_ALT S  &mt LEFT_GUI D   &mt LCTRL F  &kp G             &kp H                     &rmt RCTRL J  &rmt LEFT_WIN K  &rmt LEFT_ALT L  &rmt RIGHT_SHIFT SEMICOLON  &kp SINGLE_QUOTE
+&mt LCTRL MINUS       &kp Z        &kp X           &txdgconfig 0 C  &kp V        &kp B             &kp N                     &kp M         &kp COMMA        &kp DOT          &kp SLASH                   &kp BACKSLASH
+                                                   &ll 3 3          &ll 1 2      &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE   &shiftcaps
             >;
         };
 
