@@ -390,61 +390,61 @@
     combos {
         compatible = "zmk,combos";
 
-        csd {
+        LAM {
             bindings = <&skl LA(LEFT_GUI)>;
-            key-positions = <15 14>;
-            layers = <0>;
-        };
-
-        cdf {
-            bindings = <&skl LC(LEFT_GUI)>;
             key-positions = <15 16>;
             layers = <0>;
         };
 
-        cad {
+        LCM {
+            bindings = <&skl LC(LEFT_GUI)>;
+            key-positions = <15 38>;
+            layers = <0>;
+        };
+
+        LSM {
             bindings = <&skl LS(LEFT_GUI)>;
-            key-positions = <15 13>;
+            key-positions = <15 14>;
             layers = <0>;
         };
 
-        caf {
+        LCS {
             bindings = <&skl LS(LEFT_CONTROL)>;
-            key-positions = <13 16>;
+            key-positions = <14 38>;
             layers = <0>;
         };
 
-        cas {
+        LAS {
             bindings = <&skl LS(LEFT_ALT)>;
-            key-positions = <14 13>;
+            key-positions = <14 16>;
             layers = <0>;
         };
 
-        csf {
+        LAC {
             bindings = <&skl LA(LEFT_CONTROL)>;
-            key-positions = <16 14>;
+            key-positions = <16 38>;
             layers = <0>;
         };
 
-        csdf {
+        LACM {
             bindings = <&skl LA(LG(LEFT_CONTROL))>;
-            key-positions = <16 14 15>;
+            key-positions = <16 15 38>;
             layers = <0>;
             timeout-ms = <100>;
             require-prior-idle-ms = <500>;
         };
 
-        casd {
+        LASM {
             bindings = <&skl LA(LS(LEFT_GUI))>;
-            key-positions = <14 15 13>;
+            key-positions = <14 15 16>;
             layers = <0>;
             timeout-ms = <100>;
             require-prior-idle-ms = <500>;
         };
 
-        casf {
+        LACS {
             bindings = <&skl LA(LS(LEFT_CONTROL))>;
-            key-positions = <14 13 16>;
+            key-positions = <14 16 38>;
             layers = <0>;
             timeout-ms = <100>;
             require-prior-idle-ms = <500>;
@@ -470,15 +470,13 @@
         };
 
         tctrl {
-            bindings = <&kt LEFT_CONTROL>;
+            bindings = <&kt LGUI>;
             key-positions = <36 37 38>;
         };
 
-        sscaps {
+        RCAPS {
             bindings = <&caps_word>;
-            key-positions = <14 21>;
-            require-prior-idle-ms = <100>;
-            timeout-ms = <200>;
+            key-positions = <20 21>;
         };
     };
 
