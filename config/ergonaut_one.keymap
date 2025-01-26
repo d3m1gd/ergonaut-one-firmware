@@ -494,10 +494,10 @@
 
         NUM {
             bindings = <
-&tsls LS(TAB) 8  &trans  &kp HOME       &kp UP         &kp END          &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp RIGHT_BRACKET
-&tsls DELETE 9   &trans  &mt LALT LEFT  &mt LGUI DOWN  &mt LCTRL RIGHT  &kp PG_DN  &kp LEFT_BRACE   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COLON      &kp DOUBLE_QUOTES
-&trans           &trans  &kp MINUS      &kp PLUS       &kp LS(INSERT)   &trans     &kp RIGHT_BRACE  &kp N7        &kp N8        &kp N9        &kp LS(SLASH)  &kp PIPE
-                                        &kp MINUS      &kp UNDERSCORE   &trans     &trans           &kp DOT       &trans
+&tsls LS(TAB) 8  &trans  &kp HOME         &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp EQUAL      &kp RIGHT_BRACKET
+&tsls DELETE 9   &trans  &mt LSHIFT LEFT  &mt LGUI DOWN  &mt LALT RIGHT  &kp PG_DN  &kp LEFT_BRACE   &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp COLON      &kp DOUBLE_QUOTES
+&trans           &trans  &kp MINUS        &kp PLUS       &kp LS(INSERT)  &trans     &kp RIGHT_BRACE  &kp N7        &kp N8        &kp N9        &kp LS(SLASH)  &kp PIPE
+                                          &kp MINUS      &kp UNDERSCORE  &trans     &trans           &kp DOT       &trans
             >;
         };
 
