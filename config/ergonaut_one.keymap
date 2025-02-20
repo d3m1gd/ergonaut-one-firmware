@@ -63,17 +63,15 @@
             bindings = <&mo>, <&kp>;
         };
 
-        lhtkpkp: lhtkpkp {
+        kpkp: kpkp {
             compatible = "zmk,behavior-hold-tap";
-            label = "Left HoldTap 2KeyPress";
+            label = "kpkp";
             bindings = <&kp>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
-            flavor = "balanced";
-            hold-trigger-key-positions = <30 31 32 33 35 34 23 6 7 9 10 11 19 20 21 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 30 31 36 37 38>;
+            flavor = "tap-preferred";
             quick-tap-ms = <200>;
-            hold-trigger-on-release;
         };
 
         ttnr: ttnr {
@@ -485,10 +483,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E            &kp R       &kp T             &kp Y                     &kp U        &kp I            &kp O          &kp P      &kp LBKT
+&kp TAB               &kp Q  &kp W         &kpkp F13 E      &kp R       &kp T             &kp Y                     &kp U        &kp I            &kp O          &kp P      &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D   &mt LALT F  &kp G             &kp H                     &rmt LALT J  &rmt LEFT_WIN K  &rmt RSHIFT L  &kp SEMI   &kp SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z  &kp X         &txdgconfig 0 C  &kp V       &kp B             &kp N                     &kp M        &kp COMMA        &kp DOT        &kp SLASH  &kp BACKSLASH
-                                           &ll 3 3          &ll 1 2     &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &shiftcaps
+&mt LCTRL MINUS       &kp Z  &kp X         &txdgconfig 0 C  &kp V       &kp B             &kp N                     &kpkp F14 M  &kp COMMA        &kp DOT        &kp SLASH  &kp BACKSLASH
+                                           &ll 3 3          &ll 1 2     &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &none
             >;
         };
 
