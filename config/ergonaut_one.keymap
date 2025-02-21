@@ -66,7 +66,7 @@
         kpkp: kpkp {
             compatible = "zmk,behavior-hold-tap";
             label = "kpkp";
-            bindings = <&kp>, <&kp>;
+            bindings = <&tapNoRepeat>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -77,7 +77,7 @@
         ttnr: ttnr {
             compatible = "zmk,behavior-hold-tap";
             label = "Tap Tap No Repeat";
-            bindings = <&tnr>, <&kp>;
+            bindings = <&tapNoRepeat>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <350>;
@@ -113,10 +113,10 @@
             quick-release;
         };
 
-        txdgconfig: txdgconfig {
+        kpConfig: kpConfig {
             compatible = "zmk,behavior-hold-tap";
-            label = "Tap XDG Config";
-            bindings = <&xdgconfig>, <&kp>;
+            label = "Key Config macro";
+            bindings = <&goConfig>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <350>;
@@ -190,7 +190,7 @@
             label = "SLMOD";
         };
 
-        tnr: tnr {
+        tapNoRepeat: tnr {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings =
@@ -221,7 +221,7 @@
             label = "KPSLL";
         };
 
-        xdgconfig: homeconfig {
+        goConfig: homeconfig {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp DQT &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp FSLH>;
@@ -483,10 +483,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kpkp F13 E      &kp R       &kp T             &kp Y                     &kp U        &kp I            &kp O          &kp P      &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D   &mt LALT F  &kp G             &kp H                     &rmt LALT J  &rmt LEFT_WIN K  &rmt RSHIFT L  &kp SEMI   &kp SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z  &kp X         &txdgconfig 0 C  &kp V       &kp B             &kp N                     &kpkp F14 M  &kp COMMA        &kp DOT        &kp SLASH  &kp BACKSLASH
-                                           &ll 3 3          &ll 1 2     &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &none
+&kp TAB               &kp Q  &kp W         &kpkp F13 E     &kp R       &kp T             &kp Y                     &kp U        &kp I            &kp O              &kp P           &kp LBKT
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H                     &rmt LALT J  &rmt LEFT_WIN K  &rmt RSHIFT L      &kpkp SEMI F16  &kpkp SINGLE_QUOTE F17
+&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N                     &kpkp F14 M  &kpkp COMMA F15  &kpkp DOT LS(F15)  &kp SLASH       &kp BACKSLASH
+                                           &ll 3 3         &ll 1 2     &mt LCTRL ESCAPE  &mt RIGHT_CONTROL RETURN  &lt 1 SPACE  &none
             >;
         };
 
