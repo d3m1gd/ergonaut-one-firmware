@@ -482,7 +482,7 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kpkp F13 E     &kp R       &kp T             &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
+&kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RC(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RC(SEMI) SEMI  &kpkp RC(SINGLE_QUOTE) SINGLE_QUOTE
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RC(M) M  &kpkp RC(COMMA) COMMA  &kpkp RC(DOT) DOT  &kp SLASH            &kp BACKSLASH
                                            &ll 3 3         &ll 1 2     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &none
