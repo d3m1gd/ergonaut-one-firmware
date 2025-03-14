@@ -482,9 +482,9 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RA(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RA(SEMI) SEMI  &kpkp RA(SINGLE_QUOTE) SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RA(M) M  &kpkp RA(COMMA) COMMA  &kpkp RA(DOT) DOT  &kp SLASH            &kp BACKSLASH
+&kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
+&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
                                            &ll 3 3         &ll 1 2     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &none
             >;
         };
