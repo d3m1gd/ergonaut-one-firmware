@@ -582,10 +582,10 @@
 
         NUM {
             bindings = <
-&kp LS(TAB)  &trans  &trans               &trans           &trans           &trans  &kp N0  &kp NUMBER_1       &kp NUMBER_2  &kp NUMBER_3   &mmEquals      &kp RIGHT_BRACKET
-&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mtCurly LALT 0  &trans  &trans  &mt LALT NUMBER_4  &mt LGUI N5   &mt RSHIFT N6  &kp COLON      &mmQuoteGrave
-&trans       &trans  &trans               &kp PLUS         &kp LS(INSERT)   &trans  &trans  &kp N7             &kp N8        &kp N9         &kp LS(SLASH)  &kp PIPE
-                                          &trans           &kp UNDERSCORE   &trans  &trans  &kp DOT            &trans
+&kp LS(TAB)  &trans  &trans               &trans           &trans           &trans  &kp N0  &kp NUMBER_1       &kp NUMBER_2        &kp NUMBER_3         &mmEquals      &kp RIGHT_BRACKET
+&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mtCurly LALT 0  &trans  &trans  &mt LALT NUMBER_4  &mt LGUI N5         &mt RSHIFT N6        &kp COLON      &mmQuoteGrave
+&trans       &trans  &trans               &kp PLUS         &kp LS(INSERT)   &trans  &trans  &kp N7             &kpkp RG(COMMA) N8  &kpkp RG(PERIOD) N9  &kp LS(SLASH)  &kp PIPE
+                                          &trans           &kp UNDERSCORE   &trans  &trans  &trans             &trans
             >;
         };
 
@@ -627,10 +627,10 @@
 
         chains {
             bindings = <
-&none  &none  &none  &slxl 12  &slxl 8  &none  &none  &none     &none  &none  &none  &none
-&none  &none  &none  &none     &none    &none  &none  &none     &none  &none  &none  &none
-&none  &none  &none  &none     &none    &none  &none  &slxl 11  &none  &none  &none  &none
-                     &none     &none    &none  &none  &none     &none
+&none  &none  &none  &slxl 12  &slxl 8  &none    &none  &none     &none  &none  &none  &none
+&none  &none  &none  &none     &none    &slxl 9  &none  &none     &none  &none  &none  &none
+&none  &none  &none  &none     &none    &none    &none  &slxl 11  &none  &none  &none  &none
+                     &none     &none    &none    &none  &none     &none
             >;
         };
 
