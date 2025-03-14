@@ -179,6 +179,16 @@
             #binding-cells = <0>;
             bindings = <&skl LSHFT>, <&caps_word>;
         };
+
+        slxl: slxl {
+            compatible = "zmk,behavior-sticky-key";
+            label = "SLXL";
+            bindings = <&mo>;
+            #binding-cells = <1>;
+            release-after-ms = <10000>;
+            quick-release;
+            ignore-modifiers;
+        };
     };
 
     macros {
@@ -485,14 +495,14 @@
 &kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &ll 3 3         &ll 1 2     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &none
+                                           &ll 3 3         &ll 1 2     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 5
             >;
         };
 
         NUM {
             bindings = <
-&tsls LS(TAB) 8  &trans  &kp HOME         &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1       &kp NUMBER_2  &kp NUMBER_3   &kp EQUAL      &kp RIGHT_BRACKET
-&tsls DELETE 9   &trans  &mt LSHIFT LEFT  &mt LGUI DOWN  &mt LALT RIGHT  &kp PG_DN  &kp LEFT_BRACE   &mt LALT NUMBER_4  &mt LGUI N5   &mt RSHIFT N6  &kp COLON      &kp DOUBLE_QUOTES
+&tsls LS(TAB) 6  &trans  &kp HOME         &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1       &kp NUMBER_2  &kp NUMBER_3   &kp EQUAL      &kp RIGHT_BRACKET
+&tsls DELETE 7   &trans  &mt LSHIFT LEFT  &mt LGUI DOWN  &mt LALT RIGHT  &kp PG_DN  &kp LEFT_BRACE   &mt LALT NUMBER_4  &mt LGUI N5   &mt RSHIFT N6  &kp COLON      &kp DOUBLE_QUOTES
 &trans           &trans  &kp MINUS        &kp PLUS       &kp LS(INSERT)  &trans     &kp RIGHT_BRACE  &kp N7             &kp N8        &kp N9         &kp LS(SLASH)  &kp PIPE
                                           &kp MINUS      &kp UNDERSCORE  &trans     &trans           &kp DOT            &trans
             >;
@@ -500,17 +510,17 @@
 
         PROG {
             bindings = <
-&tsls LS(TAB) 8  &trans     &trans  &trans         &trans              &trans  &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tsls EQUAL 10  &kp RIGHT_BRACKET
-&tsls DELETE 9   &kp TILDE  &trans  &trans         &tsls GRAVE 10      &trans  &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &tsls DOUBLE_QUOTES 10
-&trans           &trans     &trans  &trans         &trans              &trans  &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &kp LS(SLASH)   &tsls PIPE 10
-                                    &tsls MINUS 5  &tsls UNDERSCORE 6  &trans  &trans                      &trans                &trans
+&tsls LS(TAB) 6  &trans     &trans  &trans         &trans              &trans  &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tsls EQUAL 8   &kp RIGHT_BRACKET
+&tsls DELETE 7   &kp TILDE  &trans  &trans         &tsls GRAVE 8       &trans  &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &tsls DOUBLE_QUOTES 8
+&trans           &trans     &trans  &trans         &trans              &trans  &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &kp LS(SLASH)   &tsls PIPE 8
+                                    &tsls MINUS 0  &tsls UNDERSCORE 0  &trans  &trans                      &trans                &trans
             >;
         };
 
         QUICK {
             bindings = <
-&tsls LS(TAB) 8  &trans  &trans  &trans     &tsls LG(C_VOLUME_UP) 3    &tsls C_VOLUME_UP 3    &nullall  &null1   &null2   &redir21  &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
-&tsls DELETE 9   &trans  &trans  &trans     &tsls LG(C_VOLUME_DOWN) 3  &tsls C_VOLUME_DOWN 3  &trans    &trans   &trans   &trans    &trans           &trans
+&tsls LS(TAB) 6  &trans  &trans  &trans     &tsls LG(C_VOLUME_UP) 3    &tsls C_VOLUME_UP 3    &nullall  &null1   &null2   &redir21  &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
+&tsls DELETE 7   &trans  &trans  &trans     &tsls LG(C_VOLUME_DOWN) 3  &tsls C_VOLUME_DOWN 3  &trans    &trans   &trans   &trans    &trans           &trans
 &trans           &trans  &trans  &kp LG(C)  &trans                     &tslxs C_PLAY_PAUSE 3  &trans    &trans   &trans   &trans    &trans           &trans
                                  &trans     &trans                     &trans                 &kp F10   &kp F11  &kp F12
             >;
@@ -525,36 +535,18 @@
             >;
         };
 
-        minus {
+        chains {
             bindings = <
-&trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &rsls 5  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        under {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &rsls 6  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        plus {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &rsls 7  &trans  &trans  &trans
+&none  &none  &none  &none  &slxl 9  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
+                     &none  &none    &none  &none  &none  &none
             >;
         };
 
         tab {
             bindings = <
-&rsls 8  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&rsls 6  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                          &trans  &trans  &trans  &trans  &trans  &trans
@@ -564,7 +556,7 @@
         delete {
             bindings = <
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&rsls 9  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&rsls 7  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                          &trans  &trans  &trans  &trans  &trans  &trans
             >;
@@ -572,10 +564,28 @@
 
         equals {
             bindings = <
-&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &rsls 10  &trans
-&trans  &trans  &trans  &trans  &rsls 10  &trans  &trans  &trans  &trans  &trans  &trans    &rsls 10
-&trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans    &rsls 10
-                        &trans  &trans    &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &rsls 8  &trans
+&trans  &trans  &trans  &trans  &rsls 8  &trans  &trans  &trans  &trans  &trans  &trans   &rsls 8
+&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans   &rsls 8
+                        &trans  &trans   &trans  &trans  &trans  &trans
+            >;
+        };
+
+        chain-R {
+            bindings = <
+&none  &none  &none  &none     &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &slxl 10  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none     &none  &none  &none  &none  &none  &none  &none  &none
+                     &none     &none  &none  &none  &none  &none
+            >;
+        };
+
+        chain-RD {
+            bindings = <
+&none  &none  &none  &none  &none  &none  &none   &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none   &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &null1  &none  &none  &none  &none  &none
+                     &none  &none  &none  &none   &none  &none
             >;
         };
     };
