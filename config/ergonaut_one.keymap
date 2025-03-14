@@ -156,7 +156,7 @@
             #binding-cells = <2>;
             tapping-term-ms = <300>;
             flavor = "balanced";
-            bindings = <&mo>, <&sl>;
+            bindings = <&mo>, <&sll>;
         };
 
         langor: langor {
@@ -182,12 +182,45 @@
 
         slxl: slxl {
             compatible = "zmk,behavior-sticky-key";
-            label = "SLXL";
+            label = "Sticky Layer Extra Long";
             bindings = <&mo>;
             #binding-cells = <1>;
             release-after-ms = <10000>;
             quick-release;
             ignore-modifiers;
+        };
+
+        mtCurly: mtCurly {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MTCURLY";
+            bindings = <&kp>, <&curlyFull>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        mtBracket: mtBracket {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MTBRACKET";
+            bindings = <&kp>, <&bracketFull>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
+        };
+
+        mtParen: mtParen {
+            compatible = "zmk,behavior-hold-tap";
+            label = "MTPAREN";
+            bindings = <&kp>, <&parenFull>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            flavor = "tap-preferred";
         };
     };
 
@@ -392,6 +425,41 @@
             bindings = <&key_repeat &macro_param_1to1 &sls MACRO_PLACEHOLDER>;
             label = "Repeat and Sticky Layer Short";
         };
+
+        goIfError: goIfError {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp F &kp SPACE &kp E &kp R &kp R &kp SPACE &kp EXCL &kp EQUAL &kp SPACE &kp N &kp I &kp L &kp SPACE &kp LEFT_BRACE &kp SPACE &kp R &kp E &kp T &kp U &kp R &kp N &kp SPACE &kp E &kp R &kp R &kp SEMI &kp SPACE &kp RBRC &kp LEFT_ARROW &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT>;
+            label = "GOIFERROR";
+        };
+
+        curlyFull: curlyFull {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT>;
+            label = "CURLYFULL";
+        };
+
+        bracketFull: bracketFull {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT>;
+            label = "BRACKETFULL";
+        };
+
+        parenFull: parenFull {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT>;
+            label = "PARENFULL";
+        };
+
+        mdCode: mdCode {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT &kp LEFT &kp LEFT &kp LS(RETURN) &kp LS(RETURN) &kp UP>;
+            label = "MDCODE";
+        };
     };
 
     combos {
@@ -458,7 +526,7 @@
         };
 
         sys {
-            bindings = <&sll 4>;
+            bindings = <&sll 6>;
             key-positions = <4 5>;
             layers = <0>;
             require-prior-idle-ms = <500>;
@@ -495,88 +563,79 @@
 &kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &ll 3 3         &ll 1 2     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 5
+                                           &ll 3 5         &ll 1 2     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 8
             >;
         };
 
         NUM {
             bindings = <
-&tsls LS(TAB) 6  &trans  &kp HOME         &kp UP         &kp END         &kp PG_UP  &kp N0           &kp NUMBER_1       &kp NUMBER_2  &kp NUMBER_3   &kp EQUAL      &kp RIGHT_BRACKET
-&tsls DELETE 7   &trans  &mt LSHIFT LEFT  &mt LGUI DOWN  &mt LALT RIGHT  &kp PG_DN  &kp LEFT_BRACE   &mt LALT NUMBER_4  &mt LGUI N5   &mt RSHIFT N6  &kp COLON      &kp DOUBLE_QUOTES
-&trans           &trans  &kp MINUS        &kp PLUS       &kp LS(INSERT)  &trans     &kp RIGHT_BRACE  &kp N7             &kp N8        &kp N9         &kp LS(SLASH)  &kp PIPE
-                                          &kp MINUS      &kp UNDERSCORE  &trans     &trans           &kp DOT            &trans
+&kp LS(TAB)  &trans  &trans               &trans           &trans           &trans  &kp N0  &kp NUMBER_1       &kp NUMBER_2  &kp NUMBER_3   &kp EQUAL      &kp RIGHT_BRACKET
+&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mtCurly LALT 0  &trans  &trans  &mt LALT NUMBER_4  &mt LGUI N5   &mt RSHIFT N6  &kp COLON      &kp DOUBLE_QUOTES
+&trans       &trans  &kp MINUS            &kp PLUS         &kp LS(INSERT)   &trans  &trans  &kp N7             &kp N8        &kp N9         &kp LS(SLASH)  &kp PIPE
+                                          &kp MINUS        &kp UNDERSCORE   &trans  &trans  &kp DOT            &trans
             >;
         };
 
         PROG {
             bindings = <
-&tsls LS(TAB) 6  &trans     &trans  &trans         &trans              &trans  &tslxs RIGHT_PARENTHESIS 2  &tslxs EXCLAMATION 2  &tslxs AT_SIGN 2  &tslxs HASH 2              &tsls EQUAL 8   &kp RIGHT_BRACKET
-&tsls DELETE 7   &kp TILDE  &trans  &trans         &tsls GRAVE 8       &trans  &kp LEFT_BRACE              &tslxs DOLLAR 2       &tslxs PERCENT 2  &tslxs CARET 2             &tslxs COLON 2  &tsls DOUBLE_QUOTES 8
-&trans           &trans     &trans  &trans         &trans              &trans  &kp RIGHT_BRACE             &tslxs AMPERSAND 2    &tslxs STAR 2     &tslxs LEFT_PARENTHESIS 2  &kp LS(SLASH)   &tsls PIPE 8
-                                    &tsls MINUS 0  &tsls UNDERSCORE 0  &trans  &trans                      &trans                &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &tslxs RIGHT_PARENTHESIS 2  &kpsll EXCLAMATION 4  &kpsll AT_SIGN 4  &kpsll HASH 4              &kpsll EQUAL 4  &kp RIGHT_BRACKET
+&trans  &trans  &trans  &trans  &trans  &trans  &kpsll TILDE 4              &kpsll DOLLAR 4       &kpsll PERCENT 4  &kpsll CARET 4             &kpsll COLON 4  &kpsll GRAVE 4
+&trans  &trans  &trans  &trans  &trans  &trans  &trans                      &kpsll AMPERSAND 4    &kpsll STAR 4     &kpsll LEFT_PARENTHESIS 4  &trans          &trans
+                        &trans  &trans  &trans  &trans                      &trans                &trans
             >;
         };
 
         QUICK {
             bindings = <
-&tsls LS(TAB) 6  &trans  &trans  &trans     &tsls LG(C_VOLUME_UP) 3    &tsls C_VOLUME_UP 3    &nullall  &null1   &null2   &redir21  &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
-&tsls DELETE 7   &trans  &trans  &trans     &tsls LG(C_VOLUME_DOWN) 3  &tsls C_VOLUME_DOWN 3  &trans    &trans   &trans   &trans    &trans           &trans
-&trans           &trans  &trans  &kp LG(C)  &trans                     &tslxs C_PLAY_PAUSE 3  &trans    &trans   &trans   &trans    &trans           &trans
-                                 &trans     &trans                     &trans                 &kp F10   &kp F11  &kp F12
+&tsls LS(TAB) 0  &trans  &trans  &trans     &tsls LG(C_VOLUME_UP) 3    &tsls C_VOLUME_UP 3    &nullall        &null1          &null2        &redir21           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
+&tsls DELETE 0   &trans  &trans  &trans     &tsls LG(C_VOLUME_DOWN) 3  &tsls C_VOLUME_DOWN 3  &kp LEFT        &rmt LALT DOWN  &rmt LGUI UP  &rmt RSHIFT RIGHT  &trans           &trans
+&trans           &trans  &trans  &kp LG(C)  &trans                     &tslxs C_PLAY_PAUSE 3  &trans          &trans          &trans        &trans             &trans           &trans
+                                 &trans     &trans                     &trans                 &rmt LCTRL F10  &kp F11         &kp F12
+            >;
+        };
+
+        REPEAT {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &key_repeat  &trans  &trans  &trans  &trans
+            >;
+        };
+
+        MOVE {
+            bindings = <
+&trans  &trans  &trans  &kpsll END 5  &trans  &trans  &trans         &trans              &trans            &trans        &trans  &trans
+&trans  &trans  &trans  &trans        &trans  &trans  &kpsll HOME 5  &kpsll PAGE_DOWN 5  &kpsll PAGE_UP 5  &kpsll END 5  &trans  &trans
+&trans  &trans  &trans  &trans        &trans  &trans  &trans         &trans              &trans            &trans        &trans  &trans
+                        &trans        &trans  &trans  &trans         &trans              &trans
             >;
         };
 
         SYS {
             bindings = <
-&bootloader  &none         &none         &none           &out OUT_USB  &out OUT_BLE  &tsls C_VOLUME_UP 4    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
-&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &tsls K_MUTE 4         &kp F4   &kp F5   &kp F6  &none             &none
-&sys_reset   &bt BT_CLR    &none         &bt BT_CLR_ALL  &none         &none         &tsls C_VOLUME_DOWN 4  &kp F7   &kp F8   &kp F9  &none             &sys_reset
+&bootloader  &none         &none         &none           &out OUT_USB  &out OUT_BLE  &tsls C_VOLUME_UP 6    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
+&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &tsls K_MUTE 6         &kp F4   &kp F5   &kp F6  &none             &none
+&sys_reset   &bt BT_CLR    &none         &bt BT_CLR_ALL  &none         &none         &tsls C_VOLUME_DOWN 6  &kp F7   &kp F8   &kp F9  &none             &sys_reset
                                          &none           &none         &none         &kp F10                &kp F11  &kp F12
             >;
         };
 
         chains {
             bindings = <
-&none  &none  &none  &none  &slxl 9  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none
-                     &none  &none    &none  &none  &none  &none
-            >;
-        };
-
-        tab {
-            bindings = <
-&rsls 6  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                         &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        delete {
-            bindings = <
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&rsls 7  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                         &trans  &trans  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        equals {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &rsls 8  &trans
-&trans  &trans  &trans  &trans  &rsls 8  &trans  &trans  &trans  &trans  &trans  &trans   &rsls 8
-&trans  &trans  &trans  &trans  &trans   &trans  &trans  &trans  &trans  &trans  &trans   &rsls 8
-                        &trans  &trans   &trans  &trans  &trans  &trans
+&none  &none  &none  &none  &slxl 9  &none  &none  &none     &none  &none  &none  &none
+&none  &none  &none  &none  &none    &none  &none  &none     &none  &none  &none  &none
+&none  &none  &none  &none  &none    &none  &none  &slxl 12  &none  &none  &none  &none
+                     &none  &none    &none  &none  &none     &none
             >;
         };
 
         chain_R {
             bindings = <
-&none  &none  &none  &none     &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &slxl 10  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none     &none  &none  &none  &none  &none  &none  &none  &none
-                     &none     &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &slxl 9  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
+                     &none    &none  &none  &none  &none  &none
             >;
         };
 
@@ -586,6 +645,33 @@
 &none  &none  &none  &none  &none  &none  &none   &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &null1  &none  &none  &none  &none  &none
                      &none  &none  &none  &none   &none  &none
+            >;
+        };
+
+        chain_G {
+            bindings = <
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+                     &none  &none  &none  &none  &none  &none
+            >;
+        };
+
+        chain_GI {
+            bindings = <
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
+                     &none  &none  &none  &none  &none  &none
+            >;
+        };
+
+        chain_M {
+            bindings = <
+&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &mdCode  &none  &none  &none  &none  &none  &none  &none  &none
+                     &none    &none  &none  &none  &none  &none
             >;
         };
     };
