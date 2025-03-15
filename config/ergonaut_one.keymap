@@ -283,7 +283,7 @@
         quoted: quoted {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW &sll 14>;
+            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW &sll 6>;
             label = "QUOTED";
         };
 
@@ -332,21 +332,21 @@
         curlyFull: curlyFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT &sll 14>;
+            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT &sll 6>;
             label = "CURLYFULL";
         };
 
         bracketFull: bracketFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &sll 14>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &sll 6>;
             label = "BRACKETFULL";
         };
 
         parenFull: parenFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT &sll 14>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT &sll 6>;
             label = "PARENFULL";
         };
 
@@ -487,7 +487,7 @@
 &kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &lslxl 2 6      &ll 1 4     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 6
+                                           &lslxl 2 7      &ll 1 4     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 7
             >;
         };
 
@@ -536,19 +536,28 @@
             >;
         };
 
+        PARENS {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
+            >;
+        };
+
         chains {
             bindings = <
-&none  &none  &none  &slxl 12  &slxl 8  &none    &none  &none     &none  &none  &none  &none
-&none  &none  &none  &none     &none    &slxl 9  &none  &none     &none  &none  &none  &none
-&none  &none  &none  &none     &none    &none    &none  &slxl 11  &none  &none  &none  &none
-                     &none     &none    &none    &none  &none     &none
+&kp K_CANCEL  &none  &none  &slxl 13  &slxl 9  &none     &none  &none     &none  &none  &none  &none
+&none         &none  &none  &none     &none    &slxl 10  &none  &none     &none  &none  &none  &none
+&none         &none  &none  &none     &none    &none     &none  &slxl 12  &none  &none  &none  &none
+                            &none     &none    &none     &none  &none     &none
             >;
         };
 
         chain_R {
             bindings = <
 &none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &slxl 8  &none  &none  &none  &none  &none  &none  &none  &none
+&none  &none  &none  &slxl 9  &none  &none  &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
                      &none    &none  &none  &none  &none  &none
             >;
@@ -565,7 +574,7 @@
 
         chain_G {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &slxl 10  &none  &none  &none
+&none  &none  &none  &none  &none  &none  &none  &none  &slxl 11  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &none  &none  &none     &none  &none  &none
 &none  &none  &none  &none  &none  &none  &none  &none  &none     &none  &none  &none
                      &none  &none  &none  &none  &none  &none
@@ -594,7 +603,7 @@
             bindings = <
 &trans  &envQuoted  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans      &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans  &slxl 13  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans      &trans  &slxl 14  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
                             &trans    &trans  &trans  &trans  &trans  &trans
             >;
         };
@@ -605,15 +614,6 @@
 &none  &none            &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none  &none            &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
                                &none  &none  &none  &none  &none  &none
-            >;
-        };
-
-        PARENS {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
             >;
         };
     };
