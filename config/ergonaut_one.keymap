@@ -24,19 +24,6 @@
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
     behaviors {
-        lmt: lmt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Left Mod Tap";
-            bindings = <&kp>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <30 31 32 33 35 34 23 6 7 9 10 11 19 20 21 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41 30 31 39 40 41>;
-            quick-tap-ms = <200>;
-        };
-
         rmt: rmt {
             compatible = "zmk,behavior-hold-tap";
             label = "Right Mod Tap";
@@ -50,18 +37,6 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
         };
 
-        llt: llt {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Left Layer Tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "balanced";
-            hold-trigger-on-release;
-            hold-trigger-key-positions = <30 31 32 33 35 34 23 6 7 9 10 11 19 20 21 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35 41 18 19 30 31 39 40 41>;
-            quick-tap-ms = <200>;
-            bindings = <&mo>, <&kp>;
-        };
-
         kpkp: kpkp {
             compatible = "zmk,behavior-hold-tap";
             label = "kpkp";
@@ -71,17 +46,6 @@
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
-        };
-
-        ttnr: ttnr {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Tap Tap No Repeat";
-            bindings = <&tapNoRepeat>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <350>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
         };
 
         sls: sls {
@@ -98,7 +62,7 @@
             label = "Sticky Layer Long";
             bindings = <&mo>;
             #binding-cells = <1>;
-            release-after-ms = <1500>;
+            release-after-ms = <2000>;
             quick-release;
         };
 
@@ -115,7 +79,7 @@
         kpConfig: kpConfig {
             compatible = "zmk,behavior-hold-tap";
             label = "Key Config macro";
-            bindings = <&goConfig>, <&kp>;
+            bindings = <&envConfig>, <&kp>;
 
             #binding-cells = <2>;
             tapping-term-ms = <350>;
@@ -132,24 +96,6 @@
             quick-release;
         };
 
-        multiquote: multiquote {
-            compatible = "zmk,behavior-tap-dance";
-            label = "MULTIQUOTE";
-            #binding-cells = <0>;
-            bindings = <&quoted>, <&quoteds>, <&quotedb>, <&quotedbbb>;
-
-            tapping-term-ms = <300>;
-        };
-
-        pipe: pipe {
-            compatible = "zmk,behavior-tap-dance";
-            label = "PIPE";
-            #binding-cells = <0>;
-            bindings = <&kp PIPE>, <&kp BACKSLASH>;
-
-            tapping-term-ms = <300>;
-        };
-
         ll: ll {
             compatible = "zmk,behavior-hold-tap";
             label = "Layer Layer";
@@ -157,27 +103,6 @@
             tapping-term-ms = <300>;
             flavor = "balanced";
             bindings = <&mo>, <&sll>;
-        };
-
-        langor: langor {
-            compatible = "zmk,behavior-tap-dance";
-            label = "LANGOR";
-            #binding-cells = <0>;
-            bindings = <&kp LG(SPACE)>, <&none>;
-        };
-
-        mod5C: mod5C {
-            compatible = "zmk,behavior-tap-dance";
-            label = "MOD5C";
-            #binding-cells = <0>;
-            bindings = <&kp LG(N5)>, <&kp LG(C)>;
-        };
-
-        shiftcaps: shiftcaps {
-            compatible = "zmk,behavior-tap-dance";
-            label = "SHIFTCAPS";
-            #binding-cells = <0>;
-            bindings = <&skl LSHFT>, <&caps_word>;
         };
 
         slxl: slxl {
@@ -290,7 +215,7 @@
             label = "KPSLL";
         };
 
-        goConfig: homeconfig {
+        envConfig: homeconfig {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp DQT &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp FSLH>;
@@ -334,31 +259,31 @@
             label = "Tap and Sticky Layer Extra Short";
         };
 
-        null1: devnull1 {
+        null1: null1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE>;
-            label = "DEVNULL1";
+            label = "DevNull1";
         };
 
-        nullX: devnullX {
+        nullX: nullX {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE>;
-            label = "DEVNULL2";
+            label = "DevNullX";
         };
 
-        nullAll: devnull3 {
+        nullAll: nullAll {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GT &kp FSLH &kp D &kp E &kp V &kp FSLH &kp N &kp U &kp L &kp L &kp SPACE &kp N2 &kp GT &kp AMPS &kp N1 &kp SPACE>;
-            label = "DEVNULL3";
+            bindings = <&null1 &redir N2 N1>;
+            label = "DevNull All";
         };
 
         quoted: quoted {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW>;
+            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW &sll 14>;
             label = "QUOTED";
         };
 
@@ -367,27 +292,6 @@
             #binding-cells = <0>;
             bindings = <&kp DOLLAR &kp LEFT_BRACE &kp RBRC &kp LEFT_ARROW>;
             label = "VARRED";
-        };
-
-        parened: parened {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT_ARROW>;
-            label = "PARENED";
-        };
-
-        braced: braced {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT_ARROW>;
-            label = "BRACED";
-        };
-
-        bracketed: bracketed {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT_ARROW>;
-            label = "BRACKETED";
         };
 
         goeq: goequals {
@@ -411,13 +315,6 @@
             label = "QUOTEDB";
         };
 
-        quotedbbb: quotedbbb {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT_ARROW &kp LEFT_ARROW &kp LEFT_ARROW>;
-            label = "QUOTEDBBB";
-        };
-
         rsls: rsls {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -435,21 +332,21 @@
         curlyFull: curlyFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT>;
+            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT &sll 14>;
             label = "CURLYFULL";
         };
 
         bracketFull: bracketFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &sll 14>;
             label = "BRACKETFULL";
         };
 
         parenFull: parenFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT &sll 14>;
             label = "PARENFULL";
         };
 
@@ -472,6 +369,20 @@
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DLLR &kp LEFT_BRACE &kp RBRC &kp DQT &kp LEFT &kp LEFT>;
             label = "ENVCURLY";
+        };
+
+        splitParens: splitParens {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RETURN &kp RETURN &kp UP &kp TAB>;
+            label = "SPLITPARENS";
+        };
+
+        redir: redir {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
+            label = "REDIR";
         };
     };
 
@@ -694,6 +605,15 @@
 &none  &none            &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none  &none            &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
                                &none  &none  &none  &none  &none  &none
+            >;
+        };
+
+        PARENS {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
             >;
         };
     };
