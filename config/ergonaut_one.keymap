@@ -547,73 +547,73 @@
 
         chains {
             bindings = <
-&kp K_CANCEL  &none  &none  &slxl 13  &slxl 9  &none     &none  &none     &none  &none  &none  &none
-&none         &none  &none  &none     &none    &slxl 10  &none  &none     &none  &none  &none  &none
-&none         &none  &none  &none     &none    &none     &none  &slxl 12  &none  &none  &none  &none
-                            &none     &none    &none     &none  &none     &none
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 13  &slxl 9  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL         &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL    &slxl 10  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL         &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL    &kp K_CANCEL     &kp K_CANCEL  &slxl 12  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                            &kp K_CANCEL     &kp K_CANCEL    &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL
             >;
         };
 
         chain_R {
             bindings = <
-&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &slxl 9  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
-                     &none    &none  &none  &none  &none  &none
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                     &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_RD {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none   &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none   &none  &none  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &null1  &none  &none  &none  &none  &none
-                     &none  &none  &none  &none   &none  &none
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL   &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL   &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &null1  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL   &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_G {
             bindings = <
-&none  &none  &none  &none  &none  &none  &none  &none  &slxl 11  &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none     &none  &none  &none
-&none  &none  &none  &none  &none  &none  &none  &none  &none     &none  &none  &none
-                     &none  &none  &none  &none  &none  &none
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 11  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_GI {
             bindings = <
-&none  &none  &none  &goIfError  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none       &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none       &none  &none  &none  &none  &none  &none  &none  &none
-                     &none       &none  &none  &none  &none  &none
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &goIfError  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                     &kp K_CANCEL       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_M {
             bindings = <
-&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &none    &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none  &none  &mdCode  &none  &none  &none  &none  &none  &none  &none  &none
-                     &none    &none  &none  &none  &none  &none
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &mdCode  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                     &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_E {
             bindings = <
-&trans  &envQuoted  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans      &trans  &slxl 14  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                            &trans    &trans  &trans  &trans  &trans  &trans
+&kp K_CANCEL  &envQuoted  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL      &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL      &kp K_CANCEL  &slxl 14  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                            &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_EC {
             bindings = <
-&none  &envCurlyQuoted  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none            &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none  &none            &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-                               &none  &none  &none  &none  &none  &none
+&kp K_CANCEL  &envCurlyQuoted  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL            &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL            &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                               &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
     };
