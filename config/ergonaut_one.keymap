@@ -174,6 +174,24 @@
             flavor = "balanced";
             bindings = <&mo>, <&slxl>;
         };
+
+        mmMoveUnder: mmMoveUnder {
+            compatible = "zmk,behavior-mod-morph";
+            label = "mm Move Under";
+            bindings = <&sll 4>, <&kp UNDERSCORE>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+        };
+
+        lmmNumMove: lmmNumMove {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LMMNUMMOVE";
+            #binding-cells = <2>;
+            tapping-term-ms = <300>;
+            flavor = "balanced";
+            bindings = <&mo>, <&mmMoveUnder>;
+        };
     };
 
     macros {
@@ -484,19 +502,19 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E           &kp R       &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F  &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V       &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &lslxl 2 7      &ll 1 4     &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 7
+&kp TAB               &kp Q  &kp W         &kp E           &kp R            &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F       &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
+&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V            &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+                                           &lslxl 2 7      &lmmNumMove 1 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 7
             >;
         };
 
         NUM {
             bindings = <
-&kp LS(TAB)  &trans  &trans               &trans           &trans           &trans  &kp N0  &kp NUMBER_1       &kp NUMBER_2        &kp NUMBER_3         &mmEquals      &kp RIGHT_BRACKET
-&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mtCurly LALT 0  &trans  &trans  &mt LALT NUMBER_4  &mt LGUI N5         &mt RSHIFT N6        &kp COLON      &mmQuoteGrave
-&trans       &trans  &trans               &kp PLUS         &kp LS(INSERT)   &trans  &trans  &kp N7             &kpkp RG(COMMA) N8  &kpkp RG(PERIOD) N9  &kp LS(SLASH)  &kp PIPE
-                                          &trans           &kp UNDERSCORE   &trans  &trans  &trans             &trans
+&kp LS(TAB)  &trans  &trans               &trans           &trans           &kp TILDE  &kp N0     &kp NUMBER_1       &kp NUMBER_2        &kp NUMBER_3         &trans         &kp RIGHT_BRACKET
+&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mtCurly LALT 0  &trans     &mmEquals  &mt LALT NUMBER_4  &mt LGUI N5         &mt RSHIFT N6        &kp COLON      &mmQuoteGrave
+&trans       &trans  &trans               &trans           &kp LS(INSERT)   &trans     &kp PLUS   &kp N7             &kpkp RG(COMMA) N8  &kpkp RG(PERIOD) N9  &kp LS(SLASH)  &kp PIPE
+                                          &trans           &kp UNDERSCORE   &trans     &trans     &trans             &trans
             >;
         };
 
@@ -547,73 +565,100 @@
 
         chains {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 13  &slxl 9  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL         &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL    &slxl 10  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL         &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL    &kp K_CANCEL     &kp K_CANCEL  &slxl 12  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                            &kp K_CANCEL     &kp K_CANCEL    &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 16      &slxl 12      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &slxl 8       &slxl 11      &kp K_CANCEL  &slxl 13      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9       &kp K_CANCEL  &slxl 15      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+            >;
+        };
+
+        chain_S {
+            bindings = <
+&kp K_CANCEL  &quoteds      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+            >;
+        };
+
+        chain_B {
+            bindings = <
+&kp K_CANCEL  &quotedb      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_R {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                     &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 12      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+            >;
+        };
+
+        chain_D {
+            bindings = <
+&kp K_CANCEL  &quoted       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_RD {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL   &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL   &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &null1  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL   &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &null1        &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_G {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 11  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 14      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_GI {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &goIfError  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                     &kp K_CANCEL       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &goIfError    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_M {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &mdCode  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                     &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &mdCode       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_E {
             bindings = <
-&kp K_CANCEL  &envQuoted  &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL      &kp K_CANCEL  &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL      &kp K_CANCEL  &slxl 14  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                            &kp K_CANCEL    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &envQuoted    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
 
         chain_EC {
             bindings = <
 &kp K_CANCEL  &envCurlyQuoted  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL            &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL            &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                               &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL     &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+                                             &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
     };
