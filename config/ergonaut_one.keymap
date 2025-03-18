@@ -392,7 +392,7 @@
         splitParens: splitParens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LS(RETURN) &kp LS(RETURN) &kp UP &kp TAB>;
+            bindings = <&kp LS(RETURN) &kp UP &kp END &kp LS(RETURN)>;
             label = "SPLITPARENS";
         };
 
