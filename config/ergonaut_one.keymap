@@ -184,9 +184,9 @@
             mods = <(MOD_RSFT|MOD_LSFT)>;
         };
 
-        lmmNumMove: lmmNumMove {
+        lmmNumMoveUnder: lmmNumMoveUnder {
             compatible = "zmk,behavior-hold-tap";
-            label = "LMMNUMMOVE";
+            label = "LMMNUMMOVEUNDER";
             #binding-cells = <2>;
             tapping-term-ms = <300>;
             flavor = "balanced";
@@ -502,10 +502,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E           &kp R            &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F       &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
-&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V            &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &lslxl 2 7      &lmmNumMove 1 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 7
+&kp TAB               &kp Q  &kp W         &kp E           &kp R                 &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F            &kp G             &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
+&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V                 &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+                                           &lslxl 2 7      &lmmNumMoveUnder 1 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 7
             >;
         };
 
@@ -520,10 +520,10 @@
 
         QUICK {
             bindings = <
-&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_UP) 2    &tsls C_VOLUME_UP 2    &trans          &trans          &trans        &trans             &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
-&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_DOWN) 2  &tsls C_VOLUME_DOWN 2  &kp LEFT        &rmt LALT DOWN  &rmt LGUI UP  &rmt RSHIFT RIGHT  &trans           &trans
-&trans  &trans  &trans  &trans  &trans                     &trans                 &trans          &trans          &trans        &trans             &trans           &trans
-                        &trans  &trans                     &trans                 &rmt LCTRL F10  &kp F11         &kp F12
+&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_UP) 2    &tsls C_VOLUME_UP 2    &trans          &trans           &trans           &trans           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
+&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_DOWN) 2  &tsls C_VOLUME_DOWN 2  &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt RSHIFT END  &trans           &trans
+&trans  &trans  &trans  &trans  &trans                     &trans                 &trans          &trans           &trans           &trans           &trans           &trans
+                        &trans  &trans                     &trans                 &rmt LCTRL F10  &kp F11          &kp F12
             >;
         };
 
@@ -538,10 +538,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &kpsll END 4  &trans  &trans  &trans         &trans              &trans            &trans        &trans  &trans
-&trans  &trans  &trans  &trans        &trans  &trans  &kpsll HOME 4  &kpsll PAGE_DOWN 4  &kpsll PAGE_UP 4  &kpsll END 4  &trans  &trans
-&trans  &trans  &trans  &trans        &trans  &trans  &trans         &trans              &trans            &trans        &trans  &trans
-                        &trans        &trans  &trans  &trans         &trans              &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans        &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kprsls LEFT 4  &kprsls DOWN 4  &kprsls UP 4  &kprsls RIGHT 4  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans        &trans           &trans  &trans
+                        &trans  &trans  &trans  &trans          &trans          &trans
             >;
         };
 
