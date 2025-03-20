@@ -543,10 +543,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans        &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kprsls LEFT 4  &kprsls DOWN 4  &kprsls UP 4  &kprsls RIGHT 4  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans          &trans        &trans           &trans  &trans
-                        &trans  &trans  &trans  &trans          &trans          &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans               &trans        &trans           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kprsls LEFT 4  &kprsls DOWN 4       &kprsls UP 4  &kprsls RIGHT 4  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans               &trans        &trans           &trans  &trans
+                        &trans  &trans  &trans  &trans          &kprsls LG(RIGHT) 4  &trans
             >;
         };
 
