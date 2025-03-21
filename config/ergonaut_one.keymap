@@ -343,12 +343,7 @@
         goIfError: goIfError {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings =
-                <&kp I &kp F &kp SPACE &kp E &kp R &kp R &kp SPACE &kp EXCL &kp EQUAL &kp SPACE &kp N &kp I &kp L &kp SPACE &kp LEFT_BRACE &kp SPACE &kp R &kp E &kp T &kp U &kp R &kp N &kp SPACE &kp E &kp R &kp R &kp SEMI &kp SPACE &kp RBRC>,
-                <&macro_wait_time 100>,
-                <&macro_tap_time 10>,
-                <&kp LEFT_ARROW &kp LEFT &kp LEFT &kp LEFT &kp LEFT &kp LEFT>;
-
+            bindings = <&kp I &kp F &kp SPACE &kp E &kp R &kp R &kp SPACE &kp EXCL &kp EQUAL &kp SPACE &kp N &kp I &kp L &kp SPACE &kp LEFT_BRACE &kp SPACE &kp R &kp E &kp T &kp U &kp R &kp N &kp SPACE &kp E &kp R &kp R &kp SEMI &kp SPACE &kp RBRC>;
             label = "GOIFERROR";
         };
 
