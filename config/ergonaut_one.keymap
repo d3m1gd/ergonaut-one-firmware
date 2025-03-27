@@ -192,6 +192,19 @@
             flavor = "balanced";
             bindings = <&mo>, <&mmMoveUnder>;
         };
+
+        rmt1sls: rmt1sls {
+            compatible = "zmk,behavior-hold-tap";
+            label = "ModTap StickyLayer S";
+            bindings = <&kp>, <&t1sls>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <250>;
+            flavor = "tap-preferred";
+            hold-trigger-on-release;
+            quick-tap-ms = <200>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
+        };
     };
 
     macros {
@@ -240,7 +253,7 @@
             label = "HOMECONFIG";
         };
 
-        kprsl: kprsl {
+        t1sl: kprsl {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
             bindings =
@@ -255,7 +268,7 @@
             label = "KeyPress Repeat StickyLayer";
         };
 
-        kprsls: kprsls {
+        t1sls: kprsls {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
             bindings =
@@ -538,10 +551,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans           &trans        &trans           &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kprsls LEFT 4  &kprsls DOWN 4   &kprsls UP 4  &kprsls RIGHT 4  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans          &trans           &trans        &trans           &trans  &trans
-                        &trans  &trans  &trans  &trans          &kprsls RIGHT 4  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans              &trans       &trans          &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &t1sls LEFT 4  &rmt1sls LALT DOWN  &t1sls UP 4  &t1sls RIGHT 4  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans              &trans       &trans          &trans  &trans
+                        &trans  &trans  &trans  &trans         &trans              &trans
             >;
         };
 
