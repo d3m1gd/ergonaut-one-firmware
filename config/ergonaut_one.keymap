@@ -419,7 +419,7 @@
         trans0: trans1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &key_repeat>;
+            bindings = <&to 0 &trans>;
             label = "TRANS1";
         };
     };
@@ -558,10 +558,10 @@
 
         MOVE {
             bindings = <
-&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0    &trans0          &trans0        &trans0             &trans0  &trans0
+&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0   &trans0         &trans0       &trans0            &trans0  &trans0
 &trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans0  &trans0
-&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0    &trans0          &trans0        &trans0             &trans0  &trans0
-                        &trans0  &trans0  &to 0   &trans0    &trans0          &trans0
+&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0   &trans0         &trans0       &trans0            &trans0  &trans0
+                           &trans0  &trans0  &to 0    &trans0   &trans0         &trans0
             >;
         };
 
