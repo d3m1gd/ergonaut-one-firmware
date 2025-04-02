@@ -558,10 +558,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
-                        &trans  &trans  &to 0   &trans    &trans          &trans
+&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0    &trans0          &trans0        &trans0             &trans0  &trans0
+&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans0  &trans0
+&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0    &trans0          &trans0        &trans0             &trans0  &trans0
+                        &trans0  &trans0  &to 0   &trans0    &trans0          &trans0
             >;
         };
 
