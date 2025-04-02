@@ -419,7 +419,8 @@
         trans0: trans1 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&trans &to 0>;
+            bindings = <&trans>, <&macro_pause_for_release>, <&to 0>;
+
             label = "TRANS1";
         };
     };
