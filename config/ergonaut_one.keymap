@@ -178,7 +178,7 @@
         mmMoveUnder: mmMoveUnder {
             compatible = "zmk,behavior-mod-morph";
             label = "mm Move Under";
-            bindings = <&sll 4>, <&kp UNDERSCORE>;
+            bindings = <&to 4>, <&kp UNDERSCORE>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -415,6 +415,13 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
             label = "REDIR";
         };
+
+        trans0: trans1 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &key_repeat>;
+            label = "TRANS1";
+        };
     };
 
     combos {
@@ -551,10 +558,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans              &trans       &trans          &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &t1sls LEFT 4  &rmt1sls LALT DOWN  &t1sls UP 4  &t1sls RIGHT 4  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans              &trans       &trans          &trans  &trans
-                        &trans  &trans  &trans  &trans         &trans              &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
+                        &trans  &trans  &to 0   &trans    &trans          &trans
             >;
         };
 
