@@ -415,20 +415,6 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
             label = "REDIR";
         };
-
-        trans0: trans1 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&trans>,
-                <&macro_pause_for_release>,
-                <&macro_release>,
-                <&trans>;
-
-            label = "TRANS1";
-            wait-ms = <0>;
-        };
     };
 
     combos {
@@ -565,10 +551,10 @@
 
         MOVE {
             bindings = <
-&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans0   &trans0         &trans0       &trans0            &trans0  &trans0
-&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans0  &trans0
-&trans0  &trans0  &trans0  &trans0  &trans0  &trans0  &trans    &trans          &trans0       &trans0            &trans0  &trans0
-                           &trans0  &trans0  &to 0    &trans0   &trans0         &trans0
+&trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans         &trans       &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans       &trans            &trans  &trans
+                           &trans  &trans  &to 0    &trans   &trans         &trans
             >;
         };
 
