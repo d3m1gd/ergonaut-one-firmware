@@ -558,7 +558,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &t0r33        &t0r34             &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &to0r32         &to0r33       &to0r34            &trans  &trans
                         &trans  &trans  &to 0   &trans    &trans          &trans
             >;
         };
