@@ -19,7 +19,7 @@
      compatible = "zmk,behavior-macro"; \
      __pounded(binding-cells) = <0>;    \
      bindings = <&to 0 r##n>;           \
-     label = "t0r" #n;                  \
+     label = "t0r";                     \
      wait-ms = <0>;                     \
  }
 
