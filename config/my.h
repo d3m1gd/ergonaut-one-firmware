@@ -14,6 +14,9 @@
      wait-ms = <0>;                     \
  };
 
+#define r32 &kpkp RG(M) M
+#define r33 &kpkp RG(COMMA) COMMA
+
 #define MyMacros \
     gen_t0r(32) \
     gen_t0r(33)
