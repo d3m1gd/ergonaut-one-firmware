@@ -7,12 +7,13 @@
 #define LWR 1
 #define RSE 2
 #define ADJ 3
-
 #define __my_hash #
+
 #define __my_pass(x) x
 #define __pounded(a) __my_pass(__my_hash)a
 
 #define r32 &kpkp RG(M) M
+
 #define gen_t0r(n)                      \
  t0r##n: t0r##n {                       \
      compatible = "zmk,behavior-macro"; \
@@ -21,7 +22,6 @@
      label = "t0r" #n;                  \
      wait-ms = <0>;                     \
  }
-
 
 &lt {
     quick-tap-ms = <200>;
@@ -431,7 +431,14 @@
             label = "REDIR";
         };
 
-        gen_t0r(32);
+        wtf: wtf {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp RG(M) M>;
+            label = "WTF";
+        };
+
+        gen_t0r = (32);
     };
 
     combos {
@@ -568,10 +575,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans         &trans       &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &trans       &trans            &trans  &trans
-                           &trans  &trans  &to 0    &trans   &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &trans        &trans             &trans  &trans
+                        &trans  &trans  &to 0   &trans    &trans          &trans
             >;
         };
 
