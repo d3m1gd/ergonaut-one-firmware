@@ -8,6 +8,17 @@
 #define RSE 2
 #define ADJ 3
 
+#define r32 &kpkp RG(M) M
+#define gen_t0r(n)                      \
+ t0r##n: t0r##n {                       \
+     compatible = "zmk,behavior-macro"; \
+     #binding-cells = <0>;              \
+     bindings = <&to 0 r##n>;           \
+     label = "t0r" #n;                  \
+     wait-ms = <0>;                     \
+ }
+
+
 &lt {
     quick-tap-ms = <200>;
     flavor = "balanced";
@@ -415,6 +426,8 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
             label = "REDIR";
         };
+
+        gen_t0r(32);
     };
 
     combos {
@@ -553,7 +566,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans   &trans         &trans       &trans            &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans       &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &trans       &trans            &trans  &trans
                            &trans  &trans  &to 0    &trans   &trans         &trans
             >;
         };
