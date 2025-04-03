@@ -4,11 +4,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "my.h"
 
-#define DEF 0
-#define LWR 1
-#define RSE 2
-#define ADJ 3
-
 &lt {
     quick-tap-ms = <200>;
     flavor = "balanced";
@@ -424,7 +419,7 @@
             label = "WTF";
         };
 
-        MyMacros
+        #include "mymacros.h"
     };
 
     combos {
@@ -563,7 +558,7 @@
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &trans        &trans             &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &t0r33        &t0r34             &trans  &trans
                         &trans  &trans  &to 0   &trans    &trans          &trans
             >;
         };
