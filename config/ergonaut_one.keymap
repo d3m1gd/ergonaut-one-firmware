@@ -1,18 +1,22 @@
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
+// #include <behaviors.dtsi>
+// #include <dt-bindings/zmk/bt.h>
+// #include <dt-bindings/zmk/keys.h>
+// #include <dt-bindings/zmk/outputs.h>
 
 #define DEF 0
 #define LWR 1
 #define RSE 2
 #define ADJ 3
 
+#define __my_hash #
+#define __my_pass(x) x
+#define __pounded(a) __my_pass(__my_hash)a
+
 #define r32 &kpkp RG(M) M
 #define gen_t0r(n)                      \
  t0r##n: t0r##n {                       \
      compatible = "zmk,behavior-macro"; \
-     #binding-cells = <0>;              \
+     __pounded(binding-cells) = <0>;    \
      bindings = <&to 0 r##n>;           \
      label = "t0r" #n;                  \
      wait-ms = <0>;                     \
