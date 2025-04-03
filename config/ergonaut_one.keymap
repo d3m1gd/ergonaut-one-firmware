@@ -438,7 +438,7 @@
             label = "WTF";
         };
 
-        gen_t0r = (32);
+        gen_t0r(32);
     };
 
     combos {
