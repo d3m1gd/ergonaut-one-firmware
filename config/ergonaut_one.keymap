@@ -9,6 +9,8 @@
 #define RSE 2
 #define ADJ 3
 
+#define I
+
 &lt {
     quick-tap-ms = <200>;
     flavor = "balanced";
@@ -561,10 +563,10 @@
 
         MOVE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &t0r32          &trans        &trans             &trans  &trans
-                        &trans  &trans  &to 0   &trans    &trans          &trans
+&none I &none I &none I &none I &none I &none I &none    I &none          I &none          I &none             I &none I &none
+&none I &none I &none I &none I &none I &none I &kp LEFT I &rmt LALT DOWN I &rmt LGUI UP   I &rmt LSHIFT RIGHT I &none I &none
+&none I &none I &none I &none I &none I &none I &none    I &t0r32         I &t0r33         I &t0r34            I &none I &none
+      I       I       I &none I &none I &to 0 I &none    I &none          I &none          I                   I         I
             >;
         };
 

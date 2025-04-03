@@ -16,9 +16,11 @@
 
 #define r32 &kpkp RG(M) M
 #define r33 &kpkp RG(COMMA) COMMA
+#define r34 &kpkp RG(DOT) DOT
 
 #define MyMacros \
     gen_t0r(32) \
-    gen_t0r(33)
+    gen_t0r(33) \
+    gen_t0r(34)
 
 #endif // !My
