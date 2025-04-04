@@ -173,7 +173,7 @@
         mmMoveUnder: mmMoveUnder {
             compatible = "zmk,behavior-mod-morph";
             label = "mm Move Under";
-            bindings = <&to 4>, <&kp UNDERSCORE>;
+            bindings = <&to 1>, <&kp UNDERSCORE>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -538,8 +538,8 @@
 
         QUICK {
             bindings = <
-&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_UP) 2    &tsls C_VOLUME_UP 2    &trans          &trans           &trans           &trans           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
-&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_DOWN) 2  &tsls C_VOLUME_DOWN 2  &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt RSHIFT END  &trans           &trans
+&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_UP) 3    &tsls C_VOLUME_UP 3    &trans          &trans           &trans           &trans           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
+&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_DOWN) 3  &tsls C_VOLUME_DOWN 3  &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt RSHIFT END  &trans           &trans
 &trans  &trans  &trans  &trans  &trans                     &trans                 &trans          &trans           &trans           &trans           &trans           &trans
                         &trans  &trans                     &trans                 &rmt LCTRL F10  &kp F11          &kp F12
             >;
@@ -551,15 +551,6 @@
 &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
                         &trans  &key_repeat  &trans  &trans  &trans  &trans
-            >;
-        };
-
-        MOVE {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans          &trans        &trans             &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &to0r32         &to0r33       &to0r34            &trans  &trans
-                        &trans  &trans  &to 0   &trans    &trans          &trans
             >;
         };
 
