@@ -415,7 +415,7 @@
         to{{.Level}}{{.RC}}: to{{.Level}}{{.RC}} {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to {{.Level}} {{.Key.Behavior}}>;
+            bindings = <&to {{.Level}} {{.Behavior}}>;
             label = "To {{.Level}}, {{.RC.Pretty}}";
         };
         {{- end }}{{/* range .ToMacros */}}
@@ -705,5 +705,15 @@
                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
+
+        {{ range .Layers }}
+        {{ .Name }} {
+            bindings = <
+            {{- range .Rows }}
+                {{ . }}
+            {{- end }}
+            >;
+        }
+        {{ end }}
     };
 };
