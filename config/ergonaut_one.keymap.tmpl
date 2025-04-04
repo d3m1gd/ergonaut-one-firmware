@@ -410,14 +410,13 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
             label = "REDIR";
         };
-        {{- range .ToMacros }}
+        {{- range .ToBaseAnd }}
 
-        to{{.Level}}{{.Key.RowCol}}: to{{.Level}}{{.Key.RowCol}} {
+        to{{.Level}}{{.RC}}: to{{.Level}}{{.RC}} {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to {{.Level}} {{.Key.Behavior}}>;
-            label = "To {{.Level}}, {{.Key.RowCol.Pretty}}";
-            wait-ms = <0>;
+            label = "To {{.Level}}, {{.RC.Pretty}}";
         };
         {{- end }}{{/* range .ToMacros */}}
     };

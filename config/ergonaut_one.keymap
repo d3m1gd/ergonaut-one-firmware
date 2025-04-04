@@ -411,12 +411,228 @@
             label = "REDIR";
         };
 
+        to0l11: to0l11 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L11";
+        };
+
+        to0l12: to0l12 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L12";
+        };
+
+        to0l13: to0l13 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L13";
+        };
+
+        to0l14: to0l14 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L14";
+        };
+
+        to0l15: to0l15 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L15";
+        };
+
+        to0l16: to0l16 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L16";
+        };
+
+        to0r11: to0r11 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R11";
+        };
+
+        to0r12: to0r12 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R12";
+        };
+
+        to0r13: to0r13 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R13";
+        };
+
+        to0r14: to0r14 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R14";
+        };
+
+        to0r15: to0r15 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R15";
+        };
+
+        to0r16: to0r16 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R16";
+        };
+
+        to0l21: to0l21 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L21";
+        };
+
+        to0l22: to0l22 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L22";
+        };
+
+        to0l23: to0l23 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L23";
+        };
+
+        to0l24: to0l24 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L24";
+        };
+
+        to0l25: to0l25 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L25";
+        };
+
+        to0l26: to0l26 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L26";
+        };
+
+        to0r21: to0r21 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R21";
+        };
+
+        to0r22: to0r22 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R22";
+        };
+
+        to0r23: to0r23 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R23";
+        };
+
+        to0r24: to0r24 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R24";
+        };
+
+        to0r25: to0r25 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R25";
+        };
+
+        to0r26: to0r26 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R26";
+        };
+
+        to0l31: to0l31 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L31";
+        };
+
+        to0l32: to0l32 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L32";
+        };
+
+        to0l33: to0l33 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L33";
+        };
+
+        to0l34: to0l34 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L34";
+        };
+
+        to0l35: to0l35 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L35";
+        };
+
+        to0l36: to0l36 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L36";
+        };
+
+        to0r31: to0r31 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R31";
+        };
+
         to0r32: to0r32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 0 &kpkp RG(M) M>;
             label = "To 0, R32";
-            wait-ms = <0>;
         };
 
         to0r33: to0r33 {
@@ -424,7 +640,6 @@
             #binding-cells = <0>;
             bindings = <&to 0 &kpkp RG(COMMA) COMMA>;
             label = "To 0, R33";
-            wait-ms = <0>;
         };
 
         to0r34: to0r34 {
@@ -432,7 +647,62 @@
             #binding-cells = <0>;
             bindings = <&to 0 &kpkp RG(DOT) DOT>;
             label = "To 0, R34";
-            wait-ms = <0>;
+        };
+
+        to0r35: to0r35 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R35";
+        };
+
+        to0r36: to0r36 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R36";
+        };
+
+        to0l41: to0l41 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L41";
+        };
+
+        to0l42: to0l42 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L42";
+        };
+
+        to0l43: to0l43 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, L43";
+        };
+
+        to0r41: to0r41 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R41";
+        };
+
+        to0r42: to0r42 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R42";
+        };
+
+        to0r43: to0r43 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp b a>;
+            label = "To 0, R43";
         };
     };
 
