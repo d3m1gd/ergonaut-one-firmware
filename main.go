@@ -108,13 +108,67 @@ type Params struct {
 	Layers    []RenderedLayer
 }
 
+type Kp struct {
+	Tap string
+}
+
+func (x Kp) Behavior() string {
+	return fmt.Sprintf("&kp %s", x.Tap)
+}
+
 type KpKp struct {
-	Tap  string
 	Hold string
+	Tap  string
 }
 
 func (x KpKp) Behavior() string {
 	return fmt.Sprintf("&kpkp %s %s", x.Hold, x.Tap)
+}
+
+type Rmt struct {
+	Hold string
+	Tap  string
+}
+
+func (x Rmt) Behavior() string {
+	return fmt.Sprintf("&rmt %s %s", x.Hold, x.Tap)
+}
+
+type Custom struct {
+	Name string
+	Hold string
+	Tap  string
+}
+
+func (x Custom) Behavior() string {
+	return fmt.Sprintf("&%s %s %s", x.Name, x.Hold, x.Tap)
+}
+
+type Custom1 struct {
+	Name string
+	Hold string
+}
+
+func (x Custom1) Behavior() string {
+	return fmt.Sprintf("&%s %s", x.Name, x.Hold)
+}
+
+type Lt struct {
+	Hold string
+	Tap  string
+}
+
+func (x Lt) Behavior() string {
+	return fmt.Sprintf("&lt %s %s", x.Hold, x.Tap)
+}
+
+type Mt struct {
+	Hold string
+	Tap  string
+}
+
+func (x Mt) Behavior() string {
+	return fmt.Sprintf("&mt %s %s", x.Hold, x.Tap)
 }
 
 type Trans struct{}
@@ -196,48 +250,56 @@ var layers = make([]Layer, MAXLAYERINDEX)
 
 func init() {
 	layers[BASE] = InitTrans()
-	// layers["BASEXX"][l(1, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(1, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(1, 3)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(1, 4)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(1, 5)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(1, 6)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(1, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(1, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(1, 3)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(1, 4)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(1, 5)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(1, 6)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(2, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(2, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(2, 3)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(2, 4)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(2, 5)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(2, 6)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(2, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(2, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(2, 3)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(2, 4)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(2, 5)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(2, 6)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(3, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(3, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(3, 3)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(3, 4)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(3, 5)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(3, 6)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(3, 1)] = Key{"a", "b", KpKp}
-	layers[BASE][r(3, 2)] = KpKp{"M", "RG(M)"}
-	layers[BASE][r(3, 3)] = KpKp{"COMMA", "RG(COMMA)"}
-	layers[BASE][r(3, 4)] = KpKp{"DOT", "RG(DOT)"}
-	// layers["BASEXX"][r(3, 5)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(3, 6)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(4, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(4, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][l(4, 3)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(4, 1)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(4, 2)] = Key{"a", "b", KpKp}
-	// layers["BASEXX"][r(4, 3)] = Key{"a", "b", KpKp}
+	// &kp TAB               &kp Q  &kp W         &kp E           &kp R                 &kpkp RG(T) T
+	layers[BASE][l(1, 1)] = Kp{"TAB"}
+	layers[BASE][l(1, 2)] = Kp{"Q"}
+	layers[BASE][l(1, 3)] = Kp{"W"}
+	layers[BASE][l(1, 4)] = Kp{"E"}
+	layers[BASE][l(1, 5)] = Kp{"R"}
+	layers[BASE][l(1, 6)] = KpKp{"RG(T)", "T"}
+	// &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
+	layers[BASE][r(1, 1)] = Kp{"Y"}
+	layers[BASE][r(1, 2)] = Kp{"U"}
+	layers[BASE][r(1, 3)] = Kp{"I"}
+	layers[BASE][r(1, 4)] = Kp{"O"}
+	layers[BASE][r(1, 5)] = Kp{"P"}
+	layers[BASE][r(1, 6)] = Kp{"LBKT"}
+	// &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LEFT_GUI D  &mt LALT F            &kp G
+	layers[BASE][l(2, 1)] = Mt{"LSHIFT", "BACKSPACE"}
+	layers[BASE][l(2, 2)] = Kp{"A"}
+	layers[BASE][l(2, 3)] = Mt{"LSHIFT", "S"}
+	layers[BASE][l(2, 4)] = Mt{"LGUI", "D"}
+	layers[BASE][l(2, 5)] = Mt{"LALT", "F"}
+	layers[BASE][l(2, 6)] = Kp{"G"}
+	// &kp H             &rmt LALT J    &rmt LEFT_WIN K        &rmt RSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
+	layers[BASE][r(2, 1)] = Kp{"H"}
+	layers[BASE][r(2, 2)] = Rmt{"LALT", "J"}
+	layers[BASE][r(2, 3)] = Rmt{"LEFT_WIN", "K"}
+	layers[BASE][r(2, 4)] = Rmt{"LSHIFT", "L"}
+	layers[BASE][r(2, 5)] = KpKp{"RG(SEMI)", "SEMI"}
+	layers[BASE][r(2, 6)] = KpKp{"RG(SINGLE_QUOTE)", "SINGLE_QUOTE"}
+	// &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C   &kp V                 &kp B
+	layers[BASE][l(3, 1)] = Mt{"LCTRL", "MINUS"}
+	layers[BASE][l(3, 2)] = Kp{"Z"}
+	layers[BASE][l(3, 3)] = Kp{"X"}
+	layers[BASE][l(3, 4)] = Custom{"kpConfig", "0", "C"}
+	layers[BASE][l(3, 5)] = Kp{"V"}
+	layers[BASE][l(3, 6)] = Kp{"B"}
+	// &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+	layers[BASE][r(3, 1)] = Kp{"N"}
+	layers[BASE][r(3, 2)] = KpKp{"RG(M)", "M"}
+	layers[BASE][r(3, 3)] = KpKp{"RG(COMMA)", "COMMA"}
+	layers[BASE][r(3, 4)] = KpKp{"RG(DOT)", "DOT"}
+	layers[BASE][r(3, 5)] = Kp{"SLASH"}
+	layers[BASE][r(3, 6)] = Kp{"BACKSLASH"}
+	//                                            &lslxl 2 7      &lmmNumMoveUnder 1 0  &mt LCTRL ESCAPE
+	layers[BASE][l(4, 1)] = Custom{"lslxl", "2", "7"}
+	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", "1", "0"}
+	layers[BASE][l(4, 3)] = Mt{"LCTRL", "ESCAPE"}
+	// &mt LCTRL RETURN  &lt 1 SPACE    &slxl 7
+	layers[BASE][r(4, 1)] = Mt{"LCTRL", "RETURN"}
+	layers[BASE][r(4, 2)] = Lt{"1", "SPACE"}
+	layers[BASE][r(4, 3)] = Custom1{"slxl", "7"}
 }
 
 func renderKeymap(path string, params Params) {
