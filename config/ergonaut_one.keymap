@@ -411,10 +411,18 @@
             label = "REDIR";
         };
 
-        to0r33: to0r33 {
+        to0r32: to0r32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&to 0 &kpkp RG(M) M>;
+            label = "To 0, R32";
+            wait-ms = <0>;
+        };
+
+        to0r33: to0r33 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0 &kpkp RG(COMMA) COMMA>;
             label = "To 0, R33";
             wait-ms = <0>;
         };
@@ -422,16 +430,8 @@
         to0r34: to0r34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(COMMA) COMMA>;
-            label = "To 0, R34";
-            wait-ms = <0>;
-        };
-
-        to0r35: to0r35 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
             bindings = <&to 0 &kpkp RG(DOT) DOT>;
-            label = "To 0, R35";
+            label = "To 0, R34";
             wait-ms = <0>;
         };
     };
