@@ -410,30 +410,16 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
             label = "REDIR";
         };
+        {{- range .ToMacros }}
 
-        to0r33: to0r33 {
+        to{{.Level}}{{.Key.RowCol}}: to{{.Level}}{{.Key.RowCol}} {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(M) M>;
-            label = "To 0, R33";
+            bindings = <&to {{.Level}} {{.Key.Behavior}}>;
+            label = "To {{.Level}}, {{.Key.RowCol.Pretty}}";
             wait-ms = <0>;
         };
-
-        to0r34: to0r34 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(COMMA) COMMA>;
-            label = "To 0, R34";
-            wait-ms = <0>;
-        };
-
-        to0r35: to0r35 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(DOT) DOT>;
-            label = "To 0, R35";
-            wait-ms = <0>;
-        };
+        {{- end }}{{/* range .ToMacros */}}
     };
 
     combos {
