@@ -3,6 +3,12 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 
+#define BASE 0
+#define MOVE 1
+#define NUM 2
+#define QUICK 3
+#define REPEAT 4
+
 &lt {
     quick-tap-ms = <200>;
     flavor = "balanced";
@@ -173,7 +179,7 @@
         mmMoveUnder: mmMoveUnder {
             compatible = "zmk,behavior-mod-morph";
             label = "mm Move Under";
-            bindings = <&to 1>, <&kp UNDERSCORE>;
+            bindings = <&to MOVE>, <&kp UNDERSCORE>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;

@@ -27,6 +27,8 @@ const (
 	BASE LayerIndex = iota
 	MOVE
 	NUM
+	QUICK
+	REPEAT
 	MAXLAYERINDEX
 )
 
@@ -76,8 +78,9 @@ var LayerNames = []LayerName{
 }
 
 type RenderedLayer struct {
-	Name string
-	Rows []string
+	Index int
+	Name  string
+	Rows  []string
 }
 
 const Miss = "MISSING"
@@ -107,6 +110,7 @@ type ToMacro struct {
 type Params struct {
 	ToBaseAnd []ToMacro
 	Layers    []RenderedLayer
+	Indices   []RenderedLayer // tmp hack
 }
 
 type Kp struct {
@@ -344,7 +348,7 @@ func LayerToBaseAndSeq(seq LayerSeq) iter.Seq[ToMacro] {
 func RenderLayerSeq(seq iter.Seq2[int, Layer]) iter.Seq[RenderedLayer] {
 	return func(yield func(RenderedLayer) bool) {
 		for n, layer := range seq {
-			rl := RenderedLayer{LayerIndex(n).String(), layer.Render()}
+			rl := RenderedLayer{n, LayerIndex(n).String(), layer.Render()}
 			if !yield(rl) {
 				return
 			}
@@ -375,6 +379,16 @@ func main() {
 	params := Params{
 		Layers:    slices.Collect(RenderLayerSeq(slices.All([]Layer{layers[BASE], layers[MOVE]}))),
 		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
+		Indices: func() []RenderedLayer {
+			a := []RenderedLayer{}
+			for i := range MAXLAYERINDEX {
+				a = append(a, RenderedLayer{
+					Index: int(i),
+					Name:  i.String(),
+				})
+			}
+			return a
+		}(),
 	}
 
 	renderKeymap("config/ergonaut_one.keymap", params)
