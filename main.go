@@ -27,8 +27,11 @@ const (
 	BASE LayerIndex = iota
 	MOVE
 	NUM
-	QUICK
-	REPEAT
+	QUICK  // 3
+	REPEAT // 4
+	SYS    // 5
+	PARENS // 6
+	CHAINS // 7
 	MAXLAYERINDEX
 )
 
@@ -139,23 +142,34 @@ func (x Rmt) Behavior() string {
 	return fmt.Sprintf("&rmt %s %s", x.Hold, x.Tap)
 }
 
+func behaviorArgToString(a any) string {
+	switch v := a.(type) {
+	case LayerIndex:
+		return fmt.Sprintf("%d", v)
+	}
+	return fmt.Sprintf("%s", a)
+}
+
 type Custom struct {
 	Name string
-	Hold string
-	Tap  string
+	A    any
+	B    any
 }
 
 func (x Custom) Behavior() string {
-	return fmt.Sprintf("&%s %s %s", x.Name, x.Hold, x.Tap)
+	a := behaviorArgToString(x.A)
+	b := behaviorArgToString(x.B)
+	return fmt.Sprintf("&%s %s %s", x.Name, a, b)
 }
 
 type Custom1 struct {
 	Name string
-	Hold string
+	A    any
 }
 
 func (x Custom1) Behavior() string {
-	return fmt.Sprintf("&%s %s", x.Name, x.Hold)
+	a := behaviorArgToString(x.A)
+	return fmt.Sprintf("&%s %s", x.Name, a)
 }
 
 type Custom0 struct {
@@ -312,12 +326,12 @@ func init() {
 	layers[BASE][r(3, 5)] = Kp{"SLASH"}
 	layers[BASE][r(3, 6)] = Kp{"BACKSLASH"}
 
-	layers[BASE][l(4, 1)] = Custom{"lslxl", "3", "7"}           // todo layer
-	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", "2", "0"} // todo layer
+	layers[BASE][l(4, 1)] = Custom{"lslxl", QUICK, CHAINS}
+	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", NUM, "0"}
 	layers[BASE][l(4, 3)] = Mt{"LCTRL", "ESCAPE"}
 	layers[BASE][r(4, 1)] = Mt{"LCTRL", "RETURN"}
-	layers[BASE][r(4, 2)] = Lt{NUM, "SPACE"}     // todo layer
-	layers[BASE][r(4, 3)] = Custom1{"slxl", "7"} // todo layer
+	layers[BASE][r(4, 2)] = Lt{NUM, "SPACE"}
+	layers[BASE][r(4, 3)] = Custom1{"slxl", CHAINS}
 
 	layers[MOVE] = InitToLevelTrans(0)
 

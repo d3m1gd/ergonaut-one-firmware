@@ -8,6 +8,9 @@
 #define NUM 2
 #define QUICK 3
 #define REPEAT 4
+#define SYS 5
+#define PARENS 6
+#define CHAINS 7
 
 &lt {
     quick-tap-ms = <200>;

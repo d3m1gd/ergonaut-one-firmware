@@ -13,12 +13,15 @@ func _() {
 	_ = x[NUM-2]
 	_ = x[QUICK-3]
 	_ = x[REPEAT-4]
-	_ = x[MAXLAYERINDEX-5]
+	_ = x[SYS-5]
+	_ = x[PARENS-6]
+	_ = x[CHAINS-7]
+	_ = x[MAXLAYERINDEX-8]
 }
 
-const _LayerIndex_name = "BASEMOVENUMQUICKREPEATMAXLAYERINDEX"
+const _LayerIndex_name = "BASEMOVENUMQUICKREPEATSYSPARENSCHAINSMAXLAYERINDEX"
 
-var _LayerIndex_index = [...]uint8{0, 4, 8, 11, 16, 22, 35}
+var _LayerIndex_index = [...]uint8{0, 4, 8, 11, 16, 22, 25, 31, 37, 50}
 
 func (i LayerIndex) String() string {
 	if i < 0 || i >= LayerIndex(len(_LayerIndex_index)-1) {
