@@ -991,7 +991,7 @@
             >;
         };
 
-        BASEXX {
+        BASE {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans                 &trans             &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans                 &trans             &trans  &trans

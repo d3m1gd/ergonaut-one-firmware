@@ -1,3 +1,5 @@
+//go:generate stringer -type=LayerIndex
+
 package main
 
 import (
@@ -20,6 +22,12 @@ type Behavior interface {
 type Layer map[RC]Behavior
 type LayerSeq = iter.Seq2[RC, Behavior]
 type LayerName string
+type LayerIndex int
+
+const (
+	BASE LayerIndex = iota
+	MAXLAYERINDEX
+)
 
 func (l Layer) Render() []string {
 	widths := slices.Repeat([]int{0}, 12)
@@ -63,11 +71,11 @@ func (ln LayerName) Less(other LayerName) int {
 }
 
 var LayerNames = []LayerName{
-	"BASEXX",
+	"BASE",
 }
 
 type RenderedLayer struct {
-	Name LayerName
+	Name string
 	Rows []string
 }
 
@@ -184,10 +192,10 @@ func InitTrans() Layer {
 	return layer
 }
 
-var layers = map[LayerName]Layer{}
+var layers = make([]Layer, MAXLAYERINDEX)
 
 func init() {
-	layers["BASEXX"] = InitTrans()
+	layers[BASE] = InitTrans()
 	// layers["BASEXX"][l(1, 1)] = Key{"a", "b", KpKp}
 	// layers["BASEXX"][l(1, 2)] = Key{"a", "b", KpKp}
 	// layers["BASEXX"][l(1, 3)] = Key{"a", "b", KpKp}
@@ -219,9 +227,9 @@ func init() {
 	// layers["BASEXX"][l(3, 5)] = Key{"a", "b", KpKp}
 	// layers["BASEXX"][l(3, 6)] = Key{"a", "b", KpKp}
 	// layers["BASEXX"][r(3, 1)] = Key{"a", "b", KpKp}
-	layers["BASEXX"][r(3, 2)] = KpKp{"M", "RG(M)"}
-	layers["BASEXX"][r(3, 3)] = KpKp{"COMMA", "RG(COMMA)"}
-	layers["BASEXX"][r(3, 4)] = KpKp{"DOT", "RG(DOT)"}
+	layers[BASE][r(3, 2)] = KpKp{"M", "RG(M)"}
+	layers[BASE][r(3, 3)] = KpKp{"COMMA", "RG(COMMA)"}
+	layers[BASE][r(3, 4)] = KpKp{"DOT", "RG(DOT)"}
 	// layers["BASEXX"][r(3, 5)] = Key{"a", "b", KpKp}
 	// layers["BASEXX"][r(3, 6)] = Key{"a", "b", KpKp}
 	// layers["BASEXX"][l(4, 1)] = Key{"a", "b", KpKp}
@@ -250,10 +258,10 @@ func LayerToBaseAndSeq(seq LayerSeq) iter.Seq[ToMacro] {
 	}
 }
 
-func RenderLayerSeq(seq iter.Seq2[LayerName, Layer]) iter.Seq[RenderedLayer] {
+func RenderLayerSeq(seq iter.Seq2[int, Layer]) iter.Seq[RenderedLayer] {
 	return func(yield func(RenderedLayer) bool) {
-		for name, layer := range seq {
-			rl := RenderedLayer{name, layer.Render()}
+		for n, layer := range seq {
+			rl := RenderedLayer{LayerIndex(n).String(), layer.Render()}
 			if !yield(rl) {
 				return
 			}
@@ -282,8 +290,8 @@ func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 
 func main() {
 	params := Params{
-		Layers:    slices.Collect(RenderLayerSeq(SortedMap(layers))),
-		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers["BASEXX"]))),
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers))),
+		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
 	}
 
 	renderKeymap("config/ergonaut_one.keymap", params)
