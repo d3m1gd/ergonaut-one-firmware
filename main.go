@@ -52,7 +52,7 @@ func (l Layer) Render() []string {
 	}
 
 	return slices.Collect(it.Map(slices.Values(cells), func(ss []string) string {
-		s := strings.Join(ss, " ")
+		s := strings.Join(ss, "  ")
 		s = strings.TrimRight(s, " ")
 		return s
 	}))

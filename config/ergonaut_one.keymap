@@ -991,15 +991,13 @@
             >;
         };
 
-        
         BASEXX {
             bindings = <
-                &trans &trans &trans &trans &trans &trans &trans &trans        &trans                &trans            &trans &trans
-                &trans &trans &trans &trans &trans &trans &trans &trans        &trans                &trans            &trans &trans
-                &trans &trans &trans &trans &trans &trans &trans &kpkp RG(M) M &kpkp RG(COMMA) COMMA &kpkp RG(DOT) DOT &trans &trans
-                                     &trans &trans &trans &trans &trans        &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans                 &trans             &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans                 &trans             &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &trans  &trans
+                        &trans  &trans  &trans  &trans  &trans         &trans
             >;
-        }
-        
+        };
     };
 };
