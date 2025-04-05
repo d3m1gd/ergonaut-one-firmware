@@ -145,7 +145,7 @@ func (x Rmt) Behavior() string {
 func behaviorArgToString(a any) string {
 	switch v := a.(type) {
 	case LayerIndex:
-		return fmt.Sprintf("%d", v)
+		return fmt.Sprintf("%s", v)
 	}
 	return fmt.Sprintf("%s", a)
 }
@@ -186,7 +186,15 @@ type Lt struct {
 }
 
 func (x Lt) Behavior() string {
-	return fmt.Sprintf("&lt %d %s", x.Layer, x.Tap)
+	return fmt.Sprintf("&lt %s %s", x.Layer, x.Tap)
+}
+
+type To struct {
+	Layer LayerIndex
+}
+
+func (x To) Behavior() string {
+	return fmt.Sprintf("&to %s", x.Layer)
 }
 
 type Mt struct {
@@ -277,6 +285,7 @@ func InitToLevelTrans(level int) Layer {
 	layer := Layer{}
 	for i := range 42 {
 		rc := RCFrom(i + 1)
+		// replace with proper trans when zmk ready
 		layer[rc] = Custom0{fmt.Sprintf("to%d%s", level, rc)}
 	}
 
@@ -287,58 +296,84 @@ var layers = make([]Layer, MAXLAYERINDEX)
 
 func init() {
 	layers[BASE] = InitTrans()
-	layers[BASE][l(1, 1)] = Kp{"TAB"}
+	layers[BASE][l(1, 1)] = Kp{"TAB"} // row 1
 	layers[BASE][l(1, 2)] = Kp{"Q"}
 	layers[BASE][l(1, 3)] = Kp{"W"}
 	layers[BASE][l(1, 4)] = Kp{"E"}
 	layers[BASE][l(1, 5)] = Kp{"R"}
 	layers[BASE][l(1, 6)] = KpKp{"RG(T)", "T"}
-	layers[BASE][r(1, 1)] = Kp{"Y"}
-	layers[BASE][r(1, 2)] = Kp{"U"}
-	layers[BASE][r(1, 3)] = Kp{"I"}
-	layers[BASE][r(1, 4)] = Kp{"O"}
-	layers[BASE][r(1, 5)] = Kp{"P"}
-	layers[BASE][r(1, 6)] = Kp{"LBKT"}
-
-	layers[BASE][l(2, 1)] = Mt{"LSHIFT", "BACKSPACE"}
+	layers[BASE][l(2, 1)] = Mt{"LSHIFT", "BACKSPACE"} // row 2
 	layers[BASE][l(2, 2)] = Kp{"A"}
 	layers[BASE][l(2, 3)] = Mt{"LSHIFT", "S"}
 	layers[BASE][l(2, 4)] = Mt{"LGUI", "D"}
 	layers[BASE][l(2, 5)] = Mt{"LALT", "F"}
 	layers[BASE][l(2, 6)] = Kp{"G"}
-	layers[BASE][r(2, 1)] = Kp{"H"}
-	layers[BASE][r(2, 2)] = Rmt{"LALT", "J"}
-	layers[BASE][r(2, 3)] = Rmt{"LEFT_WIN", "K"} // todo
-	layers[BASE][r(2, 4)] = Rmt{"LSHIFT", "L"}
-	layers[BASE][r(2, 5)] = KpKp{"RG(SEMI)", "SEMI"}
-	layers[BASE][r(2, 6)] = KpKp{"RG(SINGLE_QUOTE)", "SINGLE_QUOTE"}
-
-	layers[BASE][l(3, 1)] = Mt{"LCTRL", "MINUS"}
+	layers[BASE][l(3, 1)] = Mt{"LCTRL", "MINUS"} // row 3
 	layers[BASE][l(3, 2)] = Kp{"Z"}
 	layers[BASE][l(3, 3)] = Kp{"X"}
 	layers[BASE][l(3, 4)] = Custom{"kpConfig", "0", "C"}
 	layers[BASE][l(3, 5)] = Kp{"V"}
 	layers[BASE][l(3, 6)] = Kp{"B"}
-	layers[BASE][r(3, 1)] = Kp{"N"}
+	layers[BASE][l(4, 1)] = Custom{"lslxl", QUICK, CHAINS} // row 4
+	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", NUM, "0"}
+	layers[BASE][l(4, 3)] = Mt{"LCTRL", "ESCAPE"}
+
+	layers[BASE][r(1, 1)] = Kp{"Y"} // row 1
+	layers[BASE][r(1, 2)] = Kp{"U"}
+	layers[BASE][r(1, 3)] = Kp{"I"}
+	layers[BASE][r(1, 4)] = Kp{"O"}
+	layers[BASE][r(1, 5)] = Kp{"P"}
+	layers[BASE][r(1, 6)] = Kp{"LBKT"}
+	layers[BASE][r(2, 1)] = Kp{"H"} // row 2
+	layers[BASE][r(2, 2)] = Rmt{"LALT", "J"}
+	layers[BASE][r(2, 3)] = Rmt{"LGUI", "K"}
+	layers[BASE][r(2, 4)] = Rmt{"LSHIFT", "L"}
+	layers[BASE][r(2, 5)] = KpKp{"RG(SEMI)", "SEMI"}
+	layers[BASE][r(2, 6)] = KpKp{"RG(SINGLE_QUOTE)", "SINGLE_QUOTE"}
+	layers[BASE][r(3, 1)] = Kp{"N"} // row 3
 	layers[BASE][r(3, 2)] = KpKp{"RG(M)", "M"}
 	layers[BASE][r(3, 3)] = KpKp{"RG(COMMA)", "COMMA"}
 	layers[BASE][r(3, 4)] = KpKp{"RG(DOT)", "DOT"}
 	layers[BASE][r(3, 5)] = Kp{"SLASH"}
 	layers[BASE][r(3, 6)] = Kp{"BACKSLASH"}
-
-	layers[BASE][l(4, 1)] = Custom{"lslxl", QUICK, CHAINS}
-	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", NUM, "0"}
-	layers[BASE][l(4, 3)] = Mt{"LCTRL", "ESCAPE"}
-	layers[BASE][r(4, 1)] = Mt{"LCTRL", "RETURN"}
+	layers[BASE][r(4, 1)] = Mt{"LCTRL", "RETURN"} // row 4
 	layers[BASE][r(4, 2)] = Lt{NUM, "SPACE"}
 	layers[BASE][r(4, 3)] = Custom1{"slxl", CHAINS}
 
 	layers[MOVE] = InitToLevelTrans(0)
-
-	layers[MOVE][r(2, 1)] = Kp{"LEFT"}
+	layers[MOVE][l(4, 3)] = To{BASE}   // row 4
+	layers[MOVE][r(2, 1)] = Kp{"LEFT"} // row 2
 	layers[MOVE][r(2, 2)] = Rmt{"LALT", "DOWN"}
 	layers[MOVE][r(2, 3)] = Rmt{"LGUI", "UP"}
 	layers[MOVE][r(2, 4)] = Rmt{"LSHIFT", "RIGHT"}
+
+	layers[NUM] = InitTrans()
+	layers[NUM][l(1, 1)] = Kp{"LS(TAB)"}
+	layers[NUM][l(1, 6)] = Kp{"TILDE"}
+	layers[NUM][l(2, 1)] = Kp{"DELETE"} // row 2
+	layers[NUM][l(2, 3)] = Custom{"mtBracket", "LSHIFT", "0"}
+	layers[NUM][l(2, 4)] = Custom{"mtParen", "LGUI", "0"}
+	layers[NUM][l(2, 5)] = Custom{"mtCurly", "LALT", "0"}
+	layers[NUM][l(3, 5)] = Kp{"LS(INSERT)"}
+	layers[NUM][l(4, 2)] = Kp{"UNDERSCORE"}
+
+	layers[NUM][r(1, 1)] = Kp{"N0"} // row 1
+	layers[NUM][r(1, 2)] = Kp{"N1"}
+	layers[NUM][r(1, 3)] = Kp{"N2"}
+	layers[NUM][r(1, 4)] = Kp{"N3"}
+	layers[NUM][r(1, 6)] = Kp{"RBKT"}
+	layers[NUM][r(2, 1)] = Custom0{"mmEquals"} // row 2
+	layers[NUM][r(2, 2)] = Mt{"LALT", "N4"}
+	layers[NUM][r(2, 3)] = Mt{"LGUI", "N5"}
+	layers[NUM][r(2, 4)] = Mt{"LSHIFT", "N6"}
+	layers[NUM][r(2, 5)] = Kp{"COLON"}
+	layers[NUM][r(2, 6)] = Custom0{"mmQuoteGrave"}
+	layers[NUM][r(3, 1)] = Kp{"PLUS"} // row 3
+	layers[NUM][r(3, 2)] = Kp{"N7"}
+	layers[NUM][r(3, 3)] = KpKp{"RG(COMMA)", "N8"}
+	layers[NUM][r(3, 4)] = KpKp{"RG(DOT)", "N9"}
+	layers[NUM][r(3, 5)] = Kp{"LS(SLASH)"}
+	layers[NUM][r(3, 6)] = Kp{"PIPE"}
 }
 
 func renderKeymap(path string, params Params) {
@@ -391,7 +426,7 @@ func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 
 func main() {
 	params := Params{
-		Layers:    slices.Collect(RenderLayerSeq(slices.All([]Layer{layers[BASE], layers[MOVE]}))),
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:NUM+1]))),
 		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
 		Indices: func() []RenderedLayer {
 			a := []RenderedLayer{}
