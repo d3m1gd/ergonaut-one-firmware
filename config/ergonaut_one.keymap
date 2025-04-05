@@ -825,7 +825,7 @@
 &to0l11  &to0l12  &to0l13  &to0l14  &to0l15  &to0l16  &to0r11   &to0r12         &to0r13       &to0r14            &to0r15  &to0r16
 &to0l21  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &to0r25  &to0r26
 &to0l31  &to0l32  &to0l33  &to0l34  &to0l35  &to0l36  &to0r31   &to0r32         &to0r33       &to0r34            &to0r35  &to0r36
-                           &to0l41  &to0l42  &to0l43  &to0r41   &to0r42         &to0r43
+                           &to0l41  &to0l42  &to 0    &to0r41   &to0r42         &to0r43
             >;
         };
 
