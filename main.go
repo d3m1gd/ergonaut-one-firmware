@@ -2,6 +2,7 @@ package main
 
 import (
 	"cmp"
+	"errors"
 	"fmt"
 	"iter"
 	"maps"
@@ -14,7 +15,13 @@ import (
 )
 
 type Behavior interface {
+	Args() []string
+	Name() string
 	Behavior() string
+}
+
+func CompileBehavior(b Behavior) string {
+	return b.Behavior()
 }
 
 type Layer map[RC]Behavior
@@ -75,10 +82,6 @@ func (ln LayerName) Less(other LayerName) int {
 	return cmp.Compare(ln, other)
 }
 
-var LayerNames = []LayerName{
-	"BASE",
-}
-
 type RenderedLayer struct {
 	Index int
 	Name  string
@@ -108,111 +111,42 @@ type ToMacro struct {
 }
 
 type Params struct {
+	Macros    []Macro
 	ToBaseAnd []ToMacro
 	Layers    []RenderedLayer
 	Indices   []RenderedLayer // tmp hack
 }
 
-type Kp struct {
-	Tap KeyCode
+type Custom struct {
+	Label  string
+	Fields []any
 }
 
-func (x Kp) Behavior() string {
-	return fmt.Sprintf("&kp %s", x.Tap)
-}
-
-type KpKp struct {
-	Hold KeyCode
-	Tap  KeyCode
-}
-
-func (x KpKp) Behavior() string {
-	return fmt.Sprintf("&kpkp %s %s", x.Hold, x.Tap)
-}
-
-type Rmt struct {
-	Hold KeyCode
-	Tap  KeyCode
-}
-
-func (x Rmt) Behavior() string {
-	return fmt.Sprintf("&rmt %s %s", x.Hold, x.Tap)
-}
-
-func behaviorArgToString(a any) string {
-	switch v := a.(type) {
-	case LayerIndex:
-		return fmt.Sprintf("%s", v)
+func (x Custom) Behavior() string {
+	if len(x.Fields) == 0 {
+		return fmt.Sprintf("&%s", x.Name())
 	}
-	return fmt.Sprintf("%s", a)
+	return fmt.Sprintf("&%s %s", x.Name(), strings.Join(x.Args(), " "))
 }
 
-type Custom2 struct {
-	Name string
-	A    any
-	B    any
+func (x Custom) Name() string {
+	return x.Label
 }
 
-func (x Custom2) Behavior() string {
-	a := behaviorArgToString(x.A)
-	b := behaviorArgToString(x.B)
-	return fmt.Sprintf("&%s %s %s", x.Name, a, b)
+func (x Custom) Args() []string {
+	return Map(x.Fields, toString)
 }
 
-type Custom1 struct {
-	Name string
-	A    any
+func Custom0(name string) Custom {
+	return Custom{name, []any{}}
 }
 
-func (x Custom1) Behavior() string {
-	a := behaviorArgToString(x.A)
-	return fmt.Sprintf("&%s %s", x.Name, a)
+func Custom1(name string, a any) Custom {
+	return Custom{name, []any{a}}
 }
 
-type Custom0 struct {
-	Name string
-}
-
-func (x Custom0) Behavior() string {
-	return fmt.Sprintf("&%s", x.Name)
-}
-
-type Lt struct {
-	Layer LayerIndex
-	Tap   KeyCode
-}
-
-func (x Lt) Behavior() string {
-	return fmt.Sprintf("&lt %s %s", x.Layer, x.Tap)
-}
-
-type To struct {
-	Layer LayerIndex
-}
-
-func (x To) Behavior() string {
-	return fmt.Sprintf("&to %s", x.Layer)
-}
-
-type Mt struct {
-	Hold KeyCode
-	Tap  KeyCode
-}
-
-func (x Mt) Behavior() string {
-	return fmt.Sprintf("&mt %s %s", x.Hold, x.Tap)
-}
-
-type Trans struct{}
-
-func (_ Trans) Behavior() string {
-	return "&trans"
-}
-
-type None struct{}
-
-func (_ None) Behavior() string {
-	return "&none"
+func Custom2(name string, a, b any) Custom {
+	return Custom{name, []any{a, b}}
 }
 
 type RC struct {
@@ -284,14 +218,83 @@ func InitWith(b Behavior) Layer {
 	return layer
 }
 
-func InitToLevelAndTrans(level int) Layer {
+func InitBy(f func(RC) Behavior) Layer {
 	layer := Layer{}
 	for rc := range RCs() {
-		// replace with proper trans when zmk ready
-		layer[rc] = Custom0{fmt.Sprintf("to%d%s", level, rc)}
+		layer[rc] = f(rc)
 	}
 
 	return layer
+}
+
+func InitToLevelAndTrans(index LayerIndex) Layer {
+	base := layers[BASE]
+	return InitBy(func(rc RC) Behavior {
+		name := fmt.Sprintf("to%d%s", index, rc)
+		macro := Macro{
+			Name:      name,
+			Label:     fmt.Sprintf("To %d, %s", index, rc.Pretty()),
+			Cells:     0,
+			Behaviors: []Behavior{To{index}, base[rc]},
+		}
+		AddMacro(macro)
+		return Custom0(name)
+	})
+}
+
+func AddMacro(macro Macro) {
+	i := slices.IndexFunc(macros, func(other Macro) bool {
+		return macro.Name == other.Name
+	})
+	if i != -1 {
+		panicif(!macro.Equal(macros[i]))
+		return
+	}
+	macros = append(macros, macro)
+}
+
+type MacroParam struct {
+	a, b int
+}
+
+func (mp MacroParam) Behavior() string {
+	return fmt.Sprintf("&%s", mp.Name())
+}
+
+func (mp MacroParam) Name() string {
+	return fmt.Sprintf("macro_param_%dto%d", mp.a, mp.b)
+}
+
+func (mp MacroParam) Args() []string {
+	return []string{}
+}
+
+func XThenTransMacro(beh Behavior, index LayerIndex, rc RC) Behavior {
+	layer := layers[index]
+	name := fmt.Sprintf("xThenTrans%d", index)
+	inner := Custom1(beh.Name(), "MACRO_PLACEHOLDER")
+	AddMacro(Macro{
+		Name:      name,
+		Label:     fmt.Sprintf("X Then Trans %s", index),
+		Cells:     1,
+		Behaviors: []Behavior{MacroParam{1, 1}, inner, To{index}, layer[rc]},
+	})
+
+	anyArgs := Map(beh.Args(), func(a string) any { return a })
+
+	return Custom{name, anyArgs}
+}
+
+func BackspaceDeleteMacro() Behavior {
+	name := "bspcdel"
+	AddMacro(Macro{
+		Name:      name,
+		Label:     "Backspace Delete",
+		Cells:     0,
+		Behaviors: []Behavior{Kp{BSPC}, Kp{DEL}},
+	})
+
+	return Custom0(name)
 }
 
 func RCs() iter.Seq[RC] {
@@ -304,7 +307,51 @@ func RCs() iter.Seq[RC] {
 	}
 }
 
+// todo     bindings
+//
+//	= <&macro_param_1to1>
+//	, <&macro_press &mo MACRO_PLACEHOLDER>
+//	, <&macro_param_2to1>
+//	, <&macro_press &kp MACRO_PLACEHOLDER>
+//	, <&macro_pause_for_release>
+//	, <&macro_param_2to1>
+//	, <&macro_release &kp MACRO_PLACEHOLDER>
+//	, <&macro_param_1to1>
+//	, <&macro_release &mo MACRO_PLACEHOLDER>
+//	;
+
+type Macro struct {
+	Name      string
+	Label     string
+	Cells     int
+	Behaviors []Behavior
+}
+
+func (m Macro) Compatible() string {
+	return map[int]string{
+		0: "behavior-macro",
+		1: "behavior-macro-one-param",
+		2: "behavior-macro-two-param",
+	}[m.Cells]
+}
+
+func (m Macro) Bindings() string {
+	return strings.Join(Map(m.Behaviors, CompileBehavior), " ")
+}
+
+func (m Macro) Equal(other Macro) bool {
+	eq := true
+	eq = eq && m.Name == other.Name
+	eq = eq && m.Label == other.Label
+	eq = eq && m.Cells == other.Cells
+	eq = eq && slices.EqualFunc(m.Behaviors, other.Behaviors, func(a, b Behavior) bool {
+		return a.Behavior() == b.Behavior()
+	})
+	return eq
+}
+
 var layers = make([]Layer, MAXLAYERINDEX)
+var macros = make([]Macro, 0, 64)
 
 func init() {
 	layers[BASE] = InitWith(Trans{})
@@ -323,11 +370,11 @@ func init() {
 	layers[BASE][l(3, 1)] = Mt{LCTRL, MINUS} // row 3
 	layers[BASE][l(3, 2)] = Kp{Z}
 	layers[BASE][l(3, 3)] = Kp{X}
-	layers[BASE][l(3, 4)] = Custom2{"kpConfig", "0", "C"}
+	layers[BASE][l(3, 4)] = Custom2("kpConfig", "0", "C")
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
-	layers[BASE][l(4, 1)] = Custom2{"lslxl", QUICK, CHAINS} // row 4
-	layers[BASE][l(4, 2)] = Custom2{"lmmNumMoveUnder", NUM, "0"}
+	layers[BASE][l(4, 1)] = Custom2("lslxl", QUICK, CHAINS) // row 4
+	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUM, "0")
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
 	layers[BASE][r(1, 1)] = Kp{Y} // row 1
@@ -350,9 +397,9 @@ func init() {
 	layers[BASE][r(3, 6)] = Kp{BACKSLASH}
 	layers[BASE][r(4, 1)] = Mt{LCTRL, RETURN} // row 4
 	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
-	layers[BASE][r(4, 3)] = Custom1{"slxl", CHAINS}
+	layers[BASE][r(4, 3)] = Custom1("slxl", CHAINS)
 
-	layers[MOVE] = InitToLevelAndTrans(0)
+	layers[MOVE] = InitToLevelAndTrans(BASE)
 	layers[MOVE][l(4, 3)] = To{BASE} // row 4
 	layers[MOVE][r(2, 1)] = Kp{LEFT} // row 2
 	layers[MOVE][r(2, 2)] = Rmt{LALT, DOWN}
@@ -363,9 +410,9 @@ func init() {
 	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
 	layers[NUM][l(1, 6)] = Kp{TILDE}
 	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUM][l(2, 3)] = Custom2{"mtBracket", "LSHIFT", "0"}
-	layers[NUM][l(2, 4)] = Custom2{"mtParen", "LGUI", "0"}
-	layers[NUM][l(2, 5)] = Custom2{"mtCurly", "LALT", "0"}
+	layers[NUM][l(2, 3)] = Custom2("mtBracket", "LSHIFT", "0")
+	layers[NUM][l(2, 4)] = Custom2("mtParen", "LGUI", "0")
+	layers[NUM][l(2, 5)] = Custom2("mtCurly", "LALT", "0")
 	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -374,12 +421,12 @@ func init() {
 	layers[NUM][r(1, 3)] = Kp{N2}
 	layers[NUM][r(1, 4)] = Kp{N3}
 	layers[NUM][r(1, 6)] = Kp{RBKT}
-	layers[NUM][r(2, 1)] = Custom0{"mmEquals"} // row 2
+	layers[NUM][r(2, 1)] = Custom0("mmEquals") // row 2
 	layers[NUM][r(2, 2)] = Mt{LALT, N4}
 	layers[NUM][r(2, 3)] = Mt{LGUI, N5}
 	layers[NUM][r(2, 4)] = Mt{LSHIFT, N6}
 	layers[NUM][r(2, 5)] = Kp{COLON}
-	layers[NUM][r(2, 6)] = Custom0{"mmQuoteGrave"}
+	layers[NUM][r(2, 6)] = Custom0("mmQuoteGrave")
 	layers[NUM][r(3, 1)] = Kp{PLUS} // row 3
 	layers[NUM][r(3, 2)] = Kp{N7}
 	layers[NUM][r(3, 3)] = KpKp{RG(COMMA), N8}
@@ -403,20 +450,39 @@ func init() {
 	layers[QUICK][r(4, 3)] = Kp{F12}
 
 	layers[REPEAT] = InitWith(Trans{})
+
 	layers[SYS] = InitWith(None{})
-	layers[SYS][l(1, 1)] = Custom0{"bootloader"}     // tab
-	layers[SYS][l(1, 5)] = Custom0{"sys_reset"}      // r
-	layers[SYS][r(1, 2)] = Custom1{"out", "OUT_USB"} // u
-	layers[SYS][l(3, 5)] = Custom1{"out", "OUT_USB"} // v - single half backup
-	layers[SYS][l(3, 6)] = Custom1{"out", "OUT_BLE"} // b
-	layers[SYS][l(2, 5)] = Custom2{"bt", "BT_SEL", "0"}
-	layers[SYS][l(2, 4)] = Custom2{"bt", "BT_SEL", "1"}
-	layers[SYS][l(2, 3)] = Custom2{"bt", "BT_SEL", "2"}
-	layers[SYS][l(2, 2)] = Custom2{"bt", "BT_SEL", "3"}
-	layers[SYS][l(2, 1)] = Custom2{"bt", "BT_SEL", "4"}
-	layers[SYS][l(3, 4)] = Custom1{"bt", "BT_CLR"}     // c
-	layers[SYS][l(3, 3)] = Custom1{"bt", "BT_CLR_ALL"} // x
-	layers[SYS][r(3, 1)] = Custom1{"bt", "BT_CLR_ALL"} // n - nuke
+	layers[SYS][l(1, 1)] = Custom0("bootloader")     // tab
+	layers[SYS][l(1, 5)] = Custom0("sys_reset")      // r
+	layers[SYS][r(1, 2)] = Custom1("out", "OUT_USB") // u
+	layers[SYS][l(3, 5)] = Custom1("out", "OUT_USB") // v - single half backup
+	layers[SYS][l(3, 6)] = Custom1("out", "OUT_BLE") // b
+	layers[SYS][l(2, 5)] = Custom2("bt", "BT_SEL", "0")
+	layers[SYS][l(2, 4)] = Custom2("bt", "BT_SEL", "1")
+	layers[SYS][l(2, 3)] = Custom2("bt", "BT_SEL", "2")
+	layers[SYS][l(2, 2)] = Custom2("bt", "BT_SEL", "3")
+	layers[SYS][l(2, 1)] = Custom2("bt", "BT_SEL", "4")
+	layers[SYS][l(3, 4)] = Custom1("bt", "BT_CLR")     // c
+	layers[SYS][l(3, 3)] = Custom1("bt", "BT_CLR_ALL") // x
+	layers[SYS][r(3, 1)] = Custom1("bt", "BT_CLR_ALL") // n - nuke
+
+	// &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
+	layers[PARENS] = InitToLevelAndTrans(BASE)
+	layers[PARENS][l(4, 3)] = To{BASE}
+	layers[PARENS][l(2, 1)] = BackspaceDeleteMacro()
+	layers[PARENS][r(2, 4)] = XThenTransMacro(Kp{RIGHT}, 0, r(2, 4))
+	// layers[PARENS][l(1, 5)] = Custom0{"sys_reset"}      // r
+	// layers[PARENS][r(1, 2)] = Custom1{"out", "OUT_USB"} // u
+	// layers[PARENS][l(3, 5)] = Custom1{"out", "OUT_USB"} // v - single half backup
+	// layers[PARENS][l(3, 6)] = Custom1{"out", "OUT_BLE"} // b
+	// layers[PARENS][l(2, 5)] = Custom2{"bt", "BT_SEL", "0"}
+	// layers[PARENS][l(2, 4)] = Custom2{"bt", "BT_SEL", "1"}
+	// layers[PARENS][l(2, 3)] = Custom2{"bt", "BT_SEL", "2"}
+	// layers[PARENS][l(2, 2)] = Custom2{"bt", "BT_SEL", "3"}
+	// layers[PARENS][l(2, 1)] = Custom2{"bt", "BT_SEL", "4"}
+	// layers[PARENS][l(3, 4)] = Custom1{"bt", "BT_CLR"}     // c
+	// layers[PARENS][l(3, 3)] = Custom1{"bt", "BT_CLR_ALL"} // x
+	// layers[PARENS][r(3, 1)] = Custom1{"bt", "BT_CLR_ALL"} // n - nuke
 }
 
 func renderKeymap(path string, params Params) {
@@ -469,7 +535,8 @@ func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 
 func main() {
 	renderKeymap("config/ergonaut_one.keymap", Params{
-		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:SYS+1]))),
+		Macros:    macros,
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:PARENS+1]))),
 		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
 		Indices: func() []RenderedLayer {
 			a := []RenderedLayer{}
@@ -499,6 +566,20 @@ func check(err error) {
 	}
 }
 
+func errif(cond bool) error {
+	if cond {
+		return errors.New("condition failed")
+	}
+
+	return nil
+}
+
+func panicif(cond bool) {
+	if cond {
+		panic("condition failed")
+	}
+}
+
 func Map[T, U any](s []T, f func(T) U) []U {
 	us := make([]U, len(s))
 	for i := range s {
@@ -506,4 +587,8 @@ func Map[T, U any](s []T, f func(T) U) []U {
 	}
 
 	return us
+}
+
+func toString(x any) string {
+	return fmt.Sprintf("%s", x)
 }

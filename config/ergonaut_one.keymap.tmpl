@@ -413,15 +413,15 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &kp GT &kp AMPS &macro_param_2to1 &kp MACRO_PLACEHOLDER &kp SPACE>;
             label = "REDIR";
         };
-        {{- range .ToBaseAnd }}
+        {{- range .Macros }}
 
-        to{{.Level}}{{.RC}}: to{{.Level}}{{.RC}} {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&to {{.Level}} {{.Behavior}}>;
-            label = "To {{.Level}}, {{.RC.Pretty}}";
+        {{.Name}}: {{.Name}} {
+            compatible = "zmk,{{.Compatible}}";
+            #binding-cells = <{{.Cells}}>;
+            bindings = <{{.Bindings}}>;
+            label = "{{.Label}}";
         };
-        {{- end }}{{/* range .ToMacros */}}
+        {{- end }}{{/* range .Macros */}}
     };
 
     combos {
@@ -529,15 +529,6 @@
             >;
         };
         {{- end }}
-
-        PARENS {
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
-            >;
-        };
 
         chains {
             bindings = <

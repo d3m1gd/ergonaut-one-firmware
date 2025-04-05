@@ -423,295 +423,309 @@
         to0l11: to0l11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp TAB>;
+            bindings = <&to BASE &kp TAB>;
             label = "To 0, L11";
         };
 
         to0l12: to0l12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp Q>;
+            bindings = <&to BASE &kp Q>;
             label = "To 0, L12";
         };
 
         to0l13: to0l13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp W>;
+            bindings = <&to BASE &kp W>;
             label = "To 0, L13";
         };
 
         to0l14: to0l14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp E>;
+            bindings = <&to BASE &kp E>;
             label = "To 0, L14";
         };
 
         to0l15: to0l15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp R>;
+            bindings = <&to BASE &kp R>;
             label = "To 0, L15";
         };
 
         to0l16: to0l16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(T) T>;
+            bindings = <&to BASE &kpkp RG(T) T>;
             label = "To 0, L16";
         };
 
         to0r11: to0r11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp Y>;
+            bindings = <&to BASE &kp Y>;
             label = "To 0, R11";
         };
 
         to0r12: to0r12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp U>;
+            bindings = <&to BASE &kp U>;
             label = "To 0, R12";
         };
 
         to0r13: to0r13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp I>;
+            bindings = <&to BASE &kp I>;
             label = "To 0, R13";
         };
 
         to0r14: to0r14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp O>;
+            bindings = <&to BASE &kp O>;
             label = "To 0, R14";
         };
 
         to0r15: to0r15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp P>;
+            bindings = <&to BASE &kp P>;
             label = "To 0, R15";
         };
 
         to0r16: to0r16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp LBKT>;
+            bindings = <&to BASE &kp LBKT>;
             label = "To 0, R16";
         };
 
         to0l21: to0l21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LSHIFT BACKSPACE>;
+            bindings = <&to BASE &mt LSHIFT BACKSPACE>;
             label = "To 0, L21";
         };
 
         to0l22: to0l22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp A>;
+            bindings = <&to BASE &kp A>;
             label = "To 0, L22";
         };
 
         to0l23: to0l23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LSHIFT S>;
+            bindings = <&to BASE &mt LSHIFT S>;
             label = "To 0, L23";
         };
 
         to0l24: to0l24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LGUI D>;
+            bindings = <&to BASE &mt LGUI D>;
             label = "To 0, L24";
         };
 
         to0l25: to0l25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LALT F>;
+            bindings = <&to BASE &mt LALT F>;
             label = "To 0, L25";
         };
 
         to0l26: to0l26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp G>;
+            bindings = <&to BASE &kp G>;
             label = "To 0, L26";
         };
 
         to0r21: to0r21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp H>;
+            bindings = <&to BASE &kp H>;
             label = "To 0, R21";
         };
 
         to0r22: to0r22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &rmt LALT J>;
+            bindings = <&to BASE &rmt LALT J>;
             label = "To 0, R22";
         };
 
         to0r23: to0r23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &rmt LGUI K>;
+            bindings = <&to BASE &rmt LGUI K>;
             label = "To 0, R23";
         };
 
         to0r24: to0r24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &rmt LSHIFT L>;
+            bindings = <&to BASE &rmt LSHIFT L>;
             label = "To 0, R24";
         };
 
         to0r25: to0r25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(SEMI) SEMI>;
+            bindings = <&to BASE &kpkp RG(SEMI) SEMI>;
             label = "To 0, R25";
         };
 
         to0r26: to0r26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(SQT) SQT>;
+            bindings = <&to BASE &kpkp RG(SQT) SQT>;
             label = "To 0, R26";
         };
 
         to0l31: to0l31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LCTRL MINUS>;
+            bindings = <&to BASE &mt LCTRL MINUS>;
             label = "To 0, L31";
         };
 
         to0l32: to0l32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp Z>;
+            bindings = <&to BASE &kp Z>;
             label = "To 0, L32";
         };
 
         to0l33: to0l33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp X>;
+            bindings = <&to BASE &kp X>;
             label = "To 0, L33";
         };
 
         to0l34: to0l34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpConfig 0 C>;
+            bindings = <&to BASE &kpConfig 0 C>;
             label = "To 0, L34";
         };
 
         to0l35: to0l35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp V>;
+            bindings = <&to BASE &kp V>;
             label = "To 0, L35";
         };
 
         to0l36: to0l36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp B>;
+            bindings = <&to BASE &kp B>;
             label = "To 0, L36";
         };
 
         to0r31: to0r31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp N>;
+            bindings = <&to BASE &kp N>;
             label = "To 0, R31";
         };
 
         to0r32: to0r32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(M) M>;
+            bindings = <&to BASE &kpkp RG(M) M>;
             label = "To 0, R32";
         };
 
         to0r33: to0r33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(COMMA) COMMA>;
+            bindings = <&to BASE &kpkp RG(COMMA) COMMA>;
             label = "To 0, R33";
         };
 
         to0r34: to0r34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(DOT) DOT>;
+            bindings = <&to BASE &kpkp RG(DOT) DOT>;
             label = "To 0, R34";
         };
 
         to0r35: to0r35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp SLASH>;
+            bindings = <&to BASE &kp SLASH>;
             label = "To 0, R35";
         };
 
         to0r36: to0r36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kp BACKSLASH>;
+            bindings = <&to BASE &kp BACKSLASH>;
             label = "To 0, R36";
         };
 
         to0l41: to0l41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &lslxl QUICK CHAINS>;
+            bindings = <&to BASE &lslxl QUICK CHAINS>;
             label = "To 0, L41";
         };
 
         to0l42: to0l42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &lmmNumMoveUnder NUM 0>;
+            bindings = <&to BASE &lmmNumMoveUnder NUM 0>;
             label = "To 0, L42";
         };
 
         to0l43: to0l43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LCTRL ESCAPE>;
+            bindings = <&to BASE &mt LCTRL ESCAPE>;
             label = "To 0, L43";
         };
 
         to0r41: to0r41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &mt LCTRL RETURN>;
+            bindings = <&to BASE &mt LCTRL RETURN>;
             label = "To 0, R41";
         };
 
         to0r42: to0r42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &lt NUM SPACE>;
+            bindings = <&to BASE &lt NUM SPACE>;
             label = "To 0, R42";
         };
 
         to0r43: to0r43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &slxl CHAINS>;
+            bindings = <&to BASE &slxl CHAINS>;
             label = "To 0, R43";
+        };
+
+        bspcdel: bspcdel {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC &kp DEL>;
+            label = "Backspace Delete";
+        };
+
+        xThenTrans0: xThenTrans0 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &to BASE &rmt LSHIFT L>;
+            label = "X Then Trans BASE";
         };
     };
 
@@ -867,10 +881,10 @@
 
         PARENS {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans        &trans     &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
+&to0l11   &to0l12  &to0l13  &to0l14  &to0l15  &to0l16   &to0r11  &to0r12  &to0r13  &to0r14             &to0r15  &to0r16
+&bspcdel  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26   &to0r21  &to0r22  &to0r23  &xThenTrans0 RIGHT  &to0r25  &to0r26
+&to0l31   &to0l32  &to0l33  &to0l34  &to0l35  &to0l36   &to0r31  &to0r32  &to0r33  &to0r34             &to0r35  &to0r36
+                            &to0l41  &to0l42  &to BASE  &to0r41  &to0r42  &to0r43
             >;
         };
 
