@@ -89,8 +89,6 @@ type RenderedLayer struct {
 const Miss = "MISSING"
 const Left Side = "left"
 const Right Side = "right"
-const L = Left
-const R = Right
 
 type Side string
 
@@ -117,7 +115,7 @@ type Params struct {
 }
 
 type Kp struct {
-	Tap string
+	Tap KeyCode
 }
 
 func (x Kp) Behavior() string {
@@ -125,8 +123,8 @@ func (x Kp) Behavior() string {
 }
 
 type KpKp struct {
-	Hold string
-	Tap  string
+	Hold KeyCode
+	Tap  KeyCode
 }
 
 func (x KpKp) Behavior() string {
@@ -134,8 +132,8 @@ func (x KpKp) Behavior() string {
 }
 
 type Rmt struct {
-	Hold string
-	Tap  string
+	Hold KeyCode
+	Tap  KeyCode
 }
 
 func (x Rmt) Behavior() string {
@@ -182,7 +180,7 @@ func (x Custom0) Behavior() string {
 
 type Lt struct {
 	Layer LayerIndex
-	Tap   string
+	Tap   KeyCode
 }
 
 func (x Lt) Behavior() string {
@@ -198,8 +196,8 @@ func (x To) Behavior() string {
 }
 
 type Mt struct {
-	Hold string
-	Tap  string
+	Hold KeyCode
+	Tap  KeyCode
 }
 
 func (x Mt) Behavior() string {
@@ -296,84 +294,104 @@ var layers = make([]Layer, MAXLAYERINDEX)
 
 func init() {
 	layers[BASE] = InitTrans()
-	layers[BASE][l(1, 1)] = Kp{"TAB"} // row 1
-	layers[BASE][l(1, 2)] = Kp{"Q"}
-	layers[BASE][l(1, 3)] = Kp{"W"}
-	layers[BASE][l(1, 4)] = Kp{"E"}
-	layers[BASE][l(1, 5)] = Kp{"R"}
-	layers[BASE][l(1, 6)] = KpKp{"RG(T)", "T"}
-	layers[BASE][l(2, 1)] = Mt{"LSHIFT", "BACKSPACE"} // row 2
-	layers[BASE][l(2, 2)] = Kp{"A"}
-	layers[BASE][l(2, 3)] = Mt{"LSHIFT", "S"}
-	layers[BASE][l(2, 4)] = Mt{"LGUI", "D"}
-	layers[BASE][l(2, 5)] = Mt{"LALT", "F"}
-	layers[BASE][l(2, 6)] = Kp{"G"}
-	layers[BASE][l(3, 1)] = Mt{"LCTRL", "MINUS"} // row 3
-	layers[BASE][l(3, 2)] = Kp{"Z"}
-	layers[BASE][l(3, 3)] = Kp{"X"}
+	layers[BASE][l(1, 1)] = Kp{TAB} // row 1
+	layers[BASE][l(1, 2)] = Kp{Q}
+	layers[BASE][l(1, 3)] = Kp{W}
+	layers[BASE][l(1, 4)] = Kp{E}
+	layers[BASE][l(1, 5)] = Kp{R}
+	layers[BASE][l(1, 6)] = KpKp{RG(T), T}
+	layers[BASE][l(2, 1)] = Mt{LSHIFT, BACKSPACE} // row 2
+	layers[BASE][l(2, 2)] = Kp{A}
+	layers[BASE][l(2, 3)] = Mt{LSHIFT, S}
+	layers[BASE][l(2, 4)] = Mt{LGUI, D}
+	layers[BASE][l(2, 5)] = Mt{LALT, F}
+	layers[BASE][l(2, 6)] = Kp{G}
+	layers[BASE][l(3, 1)] = Mt{LCTRL, MINUS} // row 3
+	layers[BASE][l(3, 2)] = Kp{Z}
+	layers[BASE][l(3, 3)] = Kp{X}
 	layers[BASE][l(3, 4)] = Custom{"kpConfig", "0", "C"}
-	layers[BASE][l(3, 5)] = Kp{"V"}
-	layers[BASE][l(3, 6)] = Kp{"B"}
+	layers[BASE][l(3, 5)] = Kp{V}
+	layers[BASE][l(3, 6)] = Kp{B}
 	layers[BASE][l(4, 1)] = Custom{"lslxl", QUICK, CHAINS} // row 4
 	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", NUM, "0"}
-	layers[BASE][l(4, 3)] = Mt{"LCTRL", "ESCAPE"}
+	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
-	layers[BASE][r(1, 1)] = Kp{"Y"} // row 1
-	layers[BASE][r(1, 2)] = Kp{"U"}
-	layers[BASE][r(1, 3)] = Kp{"I"}
-	layers[BASE][r(1, 4)] = Kp{"O"}
-	layers[BASE][r(1, 5)] = Kp{"P"}
-	layers[BASE][r(1, 6)] = Kp{"LBKT"}
-	layers[BASE][r(2, 1)] = Kp{"H"} // row 2
-	layers[BASE][r(2, 2)] = Rmt{"LALT", "J"}
-	layers[BASE][r(2, 3)] = Rmt{"LGUI", "K"}
-	layers[BASE][r(2, 4)] = Rmt{"LSHIFT", "L"}
-	layers[BASE][r(2, 5)] = KpKp{"RG(SEMI)", "SEMI"}
-	layers[BASE][r(2, 6)] = KpKp{"RG(SINGLE_QUOTE)", "SINGLE_QUOTE"}
-	layers[BASE][r(3, 1)] = Kp{"N"} // row 3
-	layers[BASE][r(3, 2)] = KpKp{"RG(M)", "M"}
-	layers[BASE][r(3, 3)] = KpKp{"RG(COMMA)", "COMMA"}
-	layers[BASE][r(3, 4)] = KpKp{"RG(DOT)", "DOT"}
-	layers[BASE][r(3, 5)] = Kp{"SLASH"}
-	layers[BASE][r(3, 6)] = Kp{"BACKSLASH"}
-	layers[BASE][r(4, 1)] = Mt{"LCTRL", "RETURN"} // row 4
-	layers[BASE][r(4, 2)] = Lt{NUM, "SPACE"}
+	layers[BASE][r(1, 1)] = Kp{Y} // row 1
+	layers[BASE][r(1, 2)] = Kp{U}
+	layers[BASE][r(1, 3)] = Kp{I}
+	layers[BASE][r(1, 4)] = Kp{O}
+	layers[BASE][r(1, 5)] = Kp{P}
+	layers[BASE][r(1, 6)] = Kp{LBKT}
+	layers[BASE][r(2, 1)] = Kp{H} // row 2
+	layers[BASE][r(2, 2)] = Rmt{LALT, J}
+	layers[BASE][r(2, 3)] = Rmt{LGUI, K}
+	layers[BASE][r(2, 4)] = Rmt{LSHIFT, L}
+	layers[BASE][r(2, 5)] = KpKp{RG(SEMI), SEMI}
+	layers[BASE][r(2, 6)] = KpKp{RG(SQT), SQT}
+	layers[BASE][r(3, 1)] = Kp{N} // row 3
+	layers[BASE][r(3, 2)] = KpKp{RG(M), M}
+	layers[BASE][r(3, 3)] = KpKp{RG(COMMA), COMMA}
+	layers[BASE][r(3, 4)] = KpKp{RG(DOT), DOT}
+	layers[BASE][r(3, 5)] = Kp{SLASH}
+	layers[BASE][r(3, 6)] = Kp{BACKSLASH}
+	layers[BASE][r(4, 1)] = Mt{LCTRL, RETURN} // row 4
+	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
 	layers[BASE][r(4, 3)] = Custom1{"slxl", CHAINS}
 
 	layers[MOVE] = InitToLevelTrans(0)
-	layers[MOVE][l(4, 3)] = To{BASE}   // row 4
-	layers[MOVE][r(2, 1)] = Kp{"LEFT"} // row 2
-	layers[MOVE][r(2, 2)] = Rmt{"LALT", "DOWN"}
-	layers[MOVE][r(2, 3)] = Rmt{"LGUI", "UP"}
-	layers[MOVE][r(2, 4)] = Rmt{"LSHIFT", "RIGHT"}
+	layers[MOVE][l(4, 3)] = To{BASE} // row 4
+	layers[MOVE][r(2, 1)] = Kp{LEFT} // row 2
+	layers[MOVE][r(2, 2)] = Rmt{LALT, DOWN}
+	layers[MOVE][r(2, 3)] = Rmt{LGUI, UP}
+	layers[MOVE][r(2, 4)] = Rmt{LSHIFT, RIGHT}
 
 	layers[NUM] = InitTrans()
-	layers[NUM][l(1, 1)] = Kp{"LS(TAB)"}
-	layers[NUM][l(1, 6)] = Kp{"TILDE"}
-	layers[NUM][l(2, 1)] = Kp{"DELETE"} // row 2
+	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
+	layers[NUM][l(1, 6)] = Kp{TILDE}
+	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
 	layers[NUM][l(2, 3)] = Custom{"mtBracket", "LSHIFT", "0"}
 	layers[NUM][l(2, 4)] = Custom{"mtParen", "LGUI", "0"}
 	layers[NUM][l(2, 5)] = Custom{"mtCurly", "LALT", "0"}
-	layers[NUM][l(3, 5)] = Kp{"LS(INSERT)"}
-	layers[NUM][l(4, 2)] = Kp{"UNDERSCORE"}
+	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
+	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
-	layers[NUM][r(1, 1)] = Kp{"N0"} // row 1
-	layers[NUM][r(1, 2)] = Kp{"N1"}
-	layers[NUM][r(1, 3)] = Kp{"N2"}
-	layers[NUM][r(1, 4)] = Kp{"N3"}
-	layers[NUM][r(1, 6)] = Kp{"RBKT"}
+	layers[NUM][r(1, 1)] = Kp{N0} // row 1
+	layers[NUM][r(1, 2)] = Kp{N1}
+	layers[NUM][r(1, 3)] = Kp{N2}
+	layers[NUM][r(1, 4)] = Kp{N3}
+	layers[NUM][r(1, 6)] = Kp{RBKT}
 	layers[NUM][r(2, 1)] = Custom0{"mmEquals"} // row 2
-	layers[NUM][r(2, 2)] = Mt{"LALT", "N4"}
-	layers[NUM][r(2, 3)] = Mt{"LGUI", "N5"}
-	layers[NUM][r(2, 4)] = Mt{"LSHIFT", "N6"}
-	layers[NUM][r(2, 5)] = Kp{"COLON"}
+	layers[NUM][r(2, 2)] = Mt{LALT, N4}
+	layers[NUM][r(2, 3)] = Mt{LGUI, N5}
+	layers[NUM][r(2, 4)] = Mt{LSHIFT, N6}
+	layers[NUM][r(2, 5)] = Kp{COLON}
 	layers[NUM][r(2, 6)] = Custom0{"mmQuoteGrave"}
-	layers[NUM][r(3, 1)] = Kp{"PLUS"} // row 3
-	layers[NUM][r(3, 2)] = Kp{"N7"}
-	layers[NUM][r(3, 3)] = KpKp{"RG(COMMA)", "N8"}
-	layers[NUM][r(3, 4)] = KpKp{"RG(DOT)", "N9"}
-	layers[NUM][r(3, 5)] = Kp{"LS(SLASH)"}
-	layers[NUM][r(3, 6)] = Kp{"PIPE"}
+	layers[NUM][r(3, 1)] = Kp{PLUS} // row 3
+	layers[NUM][r(3, 2)] = Kp{N7}
+	layers[NUM][r(3, 3)] = KpKp{RG(COMMA), N8}
+	layers[NUM][r(3, 4)] = KpKp{RG(DOT), N9}
+	layers[NUM][r(3, 5)] = Kp{LS(SLASH)}
+	layers[NUM][r(3, 6)] = Kp{PIPE}
+
+	layers[QUICK] = InitTrans()
+	layers[QUICK][l(1, 5)] = Kp{LG(C_VOL_UP)} // row 1
+	layers[QUICK][l(1, 6)] = Kp{C_VOL_UP}
+	layers[QUICK][l(2, 5)] = Kp{LG(C_VOL_DN)} // row 2
+	layers[QUICK][l(2, 6)] = Kp{C_VOL_DN}
+	layers[QUICK][r(1, 5)] = Kp{PSCRN} // row 1
+	layers[QUICK][r(1, 6)] = Kp{LC(RBKT)}
+	layers[QUICK][r(2, 1)] = Kp{HOME} // row 2
+	layers[QUICK][r(2, 2)] = Rmt{LALT, PG_DN}
+	layers[QUICK][r(2, 3)] = Rmt{LGUI, PG_UP}
+	layers[QUICK][r(2, 4)] = Rmt{LSHIFT, END}
+	layers[QUICK][r(4, 1)] = Rmt{LCTRL, F10} // row 4
+	layers[QUICK][r(4, 2)] = Kp{F11}
+	layers[QUICK][r(4, 3)] = Kp{F12}
+
+	// // &trans          &trans           &trans           &trans           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
+	// // &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt RSHIFT END  &trans           &trans
+	// // &trans          &trans           &trans           &trans           &trans           &trans
+	// // &rmt LCTRL F10  &kp F11          &kp F12
 }
 
 func renderKeymap(path string, params Params) {
@@ -426,7 +444,7 @@ func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 
 func main() {
 	params := Params{
-		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:NUM+1]))),
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:QUICK+1]))),
 		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
 		Indices: func() []RenderedLayer {
 			a := []RenderedLayer{}

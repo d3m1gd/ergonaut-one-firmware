@@ -584,7 +584,7 @@
         to0r26: to0r26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE>;
+            bindings = <&to 0 &kpkp RG(SQT) SQT>;
             label = "To 0, R26";
         };
 
@@ -814,7 +814,7 @@
         BASE {
             bindings = <
 &kp TAB               &kp Q  &kp W         &kp E                &kp R                   &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D           &mt LALT F              &kp G             &kp H             &rmt LALT J    &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SINGLE_QUOTE) SINGLE_QUOTE
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D           &mt LALT F              &kp G             &kp H             &rmt LALT J    &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C        &kp V                   &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
                                            &lslxl QUICK CHAINS  &lmmNumMoveUnder NUM 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUM SPACE  &slxl CHAINS
             >;
@@ -840,10 +840,10 @@
 
         QUICK {
             bindings = <
-&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_UP) 3    &tsls C_VOLUME_UP 3    &trans          &trans           &trans           &trans           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
-&trans  &trans  &trans  &trans  &tsls LG(C_VOLUME_DOWN) 3  &tsls C_VOLUME_DOWN 3  &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt RSHIFT END  &trans           &trans
-&trans  &trans  &trans  &trans  &trans                     &trans                 &trans          &trans           &trans           &trans           &trans           &trans
-                        &trans  &trans                     &trans                 &rmt LCTRL F10  &kp F11          &kp F12
+&trans  &trans  &trans  &trans  &kp LG(C_VOL_UP)  &kp C_VOL_UP  &trans          &trans           &trans           &trans           &kp PSCRN  &kp LC(RBKT)
+&trans  &trans  &trans  &trans  &kp LG(C_VOL_DN)  &kp C_VOL_DN  &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt LSHIFT END  &trans     &trans
+&trans  &trans  &trans  &trans  &trans            &trans        &trans          &trans           &trans           &trans           &trans     &trans
+                        &trans  &trans            &trans        &rmt LCTRL F10  &kp F11          &kp F12
             >;
         };
 
