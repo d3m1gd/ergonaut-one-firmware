@@ -849,19 +849,19 @@
 
         REPEAT {
             bindings = <
-&trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans       &trans  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &key_repeat  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
+                        &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
         SYS {
             bindings = <
-&bootloader  &none         &none         &none           &out OUT_USB  &out OUT_BLE  &tsls C_VOLUME_UP 5    &kp F1   &kp F2   &kp F3  &kp C_PLAY_PAUSE  &kp C_STOP
-&none        &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2    &bt BT_SEL 3  &bt BT_SEL 4  &tsls K_MUTE 5         &kp F4   &kp F5   &kp F6  &none             &none
-&sys_reset   &bt BT_CLR    &none         &bt BT_CLR_ALL  &none         &none         &tsls C_VOLUME_DOWN 5  &kp F7   &kp F8   &kp F9  &none             &sys_reset
-                                         &none           &none         &none         &kp F10                &kp F11  &kp F12
+&bootloader   &none         &none           &none         &sys_reset    &none         &none           &out OUT_USB  &none  &none  &none  &none
+&bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0  &none         &none           &none         &none  &none  &none  &none
+&none         &none         &bt BT_CLR_ALL  &bt BT_CLR    &out OUT_USB  &out OUT_BLE  &bt BT_CLR_ALL  &none         &none  &none  &none  &none
+                                            &none         &none         &none         &none           &none         &none
             >;
         };
 

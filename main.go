@@ -42,8 +42,7 @@ func (l Layer) Render() []string {
 		cells[i] = slices.Repeat([]string{""}, 12)
 	}
 	for n := range 42 {
-		n := n + 1
-		rc := RCFrom(n)
+		rc := RCFrom(n + 1)
 		b := l[rc]
 		rendered := b.Behavior()
 		row := rc.Row - 1
@@ -148,13 +147,13 @@ func behaviorArgToString(a any) string {
 	return fmt.Sprintf("%s", a)
 }
 
-type Custom struct {
+type Custom2 struct {
 	Name string
 	A    any
 	B    any
 }
 
-func (x Custom) Behavior() string {
+func (x Custom2) Behavior() string {
 	a := behaviorArgToString(x.A)
 	b := behaviorArgToString(x.B)
 	return fmt.Sprintf("&%s %s %s", x.Name, a, b)
@@ -208,6 +207,12 @@ type Trans struct{}
 
 func (_ Trans) Behavior() string {
 	return "&trans"
+}
+
+type None struct{}
+
+func (_ None) Behavior() string {
+	return "&none"
 }
 
 type RC struct {
@@ -270,19 +275,18 @@ func (rc RC) Less(other RC) int {
 	return cmp.Compare(rc.Serial(), other.Serial())
 }
 
-func InitTrans() Layer {
+func InitWith(b Behavior) Layer {
 	layer := Layer{}
-	for i := range 42 {
-		layer[RCFrom(i+1)] = Trans{}
+	for rc := range RCs() {
+		layer[rc] = b
 	}
 
 	return layer
 }
 
-func InitToLevelTrans(level int) Layer {
+func InitToLevelAndTrans(level int) Layer {
 	layer := Layer{}
-	for i := range 42 {
-		rc := RCFrom(i + 1)
+	for rc := range RCs() {
 		// replace with proper trans when zmk ready
 		layer[rc] = Custom0{fmt.Sprintf("to%d%s", level, rc)}
 	}
@@ -290,10 +294,20 @@ func InitToLevelTrans(level int) Layer {
 	return layer
 }
 
+func RCs() iter.Seq[RC] {
+	return func(yield func(RC) bool) {
+		for i := range 42 {
+			if !yield(RCFrom(i + 1)) {
+				return
+			}
+		}
+	}
+}
+
 var layers = make([]Layer, MAXLAYERINDEX)
 
 func init() {
-	layers[BASE] = InitTrans()
+	layers[BASE] = InitWith(Trans{})
 	layers[BASE][l(1, 1)] = Kp{TAB} // row 1
 	layers[BASE][l(1, 2)] = Kp{Q}
 	layers[BASE][l(1, 3)] = Kp{W}
@@ -309,11 +323,11 @@ func init() {
 	layers[BASE][l(3, 1)] = Mt{LCTRL, MINUS} // row 3
 	layers[BASE][l(3, 2)] = Kp{Z}
 	layers[BASE][l(3, 3)] = Kp{X}
-	layers[BASE][l(3, 4)] = Custom{"kpConfig", "0", "C"}
+	layers[BASE][l(3, 4)] = Custom2{"kpConfig", "0", "C"}
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
-	layers[BASE][l(4, 1)] = Custom{"lslxl", QUICK, CHAINS} // row 4
-	layers[BASE][l(4, 2)] = Custom{"lmmNumMoveUnder", NUM, "0"}
+	layers[BASE][l(4, 1)] = Custom2{"lslxl", QUICK, CHAINS} // row 4
+	layers[BASE][l(4, 2)] = Custom2{"lmmNumMoveUnder", NUM, "0"}
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
 	layers[BASE][r(1, 1)] = Kp{Y} // row 1
@@ -338,20 +352,20 @@ func init() {
 	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
 	layers[BASE][r(4, 3)] = Custom1{"slxl", CHAINS}
 
-	layers[MOVE] = InitToLevelTrans(0)
+	layers[MOVE] = InitToLevelAndTrans(0)
 	layers[MOVE][l(4, 3)] = To{BASE} // row 4
 	layers[MOVE][r(2, 1)] = Kp{LEFT} // row 2
 	layers[MOVE][r(2, 2)] = Rmt{LALT, DOWN}
 	layers[MOVE][r(2, 3)] = Rmt{LGUI, UP}
 	layers[MOVE][r(2, 4)] = Rmt{LSHIFT, RIGHT}
 
-	layers[NUM] = InitTrans()
+	layers[NUM] = InitWith(Trans{})
 	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
 	layers[NUM][l(1, 6)] = Kp{TILDE}
 	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUM][l(2, 3)] = Custom{"mtBracket", "LSHIFT", "0"}
-	layers[NUM][l(2, 4)] = Custom{"mtParen", "LGUI", "0"}
-	layers[NUM][l(2, 5)] = Custom{"mtCurly", "LALT", "0"}
+	layers[NUM][l(2, 3)] = Custom2{"mtBracket", "LSHIFT", "0"}
+	layers[NUM][l(2, 4)] = Custom2{"mtParen", "LGUI", "0"}
+	layers[NUM][l(2, 5)] = Custom2{"mtCurly", "LALT", "0"}
 	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -373,7 +387,7 @@ func init() {
 	layers[NUM][r(3, 5)] = Kp{LS(SLASH)}
 	layers[NUM][r(3, 6)] = Kp{PIPE}
 
-	layers[QUICK] = InitTrans()
+	layers[QUICK] = InitWith(Trans{})
 	layers[QUICK][l(1, 5)] = Kp{LG(C_VOL_UP)} // row 1
 	layers[QUICK][l(1, 6)] = Kp{C_VOL_UP}
 	layers[QUICK][l(2, 5)] = Kp{LG(C_VOL_DN)} // row 2
@@ -388,10 +402,21 @@ func init() {
 	layers[QUICK][r(4, 2)] = Kp{F11}
 	layers[QUICK][r(4, 3)] = Kp{F12}
 
-	// // &trans          &trans           &trans           &trans           &kp PRINTSCREEN  &kp LC(RIGHT_BRACKET)
-	// // &kp HOME        &rmt LALT PG_DN  &rmt LGUI PG_UP  &rmt RSHIFT END  &trans           &trans
-	// // &trans          &trans           &trans           &trans           &trans           &trans
-	// // &rmt LCTRL F10  &kp F11          &kp F12
+	layers[REPEAT] = InitWith(Trans{})
+	layers[SYS] = InitWith(None{})
+	layers[SYS][l(1, 1)] = Custom0{"bootloader"}     // tab
+	layers[SYS][l(1, 5)] = Custom0{"sys_reset"}      // r
+	layers[SYS][r(1, 2)] = Custom1{"out", "OUT_USB"} // u
+	layers[SYS][l(3, 5)] = Custom1{"out", "OUT_USB"} // v - single half backup
+	layers[SYS][l(3, 6)] = Custom1{"out", "OUT_BLE"} // b
+	layers[SYS][l(2, 5)] = Custom2{"bt", "BT_SEL", "0"}
+	layers[SYS][l(2, 4)] = Custom2{"bt", "BT_SEL", "1"}
+	layers[SYS][l(2, 3)] = Custom2{"bt", "BT_SEL", "2"}
+	layers[SYS][l(2, 2)] = Custom2{"bt", "BT_SEL", "3"}
+	layers[SYS][l(2, 1)] = Custom2{"bt", "BT_SEL", "4"}
+	layers[SYS][l(3, 4)] = Custom1{"bt", "BT_CLR"}     // c
+	layers[SYS][l(3, 3)] = Custom1{"bt", "BT_CLR_ALL"} // x
+	layers[SYS][r(3, 1)] = Custom1{"bt", "BT_CLR_ALL"} // n - nuke
 }
 
 func renderKeymap(path string, params Params) {
@@ -443,8 +468,8 @@ func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 }
 
 func main() {
-	params := Params{
-		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:QUICK+1]))),
+	renderKeymap("config/ergonaut_one.keymap", Params{
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:SYS+1]))),
 		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
 		Indices: func() []RenderedLayer {
 			a := []RenderedLayer{}
@@ -456,9 +481,8 @@ func main() {
 			}
 			return a
 		}(),
-	}
+	})
 
-	renderKeymap("config/ergonaut_one.keymap", params)
 	fmt.Println("good")
 }
 
