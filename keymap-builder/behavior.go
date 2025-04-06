@@ -78,3 +78,34 @@ func AddBehavior(b Behavior) {
 	}
 	behaviors = append(behaviors, b)
 }
+
+func ModRef(key KeyCode, ref Reference) Reference {
+	name := fmt.Sprintf("m%s", ref.Name())
+	AddBehavior(Behavior{
+		Name:  name,
+		Label: fmt.Sprintf("Mod %s", ref.Name()),
+		Type:  BehaviorTypeHoldTap,
+		Refs:  []Reference{Kp{}, ref},
+		Props: []DeviceTreeProperty{
+			{"flavor", "tap-preferred"},
+		},
+	})
+
+	return Custom1(name, key)
+}
+
+func MoTo(mo, to LayerIndex) Reference {
+	name := "moto"
+	AddBehavior(Behavior{
+		Name:  name,
+		Label: "Momentary/To",
+		Type:  BehaviorTypeHoldTap,
+		Refs:  []Reference{Mo{}, To{}},
+		Props: []DeviceTreeProperty{
+			{"flavor", "balanced"},
+			{"tapping-term-ms", 300},
+		},
+	})
+
+	return Custom2(name, mo, to)
+}

@@ -80,7 +80,8 @@ func init() {
 	layers[BASE][l(3, 4)] = Custom2("kpConfig", "0", "C")
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
-	layers[BASE][l(4, 1)] = Custom2("lslxl", QUICK, CHAINS) // row 4
+	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
+	// layers[BASE][l(4, 1)] = Custom2("lslxl", QUICK, CHAINS) // row 4
 	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUM, "0")
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
@@ -119,7 +120,8 @@ func init() {
 	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
 	layers[NUM][l(2, 3)] = Custom2("mtBracket", "LSHIFT", "0")
 	layers[NUM][l(2, 4)] = Custom2("mtParen", "LGUI", "0")
-	layers[NUM][l(2, 5)] = Custom2("mtCurly", "LALT", "0")
+	layers[NUM][l(2, 5)] = ModRef("LALT", CurliesMacro())
+	// layers[NUM][l(2, 5)] = Custom2("mtCurly", "LALT", "0")
 	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -199,20 +201,9 @@ func RenderLayerSeq(seq iter.Seq2[int, Layer]) iter.Seq[RenderedLayer] {
 
 func main() {
 	renderKeymap("../config/ergonaut_one.keymap", Params{
-		Behaviors: []Behavior{
-			{
-				Name:  "lslxl",
-				Label: "LSLXL",
-				Type:  BehaviorTypeHoldTap,
-				Refs:  []Reference{Custom{Label: "mo"}, Custom{Label: "slxl"}},
-				Props: []DeviceTreeProperty{
-					{Name: "flavor", Value: "balanced"},
-					{Name: "tapping-term-ms", Value: 300},
-				},
-			},
-		},
-		Macros: macros,
-		Layers: slices.Collect(RenderLayerSeq(slices.All(layers[:PARENS+1]))),
+		Behaviors: behaviors,
+		Macros:    macros,
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:PARENS+1]))),
 		Indices: func() []RenderedLayer {
 			a := []RenderedLayer{}
 			for i := range MAXLAYERINDEX {

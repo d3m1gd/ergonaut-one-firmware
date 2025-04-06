@@ -23,6 +23,10 @@ type To struct {
 	Layer LayerIndex
 }
 
+type Mo struct {
+	Layer LayerIndex
+}
+
 type Mt struct {
 	Hold KeyCode
 	Tap  KeyCode

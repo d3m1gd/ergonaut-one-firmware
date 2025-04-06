@@ -52,6 +52,18 @@ func (x To) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Layer), }
 }
 
+func (x Mo) Reference() string {
+	return fmt.Sprintf("&%s %s", x.Name(), x.Layer)
+}
+
+func (x Mo) Name() string {
+	return "mo"
+}
+
+func (x Mo) Args() []string {
+	return []string{ fmt.Sprintf("%s", x.Layer), }
+}
+
 func (x Mt) Reference() string {
 	return fmt.Sprintf("&%s %s %s", x.Name(), x.Hold, x.Tap)
 }

@@ -48,6 +48,29 @@ func BackspaceDeleteMacro() Reference {
 	return Custom0(name)
 }
 
+func ParensMacro() Reference {
+	return OpenCloseMacro("parens", Kp{LPAR}, Kp{RPAR})
+}
+
+func BracketsMacro() Reference {
+	return OpenCloseMacro("brackets", Kp{LBKT}, Kp{RBKT})
+}
+
+func CurliesMacro() Reference {
+	return OpenCloseMacro("curlies", Kp{LBRC}, Kp{RBRC})
+}
+
+func OpenCloseMacro(name string, left, right Kp) Reference {
+	AddMacro(Macro{
+		Name:  name,
+		Label: fmt.Sprintf("OpenClose %s", name),
+		Cells: 0,
+		Refs:  []Reference{left, right, Kp{LEFT}, To{PARENS}},
+	})
+
+	return Custom0(name)
+}
+
 func AddMacro(macro Macro) {
 	i := slices.IndexFunc(macros, func(other Macro) bool {
 		return macro.Name == other.Name

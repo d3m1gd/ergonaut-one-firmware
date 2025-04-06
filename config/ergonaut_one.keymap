@@ -28,13 +28,21 @@
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
     behaviors {
-        lslxl: lslxl {
+        moto: moto {
             compatible = "zmk,behavior-hold-tap";
-            label = "LSLXL";
+            label = "Momentary/To";
             #binding-cells = <2>;
-            bindings = <&mo &slxl>;
+            bindings = <&mo &to>;
             flavor = "balanced";
             tapping-term-ms = <300>;
+        };
+
+        mcurlies: mcurlies {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Mod curlies";
+            #binding-cells = <2>;
+            bindings = <&kp &curlies>;
+            flavor = "tap-preferred";
         };
 
         rmt: rmt {
@@ -667,7 +675,7 @@
             compatible = "zmk,behavior-macro";
             label = "To 0, L41";
             #binding-cells = <0>;
-            bindings = <&to BASE &lslxl QUICK CHAINS>;
+            bindings = <&to BASE &moto QUICK CHAINS>;
         };
 
         to0l42: to0l42 {
@@ -703,6 +711,13 @@
             label = "To 0, R43";
             #binding-cells = <0>;
             bindings = <&to BASE &slxl CHAINS>;
+        };
+
+        curlies: curlies {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose curlies";
+            #binding-cells = <0>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
         };
 
         bspcdel: bspcdel {
@@ -813,10 +828,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E                &kp R                   &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D           &mt LALT F              &kp G             &kp H             &rmt LALT J    &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
-&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C        &kp V                   &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &lslxl QUICK CHAINS  &lmmNumMoveUnder NUM 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUM SPACE  &slxl CHAINS
+&kp TAB               &kp Q  &kp W         &kp E               &kp R                   &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F              &kp G             &kp H             &rmt LALT J    &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
+&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C       &kp V                   &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+                                           &moto QUICK CHAINS  &lmmNumMoveUnder NUM 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUM SPACE  &slxl CHAINS
             >;
         };
 
@@ -831,10 +846,10 @@
 
         NUM {
             bindings = <
-&kp LS(TAB)  &trans  &trans               &trans           &trans           &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
-&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mtCurly LALT 0  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
-&trans       &trans  &trans               &trans           &kp LS(INSERT)   &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
-                                          &trans           &kp UNDERSCORE   &trans     &trans     &trans       &trans
+&kp LS(TAB)  &trans  &trans               &trans           &trans          &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
+&kp DELETE   &trans  &mtBracket LSHIFT 0  &mtParen LGUI 0  &mcurlies LALT  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
+&trans       &trans  &trans               &trans           &kp LS(INSERT)  &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                          &trans           &kp UNDERSCORE  &trans     &trans     &trans       &trans
             >;
         };
 
