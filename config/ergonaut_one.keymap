@@ -40,7 +40,7 @@
         mbrackets: mbrackets {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod brackets";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             bindings = <&kp &brackets>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -49,7 +49,7 @@
         mparens: mparens {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod parens";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             bindings = <&kp &parens>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -58,7 +58,7 @@
         mcurlies: mcurlies {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod curlies";
-            #binding-cells = <1>;
+            #binding-cells = <2>;
             bindings = <&kp &curlies>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -879,10 +879,10 @@
 
         NUM {
             bindings = <
-&kp LS(TAB)  &trans  &trans             &trans         &trans          &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
-&kp DELETE   &trans  &mbrackets LSHIFT  &mparens LGUI  &mcurlies LALT  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
-&trans       &trans  &trans             &trans         &kp LS(INSERT)  &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
-                                        &trans         &kp UNDERSCORE  &trans     &trans     &trans       &trans
+&kp LS(TAB)  &trans  &trans               &trans           &trans            &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
+&kp DELETE   &trans  &mbrackets LSHIFT 0  &mparens LGUI 0  &mcurlies LALT 0  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
+&trans       &trans  &trans               &trans           &kp LS(INSERT)    &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                          &trans           &kp UNDERSCORE    &trans     &trans     &trans       &trans
             >;
         };
 

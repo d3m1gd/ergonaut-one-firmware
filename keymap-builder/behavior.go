@@ -7,13 +7,20 @@ import (
 	"strings"
 )
 
+type Number int
+
+func (n Number) String() string {
+	return strconv.Itoa(int(n))
+}
+
+var ZERO = Number(0)
+
 type BehaviorType struct {
 	Name  string
 	Cells int
 }
 
 var BehaviorTypeHoldTap = BehaviorType{"behavior-hold-tap", 2}
-var BehaviorTypeHoldTap1 = BehaviorType{"behavior-hold-tap", 1}
 var BehaviorTypeStickyKey = BehaviorType{"behavior-sticky-key", 1}
 
 type DeviceTreeProperty struct {
@@ -85,7 +92,7 @@ func ModRef(key KeyCode, ref Reference) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: fmt.Sprintf("Mod %s", ref.Name()),
-		Type:  BehaviorTypeHoldTap1,
+		Type:  BehaviorTypeHoldTap,
 		Refs:  []Reference{Kp{}, ref},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
@@ -93,7 +100,7 @@ func ModRef(key KeyCode, ref Reference) Reference {
 		},
 	})
 
-	return Custom1(name, key)
+	return Custom2(name, key, ZERO)
 }
 
 func MoTo(mo, to LayerIndex) Reference {
