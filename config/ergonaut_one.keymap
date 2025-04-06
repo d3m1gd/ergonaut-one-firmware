@@ -182,7 +182,7 @@
         mmMoveUnder: mmMoveUnder {
             compatible = "zmk,behavior-mod-morph";
             label = "mm Move Under";
-            bindings = <&to 20>, <&kp UNDERSCORE>;
+            bindings = <&to 1>, <&kp UNDERSCORE>;
 
             #binding-cells = <0>;
             mods = <(MOD_RSFT|MOD_LSFT)>;
@@ -318,7 +318,7 @@
         quoted: quoted {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW &sll 5>;
+            bindings = <&kp DOUBLE_QUOTES &kp DOUBLE_QUOTES &kp LEFT_ARROW &sll 6>;
             label = "QUOTED";
         };
 
@@ -367,21 +367,21 @@
         curlyFull: curlyFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT &sll 5>;
+            bindings = <&kp LEFT_BRACE &kp RBRC &kp LEFT &sll 6>;
             label = "CURLYFULL";
         };
 
         bracketFull: bracketFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &sll 5>;
+            bindings = <&kp LEFT_BRACKET &kp RIGHT_BRACKET &kp LEFT &sll 6>;
             label = "BRACKETFULL";
         };
 
         parenFull: parenFull {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT &sll 5>;
+            bindings = <&kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT &sll 6>;
             label = "PARENFULL";
         };
 
@@ -675,14 +675,14 @@
         to0l41: to0l41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &lslxl 2 6>;
+            bindings = <&to 0 &lslxl 3 7>;
             label = "To 0, L41";
         };
 
         to0l42: to0l42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &lmmNumMoveUnder 1 0>;
+            bindings = <&to 0 &lmmNumMoveUnder 2 0>;
             label = "To 0, L42";
         };
 
@@ -703,14 +703,14 @@
         to0r42: to0r42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &lt 1 SPACE>;
+            bindings = <&to 0 &lt 2 SPACE>;
             label = "To 0, R42";
         };
 
         to0r43: to0r43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&to 0 &slxl 6>;
+            bindings = <&to 0 &slxl 7>;
             label = "To 0, R43";
         };
 
@@ -793,7 +793,7 @@
         };
 
         sys {
-            bindings = <&sll 4>;
+            bindings = <&sll 5>;
             key-positions = <4 5>;
             layers = <0>;
             require-prior-idle-ms = <500>;
@@ -825,7 +825,16 @@
 &kp TAB               &kp Q  &kp W         &kp E          &kp R                 &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D     &mt LALT F            &kp G             &kp H             &rmt LALT J    &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C  &kp V                 &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &lslxl 2 6     &lmmNumMoveUnder 1 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 1 SPACE    &slxl 6
+                                           &lslxl 3 7     &lmmNumMoveUnder 2 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt 2 SPACE    &slxl 7
+            >;
+        };
+
+        MOVE {
+            bindings = <
+&to0l11  &to0l12  &to0l13  &to0l14  &to0l15  &to0l16  &to0r11   &to0r12         &to0r13       &to0r14            &to0r15  &to0r16
+&to0l21  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &to0r25  &to0r26
+&to0l31  &to0l32  &to0l33  &to0l34  &to0l35  &to0l36  &to0r31   &to0r32         &to0r33       &to0r34            &to0r35  &to0r36
+                           &to0l41  &to0l42  &to 0    &to0r41   &to0r42         &to0r43
             >;
         };
 
@@ -876,9 +885,9 @@
 
         chains {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 17      &slxl 9       &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &slxl 7       &slxl 10      &kp K_CANCEL  &slxl 14      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 8       &kp K_CANCEL  &slxl 16      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 18      &slxl 10      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &slxl 8       &slxl 11      &kp K_CANCEL  &slxl 15      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9       &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
@@ -903,8 +912,8 @@
 
         chain_R {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 12      &slxl 13      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 11      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 13      &slxl 14      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 12      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
@@ -948,7 +957,7 @@
 
         chain_G {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 15      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 16      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
@@ -977,7 +986,7 @@
             bindings = <
 &kp K_CANCEL  &envQuoted    &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 18      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 19      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
             >;
         };
@@ -997,15 +1006,6 @@
 &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-            >;
-        };
-
-        MOVE {
-            bindings = <
-&to0l11  &to0l12  &to0l13  &to0l14  &to0l15  &to0l16  &to0r11   &to0r12         &to0r13       &to0r14            &to0r15  &to0r16
-&to0l21  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26  &kp LEFT  &rmt LALT DOWN  &rmt LGUI UP  &rmt LSHIFT RIGHT  &to0r25  &to0r26
-&to0l31  &to0l32  &to0l33  &to0l34  &to0l35  &to0l36  &to0r31   &to0r32         &to0r33       &to0r34            &to0r35  &to0r36
-                           &to0l41  &to0l42  &to 0    &to0r41   &to0r42         &to0r43
             >;
         };
     };
