@@ -43,6 +43,7 @@
             #binding-cells = <2>;
             bindings = <&kp &curlies>;
             flavor = "tap-preferred";
+            tapping-term-ms = <200>;
         };
 
         rmt: rmt {
@@ -710,7 +711,7 @@
             compatible = "zmk,behavior-macro";
             label = "To 0, R43";
             #binding-cells = <0>;
-            bindings = <&to BASE &slxl CHAINS>;
+            bindings = <&to BASE &moto QUICK CHAINS>;
         };
 
         curlies: curlies {
@@ -831,7 +832,7 @@
 &kp TAB               &kp Q  &kp W         &kp E               &kp R                   &kpkp RG(T) T     &kp Y             &kp U          &kp I                  &kp O              &kp P                &kp LBKT
 &mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F              &kp G             &kp H             &rmt LALT J    &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
 &mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C       &kp V                   &kp B             &kp N             &kpkp RG(M) M  &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &moto QUICK CHAINS  &lmmNumMoveUnder NUM 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUM SPACE  &slxl CHAINS
+                                           &moto QUICK CHAINS  &lmmNumMoveUnder NUM 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUM SPACE  &moto QUICK CHAINS
             >;
         };
 
@@ -889,12 +890,12 @@
             >;
         };
 
-        chains {
+        CHAINS {
             bindings = <
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 18      &slxl 10      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &slxl 8       &slxl 11      &kp K_CANCEL  &slxl 15      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-&kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9       &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-                                          &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 

@@ -43,19 +43,6 @@ type Params struct {
 	Indices   []RenderedLayer // tmp hack
 }
 
-// todo     bindings
-//
-//	= <&macro_param_1to1>
-//	, <&macro_press &mo MACRO_PLACEHOLDER>
-//	, <&macro_param_2to1>
-//	, <&macro_press &kp MACRO_PLACEHOLDER>
-//	, <&macro_pause_for_release>
-//	, <&macro_param_2to1>
-//	, <&macro_release &kp MACRO_PLACEHOLDER>
-//	, <&macro_param_1to1>
-//	, <&macro_release &mo MACRO_PLACEHOLDER>
-//	;
-
 var layers = make([]Layer, MAXLAYERINDEX)
 var macros = make([]Macro, 0, 64)
 var behaviors = make([]Behavior, 0, 64)
@@ -105,7 +92,7 @@ func init() {
 	layers[BASE][r(3, 6)] = Kp{BACKSLASH}
 	layers[BASE][r(4, 1)] = Mt{LCTRL, RETURN} // row 4
 	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
-	layers[BASE][r(4, 3)] = Custom1("slxl", CHAINS)
+	layers[BASE][r(4, 3)] = MoTo(QUICK, CHAINS)
 
 	layers[MOVE] = InitToLevelAndTrans(BASE)
 	layers[MOVE][l(4, 3)] = To{BASE} // row 4
@@ -179,6 +166,28 @@ func init() {
 	layers[PARENS][l(4, 3)] = To{BASE}
 	layers[PARENS][l(2, 1)] = BackspaceDeleteMacro()
 	layers[PARENS][r(2, 4)] = XThenLayerMacro(Kp{RIGHT}, 0)
+
+	layers[CHAINS] = InitWith(To{BASE})
+	// layers[CHAINS][l(1, 4)] = Custom1("slxl", 18) // todo
+	// layers[CHAINS][l(1, 5)] = Custom1("slxl", 10) // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// layers[CHAINS][l(2, 3)] = To{8}               // todo
+	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 18      &slxl 10      &kp K_CANCEL
+	// &kp K_CANCEL  &kp K_CANCEL  &slxl 8       &slxl 11      &kp K_CANCEL  &slxl 15
+	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9
+	// //                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+
+	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+	// &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+
 }
 
 func renderKeymap(path string, params Params) {
@@ -203,7 +212,7 @@ func main() {
 	renderKeymap("../config/ergonaut_one.keymap", Params{
 		Behaviors: behaviors,
 		Macros:    macros,
-		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:PARENS+1]))),
+		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:MAXLAYERINDEX]))),
 		Indices: func() []RenderedLayer {
 			a := []RenderedLayer{}
 			for i := range MAXLAYERINDEX {

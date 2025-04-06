@@ -88,6 +88,7 @@ func ModRef(key KeyCode, ref Reference) Reference {
 		Refs:  []Reference{Kp{}, ref},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
+			{"tapping-term-ms", 200},
 		},
 	})
 
