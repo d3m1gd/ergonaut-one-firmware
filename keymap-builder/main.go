@@ -58,6 +58,7 @@ type Params struct {
 
 var layers = make([]Layer, MAXLAYERINDEX)
 var macros = make([]Macro, 0, 64)
+var behaviors = make([]Behavior, 0, 64)
 
 func init() {
 	layers[BASE] = InitWith(Trans{})

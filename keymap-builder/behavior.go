@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"slices"
 	"strconv"
 	"strings"
 )
@@ -37,6 +38,20 @@ type Behavior struct {
 	Props []DeviceTreeProperty
 }
 
+func (b Behavior) Equal(other Behavior) bool {
+	eq := true
+	eq = eq && b.Name == other.Name
+	eq = eq && b.Label == other.Label
+	eq = eq && b.Type == other.Type
+	eq = eq && slices.EqualFunc(b.Refs, other.Refs, func(a, b Reference) bool {
+		return a.Reference() == b.Reference()
+	})
+	eq = eq && slices.EqualFunc(b.Props, other.Props, func(a, b DeviceTreeProperty) bool {
+		return a.CompileProperty() == b.CompileProperty()
+	})
+	return eq
+}
+
 func (m Behavior) Cells() string {
 	return strconv.Itoa(m.Type.Cells)
 }
@@ -53,11 +68,13 @@ func CompileProperty(p DeviceTreeProperty) string {
 	return p.CompileProperty()
 }
 
-// lslxl: lslxl {
-//     compatible = "zmk,behavior-hold-tap";
-//     label = "LSLXL";
-//     #binding-cells = <2>;
-//     tapping-term-ms = <300>;
-//     flavor = "balanced";
-//     bindings = <&mo>, <&slxl>;
-// };
+func AddBehavior(b Behavior) {
+	i := slices.IndexFunc(behaviors, func(other Behavior) bool {
+		return b.Name == other.Name
+	})
+	if i != -1 {
+		panicif(!b.Equal(behaviors[i]))
+		return
+	}
+	behaviors = append(behaviors, b)
+}

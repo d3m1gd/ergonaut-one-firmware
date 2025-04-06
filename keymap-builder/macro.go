@@ -88,14 +88,14 @@ func XThenTransMacro(beh Reference, index LayerIndex, rc RC) Reference {
 		Refs:  []Reference{MacroParam{1, 1}, inner, To{index}, layer[rc]},
 	})
 
-	return Custom{name, anyArgs}
+	return Custom{name, MapToAny(args)}
 }
 
-func XThenLayerMacro(beh Reference, index LayerIndex) Reference {
+func XThenLayerMacro(r Reference, index LayerIndex) Reference {
 	name := fmt.Sprintf("xThenLayer%d", index)
-	args := beh.Args()
+	args := r.Args()
 	anyArgs := MapToAnyStatic(args, "MACRO_PLACEHOLDER")
-	inner := Custom{beh.Name(), anyArgs}
+	inner := Custom{r.Name(), anyArgs}
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Layer %s", index),
@@ -103,5 +103,5 @@ func XThenLayerMacro(beh Reference, index LayerIndex) Reference {
 		Refs:  []Reference{MacroParam{1, 1}, inner, To{index}},
 	})
 
-	return Custom{name, anyArgs}
+	return Custom{name, MapToAny(args)}
 }
