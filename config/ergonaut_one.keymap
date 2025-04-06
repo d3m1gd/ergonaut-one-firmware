@@ -721,11 +721,11 @@
             label = "Backspace Delete";
         };
 
-        xThenTrans0: xThenTrans0 {
+        xThenLayer0: xThenLayer0 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &to BASE &rmt LSHIFT L>;
-            label = "X Then Trans BASE";
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &to BASE>;
+            label = "X Then Layer BASE";
         };
     };
 
@@ -882,7 +882,7 @@
         PARENS {
             bindings = <
 &to0l11   &to0l12  &to0l13  &to0l14  &to0l15  &to0l16   &to0r11  &to0r12  &to0r13  &to0r14             &to0r15  &to0r16
-&bspcdel  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26   &to0r21  &to0r22  &to0r23  &xThenTrans0 RIGHT  &to0r25  &to0r26
+&bspcdel  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26   &to0r21  &to0r22  &to0r23  &xThenLayer0 RIGHT  &to0r25  &to0r26
 &to0l31   &to0l32  &to0l33  &to0l34  &to0l35  &to0l36   &to0r31  &to0r32  &to0r33  &to0r34             &to0r35  &to0r36
                             &to0l41  &to0l42  &to BASE  &to0r41  &to0r42  &to0r43
             >;

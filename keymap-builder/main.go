@@ -285,6 +285,22 @@ func XThenTransMacro(beh Behavior, index LayerIndex, rc RC) Behavior {
 	return Custom{name, anyArgs}
 }
 
+func XThenLayerMacro(beh Behavior, index LayerIndex) Behavior {
+	name := fmt.Sprintf("xThenLayer%d", index)
+	args := beh.Args()
+	inner := Custom1(beh.Name(), "MACRO_PLACEHOLDER")
+	AddMacro(Macro{
+		Name:      name,
+		Label:     fmt.Sprintf("X Then Layer %s", index),
+		Cells:     1,
+		Behaviors: []Behavior{MacroParam{1, 1}, inner, To{index}},
+	})
+
+	anyArgs := Map(args, func(a string) any { return a })
+
+	return Custom{name, anyArgs}
+}
+
 func BackspaceDeleteMacro() Behavior {
 	name := "bspcdel"
 	AddMacro(Macro{
@@ -466,23 +482,10 @@ func init() {
 	layers[SYS][l(3, 3)] = Custom1("bt", "BT_CLR_ALL") // x
 	layers[SYS][r(3, 1)] = Custom1("bt", "BT_CLR_ALL") // n - nuke
 
-	// &trans  &trans  &trans  &splitParens  &kp RIGHT  &trans
 	layers[PARENS] = InitToLevelAndTrans(BASE)
 	layers[PARENS][l(4, 3)] = To{BASE}
 	layers[PARENS][l(2, 1)] = BackspaceDeleteMacro()
-	layers[PARENS][r(2, 4)] = XThenTransMacro(Kp{RIGHT}, 0, r(2, 4))
-	// layers[PARENS][l(1, 5)] = Custom0{"sys_reset"}      // r
-	// layers[PARENS][r(1, 2)] = Custom1{"out", "OUT_USB"} // u
-	// layers[PARENS][l(3, 5)] = Custom1{"out", "OUT_USB"} // v - single half backup
-	// layers[PARENS][l(3, 6)] = Custom1{"out", "OUT_BLE"} // b
-	// layers[PARENS][l(2, 5)] = Custom2{"bt", "BT_SEL", "0"}
-	// layers[PARENS][l(2, 4)] = Custom2{"bt", "BT_SEL", "1"}
-	// layers[PARENS][l(2, 3)] = Custom2{"bt", "BT_SEL", "2"}
-	// layers[PARENS][l(2, 2)] = Custom2{"bt", "BT_SEL", "3"}
-	// layers[PARENS][l(2, 1)] = Custom2{"bt", "BT_SEL", "4"}
-	// layers[PARENS][l(3, 4)] = Custom1{"bt", "BT_CLR"}     // c
-	// layers[PARENS][l(3, 3)] = Custom1{"bt", "BT_CLR_ALL"} // x
-	// layers[PARENS][r(3, 1)] = Custom1{"bt", "BT_CLR_ALL"} // n - nuke
+	layers[PARENS][r(2, 4)] = XThenLayerMacro(Kp{RIGHT}, 0)
 }
 
 func renderKeymap(path string, params Params) {
@@ -534,7 +537,7 @@ func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 }
 
 func main() {
-	renderKeymap("config/ergonaut_one.keymap", Params{
+	renderKeymap("../config/ergonaut_one.keymap", Params{
 		Macros:    macros,
 		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:PARENS+1]))),
 		ToBaseAnd: slices.Collect(LayerToBaseAndSeq(SortedMap(layers[BASE]))),
