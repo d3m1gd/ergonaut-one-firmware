@@ -98,12 +98,12 @@ func (mp MacroParam) Args() []string {
 	return []string{}
 }
 
-func XThenTransMacro(beh Reference, index LayerIndex, rc RC) Reference {
+func XThenTransMacro(r Reference, index LayerIndex, rc RC) Reference {
 	layer := layers[index]
 	name := fmt.Sprintf("xThenTrans%d", index)
-	args := beh.Args()
+	args := r.Args()
 	anyArgs := MapToAnyStatic(args, "MACRO_PLACEHOLDER")
-	inner := Custom{beh.Name(), anyArgs}
+	inner := Custom{r.Name(), anyArgs}
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Trans %s", index),

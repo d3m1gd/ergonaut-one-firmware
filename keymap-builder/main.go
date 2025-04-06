@@ -68,7 +68,6 @@ func init() {
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	// layers[BASE][l(4, 1)] = Custom2("lslxl", QUICK, CHAINS) // row 4
 	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUM, "0")
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
@@ -105,10 +104,9 @@ func init() {
 	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
 	layers[NUM][l(1, 6)] = Kp{TILDE}
 	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUM][l(2, 3)] = Custom2("mtBracket", "LSHIFT", "0")
-	layers[NUM][l(2, 4)] = Custom2("mtParen", "LGUI", "0")
+	layers[NUM][l(2, 3)] = ModRef("LSHIFT", BracketsMacro())
+	layers[NUM][l(2, 4)] = ModRef("LGUI", ParensMacro())
 	layers[NUM][l(2, 5)] = ModRef("LALT", CurliesMacro())
-	// layers[NUM][l(2, 5)] = Custom2("mtCurly", "LALT", "0")
 	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -118,6 +116,7 @@ func init() {
 	layers[NUM][r(1, 4)] = Kp{N3}
 	layers[NUM][r(1, 6)] = Kp{RBKT}
 	layers[NUM][r(2, 1)] = Custom0("mmEquals") // row 2
+	// layers[NUM][r(2, 1)] = Kp{EQUAL}
 	layers[NUM][r(2, 2)] = Mt{LALT, N4}
 	layers[NUM][r(2, 3)] = Mt{LGUI, N5}
 	layers[NUM][r(2, 4)] = Mt{LSHIFT, N6}
