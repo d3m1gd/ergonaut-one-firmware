@@ -13,6 +13,7 @@ type BehaviorType struct {
 }
 
 var BehaviorTypeHoldTap = BehaviorType{"behavior-hold-tap", 2}
+var BehaviorTypeHoldTap1 = BehaviorType{"behavior-hold-tap", 1}
 var BehaviorTypeStickyKey = BehaviorType{"behavior-sticky-key", 1}
 
 type DeviceTreeProperty struct {
@@ -84,7 +85,7 @@ func ModRef(key KeyCode, ref Reference) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: fmt.Sprintf("Mod %s", ref.Name()),
-		Type:  BehaviorTypeHoldTap,
+		Type:  BehaviorTypeHoldTap1,
 		Refs:  []Reference{Kp{}, ref},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},

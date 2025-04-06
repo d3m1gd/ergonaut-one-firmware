@@ -40,7 +40,7 @@
         mbrackets: mbrackets {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod brackets";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             bindings = <&kp &brackets>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -49,7 +49,7 @@
         mparens: mparens {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod parens";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             bindings = <&kp &parens>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -58,7 +58,7 @@
         mcurlies: mcurlies {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod curlies";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             bindings = <&kp &curlies>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
