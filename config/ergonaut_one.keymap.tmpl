@@ -22,6 +22,17 @@
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
     behaviors {
+{{- range .Behaviors }}
+        {{.Name}}: {{.Name}} {
+            compatible = "zmk,{{.Type.Name}}";
+            label = "{{.Label}}";
+            #binding-cells = <{{.Cells}}>;
+            bindings = <{{.Bindings}}>;
+            {{- range .Properties }}
+            {{.}};
+            {{- end }}{{/* range .Properties */}}
+        };
+{{ end }}{{/* range .Behaviors */}}
         rmt: rmt {
             compatible = "zmk,behavior-hold-tap";
             label = "Right Mod Tap";
@@ -94,15 +105,6 @@
             quick-release;
         };
 
-        ll: ll {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Layer Layer";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "balanced";
-            bindings = <&mo>, <&sll>;
-        };
-
         slxl: slxl {
             compatible = "zmk,behavior-sticky-key";
             label = "Sticky Layer Extra Long";
@@ -162,15 +164,6 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        lslxl: lslxl {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LSLXL";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "balanced";
-            bindings = <&mo>, <&slxl>;
         };
 
         mmMoveUnder: mmMoveUnder {
@@ -416,10 +409,10 @@
         {{- range .Macros }}
 
         {{.Name}}: {{.Name}} {
-            compatible = "zmk,{{.Compatible}}";
+            compatible = "zmk,{{.Type}}";
+            label = "{{.Label}}";
             #binding-cells = <{{.Cells}}>;
             bindings = <{{.Bindings}}>;
-            label = "{{.Label}}";
         };
         {{- end }}{{/* range .Macros */}}
     };
@@ -504,11 +497,6 @@
             bindings = <&kp SPACE>;
             key-positions = <37 36>;
             layers = <0>;
-        };
-
-        tctrl {
-            bindings = <&kt LGUI>;
-            key-positions = <36 37 38>;
         };
 
         RCAPS {
