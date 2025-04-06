@@ -40,7 +40,6 @@ type Params struct {
 	Macros    []Macro
 	Behaviors []Behavior
 	Layers    []RenderedLayer
-	Indices   []RenderedLayer // tmp hack
 }
 
 var layers = make([]Layer, MAXLAYERINDEX)
@@ -64,11 +63,11 @@ func init() {
 	layers[BASE][l(3, 1)] = Mt{LCTRL, MINUS} // row 3
 	layers[BASE][l(3, 2)] = Kp{Z}
 	layers[BASE][l(3, 3)] = Kp{X}
-	layers[BASE][l(3, 4)] = Custom2("kpConfig", "0", "C")
+	layers[BASE][l(3, 4)] = Custom2("kpConfig", ZERO, C)
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUM, "0")
+	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUM, ZERO)
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
 	layers[BASE][r(1, 1)] = Kp{Y} // row 1
@@ -104,9 +103,9 @@ func init() {
 	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
 	layers[NUM][l(1, 6)] = Kp{TILDE}
 	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUM][l(2, 3)] = ModRef("LSHIFT", BracketsMacro())
-	layers[NUM][l(2, 4)] = ModRef("LGUI", ParensMacro())
-	layers[NUM][l(2, 5)] = ModRef("LALT", CurliesMacro())
+	layers[NUM][l(2, 3)] = ModRef(LSHIFT, BracketsMacro())
+	layers[NUM][l(2, 4)] = ModRef(LGUI, ParensMacro())
+	layers[NUM][l(2, 5)] = ModRef(LALT, CurliesMacro())
 	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -116,7 +115,6 @@ func init() {
 	layers[NUM][r(1, 4)] = Kp{N3}
 	layers[NUM][r(1, 6)] = Kp{RBKT}
 	layers[NUM][r(2, 1)] = Custom0("mmEquals") // row 2
-	// layers[NUM][r(2, 1)] = Kp{EQUAL}
 	layers[NUM][r(2, 2)] = Mt{LALT, N4}
 	layers[NUM][r(2, 3)] = Mt{LGUI, N5}
 	layers[NUM][r(2, 4)] = Mt{LSHIFT, N6}
@@ -150,7 +148,7 @@ func init() {
 	layers[SYS][l(1, 1)] = Custom0("bootloader")     // tab
 	layers[SYS][l(1, 5)] = Custom0("sys_reset")      // r
 	layers[SYS][r(1, 2)] = Custom1("out", "OUT_USB") // u
-	layers[SYS][l(3, 5)] = Custom1("out", "OUT_USB") // v - single half backup
+	layers[SYS][l(3, 5)] = Custom1("out", "OUT_USB") // v - left only backup
 	layers[SYS][l(3, 6)] = Custom1("out", "OUT_BLE") // b
 	layers[SYS][l(2, 5)] = Custom2("bt", "BT_SEL", "0")
 	layers[SYS][l(2, 4)] = Custom2("bt", "BT_SEL", "1")
@@ -212,16 +210,6 @@ func main() {
 		Behaviors: behaviors,
 		Macros:    macros,
 		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:MAXLAYERINDEX]))),
-		Indices: func() []RenderedLayer {
-			a := []RenderedLayer{}
-			for i := range MAXLAYERINDEX {
-				a = append(a, RenderedLayer{
-					Index: int(i),
-					Name:  i.String(),
-				})
-			}
-			return a
-		}(),
 	})
 
 	fmt.Println("good")
