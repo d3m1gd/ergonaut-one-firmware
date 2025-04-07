@@ -60,12 +60,7 @@ type RenderedLayer struct {
 }
 
 func InitWith(b Reference) Layer {
-	layer := Layer{}
-	for rc := range RCs() {
-		layer[rc] = b
-	}
-
-	return layer
+	return InitBy(func(RC) Reference { return b })
 }
 
 func InitBy(f func(RC) Reference) Layer {
