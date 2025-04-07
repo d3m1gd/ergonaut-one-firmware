@@ -92,7 +92,7 @@ func init() {
 	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
 	layers[BASE][r(4, 3)] = MoTo(QUICK, CHAINS)
 
-	layers[MOVE] = InitToLevelAndTrans(BASE)
+	layers[MOVE] = InitToLevelTrans(BASE)
 	layers[MOVE][l(4, 3)] = To{BASE} // row 4
 	layers[MOVE][r(2, 1)] = Kp{LEFT} // row 2
 	layers[MOVE][r(2, 2)] = Rmt{LALT, DOWN}
@@ -159,7 +159,7 @@ func init() {
 	layers[SYS][l(3, 3)] = Custom1("bt", "BT_CLR_ALL") // x
 	layers[SYS][r(3, 1)] = Custom1("bt", "BT_CLR_ALL") // n - nuke
 
-	layers[PARENS] = InitToLevelAndTrans(BASE)
+	layers[PARENS] = InitToLevelTrans(BASE)
 	layers[PARENS][l(4, 3)] = To{BASE}
 	layers[PARENS][l(2, 1)] = BackspaceDeleteMacro()
 	layers[PARENS][r(2, 4)] = XThenLayerMacro(Kp{RIGHT}, 0)

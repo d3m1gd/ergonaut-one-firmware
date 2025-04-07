@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"slices"
+	"strconv"
 	"strings"
 )
 
@@ -95,6 +96,42 @@ func (mp MacroParam) Name() string {
 }
 
 func (mp MacroParam) Args() []string {
+	return []string{}
+}
+
+type MacroStatePressRelease int
+
+const (
+	MacroStatePress MacroStatePressRelease = iota
+	MacroStateRelease
+	MacroStateWait
+)
+
+var MacroPress = MacroStateBase{MacroStatePress}
+var MacroRelease = MacroStateBase{MacroStateRelease}
+var MacroWait = MacroStateBase{MacroStateWait}
+
+type MacroStateBase struct {
+	press MacroStatePressRelease
+}
+
+func (mp MacroStateBase) Reference() string {
+	return "&" + mp.Name()
+}
+
+func (mp MacroStateBase) Name() string {
+	switch mp.press {
+	case MacroStatePress:
+		return "macro_press"
+	case MacroStateRelease:
+		return "macro_relese"
+	case MacroStateWait:
+		return "macro_pause_for_release"
+	}
+	panic("unhandled macro press state: " + strconv.Itoa(int(mp.press)))
+}
+
+func (mp MacroStateBase) Args() []string {
 	return []string{}
 }
 

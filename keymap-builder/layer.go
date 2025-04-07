@@ -77,7 +77,7 @@ func InitBy(f func(RC) Reference) Layer {
 	return layer
 }
 
-func InitToLevelAndTrans(index LayerIndex) Layer {
+func InitToLevelTrans(index LayerIndex) Layer {
 	base := layers[BASE]
 	return InitBy(func(rc RC) Reference {
 		name := fmt.Sprintf("to%d%s", index, rc)
@@ -85,7 +85,7 @@ func InitToLevelAndTrans(index LayerIndex) Layer {
 			Name:  name,
 			Label: fmt.Sprintf("To %d, %s", index, rc.Pretty()),
 			Cells: 0,
-			Refs:  []Reference{To{index}, base[rc]},
+			Refs:  []Reference{To{index}, MacroPress, base[rc], MacroWait, MacroRelease, base[rc]},
 		}
 		AddMacro(macro)
 		return Custom0(name)
