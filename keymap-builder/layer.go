@@ -22,7 +22,7 @@ func (l Layer) Render() []string {
 	for n := range 42 {
 		rc := RCFrom(n + 1)
 		b := l[rc]
-		rendered := b.Reference()
+		rendered := CompileReference(b)
 		row := rc.Row - 1
 		col := rc.Col - 1
 		if rc.Side == Right {

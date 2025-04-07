@@ -1,13 +1,21 @@
 package main
 
+import (
+	"fmt"
+	"strings"
+)
+
 type Reference interface {
 	Args() []string
 	Name() string
-	Reference() string
 }
 
-func CompileBehavior(b Reference) string {
-	return b.Reference()
+func CompileReference(b Reference) string {
+	args := b.Args()
+	if len(args) > 0 {
+		return fmt.Sprintf("&%s %s", b.Name(), strings.Join(args, " "))
+	}
+	return "&" + b.Name()
 }
 
 type Trans struct{}

@@ -23,7 +23,7 @@ func (m Macro) Type() string {
 }
 
 func (m Macro) Bindings() string {
-	return strings.Join(Map(m.Refs, CompileBehavior), " ")
+	return strings.Join(Map(m.Refs, CompileReference), " ")
 }
 
 func (m Macro) Equal(other Macro) bool {
@@ -32,7 +32,7 @@ func (m Macro) Equal(other Macro) bool {
 	eq = eq && m.Label == other.Label
 	eq = eq && m.Cells == other.Cells
 	eq = eq && slices.EqualFunc(m.Refs, other.Refs, func(a, b Reference) bool {
-		return a.Reference() == b.Reference()
+		return CompileReference(a) == CompileReference(b)
 	})
 	return eq
 }

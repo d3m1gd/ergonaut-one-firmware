@@ -52,7 +52,7 @@ func (b Behavior) Equal(other Behavior) bool {
 	eq = eq && b.Label == other.Label
 	eq = eq && b.Type == other.Type
 	eq = eq && slices.EqualFunc(b.Refs, other.Refs, func(a, b Reference) bool {
-		return a.Reference() == b.Reference()
+		return CompileReference(a) == CompileReference(b)
 	})
 	eq = eq && slices.EqualFunc(b.Props, other.Props, func(a, b DeviceTreeProperty) bool {
 		return a.CompileProperty() == b.CompileProperty()
