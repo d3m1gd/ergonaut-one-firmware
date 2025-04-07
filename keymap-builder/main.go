@@ -103,9 +103,9 @@ func init() {
 	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
 	layers[NUM][l(1, 6)] = Kp{TILDE}
 	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUM][l(2, 3)] = ModRef(LSHIFT, BracketsMacro())
-	layers[NUM][l(2, 4)] = ModRef(LGUI, ParensMacro())
-	layers[NUM][l(2, 5)] = ModRef(LALT, CurliesMacro())
+	layers[NUM][l(2, 3)] = ModRef(LSHIFT, Brackets())
+	layers[NUM][l(2, 4)] = ModRef(LGUI, Parens())
+	layers[NUM][l(2, 5)] = ModRef(LALT, Curlies())
 	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -161,8 +161,8 @@ func init() {
 
 	layers[PARENS] = InitToLevelTrans(BASE)
 	layers[PARENS][l(4, 3)] = To{BASE}
-	layers[PARENS][l(2, 1)] = BackspaceDeleteMacro()
-	layers[PARENS][r(2, 4)] = XThenLayerMacro(Kp{RIGHT}, 0)
+	layers[PARENS][l(2, 1)] = BackspaceDelete()
+	layers[PARENS][r(2, 4)] = XThenLayer(Kp{RIGHT}, 0)
 
 	layers[CHAINS] = InitWith(To{BASE})
 	// layers[CHAINS][l(1, 4)] = Custom1("slxl", 18) // todo

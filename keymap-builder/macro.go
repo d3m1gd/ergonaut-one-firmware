@@ -37,7 +37,7 @@ func (m Macro) Equal(other Macro) bool {
 	return eq
 }
 
-func BackspaceDeleteMacro() Reference {
+func BackspaceDelete() Reference {
 	name := "bspcdel"
 	AddMacro(Macro{
 		Name:  name,
@@ -49,15 +49,15 @@ func BackspaceDeleteMacro() Reference {
 	return Custom0(name)
 }
 
-func ParensMacro() Reference {
+func Parens() Reference {
 	return OpenCloseMacro("parens", Kp{LPAR}, Kp{RPAR})
 }
 
-func BracketsMacro() Reference {
+func Brackets() Reference {
 	return OpenCloseMacro("brackets", Kp{LBKT}, Kp{RBKT})
 }
 
-func CurliesMacro() Reference {
+func Curlies() Reference {
 	return OpenCloseMacro("curlies", Kp{LBRC}, Kp{RBRC})
 }
 
@@ -135,12 +135,11 @@ func (mp MacroStateBase) Args() []string {
 	return []string{}
 }
 
-func XThenTransMacro(r Reference, index LayerIndex, rc RC) Reference {
+func XThenTrans(r Reference, index LayerIndex, rc RC) Reference {
 	layer := layers[index]
 	name := fmt.Sprintf("xThenTrans%d", index)
 	args := r.Args()
-	anyArgs := MapToAnyStatic(args, "MACRO_PLACEHOLDER")
-	inner := Custom{r.Name(), anyArgs}
+	inner := Custom{r.Name(), MapToAnyStatic(args, "MACRO_PLACEHOLDER")}
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Trans %s", index),
@@ -151,11 +150,10 @@ func XThenTransMacro(r Reference, index LayerIndex, rc RC) Reference {
 	return Custom{name, MapToAny(args)}
 }
 
-func XThenLayerMacro(r Reference, index LayerIndex) Reference {
+func XThenLayer(r Reference, index LayerIndex) Reference {
 	name := fmt.Sprintf("xThenLayer%d", index)
 	args := r.Args()
-	anyArgs := MapToAnyStatic(args, "MACRO_PLACEHOLDER")
-	inner := Custom{r.Name(), anyArgs}
+	inner := Custom{r.Name(), MapToAnyStatic(args, "MACRO_PLACEHOLDER")}
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Layer %s", index),
