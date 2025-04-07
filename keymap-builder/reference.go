@@ -17,6 +17,9 @@ func CompileReference(b Reference) string {
 	}
 	return "&" + b.Name()
 }
+func EqualReference(a, b Reference) bool {
+	return CompileReference(a) == CompileReference(b)
+}
 
 type Trans struct{}
 

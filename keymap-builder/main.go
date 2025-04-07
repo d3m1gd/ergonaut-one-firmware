@@ -90,7 +90,7 @@ func init() {
 	layers[BASE][r(3, 6)] = Kp{BACKSLASH}
 	layers[BASE][r(4, 1)] = Mt{LCTRL, RETURN} // row 4
 	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
-	layers[BASE][r(4, 3)] = MoTo(QUICK, CHAINS)
+	layers[BASE][r(4, 3)] = Wrap(MoTo(QUICK, CHAINS))
 
 	layers[MOVE] = InitToLevelTrans(BASE)
 	layers[MOVE][l(4, 3)] = To{BASE} // row 4

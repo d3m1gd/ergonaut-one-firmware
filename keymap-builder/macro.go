@@ -3,9 +3,12 @@ package main
 import (
 	"fmt"
 	"slices"
-	"strconv"
 	"strings"
 )
+
+var MacroPress = Custom0("macro_press")
+var MacroRelease = Custom0("macro_release")
+var MacroWait = Custom0("macro_pause_for_release")
 
 type Macro struct {
 	Name  string
@@ -31,9 +34,7 @@ func (m Macro) Equal(other Macro) bool {
 	eq = eq && m.Name == other.Name
 	eq = eq && m.Label == other.Label
 	eq = eq && m.Cells == other.Cells
-	eq = eq && slices.EqualFunc(m.Refs, other.Refs, func(a, b Reference) bool {
-		return CompileReference(a) == CompileReference(b)
-	})
+	eq = eq && slices.EqualFunc(m.Refs, other.Refs, EqualReference)
 	return eq
 }
 
@@ -99,67 +100,68 @@ func (mp MacroParam) Args() []string {
 	return []string{}
 }
 
-type MacroStatePressRelease int
-
-const (
-	MacroStatePress MacroStatePressRelease = iota
-	MacroStateRelease
-	MacroStateWait
-)
-
-var MacroPress = MacroStateBase{MacroStatePress}
-var MacroRelease = MacroStateBase{MacroStateRelease}
-var MacroWait = MacroStateBase{MacroStateWait}
-
-type MacroStateBase struct {
-	press MacroStatePressRelease
+func Curry(r Reference) Custom {
+	return Custom{r.Name(), MapToMacroPlaceholder(r.Args())}
 }
 
-func (mp MacroStateBase) Reference() string {
-	return "&" + mp.Name()
-}
-
-func (mp MacroStateBase) Name() string {
-	switch mp.press {
-	case MacroStatePress:
-		return "macro_press"
-	case MacroStateRelease:
-		return "macro_release"
-	case MacroStateWait:
-		return "macro_pause_for_release"
-	}
-	panic("unhandled macro press state: " + strconv.Itoa(int(mp.press)))
-}
-
-func (mp MacroStateBase) Args() []string {
-	return []string{}
+func MapToMacroPlaceholder(args []string) []any {
+	return MapToAnyStatic(args, "MACRO_PLACEHOLDER")
 }
 
 func XThenTrans(r Reference, index LayerIndex, rc RC) Reference {
 	layer := layers[index]
 	name := fmt.Sprintf("xThenTrans%d", index)
-	args := r.Args()
-	inner := Custom{r.Name(), MapToAnyStatic(args, "MACRO_PLACEHOLDER")}
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Trans %s", index),
 		Cells: 1,
-		Refs:  []Reference{MacroParam{1, 1}, inner, To{index}, layer[rc]},
+		Refs:  []Reference{MacroParam{1, 1}, Curry(r), To{index}, layer[rc]},
 	})
 
-	return Custom{name, MapToAny(args)}
+	return Custom{name, MapToAny(r.Args())}
 }
 
 func XThenLayer(r Reference, index LayerIndex) Reference {
 	name := fmt.Sprintf("xThenLayer%d", index)
-	args := r.Args()
-	inner := Custom{r.Name(), MapToAnyStatic(args, "MACRO_PLACEHOLDER")}
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Layer %s", index),
 		Cells: 1,
-		Refs:  []Reference{MacroParam{1, 1}, inner, To{index}},
+		Refs:  []Reference{MacroParam{1, 1}, Curry(r), To{index}},
 	})
 
-	return Custom{name, MapToAny(args)}
+	return Custom{name, MapToAny(r.Args())}
+}
+
+func MapParams(n int) []Reference {
+	switch n {
+	case 0:
+		return []Reference{}
+	case 1:
+		return []Reference{MacroParam{1, 1}}
+	case 2:
+		return []Reference{MacroParam{1, 1}, MacroParam{2, 2}}
+	}
+	panic("bad n")
+}
+
+func Wrap(r Reference) Reference {
+	name := fmt.Sprintf("W%s", r.Name())
+	params := MapParams(len(r.Args()))
+	refs := []Reference{}
+	refs = append(refs, params...)
+	refs = append(refs, MacroPress)
+	refs = append(refs, Curry(r))
+	refs = append(refs, MacroWait)
+	refs = append(refs, MacroRelease)
+	refs = append(refs, Curry(r))
+	refs = append(refs, params...)
+	AddMacro(Macro{
+		Name:  name,
+		Label: fmt.Sprintf("Wrap %s", r.Name()),
+		Cells: len(r.Args()),
+		Refs:  refs,
+	})
+
+	return Custom{name, MapToAny(r.Args())}
 }
