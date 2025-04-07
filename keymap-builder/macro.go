@@ -124,7 +124,7 @@ func (mp MacroStateBase) Name() string {
 	case MacroStatePress:
 		return "macro_press"
 	case MacroStateRelease:
-		return "macro_relese"
+		return "macro_release"
 	case MacroStateWait:
 		return "macro_pause_for_release"
 	}
