@@ -424,9 +424,8 @@
         {{- range .Combos }}
 
         {{.Name}} {
-            bindings = <{{.RenderBindings}}>; {{ if .Layers }}
-            layers = <{{.RenderLayers}}>;{{ else }}
-            layers = <-1>;{{ end }}
+            bindings = <{{.RenderBindings}}>;{{ if .Layers }}
+            layers = <{{.RenderLayers}}>;{{ end }}
             key-positions = <{{.RenderKeys}}>;{{ if .TimoutMs }}
             timeout-ms = <{{.TimoutMs}}>;
             {{- end}}{{ if .RequirePriorIdleMs }}
