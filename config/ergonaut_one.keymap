@@ -443,7 +443,7 @@
             compatible = "zmk,behavior-macro-two-param";
             label = "Wrap moto";
             #binding-cells = <2>;
-            bindings = <&macro_param_1to1 &macro_param_2to2 &macro_press &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_param_1to1 &macro_param_2to2>;
+            bindings = <&macro_param_1to1 &macro_param_2to2 &macro_press &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
         };
 
         to0l11: to0l11 {
@@ -780,12 +780,11 @@
         compatible = "zmk,combos";
 
         MiddleMouse {
-            bindings = <&mkp MCLK>;
+            bindings = <&mkp MCLK>; 
+            layers = -1;
             key-positions = <27 28>;
-            layers = <-1>;
             timeout-ms = <100>;
             require-prior-idle-ms = <200>;
-            slow-release = true;
         };
 
         LAM {

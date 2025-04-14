@@ -1,8 +1,9 @@
 package main
 
-import "strings"
-
-const ComboAllLayers = LayerIndex(-1)
+import (
+	"slices"
+	"strings"
+)
 
 type Combo struct {
 	Name               string
@@ -15,6 +16,7 @@ type Combo struct {
 }
 
 func (c Combo) RenderLayers() string {
+	slices.Sort(c.Layers)
 	return strings.Join(Map(c.Layers, func(x LayerIndex) string {
 		return x.Render()
 	}), " ")

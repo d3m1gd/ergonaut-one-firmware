@@ -155,7 +155,6 @@ func Wrap(r Reference) Reference {
 	refs = append(refs, MacroWait)
 	refs = append(refs, MacroRelease)
 	refs = append(refs, Curry(r))
-	refs = append(refs, params...)
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("Wrap %s", r.Name()),

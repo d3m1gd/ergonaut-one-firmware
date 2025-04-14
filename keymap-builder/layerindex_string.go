@@ -8,7 +8,6 @@ func _() {
 	// An "invalid array index" compiler error signifies that the constant values have changed.
 	// Re-run the stringer command to generate them again.
 	var x [1]struct{}
-	_ = x[ComboAllLayers - -1]
 	_ = x[BASE-0]
 	_ = x[MOVE-1]
 	_ = x[NUM-2]
@@ -20,14 +19,13 @@ func _() {
 	_ = x[MAXLAYERINDEX-8]
 }
 
-const _LayerIndex_name = "ComboAllLayersBASEMOVENUMQUICKREPEATSYSPARENSCHAINSMAXLAYERINDEX"
+const _LayerIndex_name = "BASEMOVENUMQUICKREPEATSYSPARENSCHAINSMAXLAYERINDEX"
 
-var _LayerIndex_index = [...]uint8{0, 14, 18, 22, 25, 30, 36, 39, 45, 51, 64}
+var _LayerIndex_index = [...]uint8{0, 4, 8, 11, 16, 22, 25, 31, 37, 50}
 
 func (i LayerIndex) String() string {
-	i -= -1
 	if i < 0 || i >= LayerIndex(len(_LayerIndex_index)-1) {
-		return "LayerIndex(" + strconv.FormatInt(int64(i+-1), 10) + ")"
+		return "LayerIndex(" + strconv.FormatInt(int64(i), 10) + ")"
 	}
 	return _LayerIndex_name[_LayerIndex_index[i]:_LayerIndex_index[i+1]]
 }

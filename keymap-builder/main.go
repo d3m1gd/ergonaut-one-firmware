@@ -191,11 +191,9 @@ func init() {
 
 	combos = append(combos, Combo{
 		Name:               "MiddleMouse",
-		Layers:             []LayerIndex{ComboAllLayers},
 		Refs:               []Reference{MKp{MCLK}},
 		Keys:               []RC{l(3, 4), l(3, 5)},
 		RequirePriorIdleMs: 200,
-		SlowRelease:        true,
 		TimoutMs:           100,
 	})
 }

@@ -423,9 +423,10 @@
         {{- range .Combos }}
 
         {{.Name}} {
-            bindings = <{{.RenderBindings}}>;
-            key-positions = <{{.RenderKeys}}>;
-            layers = <{{.RenderLayers}}>;{{ if .TimoutMs }}
+            bindings = <{{.RenderBindings}}>; {{ if .Layers }}
+            layers = <{{.RenderLayers}}>;{{ else }}
+            layers = -1;{{ end }}
+            key-positions = <{{.RenderKeys}}>;{{ if .TimoutMs }}
             timeout-ms = <{{.TimoutMs}}>;
             {{- end}}{{ if .RequirePriorIdleMs }}
             require-prior-idle-ms = <{{.RequirePriorIdleMs}}>;
