@@ -13,8 +13,8 @@ import (
 //go:generate stringer -type=LayerIndex
 const (
 	BASE LayerIndex = iota
-	MOVE
-	NUM
+	MOVER
+	NUMER
 	QUICK  // 3
 	REPEAT // 4
 	SYS    // 5
@@ -71,7 +71,7 @@ func init() {
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUM, ZERO)
+	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUMER, ZERO)
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
 	layers[BASE][r(1, 1)] = Kp{Y} // row 1
@@ -93,43 +93,43 @@ func init() {
 	layers[BASE][r(3, 5)] = Kp{SLASH}
 	layers[BASE][r(3, 6)] = Kp{BACKSLASH}
 	layers[BASE][r(4, 1)] = Mt{LCTRL, RETURN} // row 4
-	layers[BASE][r(4, 2)] = Lt{NUM, SPACE}
+	layers[BASE][r(4, 2)] = Lt{NUMER, SPACE}
 	layers[BASE][r(4, 3)] = Wrap(MoTo(QUICK, CHAINS))
 
-	layers[MOVE] = InitToLevelTrans(BASE)
-	layers[MOVE][l(4, 3)] = To{BASE} // row 4
-	layers[MOVE][r(2, 1)] = Kp{LEFT} // row 2
-	layers[MOVE][r(2, 2)] = Rmt{LALT, DOWN}
-	layers[MOVE][r(2, 3)] = Rmt{LGUI, UP}
-	layers[MOVE][r(2, 4)] = Rmt{LSHIFT, RIGHT}
+	layers[MOVER] = InitToLevelTrans(BASE)
+	layers[MOVER][l(4, 3)] = To{BASE} // row 4
+	layers[MOVER][r(2, 1)] = Kp{LEFT} // row 2
+	layers[MOVER][r(2, 2)] = Rmt{LALT, DOWN}
+	layers[MOVER][r(2, 3)] = Rmt{LGUI, UP}
+	layers[MOVER][r(2, 4)] = Rmt{LSHIFT, RIGHT}
 
-	layers[NUM] = InitWith(Trans{})
-	layers[NUM][l(1, 1)] = Kp{LS(TAB)}
-	layers[NUM][l(1, 6)] = Kp{TILDE}
-	layers[NUM][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUM][l(2, 3)] = ModRef(LSHIFT, Brackets())
-	layers[NUM][l(2, 4)] = ModRef(LGUI, Parens())
-	layers[NUM][l(2, 5)] = ModRef(LALT, Curlies())
-	layers[NUM][l(3, 5)] = Kp{LS(INSERT)}
-	layers[NUM][l(4, 2)] = Kp{UNDERSCORE}
+	layers[NUMER] = InitWith(Trans{})
+	layers[NUMER][l(1, 1)] = Kp{LS(TAB)}
+	layers[NUMER][l(1, 6)] = Kp{TILDE}
+	layers[NUMER][l(2, 1)] = Kp{DELETE} // row 2
+	layers[NUMER][l(2, 3)] = ModRef(LSHIFT, Brackets())
+	layers[NUMER][l(2, 4)] = ModRef(LGUI, Parens())
+	layers[NUMER][l(2, 5)] = ModRef(LALT, Curlies())
+	layers[NUMER][l(3, 5)] = Kp{LS(INSERT)}
+	layers[NUMER][l(4, 2)] = Kp{UNDERSCORE}
 
-	layers[NUM][r(1, 1)] = Kp{N0} // row 1
-	layers[NUM][r(1, 2)] = Kp{N1}
-	layers[NUM][r(1, 3)] = Kp{N2}
-	layers[NUM][r(1, 4)] = Kp{N3}
-	layers[NUM][r(1, 6)] = Kp{RBKT}
-	layers[NUM][r(2, 1)] = Custom0("mmEquals") // row 2
-	layers[NUM][r(2, 2)] = Mt{LALT, N4}
-	layers[NUM][r(2, 3)] = Mt{LGUI, N5}
-	layers[NUM][r(2, 4)] = Mt{LSHIFT, N6}
-	layers[NUM][r(2, 5)] = Kp{COLON}
-	layers[NUM][r(2, 6)] = Custom0("mmQuoteGrave")
-	layers[NUM][r(3, 1)] = Kp{PLUS} // row 3
-	layers[NUM][r(3, 2)] = Kp{N7}
-	layers[NUM][r(3, 3)] = KpKp{RG(COMMA), N8}
-	layers[NUM][r(3, 4)] = KpKp{RG(DOT), N9}
-	layers[NUM][r(3, 5)] = Kp{LS(SLASH)}
-	layers[NUM][r(3, 6)] = Kp{PIPE}
+	layers[NUMER][r(1, 1)] = Kp{N0} // row 1
+	layers[NUMER][r(1, 2)] = Kp{N1}
+	layers[NUMER][r(1, 3)] = Kp{N2}
+	layers[NUMER][r(1, 4)] = Kp{N3}
+	layers[NUMER][r(1, 6)] = Kp{RBKT}
+	layers[NUMER][r(2, 1)] = Custom0("mmEquals") // row 2
+	layers[NUMER][r(2, 2)] = Mt{LALT, N4}
+	layers[NUMER][r(2, 3)] = Mt{LGUI, N5}
+	layers[NUMER][r(2, 4)] = Mt{LSHIFT, N6}
+	layers[NUMER][r(2, 5)] = Kp{COLON}
+	layers[NUMER][r(2, 6)] = Custom0("mmQuoteGrave")
+	layers[NUMER][r(3, 1)] = Kp{PLUS} // row 3
+	layers[NUMER][r(3, 2)] = Kp{N7}
+	layers[NUMER][r(3, 3)] = KpKp{RG(COMMA), N8}
+	layers[NUMER][r(3, 4)] = KpKp{RG(DOT), N9}
+	layers[NUMER][r(3, 5)] = Kp{LS(SLASH)}
+	layers[NUMER][r(3, 6)] = Kp{PIPE}
 
 	layers[QUICK] = InitWith(Trans{})
 	layers[QUICK][l(1, 5)] = Kp{LG(C_VOL_UP)} // row 1

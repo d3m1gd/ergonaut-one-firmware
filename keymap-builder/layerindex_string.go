@@ -9,8 +9,8 @@ func _() {
 	// Re-run the stringer command to generate them again.
 	var x [1]struct{}
 	_ = x[BASE-0]
-	_ = x[MOVE-1]
-	_ = x[NUM-2]
+	_ = x[MOVER-1]
+	_ = x[NUMER-2]
 	_ = x[QUICK-3]
 	_ = x[REPEAT-4]
 	_ = x[SYS-5]
@@ -19,9 +19,9 @@ func _() {
 	_ = x[MAXLAYERINDEX-8]
 }
 
-const _LayerIndex_name = "BASEMOVENUMQUICKREPEATSYSPARENSCHAINSMAXLAYERINDEX"
+const _LayerIndex_name = "BASEMOVERNUMERQUICKREPEATSYSPARENSCHAINSMAXLAYERINDEX"
 
-var _LayerIndex_index = [...]uint8{0, 4, 8, 11, 16, 22, 25, 31, 37, 50}
+var _LayerIndex_index = [...]uint8{0, 4, 9, 14, 19, 25, 28, 34, 40, 53}
 
 func (i LayerIndex) String() string {
 	if i < 0 || i >= LayerIndex(len(_LayerIndex_index)-1) {
