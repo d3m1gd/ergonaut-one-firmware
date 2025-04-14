@@ -23,8 +23,7 @@ func (l Layer) Render() []string {
 	for i := range cells {
 		cells[i] = slices.Repeat([]string{""}, 12)
 	}
-	for n := range 42 {
-		rc := RCFrom(n + 1)
+	for rc := range RCs() {
 		b := l[rc]
 		rendered := CompileReference(b)
 		row := rc.Row - 1
