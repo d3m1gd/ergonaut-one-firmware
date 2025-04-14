@@ -149,11 +149,12 @@ func Wrap(r Reference) Reference {
 	name := fmt.Sprintf("W%s", r.Name())
 	params := MapParams(len(r.Args()))
 	refs := []Reference{}
-	refs = append(refs, params...)
 	refs = append(refs, MacroPress)
+	refs = append(refs, params...)
 	refs = append(refs, Curry(r))
 	refs = append(refs, MacroWait)
 	refs = append(refs, MacroRelease)
+	refs = append(refs, params...)
 	refs = append(refs, Curry(r))
 	AddMacro(Macro{
 		Name:  name,
