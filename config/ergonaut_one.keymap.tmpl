@@ -426,7 +426,7 @@
         {{.Name}} {
             bindings = <{{.RenderBindings}}>; {{ if .Layers }}
             layers = <{{.RenderLayers}}>;{{ else }}
-            layers = -1;{{ end }}
+            layers = <-1>;{{ end }}
             key-positions = <{{.RenderKeys}}>;{{ if .TimoutMs }}
             timeout-ms = <{{.TimoutMs}}>;
             {{- end}}{{ if .RequirePriorIdleMs }}
