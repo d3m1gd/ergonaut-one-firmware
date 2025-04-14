@@ -78,7 +78,7 @@ func (rc RC) Less(other RC) int {
 func RCs() iter.Seq[RC] {
 	return func(yield func(RC) bool) {
 		for i := range 42 {
-			if !yield(RCFrom(i + 1)) {
+			if !yield(RCFrom(i)) {
 				return
 			}
 		}
