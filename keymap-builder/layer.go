@@ -13,6 +13,10 @@ type Layer map[RC]Reference
 type LayerName string
 type LayerIndex int
 
+func (li LayerIndex) Render() string {
+	return fmt.Sprintf("%d", li)
+}
+
 func (l Layer) Render() []string {
 	widths := slices.Repeat([]int{0}, 12)
 	cells := make([][]string, 4)

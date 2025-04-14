@@ -17,6 +17,7 @@ func CompileReference(b Reference) string {
 	}
 	return "&" + b.Name()
 }
+
 func EqualReference(a, b Reference) bool {
 	return CompileReference(a) == CompileReference(b)
 }
@@ -50,6 +51,10 @@ type Kp struct {
 type KpKp struct {
 	Hold KeyCode
 	Tap  KeyCode
+}
+
+type MKp struct {
+	Tap KeyCode
 }
 
 type Rmt struct {

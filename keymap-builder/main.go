@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"iter"
 	"os"
+	"path/filepath"
 	"slices"
+	"strings"
 	"text/template"
 )
 
@@ -38,12 +40,14 @@ func (s Side) Short() string {
 
 type Params struct {
 	Macros    []Macro
+	Combos    []Combo
 	Behaviors []Behavior
 	Layers    []RenderedLayer
 }
 
 var layers = make([]Layer, MAXLAYERINDEX)
 var macros = make([]Macro, 0, 64)
+var combos = make([]Combo, 0, 64)
 var behaviors = make([]Behavior, 0, 64)
 
 func init() {
@@ -185,10 +189,21 @@ func init() {
 	// &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 
+	combos = append(combos, Combo{
+		Name:               "MiddleMouse",
+		Layers:             []LayerIndex{ComboAllLayers},
+		Refs:               []Reference{MKp{MCLK}},
+		Keys:               []RC{l(3, 4), l(3, 5)},
+		RequirePriorIdleMs: 200,
+		SlowRelease:        true,
+		TimoutMs:           100,
+	})
 }
 
 func renderKeymap(path string, params Params) {
-	t := must(template.ParseFiles(path + ".tmpl"))
+	tmplPath := path + ".tmpl"
+	var funcs = template.FuncMap{"join": strings.Join}
+	t := must(template.New(filepath.Base(path + ".tmpl")).Funcs(funcs).ParseFiles(tmplPath))
 	outFile := must(os.Create(path))
 	defer outFile.Close()
 	check(t.Execute(outFile, params))
@@ -209,6 +224,7 @@ func main() {
 	renderKeymap("../config/ergonaut_one.keymap", Params{
 		Behaviors: behaviors,
 		Macros:    macros,
+		Combos:    combos,
 		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:MAXLAYERINDEX]))),
 	})
 

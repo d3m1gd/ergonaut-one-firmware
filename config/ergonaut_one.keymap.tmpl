@@ -419,6 +419,20 @@
 
     combos {
         compatible = "zmk,combos";
+        {{- range .Combos }}
+
+        {{.Name}}: {{.Name}} {
+            bindings = <{{.RenderBindings}}>;
+            key-positions = <{{.RenderKeys}}>;
+            layers = <{{.RenderLayers}}>;{{ if .TimoutMs }}
+            timeout-ms = <{{.TimoutMs}}>;
+            {{- end}}{{ if .RequirePriorIdleMs }}
+            require-prior-idle-ms = <{{.RequirePriorIdleMs}}>;
+            {{- end}}{{ if .SlowRelease }}
+            slow-release = {{.SlowRelease}};
+            {{- end}}
+        };
+        {{- end }}{{/* range .Combos */}}
 
         LAM {
             bindings = <&skl LA(LEFT_GUI)>;

@@ -39,6 +39,10 @@ func l(a, b int) RC {
 	return RC{Left, a, b}
 }
 
+func (rc RC) Render() string {
+	return fmt.Sprintf("%d", rc.Serial())
+}
+
 func (rc RC) String() string {
 	return fmt.Sprintf("%s%d%d", rc.Side.Short(), rc.Row, rc.Col)
 }
@@ -57,6 +61,10 @@ func (rc RC) Offset() int {
 	}
 
 	return offset
+}
+
+func toSerial(rc RC) int {
+	return rc.Offset() + 12*(rc.Row-1) + rc.Col
 }
 
 func (rc RC) Serial() int {

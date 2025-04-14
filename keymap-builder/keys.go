@@ -15,6 +15,10 @@ var RG = keyModifierBuilder("RG")
 
 type KeyCode string
 
+const MCLK KeyCode = "MCLK"
+const LCLK KeyCode = "LCLK"
+const RCLK KeyCode = "RCLK"
+
 const SYSTEM_POWER KeyCode = "SYSTEM_POWER"
 const SYS_PWR KeyCode = "SYS_PWR"
 const SYSTEM_SLEEP KeyCode = "SYSTEM_SLEEP"

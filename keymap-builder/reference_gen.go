@@ -100,6 +100,18 @@ func (x KpKp) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Hold), fmt.Sprintf("%s", x.Tap), }
 }
 
+func (x MKp) Reference() string {
+	return fmt.Sprintf("&%s %s", x.Name(), x.Tap)
+}
+
+func (x MKp) Name() string {
+	return "mkp"
+}
+
+func (x MKp) Args() []string {
+	return []string{ fmt.Sprintf("%s", x.Tap), }
+}
+
 func (x Rmt) Reference() string {
 	return fmt.Sprintf("&%s %s %s", x.Name(), x.Hold, x.Tap)
 }

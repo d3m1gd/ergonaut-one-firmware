@@ -778,6 +778,15 @@
     combos {
         compatible = "zmk,combos";
 
+        MiddleMouse: MiddleMouse {
+            bindings = <&mkp MCLK>;
+            key-positions = <28 29>;
+            layers = <-1>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <200>;
+            slow-release = true;
+        };
+
         LAM {
             bindings = <&skl LA(LEFT_GUI)>;
             key-positions = <15 16>;
