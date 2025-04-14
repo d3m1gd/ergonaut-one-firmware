@@ -30,10 +30,8 @@ func (l Layer) Render() []string {
 		col := rc.Col - 1
 		if rc.Side == Right {
 			col += 6
-		} else {
-			if rc.Row == 4 {
-				col += 3
-			}
+		} else if rc.Row == 4 {
+			col += 3
 		}
 		cells[row][col] = rendered
 		widths[col] = max(widths[col], len(rendered))
