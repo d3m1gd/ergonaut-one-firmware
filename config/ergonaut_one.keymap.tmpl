@@ -421,7 +421,7 @@
         compatible = "zmk,combos";
         {{- range .Combos }}
 
-        {{.Name}}: {{.Name}} {
+        {{.Name}} {
             bindings = <{{.RenderBindings}}>;
             key-positions = <{{.RenderKeys}}>;
             layers = <{{.RenderLayers}}>;{{ if .TimoutMs }}

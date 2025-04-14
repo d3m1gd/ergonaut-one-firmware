@@ -778,7 +778,7 @@
     combos {
         compatible = "zmk,combos";
 
-        MiddleMouse: MiddleMouse {
+        MiddleMouse {
             bindings = <&mkp MCLK>;
             key-positions = <27 28>;
             layers = <-1>;
