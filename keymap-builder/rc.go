@@ -14,8 +14,8 @@ type RC struct {
 }
 
 func RCFrom(n int) RC {
-	row := (n-1)/12 + 1
-	col := (n-1)%12 + 1
+	row := n/12 + 1
+	col := n%12 + 1
 	side := Left
 	if col > 6 {
 		side = Right
@@ -64,11 +64,11 @@ func (rc RC) Offset() int {
 }
 
 func toSerial(rc RC) int {
-	return rc.Offset() + 12*(rc.Row-1) + rc.Col
+	return rc.Offset() + 12*(rc.Row-1) + rc.Col - 1
 }
 
 func (rc RC) Serial() int {
-	return rc.Offset() + 12*(rc.Row-1) + rc.Col
+	return rc.Offset() + 12*(rc.Row-1) + rc.Col - 1
 }
 
 func (rc RC) Less(other RC) int {
