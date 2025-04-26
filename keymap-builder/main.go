@@ -73,7 +73,7 @@ func init() {
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
 	// layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUMER, ZERO)
 	// todo next
-	layers[BASE][l(4, 2)] = MoX("lmmNumMoveUnderX", NUMER, ModMorph("mmMoveUnder", To{MOVER}, Kp{UNDER}, []KeyMod{MOD_LSFT, MOD_RSFT}))
+	layers[BASE][l(4, 2)] = MoX("lmmNumMoveUnderX", NUMER, ModMorph("mmMoveUnderX", To{MOVER}, Kp{UNDER}, []KeyMod{MOD_LSFT, MOD_RSFT}))
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
 	layers[BASE][r(1, 1)] = Kp{Y} // row 1

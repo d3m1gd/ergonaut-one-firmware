@@ -38,9 +38,9 @@
             tapping-term-ms = <300>;
         };
 
-        mmMoveUnder: mmMoveUnder {
+        mmMoveUnderX: mmMoveUnderX {
             compatible = "zmk,behavior-mod-morph";
-            label = "ModMorph mmMoveUnder";
+            label = "ModMorph mmMoveUnderX";
             #binding-cells = <0>;
             bindings = <&to &kp>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
@@ -51,7 +51,7 @@
             compatible = "zmk,behavior-hold-tap";
             label = "Momentary lmmNumMoveUnderX";
             #binding-cells = <1>;
-            bindings = <&mo &mmMoveUnder>;
+            bindings = <&mo &mmMoveUnderX>;
             flavor = "balanced";
             tapping-term-ms = <300>;
         };
