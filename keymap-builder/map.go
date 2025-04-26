@@ -36,6 +36,10 @@ func toString(x any) string {
 	return fmt.Sprintf("%s", x)
 }
 
+func asString[T ~string](x T) string {
+	return string(x)
+}
+
 type Lesser[K any] interface {
 	comparable
 	Less(K) int

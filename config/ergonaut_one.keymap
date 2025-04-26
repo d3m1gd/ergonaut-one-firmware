@@ -38,10 +38,28 @@
             tapping-term-ms = <300>;
         };
 
+        mmMoveUnder: mmMoveUnder {
+            compatible = "zmk,behavior-mod-morph";
+            label = "ModMorph mmMoveUnder";
+            #binding-cells = <0>;
+            bindings = <&to &kp>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+            tapping-term-ms = <300>;
+        };
+
+        lmmNumMoveUnderX: lmmNumMoveUnderX {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Momentary lmmNumMoveUnderX";
+            #binding-cells = <1>;
+            bindings = <&mo &mmMoveUnder>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
+        };
+
         mbrackets: mbrackets {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod brackets";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             bindings = <&kp &brackets>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -50,7 +68,7 @@
         mparens: mparens {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod parens";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             bindings = <&kp &parens>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -59,7 +77,7 @@
         mcurlies: mcurlies {
             compatible = "zmk,behavior-hold-tap";
             label = "Mod curlies";
-            #binding-cells = <2>;
+            #binding-cells = <1>;
             bindings = <&kp &curlies>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
@@ -710,7 +728,7 @@
             compatible = "zmk,behavior-macro";
             label = "To 0, L42";
             #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &lmmNumMoveUnder NUMER 0 &macro_pause_for_release &macro_release &lmmNumMoveUnder NUMER 0>;
+            bindings = <&to BASE &macro_press &lmmNumMoveUnderX NUMER &macro_pause_for_release &macro_release &lmmNumMoveUnderX NUMER>;
         };
 
         to0l43: to0l43 {
@@ -877,10 +895,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E               &kp R                     &kpkp RG(T) T     &kp Y             &kp U            &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F                &kp G             &kp H             &rmt LALT J      &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
-&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C       &kp V                     &kp B             &kp N             &kpkp RG(M) M    &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &moto QUICK CHAINS  &lmmNumMoveUnder NUMER 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUMER SPACE  &Wmoto QUICK CHAINS
+&kp TAB               &kp Q  &kp W         &kp E               &kp R                    &kpkp RG(T) T     &kp Y             &kp U            &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F               &kp G             &kp H             &rmt LALT J      &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
+&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C       &kp V                    &kp B             &kp N             &kpkp RG(M) M    &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+                                           &moto QUICK CHAINS  &lmmNumMoveUnderX NUMER  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUMER SPACE  &Wmoto QUICK CHAINS
             >;
         };
 
@@ -895,10 +913,10 @@
 
         NUMER {
             bindings = <
-&kp LS(TAB)  &trans  &trans               &trans           &trans            &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
-&kp DELETE   &trans  &mbrackets LSHIFT 0  &mparens LGUI 0  &mcurlies LALT 0  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
-&trans       &trans  &trans               &trans           &kp LS(INSERT)    &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
-                                          &trans           &kp UNDERSCORE    &trans     &trans     &trans       &trans
+&kp LS(TAB)  &trans  &trans             &trans         &trans          &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
+&kp DELETE   &trans  &mbrackets LSHIFT  &mparens LGUI  &mcurlies LALT  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
+&trans       &trans  &trans             &trans         &kp LS(INSERT)  &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                        &trans         &kp UNDERSCORE  &trans     &trans     &trans       &trans
             >;
         };
 
