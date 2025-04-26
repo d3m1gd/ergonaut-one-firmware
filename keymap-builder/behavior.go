@@ -152,7 +152,6 @@ func ModMorph(name string, a, b Reference, mods []KeyMod) Reference {
 		Refs:  refs,
 		Props: []DeviceTreeProperty{
 			{"mods", mods},
-			{"tapping-term-ms", 300},
 		},
 	})
 

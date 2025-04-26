@@ -44,7 +44,6 @@
             #binding-cells = <0>;
             bindings = <&to &kp>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-            tapping-term-ms = <300>;
         };
 
         lmmNumMoveUnderX: lmmNumMoveUnderX {
