@@ -8,10 +8,26 @@ func keyModifierBuilder(name string) func(KeyCode) KeyCode {
 	}
 }
 
+type KeyMod string
+
+const MOD_LCTL KeyMod = "MOD_LCTL"
+const MOD_LSFT KeyMod = "MOD_LSFT"
+const MOD_LALT KeyMod = "MOD_LALT"
+const MOD_LGUI KeyMod = "MOD_LGUI"
+const MOD_RCTL KeyMod = "MOD_RCTL"
+const MOD_RSFT KeyMod = "MOD_RSFT"
+const MOD_RALT KeyMod = "MOD_RALT"
+const MOD_RGUI KeyMod = "MOD_RGUI"
+
+var LA = keyModifierBuilder("LA")
 var LC = keyModifierBuilder("LC")
 var LG = keyModifierBuilder("LG")
 var LS = keyModifierBuilder("LS")
+var RA = keyModifierBuilder("RA")
 var RG = keyModifierBuilder("RG")
+var RS = keyModifierBuilder("RS")
+
+// var RC = keyModifierBuilder("RC")
 
 type KeyCode string
 

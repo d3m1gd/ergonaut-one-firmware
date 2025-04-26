@@ -71,7 +71,8 @@ func init() {
 	layers[BASE][l(3, 5)] = Kp{V}
 	layers[BASE][l(3, 6)] = Kp{B}
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUMER, ZERO)
+	// layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUMER, ZERO)
+	layers[BASE][l(4, 2)] = MoX("xxxTry", NUMER, ModMorph("xxxMMUnder", ))
 	layers[BASE][l(4, 3)] = Mt{LCTRL, ESCAPE}
 
 	layers[BASE][r(1, 1)] = Kp{Y} // row 1

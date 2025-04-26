@@ -15,13 +15,11 @@ func (n Number) String() string {
 
 var ZERO = Number(0)
 
-type BehaviorType struct {
-	Name  string
-	Cells int
-}
+type BehaviorType string
 
-var BehaviorTypeHoldTap = BehaviorType{"behavior-hold-tap", 2}
-var BehaviorTypeStickyKey = BehaviorType{"behavior-sticky-key", 1}
+var BehaviorTypeHoldTap BehaviorType = "behavior-hold-tap"
+var BehaviorTypeStickyKey BehaviorType = "behavior-sticky-key"
+var BehaviorTypeModMorph BehaviorType = "behavior-mod-morph"
 
 type DeviceTreeProperty struct {
 	Name  string
@@ -41,6 +39,7 @@ func (x DeviceTreeProperty) CompileProperty() string {
 type Behavior struct {
 	Name  string
 	Label string
+	Cells int
 	Type  BehaviorType
 	Refs  []Reference
 	Props []DeviceTreeProperty
@@ -56,10 +55,6 @@ func (b Behavior) Equal(other Behavior) bool {
 		return a.CompileProperty() == b.CompileProperty()
 	})
 	return eq
-}
-
-func (m Behavior) Cells() string {
-	return strconv.Itoa(m.Type.Cells)
 }
 
 func (m Behavior) Bindings() string {
@@ -90,6 +85,7 @@ func ModRef(key KeyCode, ref Reference) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: fmt.Sprintf("Mod %s", ref.Name()),
+		Cells: 2,
 		Type:  BehaviorTypeHoldTap,
 		Refs:  []Reference{Kp{}, ref},
 		Props: []DeviceTreeProperty{
@@ -107,6 +103,7 @@ func MoTo(mo, to LayerIndex) Reference {
 		Name:  name,
 		Label: "Momentary/To",
 		Type:  BehaviorTypeHoldTap,
+		Cells: 2,
 		Refs:  []Reference{Mo{}, To{}},
 		Props: []DeviceTreeProperty{
 			{"flavor", "balanced"},
@@ -116,3 +113,46 @@ func MoTo(mo, to LayerIndex) Reference {
 
 	return Custom2(name, mo, to)
 }
+
+func MoX(name string, mo LayerIndex, x Reference) Reference {
+	AddBehavior(Behavior{
+		Name:  name,
+		Label: "Momentary " + name,
+		Type:  BehaviorTypeHoldTap,
+		Cells: 1,
+		Refs:  []Reference{Mo{}, x},
+		Props: []DeviceTreeProperty{
+			{"flavor", "balanced"},
+			{"tapping-term-ms", 300},
+		},
+	})
+
+	return Custom2(name, mo, to)
+}
+
+func ModMorph(name string, l LayerIndex, k Reference, mods []KeyMod) Reference {
+	AddBehavior(Behavior{
+		Name:  name,
+		Label: "ModMorph " + name,
+		Type:  BehaviorTypeModMorph,
+		Cells: 1,
+		Refs:  []Reference{To{}, k},
+		Props: []DeviceTreeProperty{
+			{"mods", mods},
+			{"tapping-term-ms", 300},
+		},
+	})
+
+	return Custom1(name, l)
+}
+
+// mmMoveUnder: mmMoveUnder {
+//     compatible = "zmk,behavior-mod-morph";
+//     label = "mm Move Under";
+//     bindings = <&to MOVER>, <&kp UNDERSCORE>;
+//     // TODO
+//
+//     #binding-cells = <0>;
+//     mods = <(MOD_RSFT|MOD_LSFT)>;
+// };
+//

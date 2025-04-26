@@ -25,7 +25,7 @@
     behaviors {
 {{- range .Behaviors }}
         {{.Name}}: {{.Name}} {
-            compatible = "zmk,{{.Type.Name}}";
+            compatible = "zmk,{{.Type}}";
             label = "{{.Label}}";
             #binding-cells = <{{.Cells}}>;
             bindings = <{{.Bindings}}>;
