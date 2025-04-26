@@ -25,6 +25,10 @@ func (x Custom) Args() []string {
 	return Map(x.Fields, toString)
 }
 
+func (x Custom) Slots() int {
+	return 0
+}
+
 func Custom0(name string) Custom {
 	return Custom{name, []any{}}
 }

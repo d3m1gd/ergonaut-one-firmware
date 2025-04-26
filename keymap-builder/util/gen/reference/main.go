@@ -5,6 +5,7 @@ import (
 	"flag"
 	"go/ast"
 	"go/parser"
+	"go/printer"
 	"go/token"
 	"log"
 	"os"
@@ -19,7 +20,12 @@ var (
 
 type StructInfo struct {
 	Name   string
-	Fields []string
+	Fields []FieldInfo
+}
+
+type FieldInfo struct {
+	Name string
+	Type string
 }
 
 func main() {
@@ -54,13 +60,21 @@ func main() {
 				if !ok {
 					continue
 				}
-				fields := []string{}
+				fields := []FieldInfo{}
 				for _, f := range st.Fields.List {
 					for _, n := range f.Names {
-						fields = append(fields, n.Name)
+						buf := bytes.NewBuffer(nil)
+						printer.Fprint(buf, fset, f.Type)
+						fields = append(fields, FieldInfo{
+							Name: n.Name,
+							Type: buf.String(),
+						})
 					}
 				}
-				structs = append(structs, StructInfo{Name: ts.Name.Name, Fields: fields})
+				structs = append(structs, StructInfo{
+					Name:   ts.Name.Name,
+					Fields: fields,
+				})
 			}
 		}
 	}
@@ -80,7 +94,7 @@ func main() {
 		import "fmt"
 		{{range .}}
 		func (x {{.Name}}) Reference() string {
-			return fmt.Sprintf("&%s{{range .Fields}} %s{{end}}", x.Name(){{range $i, $f := .Fields}}, x.{{$f}}{{end}})
+			return fmt.Sprintf("&%s{{range .Fields}} %s{{end}}", x.Name(){{range .Fields}}, x.{{.Name}}{{end}})
 		}
 
 		func (x {{.Name}}) Name() string {
@@ -88,7 +102,22 @@ func main() {
 		}
 
 		func (x {{.Name}}) Args() []string {
-			return []string{ {{range .Fields}}fmt.Sprintf("%s", x.{{.}}), {{end}}}
+			return []string{ {{range .Fields}}fmt.Sprintf("%s", x.{{.Name}}), {{end}}}
+		}
+
+		func (x {{.Name}}) Slots() int {
+			var count int
+			{{range .Fields}}
+			var zero{{.Name}} {{.Type}}
+			if zero{{.Name}} == x.{{.Name}} {
+				count++
+			}
+			{{end}}
+			if count > 2 {
+				panic("too many slots")
+			}
+
+			return count
 		}
 		{{end}}`, "\n")))
 

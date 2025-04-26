@@ -16,6 +16,16 @@ func (x Trans) Args() []string {
 	return []string{ }
 }
 
+func (x Trans) Slots() int {
+	var count int
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
+}
+
 func (x None) Reference() string {
 	return fmt.Sprintf("&%s", x.Name())
 }
@@ -26,6 +36,16 @@ func (x None) Name() string {
 
 func (x None) Args() []string {
 	return []string{ }
+}
+
+func (x None) Slots() int {
+	var count int
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
 }
 
 func (x Lt) Reference() string {
@@ -40,6 +60,26 @@ func (x Lt) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Layer), fmt.Sprintf("%s", x.Tap), }
 }
 
+func (x Lt) Slots() int {
+	var count int
+	
+	var zeroLayer LayerIndex
+	if zeroLayer == x.Layer {
+		count++
+	}
+	
+	var zeroTap KeyCode
+	if zeroTap == x.Tap {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
+}
+
 func (x To) Reference() string {
 	return fmt.Sprintf("&%s %s", x.Name(), x.Layer)
 }
@@ -50,6 +90,21 @@ func (x To) Name() string {
 
 func (x To) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Layer), }
+}
+
+func (x To) Slots() int {
+	var count int
+	
+	var zeroLayer LayerIndex
+	if zeroLayer == x.Layer {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
 }
 
 func (x Mo) Reference() string {
@@ -64,6 +119,21 @@ func (x Mo) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Layer), }
 }
 
+func (x Mo) Slots() int {
+	var count int
+	
+	var zeroLayer LayerIndex
+	if zeroLayer == x.Layer {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
+}
+
 func (x Mt) Reference() string {
 	return fmt.Sprintf("&%s %s %s", x.Name(), x.Hold, x.Tap)
 }
@@ -74,6 +144,26 @@ func (x Mt) Name() string {
 
 func (x Mt) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Hold), fmt.Sprintf("%s", x.Tap), }
+}
+
+func (x Mt) Slots() int {
+	var count int
+	
+	var zeroHold KeyCode
+	if zeroHold == x.Hold {
+		count++
+	}
+	
+	var zeroTap KeyCode
+	if zeroTap == x.Tap {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
 }
 
 func (x Kp) Reference() string {
@@ -88,6 +178,21 @@ func (x Kp) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Tap), }
 }
 
+func (x Kp) Slots() int {
+	var count int
+	
+	var zeroTap KeyCode
+	if zeroTap == x.Tap {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
+}
+
 func (x KpKp) Reference() string {
 	return fmt.Sprintf("&%s %s %s", x.Name(), x.Hold, x.Tap)
 }
@@ -98,6 +203,26 @@ func (x KpKp) Name() string {
 
 func (x KpKp) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Hold), fmt.Sprintf("%s", x.Tap), }
+}
+
+func (x KpKp) Slots() int {
+	var count int
+	
+	var zeroHold KeyCode
+	if zeroHold == x.Hold {
+		count++
+	}
+	
+	var zeroTap KeyCode
+	if zeroTap == x.Tap {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
 }
 
 func (x MKp) Reference() string {
@@ -112,6 +237,21 @@ func (x MKp) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Tap), }
 }
 
+func (x MKp) Slots() int {
+	var count int
+	
+	var zeroTap KeyCode
+	if zeroTap == x.Tap {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
+}
+
 func (x Rmt) Reference() string {
 	return fmt.Sprintf("&%s %s %s", x.Name(), x.Hold, x.Tap)
 }
@@ -122,4 +262,24 @@ func (x Rmt) Name() string {
 
 func (x Rmt) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Hold), fmt.Sprintf("%s", x.Tap), }
+}
+
+func (x Rmt) Slots() int {
+	var count int
+	
+	var zeroHold KeyCode
+	if zeroHold == x.Hold {
+		count++
+	}
+	
+	var zeroTap KeyCode
+	if zeroTap == x.Tap {
+		count++
+	}
+	
+	if count > 2 {
+		panic("too many slots")
+	}
+
+	return count
 }

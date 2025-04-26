@@ -7,6 +7,14 @@ import (
 	"slices"
 )
 
+func Reduce[T, A any](s []T, acc A, f func(A, T) A) A {
+	for _, x := range s {
+		acc = f(acc, x)
+	}
+
+	return acc
+}
+
 func Map[T, U any](s []T, f func(T) U) []U {
 	us := make([]U, len(s))
 	for i := range s {

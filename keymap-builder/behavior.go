@@ -114,29 +114,36 @@ func MoTo(mo, to LayerIndex) Reference {
 	return Custom2(name, mo, to)
 }
 
-func MoX(name string, mo LayerIndex, x Reference) Reference {
-	AddBehavior(Behavior{
-		Name:  name,
-		Label: "Momentary " + name,
-		Type:  BehaviorTypeHoldTap,
-		Cells: 1,
-		Refs:  []Reference{Mo{}, x},
-		Props: []DeviceTreeProperty{
-			{"flavor", "balanced"},
-			{"tapping-term-ms", 300},
-		},
-	})
+// func MoX(name string, mo LayerIndex, x Reference) Reference {
+// 	AddBehavior(Behavior{
+// 		Name:  name,
+// 		Label: "Momentary " + name,
+// 		Type:  BehaviorTypeHoldTap,
+// 		Cells: 1,
+// 		Refs:  []Reference{Mo{}, x},
+// 		Props: []DeviceTreeProperty{
+// 			{"flavor", "balanced"},
+// 			{"tapping-term-ms", 300},
+// 		},
+// 	})
+//
+// 	return Custom2(name, mo, to)
+// }
 
-	return Custom2(name, mo, to)
+func CountSlots(rr []Reference) int {
+	return Reduce(rr, 0, func(acc int, r Reference) int {
+		return acc + r.Slots()
+	})
 }
 
 func ModMorph(name string, l LayerIndex, k Reference, mods []KeyMod) Reference {
+	refs := []Reference{To{}, k}
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "ModMorph " + name,
 		Type:  BehaviorTypeModMorph,
-		Cells: 1,
-		Refs:  []Reference{To{}, k},
+		Cells: CountSlots(refs),
+		Refs:  refs,
 		Props: []DeviceTreeProperty{
 			{"mods", mods},
 			{"tapping-term-ms", 300},

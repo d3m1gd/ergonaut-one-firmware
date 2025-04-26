@@ -100,6 +100,10 @@ func (mp MacroParam) Args() []string {
 	return []string{}
 }
 
+func (mp MacroParam) Slots() int {
+	return 0
+}
+
 func Curry(r Reference) Custom {
 	return Custom{r.Name(), MapToMacroPlaceholder(r.Args())}
 }
