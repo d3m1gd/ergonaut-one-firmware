@@ -146,7 +146,7 @@ func MapParams(n int) []Reference {
 	case 2:
 		return []Reference{MacroParam{1, 1}, MacroParam{2, 2}}
 	}
-	panic("bad n")
+	panic(fmt.Sprintf("bad n: %d", n))
 }
 
 func Wrap(r Reference) Reference {

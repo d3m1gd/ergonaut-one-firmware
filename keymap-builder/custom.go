@@ -40,3 +40,21 @@ func Custom1(name string, a any) Custom {
 func Custom2(name string, a, b any) Custom {
 	return Custom{name, []any{a, b}}
 }
+
+func CustomN(name string, n int, aa ...any) Custom {
+	switch n {
+	case 2:
+		aa = append(aa, ZERO, ZERO)
+	case 1:
+		aa = append(aa, ZERO)
+	case 0:
+	default:
+		panic("bad custom n")
+	}
+
+	if len(aa) > 2 {
+		panic("too many custom n")
+	}
+
+	return Custom{name, aa}
+}

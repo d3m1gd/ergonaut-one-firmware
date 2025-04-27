@@ -15,11 +15,14 @@ func (n Number) String() string {
 
 var ZERO = Number(0)
 
-type BehaviorType string
+type BehaviorType struct {
+	Name  string
+	Cells int
+}
 
-var BehaviorTypeHoldTap BehaviorType = "behavior-hold-tap"
-var BehaviorTypeStickyKey BehaviorType = "behavior-sticky-key"
-var BehaviorTypeModMorph BehaviorType = "behavior-mod-morph"
+var BehaviorTypeHoldTap = BehaviorType{"behavior-hold-tap", 2}
+var BehaviorTypeStickyKey = BehaviorType{"behavior-sticky-key", 1}
+var BehaviorTypeModMorph = BehaviorType{"behavior-mod-morph", 0}
 
 type DeviceTreeProperty struct {
 	Name  string
@@ -43,7 +46,7 @@ type Behavior struct {
 	Name  string
 	Label string
 	Cells int
-	Type  BehaviorType
+	Type  string
 	Refs  []Reference
 	Props []DeviceTreeProperty
 }
@@ -89,8 +92,8 @@ func ModRef(key KeyCode, ref Reference) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: fmt.Sprintf("Mod %s", ref.Name()),
-		Cells: CountSlots(refs),
-		Type:  BehaviorTypeHoldTap,
+		Cells: BehaviorTypeHoldTap.Cells,
+		Type:  BehaviorTypeHoldTap.Name,
 		Refs:  refs,
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
@@ -98,7 +101,7 @@ func ModRef(key KeyCode, ref Reference) Reference {
 		},
 	})
 
-	return Custom1(name, key)
+	return CustomN(name, BehaviorTypeHoldTap.Cells-CountSlots(refs), key)
 }
 
 func MoTo(mo, to LayerIndex) Reference {
@@ -107,8 +110,8 @@ func MoTo(mo, to LayerIndex) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "Momentary/To",
-		Type:  BehaviorTypeHoldTap,
-		Cells: CountSlots(refs),
+		Type:  BehaviorTypeHoldTap.Name,
+		Cells: BehaviorTypeHoldTap.Cells,
 		Refs:  refs,
 		Props: []DeviceTreeProperty{
 			{"flavor", "balanced"},
@@ -116,7 +119,7 @@ func MoTo(mo, to LayerIndex) Reference {
 		},
 	})
 
-	return Custom2(name, mo, to)
+	return CustomN(name, BehaviorTypeHoldTap.Cells-CountSlots(refs), mo, to)
 }
 
 func MoX(name string, mo LayerIndex, x Reference) Reference {
@@ -124,8 +127,8 @@ func MoX(name string, mo LayerIndex, x Reference) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "Momentary " + name,
-		Type:  BehaviorTypeHoldTap,
-		Cells: CountSlots(refs),
+		Type:  BehaviorTypeHoldTap.Name,
+		Cells: BehaviorTypeHoldTap.Cells,
 		Refs:  refs,
 		Props: []DeviceTreeProperty{
 			{"flavor", "balanced"},
@@ -133,7 +136,7 @@ func MoX(name string, mo LayerIndex, x Reference) Reference {
 		},
 	})
 
-	return Custom1(name, mo)
+	return CustomN(name, BehaviorTypeHoldTap.Cells-CountSlots(refs), mo)
 }
 
 func CountSlots(rr []Reference) int {
@@ -147,15 +150,15 @@ func ModMorph(name string, a, b Reference, mods []KeyMod) Reference {
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "ModMorph " + name,
-		Type:  BehaviorTypeModMorph,
-		Cells: CountSlots(refs),
+		Cells: BehaviorTypeModMorph.Cells,
+		Type:  BehaviorTypeModMorph.Name,
 		Refs:  refs,
 		Props: []DeviceTreeProperty{
 			{"mods", mods},
 		},
 	})
 
-	return Custom0(name)
+	return CustomN(name, BehaviorTypeModMorph.Cells-CountSlots(refs))
 }
 
 // mmMoveUnder: mmMoveUnder {
