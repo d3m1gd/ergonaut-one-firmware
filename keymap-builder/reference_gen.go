@@ -95,19 +95,6 @@ func (x Kp) Args() []string {
 }
 
 
-func (x KpKp) Reference() string {
-	return fmt.Sprintf("&%s %s %s", x.Name(), x.Hold, x.Tap)
-}
-
-func (x KpKp) Name() string {
-	return "kpkp"
-}
-
-func (x KpKp) Args() []string {
-	return []string{ fmt.Sprintf("%s", x.Hold), fmt.Sprintf("%s", x.Tap), }
-}
-
-
 func (x MKp) Reference() string {
 	return fmt.Sprintf("&%s %s", x.Name(), x.Tap)
 }

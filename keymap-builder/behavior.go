@@ -86,22 +86,22 @@ func AddBehavior(b Behavior) {
 	behaviors = append(behaviors, b)
 }
 
-func ModRef(key KeyCode, ref Reference) Reference {
-	name := fmt.Sprintf("m%s", ref.Name())
-	refs := []Reference{Custom0(Kp{}.Name()), ref}
+func KpKp(a, b KeyCode) Reference {
+	name := "kpkp"
 	AddBehavior(Behavior{
 		Name:  name,
-		Label: fmt.Sprintf("Mod %s", ref.Name()),
+		Label: "kpkp",
 		Cells: BehaviorTypeHoldTap.Cells,
 		Type:  BehaviorTypeHoldTap.Name,
-		Refs:  refs,
+		Refs:  []Reference{Custom0("tapNoRepeat"), Custom0("kp")},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
 			{"tapping-term-ms", 200},
+			{"quick-tap-ms", 200},
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells-1, key)
+	return CustomN(name, BehaviorTypeHoldTap.Cells, a, b)
 }
 
 func MoTo(mo, to LayerIndex) Reference {
@@ -119,12 +119,12 @@ func MoTo(mo, to LayerIndex) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells-2, mo, to)
+	return CustomN(name, BehaviorTypeHoldTap.Cells, mo, to)
 }
 
 func MoX(mo LayerIndex, x Reference) Reference {
 	refs := []Reference{Custom0(Mo{}.Name()), x}
-	name := "mo" + x.Name()
+	name := "mo" + ShowReference(x)
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "Momentary " + name,
@@ -137,18 +137,30 @@ func MoX(mo LayerIndex, x Reference) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells-1, mo)
+	return CustomN(name, BehaviorTypeHoldTap.Cells, mo)
 }
 
-// func CountSlots(rr []Reference) int {
-// 	return Reduce(rr, 0, func(acc int, r Reference) int {
-// 		return acc + r.Slots()
-// 	})
-// }
+func ModX(mod KeyCode, x Reference) Reference {
+	name := "m" + ShowReference(x)
+	AddBehavior(Behavior{
+		Name:  name,
+		Label: "Mod " + x.Name(),
+		Type:  BehaviorTypeHoldTap.Name,
+		Cells: BehaviorTypeHoldTap.Cells,
+		Refs:  []Reference{Custom0("kp"), x},
+		Props: []DeviceTreeProperty{
+			{"flavor", "tap-preferred"},
+			{"tapping-term-ms", 200},
+			{"quick-tap-ms", 200},
+		},
+	})
+
+	return CustomN(name, BehaviorTypeHoldTap.Cells, mod)
+}
 
 func ModMorph(a, b Reference, mods []KeyMod) Reference {
 	refs := []Reference{a, b}
-	name := "mm" + a.Name() + b.Name()
+	name := "mm" + ShowReference(a) + ShowReference(b)
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "ModMorph " + a.Name() + " " + b.Name(),
@@ -160,16 +172,5 @@ func ModMorph(a, b Reference, mods []KeyMod) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeModMorph.Cells-0)
+	return CustomN(name, BehaviorTypeModMorph.Cells)
 }
-
-// mmMoveUnder: mmMoveUnder {
-//     compatible = "zmk,behavior-mod-morph";
-//     label = "mm Move Under";
-//     bindings = <&to MOVER>, <&kp UNDERSCORE>;
-//     // TODO
-//
-//     #binding-cells = <0>;
-//     mods = <(MOD_RSFT|MOD_LSFT)>;
-// };
-//

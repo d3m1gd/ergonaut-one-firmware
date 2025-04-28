@@ -57,14 +57,15 @@ func init() {
 	layers[BASE][l(1, 3)] = Kp{W}
 	layers[BASE][l(1, 4)] = Kp{E}
 	layers[BASE][l(1, 5)] = Kp{R}
-	layers[BASE][l(1, 6)] = KpKp{RG(T), T}
+	layers[BASE][l(1, 6)] = KpKp(RG(T), T)
 	layers[BASE][l(2, 1)] = Mt{LSHIFT, BACKSPACE} // row 2
 	layers[BASE][l(2, 2)] = Kp{A}
 	layers[BASE][l(2, 3)] = Mt{LSHIFT, S}
 	layers[BASE][l(2, 4)] = Mt{LGUI, D}
 	layers[BASE][l(2, 5)] = Mt{LALT, F}
 	layers[BASE][l(2, 6)] = Kp{G}
-	layers[BASE][l(3, 1)] = Mt{LCTRL, MINUS} // row 3
+	// layers[BASE][l(3, 1)] = Mt{LCTRL, MINUS} // row 3
+	layers[BASE][l(3, 1)] = ModX(LCTRL, ModMorph(Kp{MINUS}, Kp{PLUS}, []KeyMod{MOD_LSFT, MOD_RSFT}))
 	layers[BASE][l(3, 2)] = Kp{Z}
 	layers[BASE][l(3, 3)] = Kp{X}
 	layers[BASE][l(3, 4)] = Custom2("kpConfig", ZERO, C)
@@ -86,12 +87,12 @@ func init() {
 	layers[BASE][r(2, 2)] = Rmt{LALT, J}
 	layers[BASE][r(2, 3)] = Rmt{LGUI, K}
 	layers[BASE][r(2, 4)] = Rmt{LSHIFT, L}
-	layers[BASE][r(2, 5)] = KpKp{RG(SEMI), SEMI}
-	layers[BASE][r(2, 6)] = KpKp{RG(SQT), SQT}
+	layers[BASE][r(2, 5)] = KpKp(RG(SEMI), SEMI)
+	layers[BASE][r(2, 6)] = KpKp(RG(SQT), SQT)
 	layers[BASE][r(3, 1)] = Kp{N} // row 3
-	layers[BASE][r(3, 2)] = KpKp{RG(M), M}
-	layers[BASE][r(3, 3)] = KpKp{RG(COMMA), COMMA}
-	layers[BASE][r(3, 4)] = KpKp{RG(DOT), DOT}
+	layers[BASE][r(3, 2)] = KpKp(RG(M), M)
+	layers[BASE][r(3, 3)] = KpKp(RG(COMMA), COMMA)
+	layers[BASE][r(3, 4)] = KpKp(RG(DOT), DOT)
 	layers[BASE][r(3, 5)] = Kp{SLASH}
 	layers[BASE][r(3, 6)] = Kp{BACKSLASH}
 	layers[BASE][r(4, 1)] = Mt{LCTRL, RETURN} // row 4
@@ -109,9 +110,9 @@ func init() {
 	layers[NUMER][l(1, 1)] = Kp{LS(TAB)}
 	layers[NUMER][l(1, 6)] = Kp{TILDE}
 	layers[NUMER][l(2, 1)] = Kp{DELETE} // row 2
-	layers[NUMER][l(2, 3)] = ModRef(LSHIFT, Brackets())
-	layers[NUMER][l(2, 4)] = ModRef(LGUI, Parens())
-	layers[NUMER][l(2, 5)] = ModRef(LALT, Curlies())
+	layers[NUMER][l(2, 3)] = ModX(LSHIFT, Brackets())
+	layers[NUMER][l(2, 4)] = ModX(LGUI, Parens())
+	layers[NUMER][l(2, 5)] = ModX(LALT, Curlies())
 	layers[NUMER][l(3, 5)] = Kp{LS(INSERT)}
 	layers[NUMER][l(4, 2)] = Kp{UNDERSCORE}
 
@@ -128,8 +129,8 @@ func init() {
 	layers[NUMER][r(2, 6)] = Custom0("mmQuoteGrave")
 	layers[NUMER][r(3, 1)] = Kp{PLUS} // row 3
 	layers[NUMER][r(3, 2)] = Kp{N7}
-	layers[NUMER][r(3, 3)] = KpKp{RG(COMMA), N8}
-	layers[NUMER][r(3, 4)] = KpKp{RG(DOT), N9}
+	layers[NUMER][r(3, 3)] = KpKp(RG(COMMA), N8)
+	layers[NUMER][r(3, 4)] = KpKp(RG(DOT), N9)
 	layers[NUMER][r(3, 5)] = Kp{LS(SLASH)}
 	layers[NUMER][r(3, 6)] = Kp{PIPE}
 

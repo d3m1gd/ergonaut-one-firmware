@@ -47,17 +47,6 @@
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
         };
 
-        kpkp: kpkp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "kpkp";
-            bindings = <&tapNoRepeat>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <200>;
-        };
-
         sls: sls {
             compatible = "zmk,behavior-sticky-key";
             label = "Short Sticky Layer";
@@ -116,39 +105,6 @@
             ignore-modifiers;
         };
 
-        mtCurly: mtCurly {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MTCURLY";
-            bindings = <&kp>, <&curlyFull>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        mtBracket: mtBracket {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MTBRACKET";
-            bindings = <&kp>, <&bracketFull>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        mtParen: mtParen {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MTPAREN";
-            bindings = <&kp>, <&parenFull>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         mmEquals: mmEquals {
             compatible = "zmk,behavior-mod-morph";
             label = "MMEQUALS";
@@ -165,25 +121,6 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mmMoveUnder: mmMoveUnder {
-            compatible = "zmk,behavior-mod-morph";
-            label = "mm Move Under";
-            bindings = <&to MOVER>, <&kp UNDERSCORE>;
-            // TODO
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_LSFT)>;
-        };
-
-        lmmNumMoveUnder: lmmNumMoveUnder {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LMMNUMMOVEUNDER";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "balanced";
-            bindings = <&mo>, <&mmMoveUnder>;
         };
 
         rmt1sls: rmt1sls {

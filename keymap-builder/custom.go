@@ -42,7 +42,7 @@ func Custom2(name string, a, b any) Custom {
 }
 
 func CustomN(name string, n int, aa ...any) Custom {
-	switch n {
+	switch n - len(aa) {
 	case 2:
 		aa = append(aa, ZERO, ZERO)
 	case 1:

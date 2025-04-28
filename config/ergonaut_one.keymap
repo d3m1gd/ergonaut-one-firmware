@@ -29,6 +29,34 @@
     conditional_layers { compatible = "zmk,conditional-layers"; };
 
     behaviors {
+        kpkp: kpkp {
+            compatible = "zmk,behavior-hold-tap";
+            label = "kpkp";
+            #binding-cells = <2>;
+            bindings = <&tapNoRepeat &kp>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+        };
+
+        mmkpMINUSkpPLUS: mmkpMINUSkpPLUS {
+            compatible = "zmk,behavior-mod-morph";
+            label = "ModMorph kp kp";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS &kp PLUS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mmmkpMINUSkpPLUS: mmmkpMINUSkpPLUS {
+            compatible = "zmk,behavior-hold-tap";
+            label = "Mod mmkpMINUSkpPLUS";
+            #binding-cells = <2>;
+            bindings = <&kp &mmkpMINUSkpPLUS>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+        };
+
         moto: moto {
             compatible = "zmk,behavior-hold-tap";
             label = "Momentary/To";
@@ -38,7 +66,7 @@
             tapping-term-ms = <300>;
         };
 
-        mmtokp: mmtokp {
+        mmtoMOVERkpUNDER: mmtoMOVERkpUNDER {
             compatible = "zmk,behavior-mod-morph";
             label = "ModMorph to kp";
             #binding-cells = <0>;
@@ -46,11 +74,11 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        mommtokp: mommtokp {
+        mommtoMOVERkpUNDER: mommtoMOVERkpUNDER {
             compatible = "zmk,behavior-hold-tap";
-            label = "Momentary mommtokp";
+            label = "Momentary mommtoMOVERkpUNDER";
             #binding-cells = <2>;
-            bindings = <&mo &mmtokp>;
+            bindings = <&mo &mmtoMOVERkpUNDER>;
             flavor = "balanced";
             tapping-term-ms = <300>;
         };
@@ -62,6 +90,7 @@
             bindings = <&kp &brackets>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
         };
 
         mparens: mparens {
@@ -71,6 +100,7 @@
             bindings = <&kp &parens>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
         };
 
         mcurlies: mcurlies {
@@ -80,6 +110,7 @@
             bindings = <&kp &curlies>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
         };
 
         rmt: rmt {
@@ -93,17 +124,6 @@
             hold-trigger-on-release;
             quick-tap-ms = <200>;
             hold-trigger-key-positions = <0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29 36 37 38>;
-        };
-
-        kpkp: kpkp {
-            compatible = "zmk,behavior-hold-tap";
-            label = "kpkp";
-            bindings = <&tapNoRepeat>, <&kp>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <200>;
         };
 
         sls: sls {
@@ -164,39 +184,6 @@
             ignore-modifiers;
         };
 
-        mtCurly: mtCurly {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MTCURLY";
-            bindings = <&kp>, <&curlyFull>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        mtBracket: mtBracket {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MTBRACKET";
-            bindings = <&kp>, <&bracketFull>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
-        mtParen: mtParen {
-            compatible = "zmk,behavior-hold-tap";
-            label = "MTPAREN";
-            bindings = <&kp>, <&parenFull>;
-
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            flavor = "tap-preferred";
-        };
-
         mmEquals: mmEquals {
             compatible = "zmk,behavior-mod-morph";
             label = "MMEQUALS";
@@ -213,25 +200,6 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        mmMoveUnder: mmMoveUnder {
-            compatible = "zmk,behavior-mod-morph";
-            label = "mm Move Under";
-            bindings = <&to MOVER>, <&kp UNDERSCORE>;
-            // TODO
-
-            #binding-cells = <0>;
-            mods = <(MOD_RSFT|MOD_LSFT)>;
-        };
-
-        lmmNumMoveUnder: lmmNumMoveUnder {
-            compatible = "zmk,behavior-hold-tap";
-            label = "LMMNUMMOVEUNDER";
-            #binding-cells = <2>;
-            tapping-term-ms = <300>;
-            flavor = "balanced";
-            bindings = <&mo>, <&mmMoveUnder>;
         };
 
         rmt1sls: rmt1sls {
@@ -636,7 +604,7 @@
             compatible = "zmk,behavior-macro";
             label = "To 0, L31";
             #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &mt LCTRL MINUS &macro_pause_for_release &macro_release &mt LCTRL MINUS>;
+            bindings = <&to BASE &macro_press &mmmkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mmmkpMINUSkpPLUS LCTRL 0>;
         };
 
         to0l32: to0l32 {
@@ -727,7 +695,7 @@
             compatible = "zmk,behavior-macro";
             label = "To 0, L42";
             #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &mommtokp NUMER 0 &macro_pause_for_release &macro_release &mommtokp NUMER 0>;
+            bindings = <&to BASE &macro_press &mommtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &mommtoMOVERkpUNDER NUMER 0>;
         };
 
         to0l43: to0l43 {
@@ -894,10 +862,10 @@
 
         BASE {
             bindings = <
-&kp TAB               &kp Q  &kp W         &kp E               &kp R              &kpkp RG(T) T     &kp Y             &kp U            &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE  &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F         &kp G             &kp H             &rmt LALT J      &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
-&mt LCTRL MINUS       &kp Z  &kp X         &kpConfig 0 C       &kp V              &kp B             &kp N             &kpkp RG(M) M    &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                           &moto QUICK CHAINS  &mommtokp NUMER 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUMER SPACE  &Wmoto QUICK CHAINS
+&kp TAB                    &kp Q  &kp W         &kp E               &kp R                        &kpkp RG(T) T     &kp Y             &kp U            &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE       &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F                   &kp G             &kp H             &rmt LALT J      &rmt LGUI K            &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
+&mmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &kpConfig 0 C       &kp V                        &kp B             &kp N             &kpkp RG(M) M    &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+                                                &moto QUICK CHAINS  &mommtoMOVERkpUNDER NUMER 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUMER SPACE  &Wmoto QUICK CHAINS
             >;
         };
 

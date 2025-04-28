@@ -18,6 +18,14 @@ func CompileReference(b Reference) string {
 	return "&" + b.Name()
 }
 
+func ShowReference(b Reference) string {
+	args := b.Args()
+	if len(args) > 0 {
+		return fmt.Sprintf("%s%s", b.Name(), strings.Join(args, ""))
+	}
+	return b.Name()
+}
+
 func EqualReference(a, b Reference) bool {
 	return CompileReference(a) == CompileReference(b)
 }
@@ -48,10 +56,10 @@ type Kp struct {
 	Tap KeyCode
 }
 
-type KpKp struct {
-	Hold KeyCode
-	Tap  KeyCode
-}
+// type KpKp struct {
+// 	Hold KeyCode
+// 	Tap  KeyCode
+// }
 
 type MKp struct {
 	Tap KeyCode
