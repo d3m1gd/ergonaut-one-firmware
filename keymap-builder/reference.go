@@ -30,9 +30,8 @@ func EqualReference(a, b Reference) bool {
 	return CompileReference(a) == CompileReference(b)
 }
 
-type Trans struct{}
-
-type None struct{}
+var Trans = Custom0("trans")
+var None = Custom0("none")
 
 type Lt struct {
 	Layer LayerIndex
@@ -52,14 +51,9 @@ type Mt struct {
 	Tap  KeyCode
 }
 
-type Kp struct {
-	Tap KeyCode
+func Kp(k KeyCode) Reference {
+	return Custom1("kp", k)
 }
-
-// type KpKp struct {
-// 	Hold KeyCode
-// 	Tap  KeyCode
-// }
 
 type MKp struct {
 	Tap KeyCode

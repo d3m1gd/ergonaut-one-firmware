@@ -44,30 +44,30 @@ func BackspaceDelete() Reference {
 		Name:  name,
 		Label: "Backspace Delete",
 		Cells: 0,
-		Refs:  []Reference{Kp{BSPC}, Kp{DEL}},
+		Refs:  []Reference{Kp(BSPC), Kp(DEL)},
 	})
 
 	return Custom0(name)
 }
 
 func Parens() Reference {
-	return OpenCloseMacro("parens", Kp{LPAR}, Kp{RPAR})
+	return OpenCloseMacro("parens", LPAR, RPAR)
 }
 
 func Brackets() Reference {
-	return OpenCloseMacro("brackets", Kp{LBKT}, Kp{RBKT})
+	return OpenCloseMacro("brackets", LBKT, RBKT)
 }
 
 func Curlies() Reference {
-	return OpenCloseMacro("curlies", Kp{LBRC}, Kp{RBRC})
+	return OpenCloseMacro("curlies", LBRC, RBRC)
 }
 
-func OpenCloseMacro(name string, left, right Kp) Reference {
+func OpenCloseMacro(name string, left, right KeyCode) Reference {
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose %s", name),
 		Cells: 0,
-		Refs:  []Reference{left, right, Kp{LEFT}, To{PARENS}},
+		Refs:  []Reference{Kp(left), Kp(right), Kp(LEFT), To{PARENS}},
 	})
 
 	return Custom0(name)

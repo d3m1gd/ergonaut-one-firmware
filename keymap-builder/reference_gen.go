@@ -4,32 +4,6 @@ package main
 
 import "fmt"
 
-func (x Trans) Reference() string {
-	return fmt.Sprintf("&%s", x.Name())
-}
-
-func (x Trans) Name() string {
-	return "trans"
-}
-
-func (x Trans) Args() []string {
-	return []string{ }
-}
-
-
-func (x None) Reference() string {
-	return fmt.Sprintf("&%s", x.Name())
-}
-
-func (x None) Name() string {
-	return "none"
-}
-
-func (x None) Args() []string {
-	return []string{ }
-}
-
-
 func (x Lt) Reference() string {
 	return fmt.Sprintf("&%s %s %s", x.Name(), x.Layer, x.Tap)
 }
@@ -79,19 +53,6 @@ func (x Mt) Name() string {
 
 func (x Mt) Args() []string {
 	return []string{ fmt.Sprintf("%s", x.Hold), fmt.Sprintf("%s", x.Tap), }
-}
-
-
-func (x Kp) Reference() string {
-	return fmt.Sprintf("&%s %s", x.Name(), x.Tap)
-}
-
-func (x Kp) Name() string {
-	return "kp"
-}
-
-func (x Kp) Args() []string {
-	return []string{ fmt.Sprintf("%s", x.Tap), }
 }
 
 
