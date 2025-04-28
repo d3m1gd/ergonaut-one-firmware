@@ -71,8 +71,6 @@ func init() {
 	layers[BASE][l(3, 5)] = Kp(V)
 	layers[BASE][l(3, 6)] = Kp(B)
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	// layers[BASE][l(4, 2)] = Custom2("lmmNumMoveUnder", NUMER, ZERO)
-	// todo next
 	layers[BASE][l(4, 2)] = MoX(NUMER, ModMorph(To(MOVER), Kp(UNDER), []KeyMod{MOD_LSFT, MOD_RSFT}))
 	layers[BASE][l(4, 3)] = Mt(LCTRL, ESCAPE)
 
@@ -192,13 +190,22 @@ func init() {
 	// &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 
-	combos = append(combos, Combo{
-		Name:               "MiddleMouse",
-		Refs:               []Ref{MKp(MCLK)},
-		Keys:               []RC{l(3, 4), l(3, 5)},
-		RequirePriorIdleMs: 200,
-		TimoutMs:           100,
-	})
+	combos = append(combos, []Combo{
+		{
+			Name:               "MiddleMouse",
+			Refs:               []Ref{MKp(MCLK)},
+			Keys:               []RC{l(3, 4), l(3, 5)},
+			RequirePriorIdleMs: 200,
+			TimoutMs:           100,
+		},
+		{
+			Name:               "Curlies",
+			Refs:               []Ref{Curlies()},
+			Keys:               []RC{l(2, 5), r(2, 2)},
+			RequirePriorIdleMs: 200,
+			TimoutMs:           100,
+		},
+	}...)
 }
 
 func renderKeymap(path string, params Params) {

@@ -772,6 +772,13 @@
             require-prior-idle-ms = <200>;
         };
 
+        Curlies {
+            bindings = <&curlies>;
+            key-positions = <16 19>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <200>;
+        };
+
         LAM {
             bindings = <&skl LA(LEFT_GUI)>;
             key-positions = <15 16>;
