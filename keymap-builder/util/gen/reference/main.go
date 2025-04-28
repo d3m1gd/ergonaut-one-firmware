@@ -105,20 +105,6 @@ func main() {
 			return []string{ {{range .Fields}}fmt.Sprintf("%s", x.{{.Name}}), {{end}}}
 		}
 
-		func (x {{.Name}}) Slots() int {
-			var count int
-			{{range .Fields}}
-			var zero{{.Name}} {{.Type}}
-			if zero{{.Name}} == x.{{.Name}} {
-				count++
-			}
-			{{end}}
-			if count > 2 {
-				panic("too many slots")
-			}
-
-			return count
-		}
 		{{end}}`, "\n")))
 
 	err := tmpl.Execute(&buf, structs)

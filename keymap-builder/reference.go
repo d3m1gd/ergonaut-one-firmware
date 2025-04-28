@@ -8,7 +8,6 @@ import (
 type Reference interface {
 	Args() []string
 	Name() string
-	Slots() int
 }
 
 func CompileReference(b Reference) string {

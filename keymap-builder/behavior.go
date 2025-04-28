@@ -64,7 +64,7 @@ func (b Behavior) Equal(other Behavior) bool {
 }
 
 func (m Behavior) Bindings() string {
-	return strings.Join(Map(m.Refs, func(r Reference) string { return "&" + r.Name() }), " ")
+	return strings.Join(Map(m.Refs, CompileReference), " ")
 }
 
 func (m Behavior) Properties() []string {
@@ -88,7 +88,7 @@ func AddBehavior(b Behavior) {
 
 func ModRef(key KeyCode, ref Reference) Reference {
 	name := fmt.Sprintf("m%s", ref.Name())
-	refs := []Reference{Kp{}, ref}
+	refs := []Reference{Custom0(Kp{}.Name()), ref}
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: fmt.Sprintf("Mod %s", ref.Name()),
@@ -101,12 +101,12 @@ func ModRef(key KeyCode, ref Reference) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells-CountSlots(refs), key)
+	return CustomN(name, BehaviorTypeHoldTap.Cells-1, key)
 }
 
 func MoTo(mo, to LayerIndex) Reference {
+	refs := []Reference{Custom0(Mo{}.Name()), Custom0(To{}.Name())}
 	name := "moto"
-	refs := []Reference{Mo{}, To{}}
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "Momentary/To",
@@ -119,11 +119,12 @@ func MoTo(mo, to LayerIndex) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells-CountSlots(refs), mo, to)
+	return CustomN(name, BehaviorTypeHoldTap.Cells-2, mo, to)
 }
 
-func MoX(name string, mo LayerIndex, x Reference) Reference {
-	refs := []Reference{Mo{}, x}
+func MoX(mo LayerIndex, x Reference) Reference {
+	refs := []Reference{Custom0(Mo{}.Name()), x}
+	name := "mo" + x.Name()
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "Momentary " + name,
@@ -136,20 +137,21 @@ func MoX(name string, mo LayerIndex, x Reference) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells-CountSlots(refs), mo)
+	return CustomN(name, BehaviorTypeHoldTap.Cells-1, mo)
 }
 
-func CountSlots(rr []Reference) int {
-	return Reduce(rr, 0, func(acc int, r Reference) int {
-		return acc + r.Slots()
-	})
-}
+// func CountSlots(rr []Reference) int {
+// 	return Reduce(rr, 0, func(acc int, r Reference) int {
+// 		return acc + r.Slots()
+// 	})
+// }
 
-func ModMorph(name string, a, b Reference, mods []KeyMod) Reference {
+func ModMorph(a, b Reference, mods []KeyMod) Reference {
 	refs := []Reference{a, b}
+	name := "mm" + a.Name() + b.Name()
 	AddBehavior(Behavior{
 		Name:  name,
-		Label: "ModMorph " + name,
+		Label: "ModMorph " + a.Name() + " " + b.Name(),
 		Cells: BehaviorTypeModMorph.Cells,
 		Type:  BehaviorTypeModMorph.Name,
 		Refs:  refs,
@@ -158,7 +160,7 @@ func ModMorph(name string, a, b Reference, mods []KeyMod) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeModMorph.Cells-CountSlots(refs))
+	return CustomN(name, BehaviorTypeModMorph.Cells-0)
 }
 
 // mmMoveUnder: mmMoveUnder {
