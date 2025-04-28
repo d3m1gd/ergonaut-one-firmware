@@ -5,12 +5,12 @@ import (
 	"strings"
 )
 
-type Reference interface {
+type Ref interface {
 	Args() []string
 	Name() string
 }
 
-func CompileReference(b Reference) string {
+func CompileRef(b Ref) string {
 	args := b.Args()
 	if len(args) > 0 {
 		return fmt.Sprintf("&%s %s", b.Name(), strings.Join(args, " "))
@@ -18,7 +18,7 @@ func CompileReference(b Reference) string {
 	return "&" + b.Name()
 }
 
-func ShowReference(b Reference) string {
+func ShowReference(b Ref) string {
 	args := b.Args()
 	if len(args) > 0 {
 		return fmt.Sprintf("%s%s", b.Name(), strings.Join(args, ""))
@@ -26,40 +26,37 @@ func ShowReference(b Reference) string {
 	return b.Name()
 }
 
-func EqualReference(a, b Reference) bool {
-	return CompileReference(a) == CompileReference(b)
+func EqualRef(a, b Ref) bool {
+	return CompileRef(a) == CompileRef(b)
 }
 
-var Trans = Custom0("trans")
-var None = Custom0("none")
+var Trans = Ref0("trans")
+var None = Ref0("none")
 
-type Lt struct {
-	Layer LayerIndex
-	Tap   KeyCode
+func Lt(layer LayerIndex, tap KeyCode) Ref {
+	return Ref2("lt", layer, tap)
 }
 
-type To struct {
-	Layer LayerIndex
+func To(layer LayerIndex) Ref {
+	return Ref1("to", layer)
 }
 
-type Mo struct {
-	Layer LayerIndex
+func Mo(layer LayerIndex) Ref {
+	return Ref1("mo", layer)
 }
 
-type Mt struct {
-	Hold KeyCode
-	Tap  KeyCode
+func Mt(mod, tap KeyCode) Ref {
+	return Ref2("mt", mod, tap)
 }
 
-func Kp(k KeyCode) Reference {
-	return Custom1("kp", k)
+func Kp(k KeyCode) Ref {
+	return Ref1("kp", k)
 }
 
-type MKp struct {
-	Tap KeyCode
+func MKp(tap KeyCode) Ref {
+	return Ref1("mkp", tap)
 }
 
-type Rmt struct {
-	Hold KeyCode
-	Tap  KeyCode
+func Rmt(mod, tap KeyCode) Ref {
+	return Ref2("rmt", mod, tap)
 }

@@ -25,23 +25,19 @@ func (x Custom) Args() []string {
 	return Map(x.Fields, toString)
 }
 
-func (x Custom) Slots() int {
-	return 0
-}
-
-func Custom0(name string) Custom {
+func Ref0(name string) Custom {
 	return Custom{name, []any{}}
 }
 
-func Custom1(name string, a any) Custom {
+func Ref1(name string, a any) Custom {
 	return Custom{name, []any{a}}
 }
 
-func Custom2(name string, a, b any) Custom {
+func Ref2(name string, a, b any) Custom {
 	return Custom{name, []any{a, b}}
 }
 
-func CustomN(name string, n int, aa ...any) Custom {
+func RefN(name string, n int, aa ...any) Custom {
 	switch n - len(aa) {
 	case 2:
 		aa = append(aa, ZERO, ZERO)

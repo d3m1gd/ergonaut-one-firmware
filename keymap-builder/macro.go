@@ -6,15 +6,15 @@ import (
 	"strings"
 )
 
-var MacroPress = Custom0("macro_press")
-var MacroRelease = Custom0("macro_release")
-var MacroWait = Custom0("macro_pause_for_release")
+var MacroPress = Ref0("macro_press")
+var MacroRelease = Ref0("macro_release")
+var MacroWait = Ref0("macro_pause_for_release")
 
 type Macro struct {
 	Name  string
 	Label string
 	Cells int
-	Refs  []Reference
+	Refs  []Ref
 }
 
 func (m Macro) Type() string {
@@ -26,7 +26,7 @@ func (m Macro) Type() string {
 }
 
 func (m Macro) Bindings() string {
-	return strings.Join(Map(m.Refs, CompileReference), " ")
+	return strings.Join(Map(m.Refs, CompileRef), " ")
 }
 
 func (m Macro) Equal(other Macro) bool {
@@ -34,43 +34,43 @@ func (m Macro) Equal(other Macro) bool {
 	eq = eq && m.Name == other.Name
 	eq = eq && m.Label == other.Label
 	eq = eq && m.Cells == other.Cells
-	eq = eq && slices.EqualFunc(m.Refs, other.Refs, EqualReference)
+	eq = eq && slices.EqualFunc(m.Refs, other.Refs, EqualRef)
 	return eq
 }
 
-func BackspaceDelete() Reference {
+func BackspaceDelete() Ref {
 	name := "bspcdel"
 	AddMacro(Macro{
 		Name:  name,
 		Label: "Backspace Delete",
 		Cells: 0,
-		Refs:  []Reference{Kp(BSPC), Kp(DEL)},
+		Refs:  []Ref{Kp(BSPC), Kp(DEL)},
 	})
 
-	return Custom0(name)
+	return Ref0(name)
 }
 
-func Parens() Reference {
+func Parens() Ref {
 	return OpenCloseMacro("parens", LPAR, RPAR)
 }
 
-func Brackets() Reference {
+func Brackets() Ref {
 	return OpenCloseMacro("brackets", LBKT, RBKT)
 }
 
-func Curlies() Reference {
+func Curlies() Ref {
 	return OpenCloseMacro("curlies", LBRC, RBRC)
 }
 
-func OpenCloseMacro(name string, left, right KeyCode) Reference {
+func OpenCloseMacro(name string, left, right KeyCode) Ref {
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose %s", name),
 		Cells: 0,
-		Refs:  []Reference{Kp(left), Kp(right), Kp(LEFT), To{PARENS}},
+		Refs:  []Ref{Kp(left), Kp(right), Kp(LEFT), To(PARENS)},
 	})
 
-	return Custom0(name)
+	return Ref0(name)
 }
 
 func AddMacro(macro Macro) {
@@ -104,7 +104,7 @@ func (mp MacroParam) Slots() int {
 	return 0
 }
 
-func Curry(r Reference) Custom {
+func Curry(r Ref) Custom {
 	return Custom{r.Name(), MapToMacroPlaceholder(r.Args())}
 }
 
@@ -112,47 +112,47 @@ func MapToMacroPlaceholder(args []string) []any {
 	return MapToAnyStatic(args, "MACRO_PLACEHOLDER")
 }
 
-func XThenTrans(r Reference, index LayerIndex, rc RC) Reference {
+func XThenTrans(r Ref, index LayerIndex, rc RC) Ref {
 	layer := layers[index]
 	name := fmt.Sprintf("xThenTrans%d", index)
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Trans %s", index),
 		Cells: 1,
-		Refs:  []Reference{MacroParam{1, 1}, Curry(r), To{index}, layer[rc]},
+		Refs:  []Ref{MacroParam{1, 1}, Curry(r), To(index), layer[rc]},
 	})
 
 	return Custom{name, MapToAny(r.Args())}
 }
 
-func XThenLayer(r Reference, index LayerIndex) Reference {
+func XThenLayer(r Ref, index LayerIndex) Ref {
 	name := fmt.Sprintf("xThenLayer%d", index)
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Layer %s", index),
 		Cells: 1,
-		Refs:  []Reference{MacroParam{1, 1}, Curry(r), To{index}},
+		Refs:  []Ref{MacroParam{1, 1}, Curry(r), To(index)},
 	})
 
 	return Custom{name, MapToAny(r.Args())}
 }
 
-func MapParams(n int) []Reference {
+func MapParams(n int) []Ref {
 	switch n {
 	case 0:
-		return []Reference{}
+		return []Ref{}
 	case 1:
-		return []Reference{MacroParam{1, 1}}
+		return []Ref{MacroParam{1, 1}}
 	case 2:
-		return []Reference{MacroParam{1, 1}, MacroParam{2, 2}}
+		return []Ref{MacroParam{1, 1}, MacroParam{2, 2}}
 	}
 	panic(fmt.Sprintf("bad n: %d", n))
 }
 
-func Wrap(r Reference) Reference {
+func Wrap(r Ref) Ref {
 	name := fmt.Sprintf("W%s", r.Name())
 	params := MapParams(len(r.Args()))
-	refs := []Reference{}
+	refs := []Ref{}
 	refs = append(refs, MacroPress)
 	refs = append(refs, params...)
 	refs = append(refs, Curry(r))

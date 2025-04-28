@@ -9,7 +9,7 @@ import (
 	"github.com/BooleanCat/go-functional/v2/it"
 )
 
-type Layer map[RC]Reference
+type Layer map[RC]Ref
 type LayerName string
 type LayerIndex int
 
@@ -25,7 +25,7 @@ func (l Layer) Render() []string {
 	}
 	for rc := range RCs() {
 		b := l[rc]
-		rendered := CompileReference(b)
+		rendered := CompileRef(b)
 		row := rc.Row - 1
 		col := rc.Col - 1
 		if rc.Side == Right {
@@ -60,11 +60,11 @@ type RenderedLayer struct {
 	Rows  []string
 }
 
-func InitWith(b Reference) Layer {
-	return InitBy(func(RC) Reference { return b })
+func InitWith(b Ref) Layer {
+	return InitBy(func(RC) Ref { return b })
 }
 
-func InitBy(f func(RC) Reference) Layer {
+func InitBy(f func(RC) Ref) Layer {
 	layer := Layer{}
 	for rc := range RCs() {
 		layer[rc] = f(rc)
@@ -75,15 +75,15 @@ func InitBy(f func(RC) Reference) Layer {
 
 func InitToLevelTrans(index LayerIndex) Layer {
 	base := layers[BASE]
-	return InitBy(func(rc RC) Reference {
+	return InitBy(func(rc RC) Ref {
 		name := fmt.Sprintf("to%d%s", index, rc)
 		macro := Macro{
 			Name:  name,
 			Label: fmt.Sprintf("To %d, %s", index, rc.Pretty()),
 			Cells: 0,
-			Refs:  []Reference{To{index}, MacroPress, base[rc], MacroWait, MacroRelease, base[rc]},
+			Refs:  []Ref{To(index), MacroPress, base[rc], MacroWait, MacroRelease, base[rc]},
 		}
 		AddMacro(macro)
-		return Custom0(name)
+		return Ref0(name)
 	})
 }

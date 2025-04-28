@@ -47,7 +47,7 @@ type Behavior struct {
 	Label string
 	Cells int
 	Type  string
-	Refs  []Reference
+	Refs  []Ref
 	Props []DeviceTreeProperty
 }
 
@@ -56,7 +56,7 @@ func (b Behavior) Equal(other Behavior) bool {
 	eq = eq && b.Name == other.Name
 	eq = eq && b.Label == other.Label
 	eq = eq && b.Type == other.Type
-	eq = eq && slices.EqualFunc(b.Refs, other.Refs, EqualReference)
+	eq = eq && slices.EqualFunc(b.Refs, other.Refs, EqualRef)
 	eq = eq && slices.EqualFunc(b.Props, other.Props, func(a, b DeviceTreeProperty) bool {
 		return a.CompileProperty() == b.CompileProperty()
 	})
@@ -64,7 +64,7 @@ func (b Behavior) Equal(other Behavior) bool {
 }
 
 func (m Behavior) Bindings() string {
-	return strings.Join(Map(m.Refs, CompileReference), " ")
+	return strings.Join(Map(m.Refs, CompileRef), " ")
 }
 
 func (m Behavior) Properties() []string {
@@ -86,14 +86,14 @@ func AddBehavior(b Behavior) {
 	behaviors = append(behaviors, b)
 }
 
-func KpKp(a, b KeyCode) Reference {
+func KpKp(a, b KeyCode) Ref {
 	name := "kpkp"
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "kpkp",
 		Cells: BehaviorTypeHoldTap.Cells,
 		Type:  BehaviorTypeHoldTap.Name,
-		Refs:  []Reference{Custom0("tapNoRepeat"), Custom0("kp")},
+		Refs:  []Ref{Ref0("tapNoRepeat"), Ref0("kp")},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
 			{"tapping-term-ms", 200},
@@ -101,11 +101,11 @@ func KpKp(a, b KeyCode) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells, a, b)
+	return RefN(name, BehaviorTypeHoldTap.Cells, a, b)
 }
 
-func MoTo(mo, to LayerIndex) Reference {
-	refs := []Reference{Custom0(Mo{}.Name()), Custom0(To{}.Name())}
+func MoTo(mo, to LayerIndex) Ref {
+	refs := []Ref{Ref0("mo"), Ref0("to")}
 	name := "moto"
 	AddBehavior(Behavior{
 		Name:  name,
@@ -119,11 +119,11 @@ func MoTo(mo, to LayerIndex) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells, mo, to)
+	return RefN(name, BehaviorTypeHoldTap.Cells, mo, to)
 }
 
-func MoX(mo LayerIndex, x Reference) Reference {
-	refs := []Reference{Custom0(Mo{}.Name()), x}
+func MoX(mo LayerIndex, x Ref) Ref {
+	refs := []Ref{Ref0("mo"), x}
 	name := "mo" + ShowReference(x)
 	AddBehavior(Behavior{
 		Name:  name,
@@ -137,17 +137,17 @@ func MoX(mo LayerIndex, x Reference) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells, mo)
+	return RefN(name, BehaviorTypeHoldTap.Cells, mo)
 }
 
-func ModX(mod KeyCode, x Reference) Reference {
+func ModX(mod KeyCode, x Ref) Ref {
 	name := "m" + ShowReference(x)
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "Mod " + x.Name(),
 		Type:  BehaviorTypeHoldTap.Name,
 		Cells: BehaviorTypeHoldTap.Cells,
-		Refs:  []Reference{Custom0("kp"), x},
+		Refs:  []Ref{Ref0("kp"), x},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
 			{"tapping-term-ms", 200},
@@ -155,11 +155,11 @@ func ModX(mod KeyCode, x Reference) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeHoldTap.Cells, mod)
+	return RefN(name, BehaviorTypeHoldTap.Cells, mod)
 }
 
-func ModMorph(a, b Reference, mods []KeyMod) Reference {
-	refs := []Reference{a, b}
+func ModMorph(a, b Ref, mods []KeyMod) Ref {
+	refs := []Ref{a, b}
 	name := "mm" + ShowReference(a) + ShowReference(b)
 	AddBehavior(Behavior{
 		Name:  name,
@@ -172,5 +172,5 @@ func ModMorph(a, b Reference, mods []KeyMod) Reference {
 		},
 	})
 
-	return CustomN(name, BehaviorTypeModMorph.Cells)
+	return RefN(name, BehaviorTypeModMorph.Cells)
 }
