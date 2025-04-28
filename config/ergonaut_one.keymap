@@ -775,8 +775,22 @@
         Curlies {
             bindings = <&curlies>;
             key-positions = <16 19>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <70>;
+        };
+
+        Parens {
+            bindings = <&parens>;
+            key-positions = <15 20>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <100>;
+        };
+
+        Brackets {
+            bindings = <&brackets>;
+            key-positions = <14 21>;
             timeout-ms = <100>;
-            require-prior-idle-ms = <200>;
+            require-prior-idle-ms = <120>;
         };
 
         LAM {

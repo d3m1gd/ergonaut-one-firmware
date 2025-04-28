@@ -202,7 +202,21 @@ func init() {
 			Name:               "Curlies",
 			Refs:               []Ref{Curlies()},
 			Keys:               []RC{l(2, 5), r(2, 2)},
-			RequirePriorIdleMs: 200,
+			RequirePriorIdleMs: 70,
+			TimoutMs:           70,
+		},
+		{
+			Name:               "Parens",
+			Refs:               []Ref{Parens()},
+			Keys:               []RC{l(2, 4), r(2, 3)},
+			RequirePriorIdleMs: 100,
+			TimoutMs:           80,
+		},
+		{
+			Name:               "Brackets",
+			Refs:               []Ref{Brackets()},
+			Keys:               []RC{l(2, 3), r(2, 4)},
+			RequirePriorIdleMs: 120,
 			TimoutMs:           100,
 		},
 	}...)
