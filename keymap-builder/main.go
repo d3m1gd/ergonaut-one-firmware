@@ -2,8 +2,6 @@ package main
 
 import (
 	"cmp"
-	"fmt"
-	"iter"
 	"os"
 	"path/filepath"
 	"slices"
@@ -281,15 +279,12 @@ func renderKeymap(path string, params Params) {
 	check(t.Execute(outFile, params))
 }
 
-func RenderLayerSeq(seq iter.Seq2[int, Layer]) iter.Seq[RenderedLayer] {
-	return func(yield func(RenderedLayer) bool) {
-		for n, layer := range seq {
-			rl := RenderedLayer{n, LayerIndex(n).String(), layer.Render()}
-			if !yield(rl) {
-				return
-			}
-		}
+func RenderLayers(layers []Layer) []RenderedLayer {
+	var rendered []RenderedLayer
+	for n, layer := range layers {
+		rendered = append(rendered, RenderedLayer{n, LayerIndex(n).String(), layer.Render()})
 	}
+	return rendered
 }
 
 func main() {
@@ -299,8 +294,6 @@ func main() {
 		Behaviors: behaviors,
 		Macros:    macros,
 		Combos:    combos,
-		Layers:    slices.Collect(RenderLayerSeq(slices.All(layers[:MAXLAYERINDEX]))),
+		Layers:    RenderLayers(layers),
 	})
-
-	fmt.Println("good")
 }

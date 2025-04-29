@@ -1,2 +1,2 @@
 all:
-	@make -C keymap-builder
+	@make -s -C keymap-builder
