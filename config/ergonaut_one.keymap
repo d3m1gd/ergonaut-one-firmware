@@ -775,15 +775,15 @@
         Curlies {
             bindings = <&curlies>;
             key-positions = <16 19>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <70>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <100>;
         };
 
         Parens {
             bindings = <&parens>;
             key-positions = <15 20>;
-            timeout-ms = <80>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <90>;
+            require-prior-idle-ms = <110>;
         };
 
         Brackets {
@@ -791,66 +791,6 @@
             key-positions = <14 21>;
             timeout-ms = <100>;
             require-prior-idle-ms = <120>;
-        };
-
-        LAM {
-            bindings = <&skl LA(LEFT_GUI)>;
-            key-positions = <15 16>;
-            layers = <0>;
-        };
-
-        LCM {
-            bindings = <&skl LC(LEFT_GUI)>;
-            key-positions = <15 38>;
-            layers = <0>;
-        };
-
-        LSM {
-            bindings = <&skl LS(LEFT_GUI)>;
-            key-positions = <15 14>;
-            layers = <0>;
-        };
-
-        LCS {
-            bindings = <&skl LS(LEFT_CONTROL)>;
-            key-positions = <14 38>;
-            layers = <0>;
-        };
-
-        LAS {
-            bindings = <&skl LS(LEFT_ALT)>;
-            key-positions = <14 16>;
-            layers = <0>;
-        };
-
-        LAC {
-            bindings = <&skl LA(LEFT_CONTROL)>;
-            key-positions = <16 38>;
-            layers = <0>;
-        };
-
-        LACM {
-            bindings = <&skl LA(LG(LEFT_CONTROL))>;
-            key-positions = <16 15 38>;
-            layers = <0>;
-            timeout-ms = <100>;
-            require-prior-idle-ms = <500>;
-        };
-
-        LASM {
-            bindings = <&skl LA(LS(LEFT_GUI))>;
-            key-positions = <14 15 16>;
-            layers = <0>;
-            timeout-ms = <100>;
-            require-prior-idle-ms = <500>;
-        };
-
-        LACS {
-            bindings = <&skl LA(LS(LEFT_CONTROL))>;
-            key-positions = <14 16 38>;
-            layers = <0>;
-            timeout-ms = <100>;
-            require-prior-idle-ms = <500>;
         };
 
         sys {
