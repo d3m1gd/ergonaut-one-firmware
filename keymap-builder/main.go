@@ -1,6 +1,7 @@
 package main
 
 import (
+	"cmp"
 	"fmt"
 	"iter"
 	"os"
@@ -107,9 +108,9 @@ func init() {
 	layers[NUMER][l(1, 1)] = Kp(LS(TAB))
 	layers[NUMER][l(1, 6)] = Kp(TILDE)
 	layers[NUMER][l(2, 1)] = Kp(DELETE) // row 2
-	layers[NUMER][l(2, 3)] = ModX(LSHIFT, Brackets())
-	layers[NUMER][l(2, 4)] = ModX(LGUI, Parens())
-	layers[NUMER][l(2, 5)] = ModX(LALT, Curlies())
+	// layers[NUMER][l(2, 3)] = ModX(LSHIFT, Brackets())
+	// layers[NUMER][l(2, 4)] = ModX(LGUI, Parens())
+	// layers[NUMER][l(2, 5)] = ModX(LALT, Curlies())
 	layers[NUMER][l(3, 1)] = Mt(LCTRL, PLUS) // row 3
 	layers[NUMER][l(3, 5)] = Kp(LS(INSERT))
 	layers[NUMER][l(4, 2)] = Kp(UNDERSCORE)
@@ -243,6 +244,8 @@ func RenderLayerSeq(seq iter.Seq2[int, Layer]) iter.Seq[RenderedLayer] {
 }
 
 func main() {
+	slices.SortFunc(behaviors, func(a, b Behavior) int { return cmp.Compare(a.Name, b.Name) })
+	slices.SortFunc(macros, func(a, b Macro) int { return cmp.Compare(a.Name, b.Name) })
 	renderKeymap("../config/ergonaut_one.keymap", Params{
 		Behaviors: behaviors,
 		Macros:    macros,

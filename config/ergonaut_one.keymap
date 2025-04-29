@@ -57,15 +57,6 @@
             quick-tap-ms = <200>;
         };
 
-        moto: moto {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Momentary/To";
-            #binding-cells = <2>;
-            bindings = <&mo &to>;
-            flavor = "balanced";
-            tapping-term-ms = <300>;
-        };
-
         mmtoMOVERkpUNDER: mmtoMOVERkpUNDER {
             compatible = "zmk,behavior-mod-morph";
             label = "ModMorph to kp";
@@ -83,34 +74,13 @@
             tapping-term-ms = <300>;
         };
 
-        mbrackets: mbrackets {
+        moto: moto {
             compatible = "zmk,behavior-hold-tap";
-            label = "Mod brackets";
+            label = "Momentary/To";
             #binding-cells = <2>;
-            bindings = <&kp &brackets>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-        };
-
-        mparens: mparens {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Mod parens";
-            #binding-cells = <2>;
-            bindings = <&kp &parens>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-        };
-
-        mcurlies: mcurlies {
-            compatible = "zmk,behavior-hold-tap";
-            label = "Mod curlies";
-            #binding-cells = <2>;
-            bindings = <&kp &curlies>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
+            bindings = <&mo &to>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
         };
 
         rmt: rmt {
@@ -432,6 +402,34 @@
             bindings = <&macro_press &macro_param_1to1 &macro_param_2to2 &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &macro_param_1to1 &macro_param_2to2 &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
         };
 
+        brackets: brackets {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose brackets";
+            #binding-cells = <0>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT &to PARENS>;
+        };
+
+        bspcdel: bspcdel {
+            compatible = "zmk,behavior-macro";
+            label = "Backspace Delete";
+            #binding-cells = <0>;
+            bindings = <&kp BSPC &kp DEL>;
+        };
+
+        curlies: curlies {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose curlies";
+            #binding-cells = <0>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
+        };
+
+        parens: parens {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose parens";
+            #binding-cells = <0>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &to PARENS>;
+        };
+
         to0l11: to0l11 {
             compatible = "zmk,behavior-macro";
             label = "To 0, L11";
@@ -472,48 +470,6 @@
             label = "To 0, L16";
             #binding-cells = <0>;
             bindings = <&to BASE &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
-        };
-
-        to0r11: to0r11 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R11";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
-        };
-
-        to0r12: to0r12 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R12";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
-        };
-
-        to0r13: to0r13 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R13";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
-        };
-
-        to0r14: to0r14 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R14";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
-        };
-
-        to0r15: to0r15 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R15";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
-        };
-
-        to0r16: to0r16 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R16";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
         };
 
         to0l21: to0l21 {
@@ -558,48 +514,6 @@
             bindings = <&to BASE &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
         };
 
-        to0r21: to0r21 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R21";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
-        };
-
-        to0r22: to0r22 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R22";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &rmt LALT J &macro_pause_for_release &macro_release &rmt LALT J>;
-        };
-
-        to0r23: to0r23 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R23";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &rmt LGUI K &macro_pause_for_release &macro_release &rmt LGUI K>;
-        };
-
-        to0r24: to0r24 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R24";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &rmt LSHIFT L &macro_pause_for_release &macro_release &rmt LSHIFT L>;
-        };
-
-        to0r25: to0r25 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R25";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
-        };
-
-        to0r26: to0r26 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, R26";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
-        };
-
         to0l31: to0l31 {
             compatible = "zmk,behavior-macro";
             label = "To 0, L31";
@@ -640,6 +554,111 @@
             label = "To 0, L36";
             #binding-cells = <0>;
             bindings = <&to BASE &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
+        };
+
+        to0l41: to0l41 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, L41";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
+        };
+
+        to0l42: to0l42 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, L42";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &mommtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &mommtoMOVERkpUNDER NUMER 0>;
+        };
+
+        to0l43: to0l43 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, L43";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
+        };
+
+        to0r11: to0r11 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R11";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
+        };
+
+        to0r12: to0r12 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R12";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
+        };
+
+        to0r13: to0r13 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R13";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
+        };
+
+        to0r14: to0r14 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R14";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
+        };
+
+        to0r15: to0r15 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R15";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
+        };
+
+        to0r16: to0r16 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R16";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
+        };
+
+        to0r21: to0r21 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R21";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
+        };
+
+        to0r22: to0r22 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R22";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &rmt LALT J &macro_pause_for_release &macro_release &rmt LALT J>;
+        };
+
+        to0r23: to0r23 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R23";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &rmt LGUI K &macro_pause_for_release &macro_release &rmt LGUI K>;
+        };
+
+        to0r24: to0r24 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R24";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &rmt LSHIFT L &macro_pause_for_release &macro_release &rmt LSHIFT L>;
+        };
+
+        to0r25: to0r25 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R25";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
+        };
+
+        to0r26: to0r26 {
+            compatible = "zmk,behavior-macro";
+            label = "To 0, R26";
+            #binding-cells = <0>;
+            bindings = <&to BASE &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
         };
 
         to0r31: to0r31 {
@@ -684,27 +703,6 @@
             bindings = <&to BASE &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
         };
 
-        to0l41: to0l41 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, L41";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
-        };
-
-        to0l42: to0l42 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, L42";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &mommtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &mommtoMOVERkpUNDER NUMER 0>;
-        };
-
-        to0l43: to0l43 {
-            compatible = "zmk,behavior-macro";
-            label = "To 0, L43";
-            #binding-cells = <0>;
-            bindings = <&to BASE &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
-        };
-
         to0r41: to0r41 {
             compatible = "zmk,behavior-macro";
             label = "To 0, R41";
@@ -724,34 +722,6 @@
             label = "To 0, R43";
             #binding-cells = <0>;
             bindings = <&to BASE &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
-        };
-
-        brackets: brackets {
-            compatible = "zmk,behavior-macro";
-            label = "OpenClose brackets";
-            #binding-cells = <0>;
-            bindings = <&kp LBKT &kp RBKT &kp LEFT &to PARENS>;
-        };
-
-        parens: parens {
-            compatible = "zmk,behavior-macro";
-            label = "OpenClose parens";
-            #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &to PARENS>;
-        };
-
-        curlies: curlies {
-            compatible = "zmk,behavior-macro";
-            label = "OpenClose curlies";
-            #binding-cells = <0>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
-        };
-
-        bspcdel: bspcdel {
-            compatible = "zmk,behavior-macro";
-            label = "Backspace Delete";
-            #binding-cells = <0>;
-            bindings = <&kp BSPC &kp DEL>;
         };
 
         xThenLayer0: xThenLayer0 {
@@ -841,10 +811,10 @@
 
         NUMER {
             bindings = <
-&kp LS(TAB)     &trans  &trans               &trans           &trans            &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
-&kp DELETE      &trans  &mbrackets LSHIFT 0  &mparens LGUI 0  &mcurlies LALT 0  &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
-&mt LCTRL PLUS  &trans  &trans               &trans           &kp LS(INSERT)    &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
-                                             &trans           &kp UNDERSCORE    &trans     &trans     &trans       &trans
+&kp LS(TAB)     &trans  &trans  &trans  &trans          &kp TILDE  &kp N0     &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
+&kp DELETE      &trans  &trans  &trans  &trans          &trans     &mmEquals  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &mmQuoteGrave
+&mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans     &kp PLUS   &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                &trans  &kp UNDERSCORE  &trans     &trans     &trans       &trans
             >;
         };
 
