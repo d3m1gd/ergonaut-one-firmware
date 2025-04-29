@@ -79,7 +79,8 @@ func OpenCloseMacro(name string, left, right KeyCode) Ref {
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose %s", name),
 		Cells: 0,
-		Refs:  []Ref{Kp(left), Kp(right), Kp(LEFT), To(PARENS)},
+		Refs:  []Ref{Kp(left), Kp(right), Kp(LEFT)},
+		// Refs:  []Ref{Kp(left), Kp(right), Kp(LEFT), To(PARENS)}, // todo
 	})
 
 	return Ref0(name)

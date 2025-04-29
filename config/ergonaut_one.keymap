@@ -44,7 +44,8 @@
             label = "ModMorph kp kp";
             #binding-cells = <0>;
             bindings = <&kp MINUS &kp PLUS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
         };
 
         mmmkpMINUSkpPLUS: mmmkpMINUSkpPLUS {
@@ -406,14 +407,14 @@
             compatible = "zmk,behavior-macro";
             label = "OpenClose bquotes";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &to PARENS>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT>;
         };
 
         brackets: brackets {
             compatible = "zmk,behavior-macro";
             label = "OpenClose brackets";
             #binding-cells = <0>;
-            bindings = <&kp LBKT &kp RBKT &kp LEFT &to PARENS>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT>;
         };
 
         bspcdel: bspcdel {
@@ -427,28 +428,28 @@
             compatible = "zmk,behavior-macro";
             label = "OpenClose curlies";
             #binding-cells = <0>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT>;
         };
 
         dquotes: dquotes {
             compatible = "zmk,behavior-macro";
             label = "OpenClose dquotes";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT &to PARENS>;
+            bindings = <&kp DQT &kp DQT &kp LEFT>;
         };
 
         parens: parens {
             compatible = "zmk,behavior-macro";
             label = "OpenClose parens";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &to PARENS>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT>;
         };
 
         squotes: squotes {
             compatible = "zmk,behavior-macro";
             label = "OpenClose squotes";
             #binding-cells = <0>;
-            bindings = <&kp SQT &kp SQT &kp LEFT &to PARENS>;
+            bindings = <&kp SQT &kp SQT &kp LEFT>;
         };
 
         to0l11: to0l11 {

@@ -158,18 +158,25 @@ func ModX(mod KeyCode, x Ref) Ref {
 	return RefN(name, BehaviorTypeHoldTap.Cells, mod)
 }
 
-func ModMorph(a, b Ref, mods []KeyMod) Ref {
+func ModMorph(a, b Ref, mods []KeyMod, keep []KeyMod) Ref {
 	refs := []Ref{a, b}
 	name := "mm" + ShowReference(a) + ShowReference(b)
+	props := []DeviceTreeProperty{
+		{"mods", mods},
+	}
+	if len(keep) > 0 {
+		props = append(props, DeviceTreeProperty{
+			"keep-mods", keep,
+		})
+	}
+
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "ModMorph " + a.Name() + " " + b.Name(),
 		Cells: BehaviorTypeModMorph.Cells,
 		Type:  BehaviorTypeModMorph.Name,
 		Refs:  refs,
-		Props: []DeviceTreeProperty{
-			{"mods", mods},
-		},
+		Props: props,
 	})
 
 	return RefN(name, BehaviorTypeModMorph.Cells)
