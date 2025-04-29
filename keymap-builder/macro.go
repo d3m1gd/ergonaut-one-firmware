@@ -62,6 +62,18 @@ func Curlies() Ref {
 	return OpenCloseMacro("curlies", LBRC, RBRC)
 }
 
+func DoubleQuotes() Ref {
+	return OpenCloseMacro("dquotes", DQT, DQT)
+}
+
+func SingleQuotes() Ref {
+	return OpenCloseMacro("squotes", SQT, SQT)
+}
+
+func BackQuotes() Ref {
+	return OpenCloseMacro("bquotes", GRAVE, GRAVE)
+}
+
 func OpenCloseMacro(name string, left, right KeyCode) Ref {
 	AddMacro(Macro{
 		Name:  name,

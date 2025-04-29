@@ -402,6 +402,13 @@
             bindings = <&macro_press &macro_param_1to1 &macro_param_2to2 &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &macro_param_1to1 &macro_param_2to2 &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
         };
 
+        bquotes: bquotes {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose bquotes";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &to PARENS>;
+        };
+
         brackets: brackets {
             compatible = "zmk,behavior-macro";
             label = "OpenClose brackets";
@@ -423,11 +430,25 @@
             bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
         };
 
+        dquotes: dquotes {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose dquotes";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &to PARENS>;
+        };
+
         parens: parens {
             compatible = "zmk,behavior-macro";
             label = "OpenClose parens";
             #binding-cells = <0>;
             bindings = <&kp LPAR &kp RPAR &kp LEFT &to PARENS>;
+        };
+
+        squotes: squotes {
+            compatible = "zmk,behavior-macro";
+            label = "OpenClose squotes";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &to PARENS>;
         };
 
         to0l11: to0l11 {
@@ -780,6 +801,34 @@
         Brackets {
             bindings = <&brackets>;
             key-positions = <14 21>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <120>;
+        };
+
+        DoubleQuotes {
+            bindings = <&dquotes>;
+            key-positions = <4 7>;
+            timeout-ms = <80>;
+            require-prior-idle-ms = <100>;
+        };
+
+        SingleQuotes {
+            bindings = <&squotes>;
+            key-positions = <3 8>;
+            timeout-ms = <90>;
+            require-prior-idle-ms = <110>;
+        };
+
+        BackQuotes {
+            bindings = <&bquotes>;
+            key-positions = <2 9>;
+            timeout-ms = <100>;
+            require-prior-idle-ms = <120>;
+        };
+
+        CodeQuotes {
+            bindings = <&mdCode>;
+            key-positions = <5 6>;
             timeout-ms = <100>;
             require-prior-idle-ms = <120>;
         };

@@ -15,7 +15,7 @@ import (
 const (
 	BASE LayerIndex = iota
 	MOVER
-	NUMER
+	NUMER  // 2
 	QUICK  // 3
 	REPEAT // 4
 	SYS    // 5
@@ -238,6 +238,34 @@ func init() {
 			Name:     "Brackets",
 			Refs:     []Ref{Brackets()},
 			Keys:     []RC{l(2, 3), r(2, 4)},
+			IdleMs:   120,
+			TimoutMs: 100,
+		},
+		{
+			Name:     "DoubleQuotes",
+			Refs:     []Ref{DoubleQuotes()},
+			Keys:     []RC{l(1, 5), r(1, 2)},
+			IdleMs:   100,
+			TimoutMs: 80,
+		},
+		{
+			Name:     "SingleQuotes",
+			Refs:     []Ref{SingleQuotes()},
+			Keys:     []RC{l(1, 4), r(1, 3)},
+			IdleMs:   110,
+			TimoutMs: 90,
+		},
+		{
+			Name:     "BackQuotes",
+			Refs:     []Ref{BackQuotes()},
+			Keys:     []RC{l(1, 3), r(1, 4)},
+			IdleMs:   120,
+			TimoutMs: 100,
+		},
+		{
+			Name:     "CodeQuotes",
+			Refs:     []Ref{Ref0("mdCode")}, // todo
+			Keys:     []RC{l(1, 6), r(1, 1)},
 			IdleMs:   120,
 			TimoutMs: 100,
 		},
