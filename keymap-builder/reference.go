@@ -32,6 +32,7 @@ func EqualRef(a, b Ref) bool {
 
 var Trans = Ref0("trans")
 var None = Ref0("none")
+var CapsWord = Ref0("caps_word")
 
 func Lt(layer LayerIndex, tap KeyCode) Ref {
 	return Ref2("lt", layer, tap)

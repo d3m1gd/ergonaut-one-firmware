@@ -48,8 +48,8 @@ type Params struct {
 
 var layers = make([]Layer, MAXLAYERINDEX)
 var macros = make([]Macro, 0, 64)
-var combos = make([]Combo, 0, 64)
 var behaviors = make([]Behavior, 0, 64)
+var combos []Combo
 
 func init() {
 	layers[BASE] = InitWith(Trans)
@@ -191,36 +191,57 @@ func init() {
 	// &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 
-	combos = append(combos, []Combo{
+	combos = []Combo{
 		{
-			Name:               "MiddleMouse",
-			Refs:               []Ref{MKp(MCLK)},
-			Keys:               []RC{l(3, 4), l(3, 5)},
-			RequirePriorIdleMs: 200,
-			TimoutMs:           100,
+			Name:   "System",
+			Refs:   []Ref{Ref1("sll", SYS)}, // todo
+			Keys:   []RC{l(1, 5), l(1, 6)},
+			IdleMs: 500,
 		},
 		{
-			Name:               "Curlies",
-			Refs:               []Ref{Curlies()},
-			Keys:               []RC{l(2, 5), r(2, 2)},
-			RequirePriorIdleMs: 100,
-			TimoutMs:           80,
+			Name: "LeftEnter",
+			Refs: []Ref{Kp(RETURN)},
+			Keys: []RC{l(4, 2), l(4, 3)},
 		},
 		{
-			Name:               "Parens",
-			Refs:               []Ref{Parens()},
-			Keys:               []RC{l(2, 4), r(2, 3)},
-			RequirePriorIdleMs: 110,
-			TimoutMs:           90,
+			Name: "LeftSpace",
+			Refs: []Ref{Kp(SPACE)},
+			Keys: []RC{l(4, 1), l(4, 2)},
 		},
 		{
-			Name:               "Brackets",
-			Refs:               []Ref{Brackets()},
-			Keys:               []RC{l(2, 3), r(2, 4)},
-			RequirePriorIdleMs: 120,
-			TimoutMs:           100,
+			Name: "RightCaps",
+			Refs: []Ref{CapsWord},
+			Keys: []RC{r(2, 3), r(2, 4)},
 		},
-	}...)
+		{
+			Name:     "MiddleMouse",
+			Refs:     []Ref{MKp(MCLK)},
+			Keys:     []RC{l(3, 4), l(3, 5)},
+			IdleMs:   200,
+			TimoutMs: 100,
+		},
+		{
+			Name:     "Curlies",
+			Refs:     []Ref{Curlies()},
+			Keys:     []RC{l(2, 5), r(2, 2)},
+			IdleMs:   100,
+			TimoutMs: 80,
+		},
+		{
+			Name:     "Parens",
+			Refs:     []Ref{Parens()},
+			Keys:     []RC{l(2, 4), r(2, 3)},
+			IdleMs:   110,
+			TimoutMs: 90,
+		},
+		{
+			Name:     "Brackets",
+			Refs:     []Ref{Brackets()},
+			Keys:     []RC{l(2, 3), r(2, 4)},
+			IdleMs:   120,
+			TimoutMs: 100,
+		},
+	}
 }
 
 func renderKeymap(path string, params Params) {

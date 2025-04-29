@@ -365,37 +365,13 @@
             layers = <{{.RenderLayers}}>;{{ end }}
             key-positions = <{{.RenderKeys}}>;{{ if .TimoutMs }}
             timeout-ms = <{{.TimoutMs}}>;
-            {{- end}}{{ if .RequirePriorIdleMs }}
-            require-prior-idle-ms = <{{.RequirePriorIdleMs}}>;
+            {{- end}}{{ if .IdleMs }}
+            require-prior-idle-ms = <{{.IdleMs}}>;
             {{- end}}{{ if .SlowRelease }}
             slow-release = {{.SlowRelease}};
             {{- end}}
         };
         {{- end }}{{/* range .Combos */}}
-
-        sys {
-            bindings = <&sll 5>;
-            key-positions = <4 5>;
-            layers = <0>;
-            require-prior-idle-ms = <500>;
-        };
-
-        lenter {
-            bindings = <&kp RETURN>;
-            key-positions = <37 38>;
-            layers = <0>;
-        };
-
-        lspace {
-            bindings = <&kp SPACE>;
-            key-positions = <37 36>;
-            layers = <0>;
-        };
-
-        RCAPS {
-            bindings = <&caps_word>;
-            key-positions = <20 21>;
-        };
     };
 
     keymap {
