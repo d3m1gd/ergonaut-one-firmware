@@ -280,11 +280,9 @@ func renderKeymap(path string, params Params) {
 }
 
 func RenderLayers(layers []Layer) []RenderedLayer {
-	var rendered []RenderedLayer
-	for n, layer := range layers {
-		rendered = append(rendered, RenderedLayer{n, LayerIndex(n).String(), layer.Render()})
-	}
-	return rendered
+	return MapEnumerated(layers, func(n int, layer Layer) RenderedLayer {
+		return RenderedLayer{n, LayerIndex(n).String(), layer.Render()}
+	})
 }
 
 func main() {

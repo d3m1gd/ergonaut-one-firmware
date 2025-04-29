@@ -24,6 +24,15 @@ func Map[T, U any](s []T, f func(T) U) []U {
 	return us
 }
 
+func MapEnumerated[T, U any](s []T, f func(int, T) U) []U {
+	us := make([]U, len(s))
+	for i := range s {
+		us[i] = f(i, s[i])
+	}
+
+	return us
+}
+
 func MapToAny[T any](args []T) []any {
 	return Map(args, func(a T) any { return a })
 }
