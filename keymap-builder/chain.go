@@ -5,6 +5,8 @@ import (
 	"strings"
 
 	. "keyboard/key"
+	"keyboard/rowcol"
+	. "keyboard/util"
 )
 
 var chain = NewChain()
@@ -22,7 +24,7 @@ func NewChain() Chain {
 }
 
 func AddChain(keys string, r Ref) {
-	panicif(len(keys) == 0)
+	Panicif(len(keys) == 0)
 
 	c := &chain
 
@@ -31,7 +33,7 @@ func AddChain(keys string, r Ref) {
 	for i := range len(keys) - 1 {
 		k := KeyFrom(keys[i])
 		_, ok := c.Keys[k]
-		panicif(ok)
+		Panicif(ok)
 		newc, ok := c.Chains[k]
 		if ok {
 			c = newc
@@ -44,7 +46,7 @@ func AddChain(keys string, r Ref) {
 
 	k := KeyFrom(keys[len(keys)-1])
 	_, ok := c.Chains[k]
-	panicif(ok)
+	Panicif(ok)
 
 	c.Keys[k] = r
 }
@@ -56,7 +58,7 @@ func CompileChains(layers []Layer) []Layer {
 
 func compileChain(c Chain, prefix string, n LayerIndex, layers []Layer) []Layer {
 	for k, ref := range c.Keys {
-		layers[n][RCFromKey(k)] = ref
+		layers[n][rowcol.FromKey(k)] = ref
 	}
 
 	for k, sub := range SortedMapKV(c.Chains) {
@@ -64,7 +66,7 @@ func compileChain(c Chain, prefix string, n LayerIndex, layers []Layer) []Layer 
 		subn := NewLayerIndex(fmt.Sprintf("%s_%s", CHAINS, name))
 		layers = append(layers, InitWith(Trans))
 		layers = compileChain(*sub, name, subn, layers)
-		layers[n][RCFromKey(k)] = To(subn)
+		layers[n][rowcol.FromKey(k)] = To(subn)
 	}
 
 	return layers

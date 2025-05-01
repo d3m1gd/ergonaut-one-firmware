@@ -10,22 +10,9 @@ import (
 
 	. "keyboard/key"
 	"keyboard/layer"
+	"keyboard/rowcol"
+	. "keyboard/util"
 )
-
-const Left Side = "left"
-const Right Side = "right"
-
-type Side string
-
-func (s Side) Short() string {
-	switch s {
-	case Left:
-		return "l"
-	case Right:
-		return "r"
-	}
-	panic("unhandled side: " + s)
-}
 
 type Params struct {
 	Macros    []Macro
@@ -38,6 +25,9 @@ var layers = make([]Layer, len(LayerNames))
 var macros = make([]Macro, 0, 64)
 var behaviors = make([]Behavior, 0, 64)
 var combos []Combo
+
+var l = rowcol.L
+var r = rowcol.R
 
 func init() {
 	layers[BASE] = InitWith(Trans)
@@ -166,77 +156,77 @@ func init() {
 		{
 			Name:   "System",
 			Refs:   []Ref{Ref1("sll", SYS)}, // todo
-			Keys:   []RC{l(1, 5), l(1, 6)},
+			Keys:   []rowcol.T{l(1, 5), l(1, 6)},
 			IdleMs: 500,
 		},
 		{
 			Name: "LeftEnter",
 			Refs: []Ref{Kp(RETURN)},
-			Keys: []RC{l(4, 2), l(4, 3)},
+			Keys: []rowcol.T{l(4, 2), l(4, 3)},
 		},
 		{
 			Name: "LeftSpace",
 			Refs: []Ref{Kp(SPACE)},
-			Keys: []RC{l(4, 1), l(4, 2)},
+			Keys: []rowcol.T{l(4, 1), l(4, 2)},
 		},
 		{
 			Name: "RightCaps",
 			Refs: []Ref{CapsWord},
-			Keys: []RC{r(2, 3), r(2, 4)},
+			Keys: []rowcol.T{r(2, 3), r(2, 4)},
 		},
 		{
 			Name:     "MiddleMouse",
 			Refs:     []Ref{MKp(MCLK)},
-			Keys:     []RC{l(3, 4), l(3, 5)},
+			Keys:     []rowcol.T{l(3, 4), l(3, 5)},
 			IdleMs:   200,
 			TimoutMs: 100,
 		},
 		{
 			Name:     "Curlies",
 			Refs:     []Ref{Curlies()},
-			Keys:     []RC{l(2, 5), r(2, 2)},
+			Keys:     []rowcol.T{l(2, 5), r(2, 2)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
 		{
 			Name:     "Parens",
 			Refs:     []Ref{Parens()},
-			Keys:     []RC{l(2, 4), r(2, 3)},
+			Keys:     []rowcol.T{l(2, 4), r(2, 3)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
 		{
 			Name:     "Brackets",
 			Refs:     []Ref{Brackets()},
-			Keys:     []RC{l(2, 3), r(2, 4)},
+			Keys:     []rowcol.T{l(2, 3), r(2, 4)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
 		{
 			Name:     "DoubleQuotes",
 			Refs:     []Ref{DoubleQuotes()},
-			Keys:     []RC{l(1, 5), r(1, 2)},
+			Keys:     []rowcol.T{l(1, 5), r(1, 2)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
 		{
 			Name:     "SingleQuotes",
 			Refs:     []Ref{SingleQuotes()},
-			Keys:     []RC{l(1, 4), r(1, 3)},
+			Keys:     []rowcol.T{l(1, 4), r(1, 3)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
 		{
 			Name:     "BackQuotes",
 			Refs:     []Ref{BackQuotes()},
-			Keys:     []RC{l(1, 3), r(1, 4)},
+			Keys:     []rowcol.T{l(1, 3), r(1, 4)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
 		{
 			Name:     "CodeQuotes",
 			Refs:     []Ref{Ref0("mdCode")}, // todo
-			Keys:     []RC{l(1, 6), r(1, 1)},
+			Keys:     []rowcol.T{l(1, 6), r(1, 1)},
 			IdleMs:   250,
 			TimoutMs: 50,
 		},
@@ -246,10 +236,10 @@ func init() {
 func renderKeymap(path string, params Params) {
 	tmplPath := path + ".tmpl"
 	var funcs = template.FuncMap{"join": strings.Join}
-	t := must(template.New(filepath.Base(path + ".tmpl")).Funcs(funcs).ParseFiles(tmplPath))
-	outFile := must(os.Create(path))
+	t := Must(template.New(filepath.Base(path + ".tmpl")).Funcs(funcs).ParseFiles(tmplPath))
+	outFile := Must(os.Create(path))
 	defer outFile.Close()
-	check(t.Execute(outFile, params))
+	Check(t.Execute(outFile, params))
 }
 
 func RenderLayers(layers []Layer) []layer.R {

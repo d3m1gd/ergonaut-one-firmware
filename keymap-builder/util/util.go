@@ -1,4 +1,4 @@
-package main
+package util
 
 import (
 	"fmt"
@@ -41,11 +41,11 @@ func MapToAnyStatic[T, V any](args []T, v V) []any {
 	return Map(args, func(_ T) any { return v })
 }
 
-func toString(x any) string {
+func ToString(x any) string {
 	return fmt.Sprintf("%s", x)
 }
 
-func asString[T ~string](x T) string {
+func AsString[T ~string](x T) string {
 	return string(x)
 }
 
@@ -65,5 +65,24 @@ func SortedMapKV[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 				return
 			}
 		}
+	}
+}
+
+func Must[T any](v T, err error) T {
+	if err != nil {
+		panic(err)
+	}
+	return v
+}
+
+func Check(err error) {
+	if err != nil {
+		panic(err)
+	}
+}
+
+func Panicif(cond bool) {
+	if cond {
+		panic("condition failed")
 	}
 }

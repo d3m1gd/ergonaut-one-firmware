@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"strings"
+
+	. "keyboard/util"
 )
 
 type Custom struct {
@@ -22,7 +24,7 @@ func (x Custom) Name() string {
 }
 
 func (x Custom) Args() []string {
-	return Map(x.Fields, toString)
+	return Map(x.Fields, ToString)
 }
 
 func Ref0(name string) Custom {

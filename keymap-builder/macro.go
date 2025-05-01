@@ -6,6 +6,8 @@ import (
 	"strings"
 
 	. "keyboard/key"
+	"keyboard/rowcol"
+	. "keyboard/util"
 )
 
 var MacroPress = Ref0("macro_press")
@@ -94,7 +96,7 @@ func AddMacro(macro Macro) {
 		return macro.Name == other.Name
 	})
 	if i != -1 {
-		panicif(!macro.Equal(macros[i]))
+		Panicif(!macro.Equal(macros[i]))
 		return
 	}
 	macros = append(macros, macro)
@@ -128,7 +130,7 @@ func MapToMacroPlaceholder(args []string) []any {
 	return MapToAnyStatic(args, "MACRO_PLACEHOLDER")
 }
 
-func XThenTrans(r Ref, index LayerIndex, rc RC) Ref {
+func XThenTrans(r Ref, index LayerIndex, rc rowcol.RowCol) Ref {
 	layer := layers[index]
 	name := fmt.Sprintf("xThenTrans%d", index)
 	AddMacro(Macro{

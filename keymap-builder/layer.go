@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+
+	"keyboard/rowcol"
+	. "keyboard/util"
 )
 
 var LayerNames []string
@@ -30,10 +33,10 @@ func (l LayerIndex) String() string {
 	return LayerNames[l]
 }
 
-type Layer map[RC]Ref
+type Layer map[rowcol.T]Ref
 
 func NewLayer() Layer {
-	return make(map[RC]Ref)
+	return make(map[rowcol.T]Ref)
 }
 
 func (li LayerIndex) Render() string {
@@ -46,12 +49,12 @@ func (l Layer) Render() []string {
 	for i := range cells {
 		cells[i] = slices.Repeat([]string{""}, 12)
 	}
-	for rc := range RCs() {
+	for rc := range rowcol.All() {
 		b := l[rc]
 		rendered := CompileRef(b)
 		row := rc.Row - 1
 		col := rc.Col - 1
-		if rc.Side == Right {
+		if rc.Side == rowcol.Right {
 			col += 6
 		} else if rc.Row == 4 {
 			col += 3
@@ -74,12 +77,12 @@ func (l Layer) Render() []string {
 }
 
 func InitWith(b Ref) Layer {
-	return InitBy(func(RC) Ref { return b })
+	return InitBy(func(rowcol.T) Ref { return b })
 }
 
-func InitBy(f func(RC) Ref) Layer {
+func InitBy(f func(rowcol.T) Ref) Layer {
 	layer := NewLayer()
-	for rc := range RCs() {
+	for rc := range rowcol.All() {
 		layer[rc] = f(rc)
 	}
 
@@ -88,7 +91,7 @@ func InitBy(f func(RC) Ref) Layer {
 
 func InitToLevelTrans(index LayerIndex) Layer {
 	base := layers[BASE]
-	return InitBy(func(rc RC) Ref {
+	return InitBy(func(rc rowcol.T) Ref {
 		name := fmt.Sprintf("to%d%s", index, rc)
 		macro := Macro{
 			Name:  name,

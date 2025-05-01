@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	. "keyboard/key"
+	. "keyboard/util"
 )
 
 type Number int
@@ -39,7 +40,7 @@ func (x DeviceTreeProperty) CompileProperty() string {
 		return fmt.Sprintf(`%s = "%s"`, x.Name, v)
 	case []Mod:
 		// mods = <(MOD_RSFT|MOD_LSFT)>;
-		return fmt.Sprintf(`%s = <(%s)>`, x.Name, strings.Join(Map(v, asString), "|"))
+		return fmt.Sprintf(`%s = <(%s)>`, x.Name, strings.Join(Map(v, AsString), "|"))
 	}
 	panic(fmt.Sprintf("unknown device tree property: %T", x.Value))
 }
@@ -82,7 +83,7 @@ func AddBehavior(b Behavior) {
 		return b.Name == other.Name
 	})
 	if i != -1 {
-		panicif(!b.Equal(behaviors[i]))
+		Panicif(!b.Equal(behaviors[i]))
 		return
 	}
 	behaviors = append(behaviors, b)
