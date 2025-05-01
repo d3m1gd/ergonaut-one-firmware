@@ -8,6 +8,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+var l = rowcol.L
+var r = rowcol.R
+
 func TestRowColSerial(t *testing.T) {
 	assert.Equal(t, 0, l(1, 1).Serial())
 	assert.Equal(t, 1, l(1, 2).Serial())

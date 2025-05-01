@@ -1,236 +1,151 @@
 package main
 
 import (
-	"cmp"
 	"os"
 	"path/filepath"
-	"slices"
 	"strings"
 	"text/template"
 
-	. "keyboard/key"
+	"keyboard/behavior"
+	"keyboard/chain"
+	"keyboard/combo"
+	. "keyboard/instance"
+	"keyboard/key"
+	. "keyboard/key/keys"
 	"keyboard/layer"
-	"keyboard/rowcol"
+	"keyboard/macro"
 	. "keyboard/util"
 )
 
+var BASE = layer.New("BASE", InitWith(Trans))
+var MOVER = layer.New("MOVER", InitWith(Trans))
+var NUMER = layer.New("NUMER", InitWith(Trans))
+var QUICK = layer.New("QUICK", InitWith(Trans))
+var REPEAT = layer.New("REPEAT", InitWith(Trans))
+var SYS = layer.New("SYS", InitWith(None))
+var PARENS = layer.New("PARENS", InitWith(Trans))
+var CHAINS = layer.New("CHAINS", InitWith(To(BASE)))
+
 type Params struct {
-	Macros    []Macro
-	Combos    []Combo
-	Behaviors []Behavior
 	Layers    []layer.R
+	Macros    []macro.T
+	Combos    []combo.T
+	Behaviors []behavior.T
 }
 
-var layers = make([]Layer, len(LayerNames))
-var macros = make([]Macro, 0, 64)
-var behaviors = make([]Behavior, 0, 64)
-var combos []Combo
-
-var l = rowcol.L
-var r = rowcol.R
-
 func init() {
-	layers[BASE] = InitWith(Trans)
-	layers[BASE][l(1, 1)] = Kp(TAB) // row 1
-	layers[BASE][l(1, 2)] = Kp(Q)
-	layers[BASE][l(1, 3)] = Kp(W)
-	layers[BASE][l(1, 4)] = Kp(E)
-	layers[BASE][l(1, 5)] = Kp(R)
-	layers[BASE][l(1, 6)] = KpKp(RG(T), T)
-	layers[BASE][l(2, 1)] = Mt(LSHIFT, BACKSPACE) // row 2
-	layers[BASE][l(2, 2)] = Kp(A)
-	layers[BASE][l(2, 3)] = Mt(LSHIFT, S)
-	layers[BASE][l(2, 4)] = Mt(LGUI, D)
-	layers[BASE][l(2, 5)] = Mt(LALT, F)
-	layers[BASE][l(2, 6)] = Kp(G)
-	layers[BASE][l(3, 1)] = ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), []Mod{MOD_LSFT, MOD_RSFT, MOD_LCTL, MOD_RCTL}, []Mod{MOD_LCTL, MOD_RCTL})) // row 3
-	layers[BASE][l(3, 2)] = Kp(Z)
-	layers[BASE][l(3, 3)] = Kp(X)
-	layers[BASE][l(3, 4)] = Ref2("kpConfig", ZERO, C)
-	layers[BASE][l(3, 5)] = Kp(V)
-	layers[BASE][l(3, 6)] = Kp(B)
-	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	layers[BASE][l(4, 2)] = MoX(NUMER, ModMorph(To(MOVER), Kp(UNDER), []Mod{MOD_LSFT, MOD_RSFT}, nil))
-	layers[BASE][l(4, 3)] = Mt(LCTRL, ESCAPE)
+	BASE.Extend(layer.T{
+		L11: Kp(TAB), // row 1
+		L12: Kp(Q),
+		L13: Kp(W),
+		L14: Kp(E),
+		L15: Kp(R),
+		L16: KpKp(RG(T), T),
+		L21: Mt(LSHIFT, BACKSPACE), // row 2
+		L22: Kp(A),
+		L23: Mt(LSHIFT, S),
+		L24: Mt(LGUI, D),
+		L25: Mt(LALT, F),
+		L26: Kp(G),
+		L31: ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), key.ShiftsCtrls, key.Ctrls)), // row 3
+		L32: Kp(Z),
+		L33: Kp(X),
+		L34: ref2("kpConfig", ZERO, C),
+		L35: Kp(V),
+		L36: Kp(B),
+		L41: MoTo(QUICK, CHAINS), // row 4
+		L42: MoX(NUMER, ModMorph(To(MOVER), Kp(UNDER), key.Shifts, nil)),
+		L43: Mt(LCTRL, ESCAPE),
+	})
 
-	layers[BASE][r(1, 1)] = Kp(Y) // row 1
-	layers[BASE][r(1, 2)] = Kp(U)
-	layers[BASE][r(1, 3)] = Kp(I)
-	layers[BASE][r(1, 4)] = Kp(O)
-	layers[BASE][r(1, 5)] = Kp(P)
-	layers[BASE][r(1, 6)] = Kp(LBKT)
-	layers[BASE][r(2, 1)] = Kp(H) // row 2
-	layers[BASE][r(2, 2)] = Rmt(LALT, J)
-	layers[BASE][r(2, 3)] = Rmt(LGUI, K)
-	layers[BASE][r(2, 4)] = Rmt(LSHIFT, L)
-	layers[BASE][r(2, 5)] = KpKp(RG(SEMI), SEMI)
-	layers[BASE][r(2, 6)] = KpKp(RG(SQT), SQT)
-	layers[BASE][r(3, 1)] = Kp(N) // row 3
-	layers[BASE][r(3, 2)] = KpKp(RG(M), M)
-	layers[BASE][r(3, 3)] = KpKp(RG(COMMA), COMMA)
-	layers[BASE][r(3, 4)] = KpKp(RG(DOT), DOT)
-	layers[BASE][r(3, 5)] = Kp(SLASH)
-	layers[BASE][r(3, 6)] = Kp(BACKSLASH)
-	layers[BASE][r(4, 1)] = Mt(LCTRL, RETURN) // row 4
-	layers[BASE][r(4, 2)] = Lt(NUMER, SPACE)
-	layers[BASE][r(4, 3)] = Wrap(MoTo(QUICK, CHAINS))
+	BASE[R11] = Kp(Y) // row 1
+	BASE[R12] = Kp(U)
+	BASE[R13] = Kp(I)
+	BASE[R14] = Kp(O)
+	BASE[R15] = Kp(P)
+	BASE[R16] = Kp(LBKT)
+	BASE[R21] = Kp(H) // row 2
+	BASE[R22] = Rmt(LALT, J)
+	BASE[R23] = Rmt(LGUI, K)
+	BASE[R24] = Rmt(LSHIFT, L)
+	BASE[R25] = KpKp(RG(SEMI), SEMI)
+	BASE[R26] = KpKp(RG(SQT), SQT)
+	BASE[R31] = Kp(N) // row 3
+	BASE[R32] = KpKp(RG(M), M)
+	BASE[R33] = KpKp(RG(COMMA), COMMA)
+	BASE[R34] = KpKp(RG(DOT), DOT)
+	BASE[R35] = Kp(SLASH)
+	BASE[R36] = Kp(BACKSLASH)
+	BASE[R41] = Mt(LCTRL, RETURN) // row 4
+	BASE[R42] = Lt(NUMER, SPACE)
+	BASE[R43] = Wrap(MoTo(QUICK, CHAINS))
 
-	layers[MOVER] = InitToLevelTrans(BASE)
-	layers[MOVER][l(4, 3)] = To(BASE) // row 4
-	layers[MOVER][r(2, 1)] = Kp(LEFT) // row 2
-	layers[MOVER][r(2, 2)] = Rmt(LALT, DOWN)
-	layers[MOVER][r(2, 3)] = Rmt(LGUI, UP)
-	layers[MOVER][r(2, 4)] = Rmt(LSHIFT, RIGHT)
+	MOVER.Fill(InitToLevelTrans(BASE))
+	MOVER[L43] = To(BASE) // row 4
+	MOVER[R21] = Kp(LEFT) // row 2
+	MOVER[R22] = Rmt(LALT, DOWN)
+	MOVER[R23] = Rmt(LGUI, UP)
+	MOVER[R24] = Rmt(LSHIFT, RIGHT)
 
-	layers[NUMER] = InitWith(Trans)
-	layers[NUMER][l(1, 1)] = Kp(LS(TAB))
-	layers[NUMER][l(1, 6)] = Kp(TILDE)
-	layers[NUMER][l(2, 1)] = Kp(DELETE) // row 2
-	// layers[NUMER][l(2, 3)] = ModX(LSHIFT, Brackets())
-	// layers[NUMER][l(2, 4)] = ModX(LGUI, Parens())
-	// layers[NUMER][l(2, 5)] = ModX(LALT, Curlies())
-	layers[NUMER][l(3, 1)] = Mt(LCTRL, PLUS) // row 3
-	layers[NUMER][l(3, 5)] = Kp(LS(INSERT))
-	layers[NUMER][l(4, 2)] = Kp(UNDERSCORE)
+	NUMER[L11] = Kp(LS(TAB))
+	NUMER[L16] = Kp(TILDE)
+	NUMER[L21] = Kp(DELETE)      // row 2
+	NUMER[L31] = Mt(LCTRL, PLUS) // row 3
+	NUMER[L35] = Kp(LS(INSERT))
+	NUMER[L42] = Kp(UNDERSCORE)
 
-	layers[NUMER][r(1, 1)] = Kp(N0) // row 1
-	layers[NUMER][r(1, 2)] = Kp(N1)
-	layers[NUMER][r(1, 3)] = Kp(N2)
-	layers[NUMER][r(1, 4)] = Kp(N3)
-	layers[NUMER][r(1, 6)] = Kp(RBKT)
-	layers[NUMER][r(2, 1)] = Ref0("mmEquals") // row 2
-	layers[NUMER][r(2, 2)] = Mt(LALT, N4)
-	layers[NUMER][r(2, 3)] = Mt(LGUI, N5)
-	layers[NUMER][r(2, 4)] = Mt(LSHIFT, N6)
-	layers[NUMER][r(2, 5)] = Kp(COLON)
-	layers[NUMER][r(2, 6)] = Ref0("mmQuoteGrave")
-	layers[NUMER][r(3, 1)] = Kp(PLUS) // row 3
-	layers[NUMER][r(3, 2)] = Kp(N7)
-	layers[NUMER][r(3, 3)] = KpKp(RG(COMMA), N8)
-	layers[NUMER][r(3, 4)] = KpKp(RG(DOT), N9)
-	layers[NUMER][r(3, 5)] = Kp(LS(SLASH))
-	layers[NUMER][r(3, 6)] = Kp(PIPE)
+	NUMER[R11] = Kp(N0) // row 1
+	NUMER[R12] = Kp(N1)
+	NUMER[R13] = Kp(N2)
+	NUMER[R14] = Kp(N3)
+	NUMER[R16] = Kp(RBKT)
+	NUMER[R21] = ref0("mmEquals") // row 2
+	NUMER[R22] = Mt(LALT, N4)
+	NUMER[R23] = Mt(LGUI, N5)
+	NUMER[R24] = Mt(LSHIFT, N6)
+	NUMER[R25] = Kp(COLON)
+	NUMER[R26] = ref0("mmQuoteGrave")
+	NUMER[R31] = Kp(PLUS) // row 3
+	NUMER[R32] = Kp(N7)
+	NUMER[R33] = KpKp(RG(COMMA), N8)
+	NUMER[R34] = KpKp(RG(DOT), N9)
+	NUMER[R35] = Kp(LS(SLASH))
+	NUMER[R36] = Kp(PIPE)
 
-	layers[QUICK] = InitWith(Trans)
-	layers[QUICK][l(1, 5)] = Kp(LG(C_VOL_UP)) // row 1
-	layers[QUICK][l(1, 6)] = Kp(C_VOL_UP)
-	layers[QUICK][l(2, 5)] = Kp(LG(C_VOL_DN)) // row 2
-	layers[QUICK][l(2, 6)] = Kp(C_VOL_DN)
-	layers[QUICK][r(1, 5)] = Kp(PSCRN) // row 1
-	layers[QUICK][r(1, 6)] = Kp(LC(RBKT))
-	layers[QUICK][r(2, 1)] = Kp(HOME) // row 2
-	layers[QUICK][r(2, 2)] = Rmt(LALT, PG_DN)
-	layers[QUICK][r(2, 3)] = Rmt(LGUI, PG_UP)
-	layers[QUICK][r(2, 4)] = Rmt(LSHIFT, END)
-	layers[QUICK][r(4, 1)] = Rmt(LCTRL, F10) // row 4
-	layers[QUICK][r(4, 2)] = Kp(F11)
-	layers[QUICK][r(4, 3)] = Kp(F12)
+	QUICK[L15] = Kp(LG(C_VOL_UP)) // row 1
+	QUICK[L16] = Kp(C_VOL_UP)
+	QUICK[L25] = Kp(LG(C_VOL_DN)) // row 2
+	QUICK[L26] = Kp(C_VOL_DN)
+	QUICK[R15] = Kp(PSCRN) // row 1
+	QUICK[R16] = Kp(LC(RBKT))
+	QUICK[R21] = Kp(HOME) // row 2
+	QUICK[R22] = Rmt(LALT, PG_DN)
+	QUICK[R23] = Rmt(LGUI, PG_UP)
+	QUICK[R24] = Rmt(LSHIFT, END)
+	QUICK[R41] = Rmt(LCTRL, F10) // row 4
+	QUICK[R42] = Kp(F11)
+	QUICK[R43] = Kp(F12)
 
-	layers[REPEAT] = InitWith(Trans)
+	SYS[L11] = ref0("bootloader")     // tab
+	SYS[L15] = ref0("sys_reset")      // r
+	SYS[R12] = ref1("out", "OUT_USB") // u
+	SYS[L35] = ref1("out", "OUT_USB") // v - left only backup
+	SYS[L36] = ref1("out", "OUT_BLE") // b
+	SYS[L25] = ref2("bt", "BT_SEL", "0")
+	SYS[L24] = ref2("bt", "BT_SEL", "1")
+	SYS[L23] = ref2("bt", "BT_SEL", "2")
+	SYS[L22] = ref2("bt", "BT_SEL", "3")
+	SYS[L21] = ref2("bt", "BT_SEL", "4")
+	SYS[L34] = ref1("bt", "BT_CLR")     // c
+	SYS[L33] = ref1("bt", "BT_CLR_ALL") // x
+	SYS[R31] = ref1("bt", "BT_CLR_ALL") // n - nuke
 
-	layers[SYS] = InitWith(None)
-	layers[SYS][l(1, 1)] = Ref0("bootloader")     // tab
-	layers[SYS][l(1, 5)] = Ref0("sys_reset")      // r
-	layers[SYS][r(1, 2)] = Ref1("out", "OUT_USB") // u
-	layers[SYS][l(3, 5)] = Ref1("out", "OUT_USB") // v - left only backup
-	layers[SYS][l(3, 6)] = Ref1("out", "OUT_BLE") // b
-	layers[SYS][l(2, 5)] = Ref2("bt", "BT_SEL", "0")
-	layers[SYS][l(2, 4)] = Ref2("bt", "BT_SEL", "1")
-	layers[SYS][l(2, 3)] = Ref2("bt", "BT_SEL", "2")
-	layers[SYS][l(2, 2)] = Ref2("bt", "BT_SEL", "3")
-	layers[SYS][l(2, 1)] = Ref2("bt", "BT_SEL", "4")
-	layers[SYS][l(3, 4)] = Ref1("bt", "BT_CLR")     // c
-	layers[SYS][l(3, 3)] = Ref1("bt", "BT_CLR_ALL") // x
-	layers[SYS][r(3, 1)] = Ref1("bt", "BT_CLR_ALL") // n - nuke
+	PARENS.Fill(InitToLevelTrans(BASE))
+	PARENS[L43] = To(BASE)
+	PARENS[L21] = BackspaceDelete()
+	PARENS[R24] = XThenLayer(Kp(RIGHT), BASE)
 
-	layers[PARENS] = InitToLevelTrans(BASE)
-	layers[PARENS][l(4, 3)] = To(BASE)
-	layers[PARENS][l(2, 1)] = BackspaceDelete()
-	layers[PARENS][r(2, 4)] = XThenLayer(Kp(RIGHT), BASE)
-
-	layers[CHAINS] = InitWith(To(BASE))
-
-	AddChain("sdf", Kp(X))
-
-	combos = []Combo{
-		{
-			Name:   "System",
-			Refs:   []Ref{Ref1("sll", SYS)}, // todo
-			Keys:   []rowcol.T{l(1, 5), l(1, 6)},
-			IdleMs: 500,
-		},
-		{
-			Name: "LeftEnter",
-			Refs: []Ref{Kp(RETURN)},
-			Keys: []rowcol.T{l(4, 2), l(4, 3)},
-		},
-		{
-			Name: "LeftSpace",
-			Refs: []Ref{Kp(SPACE)},
-			Keys: []rowcol.T{l(4, 1), l(4, 2)},
-		},
-		{
-			Name: "RightCaps",
-			Refs: []Ref{CapsWord},
-			Keys: []rowcol.T{r(2, 3), r(2, 4)},
-		},
-		{
-			Name:     "MiddleMouse",
-			Refs:     []Ref{MKp(MCLK)},
-			Keys:     []rowcol.T{l(3, 4), l(3, 5)},
-			IdleMs:   200,
-			TimoutMs: 100,
-		},
-		{
-			Name:     "Curlies",
-			Refs:     []Ref{Curlies()},
-			Keys:     []rowcol.T{l(2, 5), r(2, 2)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-		{
-			Name:     "Parens",
-			Refs:     []Ref{Parens()},
-			Keys:     []rowcol.T{l(2, 4), r(2, 3)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-		{
-			Name:     "Brackets",
-			Refs:     []Ref{Brackets()},
-			Keys:     []rowcol.T{l(2, 3), r(2, 4)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-		{
-			Name:     "DoubleQuotes",
-			Refs:     []Ref{DoubleQuotes()},
-			Keys:     []rowcol.T{l(1, 5), r(1, 2)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-		{
-			Name:     "SingleQuotes",
-			Refs:     []Ref{SingleQuotes()},
-			Keys:     []rowcol.T{l(1, 4), r(1, 3)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-		{
-			Name:     "BackQuotes",
-			Refs:     []Ref{BackQuotes()},
-			Keys:     []rowcol.T{l(1, 3), r(1, 4)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-		{
-			Name:     "CodeQuotes",
-			Refs:     []Ref{Ref0("mdCode")}, // todo
-			Keys:     []rowcol.T{l(1, 6), r(1, 1)},
-			IdleMs:   250,
-			TimoutMs: 50,
-		},
-	}
+	chain.Add("sdf", Kp(X))
 }
 
 func renderKeymap(path string, params Params) {
@@ -242,20 +157,13 @@ func renderKeymap(path string, params Params) {
 	Check(t.Execute(outFile, params))
 }
 
-func RenderLayers(layers []Layer) []layer.R {
-	return MapEnumerated(layers, func(n int, l Layer) layer.R {
-		return layer.R{Index: n, Name: LayerNames[n], Rows: l.Render()}
-	})
-}
-
 func main() {
-	layers = CompileChains(layers)
-	slices.SortFunc(behaviors, func(a, b Behavior) int { return cmp.Compare(a.Name, b.Name) })
-	slices.SortFunc(macros, func(a, b Macro) int { return cmp.Compare(a.Name, b.Name) })
+	chain.Compile(CHAINS, InitWith(To(BASE)))
+
 	renderKeymap("../config/ergonaut_one.keymap", Params{
-		Behaviors: behaviors,
-		Macros:    macros,
-		Combos:    combos,
-		Layers:    RenderLayers(layers),
+		Behaviors: behavior.Render(),
+		Macros:    macro.Render(),
+		Combos:    combo.Render(),
+		Layers:    layer.Render(),
 	})
 }

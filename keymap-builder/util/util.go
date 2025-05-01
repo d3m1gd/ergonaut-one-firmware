@@ -16,12 +16,12 @@ func Reduce[T, A any](s []T, acc A, f func(A, T) A) A {
 }
 
 func Map[T, U any](s []T, f func(T) U) []U {
-	us := make([]U, len(s))
+	out := make([]U, len(s))
 	for i := range s {
-		us[i] = f(s[i])
+		out[i] = f(s[i])
 	}
 
-	return us
+	return out
 }
 
 func MapEnumerated[T, U any](s []T, f func(int, T) U) []U {
@@ -37,11 +37,11 @@ func MapToAny[T any](args []T) []any {
 	return Map(args, func(a T) any { return a })
 }
 
-func MapToAnyStatic[T, V any](args []T, v V) []any {
-	return Map(args, func(_ T) any { return v })
-}
-
 func ToString(x any) string {
+	if s, ok := x.(string); ok {
+		return s
+	}
+
 	return fmt.Sprintf("%s", x)
 }
 

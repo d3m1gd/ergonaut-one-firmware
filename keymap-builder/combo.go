@@ -1,36 +1,100 @@
 package main
 
 import (
-	"slices"
-	"strings"
-
+	"keyboard/combo"
+	. "keyboard/instance"
+	. "keyboard/key/keys"
+	"keyboard/ref"
 	"keyboard/rowcol"
-	. "keyboard/util"
 )
 
-type Combo struct {
-	Name        string
-	Layers      []LayerIndex // array A list of layers on which the combo may be triggered. -1 allows all layers.
-	Refs        []Ref        // phandle-array A behavior to run when the combo is triggered
-	Keys        []rowcol.T   // array A list of key position indices for the keys which should trigger the combo
-	TimoutMs    int          // int All the keys in key-positions must be pressed within this time in milliseconds to trigger the combo 50
-	IdleMs      int          // int If any non-modifier key is pressed within require-prior-idle-ms before a key in the combo, the key will not be considered for the combo -1 (disabled)
-	SlowRelease bool         // bool Releases the combo when all keys are released instead of when any key is released false
-}
+func init() {
+	combo.Add(combo.T{
+		Name:   "System",
+		Refs:   []ref.T{ref1("sll", SYS)}, // todo
+		Keys:   []rowcol.T{L15, L16},
+		IdleMs: 500,
+	})
 
-func (c Combo) RenderLayers() string {
-	slices.Sort(c.Layers)
-	return strings.Join(Map(c.Layers, func(x LayerIndex) string {
-		return x.Render()
-	}), " ")
-}
+	combo.Add(combo.T{
+		Name: "LeftEnter",
+		Refs: []ref.T{Kp(RETURN)},
+		Keys: []rowcol.T{L42, L43},
+	})
 
-func (c Combo) RenderBindings() string {
-	return strings.Join(Map(c.Refs, CompileRef), " ")
-}
+	combo.Add(combo.T{
+		Name: "LeftSpace",
+		Refs: []ref.T{Kp(SPACE)},
+		Keys: []rowcol.T{L41, L42},
+	})
 
-func (c Combo) RenderKeys() string {
-	return strings.Join(Map(c.Keys, func(x rowcol.T) string {
-		return x.Render()
-	}), " ")
+	combo.Add(combo.T{
+		Name: "RightCaps",
+		Refs: []ref.T{CapsWord},
+		Keys: []rowcol.T{R23, R24},
+	})
+
+	combo.Add(combo.T{
+		Name:     "MiddleMouse",
+		Refs:     []ref.T{MKp(MCLK)},
+		Keys:     []rowcol.T{L34, L35},
+		IdleMs:   200,
+		TimoutMs: 100,
+	})
+
+	combo.Add(combo.T{
+		Name:     "Curlies",
+		Refs:     []ref.T{Curlies()},
+		Keys:     []rowcol.T{L25, R22},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
+
+	combo.Add(combo.T{
+		Name:     "Parens",
+		Refs:     []ref.T{Parens()},
+		Keys:     []rowcol.T{L24, R23},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
+
+	combo.Add(combo.T{
+		Name:     "Brackets",
+		Refs:     []ref.T{Brackets()},
+		Keys:     []rowcol.T{L23, R24},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
+
+	combo.Add(combo.T{
+		Name:     "DoubleQuotes",
+		Refs:     []ref.T{DoubleQuotes()},
+		Keys:     []rowcol.T{L15, R12},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
+
+	combo.Add(combo.T{
+		Name:     "SingleQuotes",
+		Refs:     []ref.T{SingleQuotes()},
+		Keys:     []rowcol.T{L14, R13},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
+
+	combo.Add(combo.T{
+		Name:     "BackQuotes",
+		Refs:     []ref.T{BackQuotes()},
+		Keys:     []rowcol.T{L13, R14},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
+
+	combo.Add(combo.T{
+		Name:     "CodeQuotes",
+		Refs:     []ref.T{ref0("mdCode")}, // todo
+		Keys:     []rowcol.T{L16, R11},
+		IdleMs:   250,
+		TimoutMs: 50,
+	})
 }
