@@ -1,7 +1,6 @@
 package main
 
 import (
-	"cmp"
 	"fmt"
 	"slices"
 	"strings"
@@ -9,9 +8,35 @@ import (
 	"github.com/BooleanCat/go-functional/v2/it"
 )
 
-type Layer map[RC]Ref
-type LayerName string
+var LayerNames []string
+
+type LayerIndexAuto int
 type LayerIndex int
+
+var BASE = NewLayerIndex("BASE")
+var MOVER = NewLayerIndex("MOVER")
+var NUMER = NewLayerIndex("NUMER")
+var QUICK = NewLayerIndex("QUICK")
+var REPEAT = NewLayerIndex("REPEAT")
+var SYS = NewLayerIndex("SYS")
+var PARENS = NewLayerIndex("PARENS")
+var CHAINS = NewLayerIndex("CHAINS")
+
+func NewLayerIndex(name string) LayerIndex {
+	n := len(LayerNames)
+	LayerNames = append(LayerNames, name)
+	return LayerIndex(n)
+}
+
+func (l LayerIndex) String() string {
+	return LayerNames[l]
+}
+
+type Layer map[RC]Ref
+
+func NewLayer() Layer {
+	return make(map[RC]Ref)
+}
 
 func (li LayerIndex) Render() string {
 	return fmt.Sprintf("%d", li)
@@ -50,10 +75,6 @@ func (l Layer) Render() []string {
 	}))
 }
 
-func (ln LayerName) Less(other LayerName) int {
-	return cmp.Compare(ln, other)
-}
-
 type RenderedLayer struct {
 	Index int
 	Name  string
@@ -65,7 +86,7 @@ func InitWith(b Ref) Layer {
 }
 
 func InitBy(f func(RC) Ref) Layer {
-	layer := Layer{}
+	layer := NewLayer()
 	for rc := range RCs() {
 		layer[rc] = f(rc)
 	}
@@ -81,7 +102,7 @@ func InitToLevelTrans(index LayerIndex) Layer {
 			Name:  name,
 			Label: fmt.Sprintf("To %d, %s", index, rc.Pretty()),
 			Cells: 0,
-			Refs:  []Ref{To(index), MacroPress, base[rc], MacroWait, MacroRelease, base[rc]},
+			Refs:  []Ref{To(index), MacroPress, base[rc], MacroPause, MacroRelease, base[rc]},
 		}
 		AddMacro(macro)
 		return Ref0(name)

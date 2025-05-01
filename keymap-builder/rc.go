@@ -63,7 +63,7 @@ func (rc RC) Offset() int {
 	return offset
 }
 
-func toSerial(rc RC) int {
+func ToSerial(rc RC) int {
 	return rc.Offset() + 12*(rc.Row-1) + rc.Col - 1
 }
 
@@ -83,4 +83,55 @@ func RCs() iter.Seq[RC] {
 			}
 		}
 	}
+}
+
+func RCFromKeyCode(k KeyCode) RC {
+	rc, ok := map[KeyCode]RC{
+		TAB:   l(1, 1),
+		Q:     l(1, 2),
+		W:     l(1, 3),
+		E:     l(1, 4),
+		R:     l(1, 5),
+		T:     l(1, 6),
+		Y:     r(1, 1),
+		U:     r(1, 2),
+		I:     r(1, 3),
+		O:     r(1, 4),
+		P:     r(1, 5),
+		RBRC:  r(1, 6),
+		BSPC:  l(2, 1),
+		A:     l(2, 2),
+		S:     l(2, 3),
+		D:     l(2, 4),
+		F:     l(2, 5),
+		G:     l(2, 6),
+		H:     r(2, 1),
+		J:     r(2, 2),
+		K:     r(2, 3),
+		L:     r(2, 4),
+		COLON: r(2, 5),
+		DQT:   r(2, 6),
+		MINUS: l(3, 1),
+		Z:     l(3, 2),
+		X:     l(3, 3),
+		C:     l(3, 4),
+		V:     l(3, 5),
+		B:     l(3, 6),
+		N:     r(3, 1),
+		M:     r(3, 2),
+		LT:    r(3, 3),
+		GT:    r(3, 4),
+		QMARK: r(3, 5),
+		BSLH:  r(3, 6),
+		// row 4
+		// C:     l(4, 1),
+		// V:     l(4, 2),
+		ESC:   l(4, 3),
+		RET:   r(4, 1),
+		SPACE: r(4, 2),
+		// LT:    r(4, 3),
+	}[k]
+	panicif(!ok)
+
+	return rc
 }

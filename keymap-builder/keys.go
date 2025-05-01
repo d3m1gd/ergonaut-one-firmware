@@ -1,11 +1,31 @@
 package main
 
-import "fmt"
+import (
+	"cmp"
+	"fmt"
+)
 
 func keyModifierBuilder(name string) func(KeyCode) KeyCode {
 	return func(k KeyCode) KeyCode {
 		return KeyCode(fmt.Sprintf("%s(%s)", name, k))
 	}
+}
+
+func KeyCodeFrom(b byte) KeyCode {
+	if b >= 'A' && b <= 'Z' {
+		return KeyCode(b)
+	}
+
+	switch b {
+	case ' ':
+		return SPACE
+	case '\n':
+		return RETURN
+	case '\t':
+		return TAB
+	}
+
+	panic(fmt.Sprintf("unhandled key: '%c'", b))
 }
 
 type KeyMod string
@@ -30,6 +50,10 @@ var RS = keyModifierBuilder("RS")
 // var RC = keyModifierBuilder("RC")
 
 type KeyCode string
+
+func (k KeyCode) Less(other KeyCode) int {
+	return cmp.Compare(k, other)
+}
 
 const MCLK KeyCode = "MCLK"
 const LCLK KeyCode = "LCLK"

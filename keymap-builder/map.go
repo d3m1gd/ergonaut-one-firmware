@@ -54,7 +54,7 @@ type Lesser[K any] interface {
 	Less(K) int
 }
 
-func SortedMap[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
+func SortedMapKV[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
 	keys := slices.Collect(maps.Keys(m))
 	slices.SortFunc(keys, func(a, b K) int {
 		return a.Less(b)

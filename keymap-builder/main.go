@@ -9,19 +9,6 @@ import (
 	"text/template"
 )
 
-//go:generate stringer -type=LayerIndex
-const (
-	BASE LayerIndex = iota
-	MOVER
-	NUMER  // 2
-	QUICK  // 3
-	REPEAT // 4
-	SYS    // 5
-	PARENS // 6
-	CHAINS // 7
-	MAXLAYERINDEX
-)
-
 const Left Side = "left"
 const Right Side = "right"
 
@@ -44,7 +31,7 @@ type Params struct {
 	Layers    []RenderedLayer
 }
 
-var layers = make([]Layer, MAXLAYERINDEX)
+var layers = make([]Layer, len(LayerNames))
 var macros = make([]Macro, 0, 64)
 var behaviors = make([]Behavior, 0, 64)
 var combos []Combo
@@ -169,25 +156,8 @@ func init() {
 	layers[PARENS][r(2, 4)] = XThenLayer(Kp(RIGHT), BASE)
 
 	layers[CHAINS] = InitWith(To(BASE))
-	// layers[CHAINS][l(1, 4)] = Custom1("slxl", 18) // todo
-	// layers[CHAINS][l(1, 5)] = Custom1("slxl", 10) // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// layers[CHAINS][l(2, 3)] = To(8)               // todo
-	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 18      &slxl 10      &kp K_CANCEL
-	// &kp K_CANCEL  &kp K_CANCEL  &slxl 8       &slxl 11      &kp K_CANCEL  &slxl 15
-	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &slxl 9
-	// //                                           &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
 
-	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-	// &kp K_CANCEL  &slxl 17      &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
-	// &kp K_CANCEL  &kp K_CANCEL  &kp K_CANCEL
+	AddChain("sdf", Kp(X))
 
 	combos = []Combo{
 		{
@@ -281,11 +251,12 @@ func renderKeymap(path string, params Params) {
 
 func RenderLayers(layers []Layer) []RenderedLayer {
 	return MapEnumerated(layers, func(n int, layer Layer) RenderedLayer {
-		return RenderedLayer{n, LayerIndex(n).String(), layer.Render()}
+		return RenderedLayer{n, LayerNames[n], layer.Render()}
 	})
 }
 
 func main() {
+	layers = CompileChains(layers)
 	slices.SortFunc(behaviors, func(a, b Behavior) int { return cmp.Compare(a.Name, b.Name) })
 	slices.SortFunc(macros, func(a, b Macro) int { return cmp.Compare(a.Name, b.Name) })
 	renderKeymap("../config/ergonaut_one.keymap", Params{
