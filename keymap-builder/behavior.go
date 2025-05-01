@@ -88,12 +88,13 @@ func AddBehavior(b Behavior) {
 
 func KpKp(a, b KeyCode) Ref {
 	name := "kpkp"
+	_ = TapNoRepeat(a) // instantiate macro
 	AddBehavior(Behavior{
 		Name:  name,
 		Label: "kpkp",
 		Cells: BehaviorTypeHoldTap.Cells,
 		Type:  BehaviorTypeHoldTap.Name,
-		Refs:  []Ref{Ref0("tapNoRepeat"), Ref0("kp")},
+		Refs:  []Ref{Ref0("TapNoRepeat"), Ref0("kp")},
 		Props: []DeviceTreeProperty{
 			{"flavor", "tap-preferred"},
 			{"tapping-term-ms", 200},

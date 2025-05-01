@@ -8,6 +8,7 @@ import (
 
 var MacroPress = Ref0("macro_press")
 var MacroRelease = Ref0("macro_release")
+var MacroPause = Ref0("macro_pause_for_release")
 var MacroWait = Ref0("macro_pause_for_release")
 
 type Macro struct {
@@ -150,6 +151,18 @@ func XThenLayer(r Ref, index LayerIndex) Ref {
 	return Custom{name, MapToAny(r.Args())}
 }
 
+func TapNoRepeat(k KeyCode) Ref {
+	name := "TapNoRepeat"
+	AddMacro(Macro{
+		Name:  name,
+		Label: "Tap No Repeat",
+		Cells: 1,
+		Refs:  []Ref{MacroParam{1, 1}, Curry(Kp(k)), MacroPause},
+	})
+
+	return Ref1(name, Kp(k))
+}
+
 func MapParams(n int) []Ref {
 	switch n {
 	case 0:
@@ -169,7 +182,7 @@ func Wrap(r Ref) Ref {
 	refs = append(refs, MacroPress)
 	refs = append(refs, params...)
 	refs = append(refs, Curry(r))
-	refs = append(refs, MacroWait)
+	refs = append(refs, MacroPause)
 	refs = append(refs, MacroRelease)
 	refs = append(refs, params...)
 	refs = append(refs, Curry(r))
