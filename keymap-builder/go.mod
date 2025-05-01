@@ -1,4 +1,4 @@
-module key
+module keyboard
 
 go 1.23.0
 

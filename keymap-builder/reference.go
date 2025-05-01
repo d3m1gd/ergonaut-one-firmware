@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"strings"
+
+	. "keyboard/key"
 )
 
 type Ref interface {
@@ -34,7 +36,7 @@ var Trans = Ref0("trans")
 var None = Ref0("none")
 var CapsWord = Ref0("caps_word")
 
-func Lt(layer LayerIndex, tap KeyCode) Ref {
+func Lt(layer LayerIndex, tap Key) Ref {
 	return Ref2("lt", layer, tap)
 }
 
@@ -46,18 +48,18 @@ func Mo(layer LayerIndex) Ref {
 	return Ref1("mo", layer)
 }
 
-func Mt(mod, tap KeyCode) Ref {
+func Mt(mod, tap Key) Ref {
 	return Ref2("mt", mod, tap)
 }
 
-func Kp(k KeyCode) Ref {
+func Kp(k Key) Ref {
 	return Ref1("kp", k)
 }
 
-func MKp(tap KeyCode) Ref {
+func MKp(tap Key) Ref {
 	return Ref1("mkp", tap)
 }
 
-func Rmt(mod, tap KeyCode) Ref {
+func Rmt(mod, tap Key) Ref {
 	return Ref2("rmt", mod, tap)
 }

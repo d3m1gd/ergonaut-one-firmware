@@ -7,6 +7,9 @@ import (
 	"slices"
 	"strings"
 	"text/template"
+
+	. "keyboard/key"
+	"keyboard/layer"
 )
 
 const Left Side = "left"
@@ -28,7 +31,7 @@ type Params struct {
 	Macros    []Macro
 	Combos    []Combo
 	Behaviors []Behavior
-	Layers    []RenderedLayer
+	Layers    []layer.R
 }
 
 var layers = make([]Layer, len(LayerNames))
@@ -50,14 +53,14 @@ func init() {
 	layers[BASE][l(2, 4)] = Mt(LGUI, D)
 	layers[BASE][l(2, 5)] = Mt(LALT, F)
 	layers[BASE][l(2, 6)] = Kp(G)
-	layers[BASE][l(3, 1)] = ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), []KeyMod{MOD_LSFT, MOD_RSFT, MOD_LCTL, MOD_RCTL}, []KeyMod{MOD_LCTL, MOD_RCTL})) // row 3
+	layers[BASE][l(3, 1)] = ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), []Mod{MOD_LSFT, MOD_RSFT, MOD_LCTL, MOD_RCTL}, []Mod{MOD_LCTL, MOD_RCTL})) // row 3
 	layers[BASE][l(3, 2)] = Kp(Z)
 	layers[BASE][l(3, 3)] = Kp(X)
 	layers[BASE][l(3, 4)] = Ref2("kpConfig", ZERO, C)
 	layers[BASE][l(3, 5)] = Kp(V)
 	layers[BASE][l(3, 6)] = Kp(B)
 	layers[BASE][l(4, 1)] = MoTo(QUICK, CHAINS) // row 4
-	layers[BASE][l(4, 2)] = MoX(NUMER, ModMorph(To(MOVER), Kp(UNDER), []KeyMod{MOD_LSFT, MOD_RSFT}, nil))
+	layers[BASE][l(4, 2)] = MoX(NUMER, ModMorph(To(MOVER), Kp(UNDER), []Mod{MOD_LSFT, MOD_RSFT}, nil))
 	layers[BASE][l(4, 3)] = Mt(LCTRL, ESCAPE)
 
 	layers[BASE][r(1, 1)] = Kp(Y) // row 1
@@ -249,9 +252,9 @@ func renderKeymap(path string, params Params) {
 	check(t.Execute(outFile, params))
 }
 
-func RenderLayers(layers []Layer) []RenderedLayer {
-	return MapEnumerated(layers, func(n int, layer Layer) RenderedLayer {
-		return RenderedLayer{n, LayerNames[n], layer.Render()}
+func RenderLayers(layers []Layer) []layer.R {
+	return MapEnumerated(layers, func(n int, l Layer) layer.R {
+		return layer.R{Index: n, Name: LayerNames[n], Rows: l.Render()}
 	})
 }
 

@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"slices"
 	"strings"
-
-	"github.com/BooleanCat/go-functional/v2/it"
 )
 
 var LayerNames []string
@@ -68,17 +66,11 @@ func (l Layer) Render() []string {
 		}
 	}
 
-	return slices.Collect(it.Map(slices.Values(cells), func(ss []string) string {
+	return Map(cells, func(ss []string) string {
 		s := strings.Join(ss, "  ")
 		s = strings.TrimRight(s, " ")
 		return s
-	}))
-}
-
-type RenderedLayer struct {
-	Index int
-	Name  string
-	Rows  []string
+	})
 }
 
 func InitWith(b Ref) Layer {

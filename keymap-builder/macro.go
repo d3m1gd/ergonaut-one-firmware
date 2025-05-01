@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"slices"
 	"strings"
+
+	. "keyboard/key"
 )
 
 var MacroPress = Ref0("macro_press")
@@ -75,7 +77,7 @@ func BackQuotes() Ref {
 	return OpenCloseMacro("bquotes", GRAVE, GRAVE)
 }
 
-func OpenCloseMacro(name string, left, right KeyCode) Ref {
+func OpenCloseMacro(name string, left, right Key) Ref {
 	AddMacro(Macro{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose %s", name),
@@ -151,7 +153,7 @@ func XThenLayer(r Ref, index LayerIndex) Ref {
 	return Custom{name, MapToAny(r.Args())}
 }
 
-func TapNoRepeat(k KeyCode) Ref {
+func TapNoRepeat(k Key) Ref {
 	name := "TapNoRepeat"
 	AddMacro(Macro{
 		Name:  name,

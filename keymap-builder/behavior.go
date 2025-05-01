@@ -5,6 +5,8 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+
+	. "keyboard/key"
 )
 
 type Number int
@@ -35,7 +37,7 @@ func (x DeviceTreeProperty) CompileProperty() string {
 		return fmt.Sprintf("%s = <%d>", x.Name, v)
 	case string:
 		return fmt.Sprintf(`%s = "%s"`, x.Name, v)
-	case []KeyMod:
+	case []Mod:
 		// mods = <(MOD_RSFT|MOD_LSFT)>;
 		return fmt.Sprintf(`%s = <(%s)>`, x.Name, strings.Join(Map(v, asString), "|"))
 	}
@@ -86,7 +88,7 @@ func AddBehavior(b Behavior) {
 	behaviors = append(behaviors, b)
 }
 
-func KpKp(a, b KeyCode) Ref {
+func KpKp(a, b Key) Ref {
 	name := "kpkp"
 	_ = TapNoRepeat(a) // instantiate macro
 	AddBehavior(Behavior{
@@ -141,7 +143,7 @@ func MoX(mo LayerIndex, x Ref) Ref {
 	return RefN(name, BehaviorTypeHoldTap.Cells, mo)
 }
 
-func ModX(mod KeyCode, x Ref) Ref {
+func ModX(mod Key, x Ref) Ref {
 	name := "m" + ShowReference(x)
 	AddBehavior(Behavior{
 		Name:  name,
@@ -159,7 +161,7 @@ func ModX(mod KeyCode, x Ref) Ref {
 	return RefN(name, BehaviorTypeHoldTap.Cells, mod)
 }
 
-func ModMorph(a, b Ref, mods []KeyMod, keep []KeyMod) Ref {
+func ModMorph(a, b Ref, mods []Mod, keep []Mod) Ref {
 	refs := []Ref{a, b}
 	name := "mm" + ShowReference(a) + ShowReference(b)
 	props := []DeviceTreeProperty{

@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"iter"
 	"strings"
+
+	. "keyboard/key"
 )
 
 type RC struct {
@@ -85,8 +87,8 @@ func RCs() iter.Seq[RC] {
 	}
 }
 
-func RCFromKeyCode(k KeyCode) RC {
-	rc, ok := map[KeyCode]RC{
+func RCFromKey(k Key) RC {
+	rc, ok := map[Key]RC{
 		TAB:   l(1, 1),
 		Q:     l(1, 2),
 		W:     l(1, 3),

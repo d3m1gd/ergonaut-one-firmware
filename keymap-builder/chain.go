@@ -3,19 +3,21 @@ package main
 import (
 	"fmt"
 	"strings"
+
+	. "keyboard/key"
 )
 
 var chain = NewChain()
 
 type Chain struct {
-	Keys   map[KeyCode]Ref
-	Chains map[KeyCode]*Chain
+	Keys   map[Key]Ref
+	Chains map[Key]*Chain
 }
 
 func NewChain() Chain {
 	return Chain{
-		Keys:   make(map[KeyCode]Ref),
-		Chains: make(map[KeyCode]*Chain),
+		Keys:   make(map[Key]Ref),
+		Chains: make(map[Key]*Chain),
 	}
 }
 
@@ -27,7 +29,7 @@ func AddChain(keys string, r Ref) {
 	keys = strings.ToUpper(keys)
 
 	for i := range len(keys) - 1 {
-		k := KeyCodeFrom(keys[i])
+		k := KeyFrom(keys[i])
 		_, ok := c.Keys[k]
 		panicif(ok)
 		newc, ok := c.Chains[k]
@@ -40,7 +42,7 @@ func AddChain(keys string, r Ref) {
 		}
 	}
 
-	k := KeyCodeFrom(keys[len(keys)-1])
+	k := KeyFrom(keys[len(keys)-1])
 	_, ok := c.Chains[k]
 	panicif(ok)
 
@@ -54,7 +56,7 @@ func CompileChains(layers []Layer) []Layer {
 
 func compileChain(c Chain, prefix string, n LayerIndex, layers []Layer) []Layer {
 	for k, ref := range c.Keys {
-		layers[n][RCFromKeyCode(k)] = ref
+		layers[n][RCFromKey(k)] = ref
 	}
 
 	for k, sub := range SortedMapKV(c.Chains) {
@@ -62,7 +64,7 @@ func compileChain(c Chain, prefix string, n LayerIndex, layers []Layer) []Layer 
 		subn := NewLayerIndex(fmt.Sprintf("%s_%s", CHAINS, name))
 		layers = append(layers, InitWith(Trans))
 		layers = compileChain(*sub, name, subn, layers)
-		layers[n][RCFromKeyCode(k)] = To(subn)
+		layers[n][RCFromKey(k)] = To(subn)
 	}
 
 	return layers
