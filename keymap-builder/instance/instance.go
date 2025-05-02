@@ -70,6 +70,24 @@ func KpKp(a, b key.T) ref.T {
 	return ref.Filled(name, behavior.TypeHoldTap.Cells, a, b)
 }
 
+func XKp(r ref.T, k key.T) ref.T {
+	name := r.Show() + "kp"
+	behavior.Add(behavior.T{
+		Name:  name,
+		Label: r.Show() + "KepPress",
+		Cells: behavior.TypeHoldTap.Cells,
+		Type:  behavior.TypeHoldTap.Name,
+		Refs:  []ref.T{r, ref0("kp")},
+		Props: behavior.Props{
+			"flavor":          "tap-preferred",
+			"tapping-term-ms": 350,
+			"quick-tap-ms":    200,
+		},
+	})
+
+	return ref.Filled(name, behavior.TypeHoldTap.Cells, k)
+}
+
 func MoTo(mo, to layer.T) ref.T {
 	refs := []ref.T{ref0("mo"), ref0("to")}
 	name := "moto"
