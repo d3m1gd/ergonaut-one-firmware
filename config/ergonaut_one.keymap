@@ -725,49 +725,42 @@
             bindings = <&curlies>;
             key-positions = <16 19>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
 
         Parens {
             bindings = <&parens>;
             key-positions = <15 20>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
 
         Brackets {
             bindings = <&brackets>;
             key-positions = <14 21>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
 
         DoubleQuotes {
             bindings = <&dquotes>;
             key-positions = <4 7>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
 
         SingleQuotes {
             bindings = <&squotes>;
             key-positions = <3 8>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
 
         BackQuotes {
             bindings = <&bquotes>;
             key-positions = <2 9>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
 
         CodeQuotes {
             bindings = <&mdCode>;
             key-positions = <5 6>;
             timeout-ms = <50>;
-            require-prior-idle-ms = <250>;
         };
     };
 
