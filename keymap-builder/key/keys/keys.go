@@ -9,41 +9,16 @@ import (
 )
 
 func From(b byte) key.T {
-	if b >= 'A' && b <= 'Z' {
+	switch {
+	case b >= 'A' && b <= 'Z':
 		return LS(key.T(b))
-	}
-
-	if b >= 'a' && b <= 'z' {
+	case b >= 'a' && b <= 'z':
 		return key.T(b - 'a' + 'A')
+	case b >= '0' && b <= '9':
+		return key.T('N' + b)
 	}
 
 	k, ok := map[byte]key.T{
-		'a':  A,
-		'b':  B,
-		'c':  C,
-		'd':  D,
-		'e':  E,
-		'f':  F,
-		'g':  G,
-		'h':  H,
-		'i':  I,
-		'j':  J,
-		'k':  K,
-		'l':  L,
-		'm':  M,
-		'n':  N,
-		'o':  O,
-		'p':  P,
-		'q':  Q,
-		'r':  R,
-		's':  S,
-		't':  T,
-		'u':  U,
-		'v':  V,
-		'w':  W,
-		'x':  X,
-		'y':  Y,
-		'z':  Z,
 		' ':  SPACE,
 		'-':  MINUS,
 		'+':  PLUS,
@@ -71,6 +46,16 @@ func From(b byte) key.T {
 		'\n': RETURN,
 		'\a': ESC,
 		'\b': LEFT,
+		'!':  EXCL,
+		'#':  HASH,
+		'%':  PRCNT,
+		'&':  AMPS,
+		'*':  STAR,
+		'@':  AT,
+		'^':  CARET,
+		'_':  UNDER,
+		'|':  PIPE,
+		'~':  TILDE,
 	}[b]
 
 	Panicif(!ok, "unhandled byte: %c (%d)", b, b)
