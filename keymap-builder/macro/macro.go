@@ -47,7 +47,7 @@ func (m Macro) Equal(other Macro) bool {
 	return eq
 }
 
-func AddMacro(macro Macro) {
+func Add(macro Macro) {
 	i := slices.IndexFunc(macros, func(other Macro) bool {
 		return macro.Name == other.Name
 	})

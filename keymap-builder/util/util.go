@@ -81,8 +81,13 @@ func Check(err error) {
 	}
 }
 
-func Panicif(cond bool) {
+func Panicif(cond bool, extras ...any) {
 	if cond {
+		if len(extras) > 0 {
+			if v, ok := extras[0].(string); ok {
+				panic(fmt.Sprintf(v, extras[1:]...))
+			}
+		}
 		panic("condition failed")
 	}
 }

@@ -2,7 +2,6 @@ package key
 
 import (
 	"cmp"
-	"fmt"
 )
 
 type T = Key
@@ -12,29 +11,6 @@ type Mod string
 
 func (k Key) Less(other Key) int {
 	return cmp.Compare(k, other)
-}
-
-func From(b byte) Key {
-	if b >= 'A' && b <= 'Z' {
-		return Key(b)
-	}
-
-	switch b {
-	// case '\a':
-	// case '\f':
-	// case '\r':
-	// case '\v':
-	case ' ':
-		return Key("SPACE")
-	case '\b':
-		return Key("LEFT")
-	case '\n':
-		return Key("RETURN")
-	case '\t':
-		return Key("TAB")
-	}
-
-	panic(fmt.Sprintf("unhandled key: '%c'", b))
 }
 
 const MOD_LCTL Mod = "MOD_LCTL"

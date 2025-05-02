@@ -2,6 +2,8 @@ package instance
 
 import (
 	"fmt"
+	"slices"
+	"strings"
 
 	"keyboard/behavior"
 	"keyboard/key"
@@ -155,7 +157,7 @@ func Wrap(r ref.T) ref.T {
 	refs = append(refs, macro.Release)
 	refs = append(refs, params...)
 	refs = append(refs, macro.Placeholder(r))
-	macro.AddMacro(macro.T{
+	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("Wrap %s", r.Name),
 		Cells: len(r.Args()),
@@ -167,7 +169,7 @@ func Wrap(r ref.T) ref.T {
 
 func BackspaceDelete() ref.T {
 	name := "bspcdel"
-	macro.AddMacro(macro.T{
+	macro.Add(macro.T{
 		Name:  name,
 		Label: "Backspace Delete",
 		Cells: 0,
@@ -202,7 +204,7 @@ func BackQuotes() ref.T {
 }
 
 func OpenCloseMacro(name string, left, right key.T) ref.T {
-	macro.AddMacro(macro.T{
+	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose %s", name),
 		Cells: 0,
@@ -215,7 +217,7 @@ func OpenCloseMacro(name string, left, right key.T) ref.T {
 
 func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
 	name := fmt.Sprintf("xThenTrans%d", l.Index())
-	macro.AddMacro(macro.T{
+	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Trans %s", l),
 		Cells: 1,
@@ -227,7 +229,7 @@ func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
 
 func XThenLayer(r ref.T, l layer.T) ref.T {
 	name := fmt.Sprintf("xThenLayer%d", l.Index())
-	macro.AddMacro(macro.T{
+	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("X Then Layer %s", l),
 		Cells: 1,
@@ -239,7 +241,7 @@ func XThenLayer(r ref.T, l layer.T) ref.T {
 
 func TapNoRepeat(k key.T) ref.T {
 	name := "TapNoRepeat"
-	macro.AddMacro(macro.T{
+	macro.Add(macro.T{
 		Name:  name,
 		Label: "Tap No Repeat",
 		Cells: 1,
@@ -256,7 +258,7 @@ func InitWith(b ref.T) func(layer.T) {
 func InitToLevelTrans(l layer.T) func(layer.T) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
 		name := fmt.Sprintf("to%d%s", l.Index(), rc)
-		macro.AddMacro(macro.T{
+		macro.Add(macro.T{
 			Name:  name,
 			Label: fmt.Sprintf("To %s, %s", l.Name(), rc.Pretty()),
 			Cells: 0,
@@ -264,4 +266,25 @@ func InitToLevelTrans(l layer.T) func(layer.T) {
 		})
 		return ref0(name)
 	})
+}
+
+func Text(name string, keys string) ref.T {
+	macro.Add(macro.T{
+		Name:  name,
+		Label: name,
+		Cells: 0,
+		Refs:  Map(strings.Split(keys, ""), func(x string) ref.T { return Kp(From(x[0])) }),
+	})
+
+	return ref0(name)
+}
+
+func CursorAt(str, marker string) string {
+	subs := strings.Split(str, marker)
+	Panicif(len(subs) != 2, "want exactly one marker (%s): %s", marker, str)
+	left := subs[0]
+	right := strings.Split(subs[1], "")
+	slices.Reverse(right)
+
+	return left + strings.Join(right, "\b") + "\b"
 }

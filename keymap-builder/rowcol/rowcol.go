@@ -6,8 +6,6 @@ import (
 	"iter"
 	"strings"
 
-	"keyboard/key"
-	"keyboard/key/keys"
 	. "keyboard/util"
 )
 
@@ -106,53 +104,53 @@ func All() iter.Seq[RowCol] {
 	}
 }
 
-func FromKey(k key.T) RowCol {
-	rc, ok := map[key.T]RowCol{
-		keys.TAB:   L(1, 1),
-		keys.Q:     L(1, 2),
-		keys.W:     L(1, 3),
-		keys.E:     L(1, 4),
-		keys.R:     L(1, 5),
-		keys.T:     L(1, 6),
-		keys.Y:     R(1, 1),
-		keys.U:     R(1, 2),
-		keys.I:     R(1, 3),
-		keys.O:     R(1, 4),
-		keys.P:     R(1, 5),
-		keys.RBRC:  R(1, 6),
-		keys.BSPC:  L(2, 1),
-		keys.A:     L(2, 2),
-		keys.S:     L(2, 3),
-		keys.D:     L(2, 4),
-		keys.F:     L(2, 5),
-		keys.G:     L(2, 6),
-		keys.H:     R(2, 1),
-		keys.J:     R(2, 2),
-		keys.K:     R(2, 3),
-		keys.L:     R(2, 4),
-		keys.COLON: R(2, 5),
-		keys.DQT:   R(2, 6),
-		keys.MINUS: L(3, 1),
-		keys.Z:     L(3, 2),
-		keys.X:     L(3, 3),
-		keys.C:     L(3, 4),
-		keys.V:     L(3, 5),
-		keys.B:     L(3, 6),
-		keys.N:     R(3, 1),
-		keys.M:     R(3, 2),
-		keys.LT:    R(3, 3),
-		keys.GT:    R(3, 4),
-		keys.QMARK: R(3, 5),
-		keys.BSLH:  R(3, 6),
+func FromByte(b byte) RowCol {
+	rc, ok := map[byte]RowCol{
+		'\t': L(1, 1),
+		'q':  L(1, 2),
+		'w':  L(1, 3),
+		'e':  L(1, 4),
+		'r':  L(1, 5),
+		't':  L(1, 6),
+		'y':  R(1, 1),
+		'u':  R(1, 2),
+		'i':  R(1, 3),
+		'o':  R(1, 4),
+		'p':  R(1, 5),
+		'[':  R(1, 6),
+		'\b': L(2, 1),
+		'a':  L(2, 2),
+		's':  L(2, 3),
+		'd':  L(2, 4),
+		'f':  L(2, 5),
+		'g':  L(2, 6),
+		'h':  R(2, 1),
+		'j':  R(2, 2),
+		'k':  R(2, 3),
+		'l':  R(2, 4),
+		':':  R(2, 5),
+		'"':  R(2, 6),
+		'-':  L(3, 1),
+		'z':  L(3, 2),
+		'x':  L(3, 3),
+		'c':  L(3, 4),
+		'v':  L(3, 5),
+		'b':  L(3, 6),
+		'n':  R(3, 1),
+		'm':  R(3, 2),
+		'<':  R(3, 3),
+		'>':  R(3, 4),
+		'?':  R(3, 5),
+		'\\': R(3, 6),
 		// row 4
 		// C:     l(4, 1),
 		// V:     l(4, 2),
-		keys.ESC:   L(4, 3),
-		keys.RET:   R(4, 1),
-		keys.SPACE: R(4, 2),
+		'\a': L(4, 3),
+		'\n': R(4, 1),
+		' ':  R(4, 2),
 		// LT:    r(4, 3),
-	}[k]
-	Panicif(!ok)
+	}[b]
+	Panicif(!ok, "key not handled: %s (%c)", b, b)
 
 	return rc
 }

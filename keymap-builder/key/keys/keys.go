@@ -5,7 +5,74 @@ import (
 	"strconv"
 
 	"keyboard/key"
+	. "keyboard/util"
 )
+
+func From(b byte) key.T {
+	if b >= 'A' && b <= 'Z' {
+		return LS(key.T(b))
+	}
+
+	if b >= 'a' && b <= 'z' {
+		return key.T(b)
+	}
+
+	k, ok := map[byte]key.T{
+		'a':  A,
+		'b':  B,
+		'c':  C,
+		'd':  D,
+		'e':  E,
+		'f':  F,
+		'g':  G,
+		'h':  H,
+		'i':  I,
+		'j':  J,
+		'k':  K,
+		'l':  L,
+		'm':  M,
+		'n':  N,
+		'o':  O,
+		'p':  P,
+		'q':  Q,
+		'r':  R,
+		's':  S,
+		't':  T,
+		'u':  U,
+		'v':  V,
+		'w':  W,
+		'x':  X,
+		'y':  Y,
+		'z':  Z,
+		' ':  SPACE,
+		'-':  MINUS,
+		'+':  PLUS,
+		'=':  EQUAL,
+		'[':  LBKT,
+		']':  RBKT,
+		'{':  LBRC,
+		'}':  RBRC,
+		'(':  LPAR,
+		')':  RPAR,
+		'<':  LT,
+		'>':  GT,
+		'\\': BSLH,
+		':':  COLON,
+		';':  SEMI,
+		'"':  DQT,
+		'`':  GRAVE,
+		'\'': SQT,
+		'?':  QMARK,
+		'\t': TAB,
+		'\n': RETURN,
+		'\a': ESC,
+		'\b': LEFT,
+	}[b]
+
+	Panicif(!ok, "unhandled byte: %c (%d)", b, b)
+
+	return k
+}
 
 func modBuilder(name string) func(key.T) key.T {
 	return func(k key.T) key.T {

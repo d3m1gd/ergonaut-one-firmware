@@ -14,6 +14,8 @@
 #define CHAINS 7
 #define CHAINS_S 8
 #define CHAINS_SD 9
+#define CHAINS_G 10
+#define CHAINS_GI 11
 
 &lt {
     quick-tap-ms = <200>;
@@ -142,6 +144,20 @@
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DLLR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp DQT &kp FSLH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp FSLH>;
             label = "HOMECONFIG";
+        };
+
+        CodeBlock: CodeBlock {
+            compatible = "zmk,behavior-macro";
+            label = "CodeBlock";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT>;
+        };
+
+        GoIfError: GoIfError {
+            compatible = "zmk,behavior-macro";
+            label = "GoIfError";
+            #binding-cells = <0>;
+            bindings = <&kp g &kp o &kp SPACE &kp i &kp f &kp e &kp LEFT &kp n &kp LEFT &kp i &kp LEFT &kp f &kp LEFT>;
         };
 
         TapNoRepeat: TapNoRepeat {
@@ -543,43 +559,43 @@
         Curlies {
             bindings = <&curlies>;
             key-positions = <16 19>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
 
         Parens {
             bindings = <&parens>;
             key-positions = <15 20>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
 
         Brackets {
             bindings = <&brackets>;
             key-positions = <14 21>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
 
         DoubleQuotes {
             bindings = <&dquotes>;
             key-positions = <4 7>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
 
         SingleQuotes {
             bindings = <&squotes>;
             key-positions = <3 8>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
 
         BackQuotes {
             bindings = <&bquotes>;
             key-positions = <2 9>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
 
         CodeQuotes {
-            bindings = <&mdCode>;
+            bindings = <&CodeBlock>;
             key-positions = <5 6>;
-            timeout-ms = <50>;
+            timeout-ms = <80>;
         };
     };
 
@@ -669,10 +685,28 @@
 
         CHAINS_SD {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &kp X     &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &kp X     &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE
+            >;
+        };
+
+        CHAINS_G {
+            bindings = <
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_GI  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE
                               &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+            >;
+        };
+
+        CHAINS_GI {
+            bindings = <
+&to BASE  &to BASE  &to BASE  &GoIfError  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
     };
