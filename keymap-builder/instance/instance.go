@@ -85,7 +85,7 @@ func XKp(r ref.T, k key.T) ref.T {
 		},
 	})
 
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, k)
+	return ref.Filled(name, behavior.TypeHoldTap.Cells, ZERO, k)
 }
 
 func MoTo(mo, to layer.T) ref.T {
@@ -121,7 +121,7 @@ func MoX(mo layer.T, x ref.T) ref.T {
 		},
 	})
 
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, mo)
+	return ref.Filled(name, behavior.TypeHoldTap.Cells, mo, ZERO)
 }
 
 func ModX(mod key.T, x ref.T) ref.T {
@@ -139,7 +139,7 @@ func ModX(mod key.T, x ref.T) ref.T {
 		},
 	})
 
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod)
+	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod, ZERO)
 }
 
 func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {

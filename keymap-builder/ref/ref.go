@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"strings"
 
-	"keyboard/key/keys"
 	. "keyboard/util"
 )
 
@@ -51,20 +50,7 @@ func RefN(name string, aa []any) Ref {
 }
 
 func Filled(name string, n int, aa ...any) Ref {
-	switch n - len(aa) {
-	case 2:
-		aa = append(aa, keys.ZERO, keys.ZERO)
-	case 1:
-		aa = append(aa, keys.ZERO)
-	case 0:
-	default:
-		panic("bad custom n")
-	}
-
-	if len(aa) > 2 {
-		panic("too many custom n")
-	}
-
+	Panicif(n != len(aa))
 	return Ref{name, aa}
 }
 
