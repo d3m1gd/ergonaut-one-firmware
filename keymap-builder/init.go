@@ -39,7 +39,7 @@ func init() {
 		L31: ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), key.ShiftsCtrls, key.Ctrls)), // row 3
 		L32: Kp(Z),
 		L33: Kp(X),
-		L34: ref2("kpConfig", ZERO, C),
+		L34: Text("XdgConfig", `"$HOME/.config"/`),
 		L35: Kp(V),
 		L36: Kp(B),
 		L41: MoTo(QUICK, CHAINS), // row 4

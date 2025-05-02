@@ -41,7 +41,6 @@ func (m Macro) Bindings() string {
 func (m Macro) Equal(other Macro) bool {
 	eq := true
 	eq = eq && m.Name == other.Name
-	eq = eq && m.Label == other.Label
 	eq = eq && m.Cells == other.Cells
 	eq = eq && slices.EqualFunc(m.Refs, other.Refs, ref.Equal)
 	return eq
@@ -68,11 +67,7 @@ func macroParamBuilder(a, b int) ref.T {
 }
 
 func Placeholder(r ref.T) ref.T {
-	return ref.RefN(r.Name, MapToMacroPlaceholder(r.Args()))
-}
-
-func MapToMacroPlaceholder(args []string) []any {
-	return Map(args, func(_ string) any { return "MACRO_PLACEHOLDER" })
+	return ref.RefN(r.Name, Map(r.Args(), func(string) any { return "MACRO_PLACEHOLDER" }))
 }
 
 func MapParams(n int) []ref.T {

@@ -56,7 +56,7 @@ func KpKp(a, b key.T) ref.T {
 	_ = TapNoRepeat(a) // instantiate macro
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "kpkp",
+		Label: "KeyPressKepPress",
 		Cells: behavior.TypeHoldTap.Cells,
 		Type:  behavior.TypeHoldTap.Name,
 		Refs:  []ref.T{ref0("TapNoRepeat"), ref0("kp")},
@@ -75,7 +75,7 @@ func MoTo(mo, to layer.T) ref.T {
 	name := "moto"
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "Momentary/To",
+		Label: "MomentaryTo",
 		Type:  behavior.TypeHoldTap.Name,
 		Cells: behavior.TypeHoldTap.Cells,
 		Refs:  refs,
@@ -90,10 +90,10 @@ func MoTo(mo, to layer.T) ref.T {
 
 func MoX(mo layer.T, x ref.T) ref.T {
 	refs := []ref.T{ref0("mo"), x}
-	name := "mo" + x.Show()
+	name := "mo" + x.Name
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "Momentary " + name,
+		Label: fmt.Sprintf("Moment%s%s", mo, x.String()),
 		Type:  behavior.TypeHoldTap.Name,
 		Cells: behavior.TypeHoldTap.Cells,
 		Refs:  refs,
@@ -110,7 +110,7 @@ func ModX(mod key.T, x ref.T) ref.T {
 	name := "m" + x.Show()
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "Mod " + x.Name,
+		Label: "Mod" + x.Show(),
 		Type:  behavior.TypeHoldTap.Name,
 		Cells: behavior.TypeHoldTap.Cells,
 		Refs:  []ref.T{ref0("kp"), x},
@@ -136,7 +136,7 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "ModMorph " + a.String() + " " + b.String(),
+		Label: "ModMorph" + a.Show() + b.Show(),
 		Cells: behavior.TypeModMorph.Cells,
 		Type:  behavior.TypeModMorph.Name,
 		Refs:  refs,
@@ -159,7 +159,7 @@ func Wrap(r ref.T) ref.T {
 	refs = append(refs, macro.Placeholder(r))
 	macro.Add(macro.T{
 		Name:  name,
-		Label: fmt.Sprintf("Wrap %s", r.Name),
+		Label: fmt.Sprintf("Wrap%s", r.Name),
 		Cells: len(r.Args()),
 		Refs:  refs,
 	})
@@ -171,7 +171,7 @@ func BackspaceDelete() ref.T {
 	name := "bspcdel"
 	macro.Add(macro.T{
 		Name:  name,
-		Label: "Backspace Delete",
+		Label: "BackspaceDelete",
 		Cells: 0,
 		Refs:  []ref.T{Kp(BSPC), Kp(DEL)},
 	})
@@ -206,7 +206,7 @@ func BackQuotes() ref.T {
 func OpenCloseMacro(name string, left, right key.T) ref.T {
 	macro.Add(macro.T{
 		Name:  name,
-		Label: fmt.Sprintf("OpenClose %s", name),
+		Label: fmt.Sprintf("OpenClose_%s", name),
 		Cells: 0,
 		Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT)},
 		// Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT), To(PARENS)}, // todo
@@ -216,10 +216,10 @@ func OpenCloseMacro(name string, left, right key.T) ref.T {
 }
 
 func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
-	name := fmt.Sprintf("xThenTrans%d", l.Index())
+	name := fmt.Sprintf("%sTrans%s", r.Show(), l)
 	macro.Add(macro.T{
 		Name:  name,
-		Label: fmt.Sprintf("X Then Trans %s", l),
+		Label: fmt.Sprintf("%s_Trans_%s", r.Name, l),
 		Cells: 1,
 		Refs:  []ref.T{macro.Param11, macro.Placeholder(r), To(l), l[rc]},
 	})
@@ -228,10 +228,10 @@ func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
 }
 
 func XThenLayer(r ref.T, l layer.T) ref.T {
-	name := fmt.Sprintf("xThenLayer%d", l.Index())
+	name := fmt.Sprintf("%s%s", r.Name, l)
 	macro.Add(macro.T{
 		Name:  name,
-		Label: fmt.Sprintf("X Then Layer %s", l),
+		Label: name,
 		Cells: 1,
 		Refs:  []ref.T{macro.Param11, macro.Placeholder(r), To(l)},
 	})
@@ -243,7 +243,7 @@ func TapNoRepeat(k key.T) ref.T {
 	name := "TapNoRepeat"
 	macro.Add(macro.T{
 		Name:  name,
-		Label: "Tap No Repeat",
+		Label: name,
 		Cells: 1,
 		Refs:  []ref.T{macro.Param11, macro.Placeholder(Kp(k)), macro.Pause},
 	})
@@ -260,7 +260,7 @@ func InitToLevelTrans(l layer.T) func(layer.T) {
 		name := fmt.Sprintf("to%d%s", l.Index(), rc)
 		macro.Add(macro.T{
 			Name:  name,
-			Label: fmt.Sprintf("To %s, %s", l.Name(), rc.Pretty()),
+			Label: fmt.Sprintf("To%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
 			Refs:  []ref.T{To(l), macro.Press, l[rc], macro.Pause, macro.Release, l[rc]},
 		})
