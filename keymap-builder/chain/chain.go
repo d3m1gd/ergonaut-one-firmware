@@ -23,7 +23,7 @@ func Name(keys string) string {
 }
 
 func Add(l layer.T, init func(layer.T), keyrefs map[string]ref.T) {
-	for keys, r := range keyrefs {
+	for keys, r := range SortedMap(keyrefs) {
 		Panicif(len(keys) < 2)
 		Panicif(strings.ToLower(keys) != keys)
 

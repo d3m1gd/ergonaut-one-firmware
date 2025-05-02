@@ -1,6 +1,7 @@
 package util
 
 import (
+	"cmp"
 	"fmt"
 	"iter"
 	"maps"
@@ -63,11 +64,25 @@ type Lesser[K any] interface {
 	Less(K) int
 }
 
-func SortedMapKV[K Lesser[K], V any](m map[K]V) iter.Seq2[K, V] {
+func LesserFn[T Lesser[T]](a, b T) int {
+	return a.Less(b)
+}
+
+func SortedMapFunc[K comparable, V any](m map[K]V, fn func(K, K) int) iter.Seq2[K, V] {
 	keys := slices.Collect(maps.Keys(m))
-	slices.SortFunc(keys, func(a, b K) int {
-		return a.Less(b)
-	})
+	slices.SortFunc(keys, fn)
+	return func(yield func(K, V) bool) {
+		for _, key := range keys {
+			if !yield(key, m[key]) {
+				return
+			}
+		}
+	}
+}
+
+func SortedMap[K cmp.Ordered, V any](m map[K]V) iter.Seq2[K, V] {
+	keys := slices.Collect(maps.Keys(m))
+	slices.Sort(keys)
 	return func(yield func(K, V) bool) {
 		for _, key := range keys {
 			if !yield(key, m[key]) {
