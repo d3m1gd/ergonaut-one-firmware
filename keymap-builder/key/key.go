@@ -14,7 +14,7 @@ func (k Key) Less(other Key) int {
 	return cmp.Compare(k, other)
 }
 
-func KeyFrom(b byte) Key {
+func From(b byte) Key {
 	if b >= 'A' && b <= 'Z' {
 		return Key(b)
 	}

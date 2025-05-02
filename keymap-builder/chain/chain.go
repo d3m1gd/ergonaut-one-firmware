@@ -4,68 +4,50 @@ import (
 	"strings"
 
 	"keyboard/instance"
-	. "keyboard/key"
+	"keyboard/key"
 	"keyboard/layer"
 	"keyboard/ref"
 	"keyboard/rowcol"
 	. "keyboard/util"
 )
 
-var chain = New()
+var prefixes []string
 
-type Chain struct {
-	Keys   map[Key]ref.T
-	Chains map[Key]*Chain
-}
+const name = "CHAINS"
 
-func New() Chain {
-	return Chain{
-		Keys:   make(map[Key]ref.T),
-		Chains: make(map[Key]*Chain),
+func Name(keys string) string {
+	if len(keys) == 0 {
+		return name
 	}
+
+	return name + "_" + keys
 }
 
-func Add(keys string, r ref.T) {
-	Panicif(len(keys) == 0)
+func Add(l layer.T, init func(layer.T), keyrefs map[string]ref.T) {
+	for keys, r := range keyrefs {
+		Panicif(len(keys) < 2)
 
-	c := &chain
-
-	keys = strings.ToUpper(keys)
-
-	for i := range len(keys) - 1 {
-		k := KeyFrom(keys[i])
-		_, ok := c.Keys[k]
-		Panicif(ok)
-		newc, ok := c.Chains[k]
-		if ok {
-			c = newc
-		} else {
-			tmp := New()
-			c.Chains[k] = &tmp
-			c = &tmp
+		for _, p := range prefixes {
+			Panicif(strings.HasPrefix(keys, p))
+			Panicif(strings.HasPrefix(p, keys))
 		}
-	}
 
-	k := KeyFrom(keys[len(keys)-1])
-	_, ok := c.Chains[k]
-	Panicif(ok)
+		prefixes = append(prefixes, keys)
 
-	c.Keys[k] = r
-}
+		keys = strings.ToUpper(keys)
 
-func Compile(l layer.T, init func(layer.T)) {
-	compile(chain, l.Name()+"_", l, init)
-}
+		for i := range len(keys) - 1 {
+			rc := rowcol.FromKey(key.From(keys[i]))
+			name := Name(keys[:i+1])
+			newl, ok := layer.Get(name)
+			if !ok {
+				newl = layer.New(name, init)
+			}
+			l[rc] = instance.To(newl)
+			l = newl
+		}
 
-func compile(c Chain, prefix string, l layer.T, init func(layer.T)) {
-	for k, ref := range c.Keys {
-		l[rowcol.FromKey(k)] = ref
-	}
-
-	for k, sub := range SortedMapKV(c.Chains) {
-		prefix := prefix + string(k)
-		subl := layer.New(prefix, init)
-		compile(*sub, prefix, subl, init)
-		l[rowcol.FromKey(k)] = instance.To(subl)
+		rc := rowcol.FromKey(key.From(keys[len(keys)-1]))
+		l[rc] = r
 	}
 }

@@ -34,6 +34,16 @@ func New(name string, init func(Layer)) Layer {
 	return layer
 }
 
+func Get(name string) (Layer, bool) {
+	for _, l := range layers {
+		if l.Name() == name {
+			return l, true
+		}
+	}
+
+	return Layer{}, false
+}
+
 func Name(l Layer) string {
 	return l.Name()
 }
