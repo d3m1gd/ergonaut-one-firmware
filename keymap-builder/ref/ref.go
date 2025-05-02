@@ -11,19 +11,19 @@ import (
 type T = Ref
 
 type Ref struct {
-	Label  string
+	Name   string
 	Fields []any
 }
 
 func (x Ref) Reference() string {
-	if len(x.Fields) == 0 {
-		return fmt.Sprintf("&%s", x.Name())
-	}
-	return fmt.Sprintf("&%s %s", x.Name(), strings.Join(x.Args(), " "))
+	return "&" + x.String()
 }
 
-func (x Ref) Name() string {
-	return x.Label
+func (x Ref) String() string {
+	if len(x.Fields) == 0 {
+		return x.Name
+	}
+	return x.Name + strings.Join(x.Args(), " ")
 }
 
 func (x Ref) Args() []string {
@@ -33,9 +33,9 @@ func (x Ref) Args() []string {
 func (r Ref) Show() string {
 	args := r.Args()
 	if len(args) > 0 {
-		return fmt.Sprintf("%s%s", r.Name(), strings.Join(args, ""))
+		return fmt.Sprintf("%s%s", r.Name, strings.Join(args, ""))
 	}
-	return r.Name()
+	return r.Name
 }
 
 func Ref0(name string) Ref {
@@ -75,17 +75,17 @@ func Filled(name string, n int, aa ...any) Ref {
 func CompileRef(b Ref) string {
 	args := b.Args()
 	if len(args) > 0 {
-		return fmt.Sprintf("&%s %s", b.Name(), strings.Join(args, " "))
+		return fmt.Sprintf("&%s %s", b.Name, strings.Join(args, " "))
 	}
-	return "&" + b.Name()
+	return "&" + b.Name
 }
 
 func ShowReference(b Ref) string {
 	args := b.Args()
 	if len(args) > 0 {
-		return fmt.Sprintf("%s%s", b.Name(), strings.Join(args, ""))
+		return fmt.Sprintf("%s%s", b.Name, strings.Join(args, ""))
 	}
-	return b.Name()
+	return b.Name
 }
 
 func EqualRef(a, b Ref) bool {

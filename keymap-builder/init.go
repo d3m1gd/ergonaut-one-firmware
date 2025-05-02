@@ -90,12 +90,12 @@ func init() {
 		R13: Kp(N2),
 		R14: Kp(N3),
 		R16: Kp(RBKT),
-		R21: ref0("mmEquals"), // row 2
+		R21: ModMorph(Kp(EQUAL), Kp(EQUAL), key.Shifts, nil), // row 2
 		R22: Mt(LALT, N4),
 		R23: Mt(LGUI, N5),
 		R24: Mt(LSHIFT, N6),
 		R25: Kp(COLON),
-		R26: ref0("mmQuoteGrave"),
+		R26: ModMorph(Kp(DQT), Kp(GRAVE), key.Shifts, nil),
 		R31: Kp(PLUS), // row 3
 		R32: Kp(N7),
 		R33: KpKp(RG(COMMA), N8),

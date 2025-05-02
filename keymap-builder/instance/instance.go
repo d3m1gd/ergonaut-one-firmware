@@ -108,7 +108,7 @@ func ModX(mod key.T, x ref.T) ref.T {
 	name := "m" + x.Show()
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "Mod " + x.Name(),
+		Label: "Mod " + x.Name,
 		Type:  behavior.TypeHoldTap.Name,
 		Cells: behavior.TypeHoldTap.Cells,
 		Refs:  []ref.T{ref0("kp"), x},
@@ -134,7 +134,7 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: "ModMorph " + a.Name() + " " + b.Name(),
+		Label: "ModMorph " + a.String() + " " + b.String(),
 		Cells: behavior.TypeModMorph.Cells,
 		Type:  behavior.TypeModMorph.Name,
 		Refs:  refs,
@@ -145,7 +145,7 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 }
 
 func Wrap(r ref.T) ref.T {
-	name := fmt.Sprintf("W%s", r.Name())
+	name := fmt.Sprintf("W%s", r.Name)
 	params := macro.MapParams(len(r.Args()))
 	refs := []ref.T{}
 	refs = append(refs, macro.Press)
@@ -157,7 +157,7 @@ func Wrap(r ref.T) ref.T {
 	refs = append(refs, macro.Placeholder(r))
 	macro.AddMacro(macro.T{
 		Name:  name,
-		Label: fmt.Sprintf("Wrap %s", r.Name()),
+		Label: fmt.Sprintf("Wrap %s", r.Name),
 		Cells: len(r.Args()),
 		Refs:  refs,
 	})

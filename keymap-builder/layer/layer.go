@@ -49,7 +49,7 @@ func Name(l Layer) string {
 }
 
 func (l Layer) Name() string {
-	return l[namerc].Name()
+	return l[namerc].Name
 }
 
 func (l Layer) String() string {
@@ -63,7 +63,7 @@ func (l Layer) Index() int {
 }
 
 func (l Layer) Equal(other Layer) bool {
-	return l[namerc].Name() == other[namerc].Name()
+	return l[namerc].Name == other[namerc].Name
 }
 
 func Less(l, other Layer) int {
@@ -71,7 +71,7 @@ func Less(l, other Layer) int {
 }
 
 func (l Layer) Less(other Layer) int {
-	return cmp.Compare(l[namerc].Name(), other[namerc].Name())
+	return cmp.Compare(l[namerc].Name, other[namerc].Name)
 }
 
 func (l Layer) Render() []string {

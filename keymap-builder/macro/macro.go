@@ -68,7 +68,7 @@ func macroParamBuilder(a, b int) ref.T {
 }
 
 func Placeholder(r ref.T) ref.T {
-	return ref.RefN(r.Name(), MapToMacroPlaceholder(r.Args()))
+	return ref.RefN(r.Name, MapToMacroPlaceholder(r.Args()))
 }
 
 func MapToMacroPlaceholder(args []string) []any {
