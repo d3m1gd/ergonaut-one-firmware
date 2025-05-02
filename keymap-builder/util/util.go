@@ -43,8 +43,8 @@ func MapEnumerated[T, U any](s []T, f func(int, T) U) []U {
 	return us
 }
 
-func MapToAny[T any](args []T) []any {
-	return Map(args, func(a T) any { return a })
+func ToAny[T any](v T) any {
+	return v
 }
 
 func ToString(x any) string {

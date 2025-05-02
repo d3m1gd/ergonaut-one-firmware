@@ -30,7 +30,7 @@ func (c Combo) RenderLayers() string {
 }
 
 func (c Combo) RenderBindings() string {
-	return strings.Join(Map(c.Refs, ref.CompileRef), " ")
+	return strings.Join(Map(c.Refs, ref.Compile), " ")
 }
 
 func (c Combo) RenderKeys() string {

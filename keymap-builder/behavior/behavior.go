@@ -72,13 +72,13 @@ func (b Behavior) Equal(other Behavior) bool {
 	eq = eq && b.Name == other.Name
 	eq = eq && b.Label == other.Label
 	eq = eq && b.Type == other.Type
-	eq = eq && slices.EqualFunc(b.Refs, other.Refs, ref.EqualRef)
+	eq = eq && slices.EqualFunc(b.Refs, other.Refs, ref.Equal)
 	eq = eq && b.Props.Equal(other.Props)
 	return eq
 }
 
 func (m Behavior) Bindings() string {
-	return strings.Join(Map(m.Refs, ref.CompileRef), " ")
+	return strings.Join(Map(m.Refs, ref.Compile), " ")
 }
 
 func (m Behavior) Properties() []string {

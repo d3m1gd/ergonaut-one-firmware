@@ -164,7 +164,7 @@ func Wrap(r ref.T) ref.T {
 		Refs:  refs,
 	})
 
-	return ref.RefN(name, MapToAny(r.Args()))
+	return ref.RefN(name, Map(r.Args(), ToAny))
 }
 
 func BackspaceDelete() ref.T {
@@ -224,7 +224,7 @@ func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
 		Refs:  []ref.T{macro.Param11, macro.Placeholder(r), To(l), l[rc]},
 	})
 
-	return ref.RefN(name, MapToAny(r.Args()))
+	return ref.RefN(name, Map(r.Args(), ToAny))
 }
 
 func XThenLayer(r ref.T, l layer.T) ref.T {
@@ -236,7 +236,7 @@ func XThenLayer(r ref.T, l layer.T) ref.T {
 		Refs:  []ref.T{macro.Param11, macro.Placeholder(r), To(l)},
 	})
 
-	return ref.RefN(name, MapToAny(r.Args()))
+	return ref.RefN(name, Map(r.Args(), ToAny))
 }
 
 func TapNoRepeat(k key.T) ref.T {

@@ -82,7 +82,7 @@ func (l Layer) Render() []string {
 	}
 	for rc := range rowcol.All() {
 		b := l[rc]
-		rendered := ref.CompileRef(b)
+		rendered := ref.Compile(b)
 		row := rc.Row - 1
 		col := rc.Col - 1
 		if rc.Side == rowcol.Right {

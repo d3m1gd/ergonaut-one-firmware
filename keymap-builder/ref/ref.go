@@ -15,10 +15,6 @@ type Ref struct {
 	Fields []any
 }
 
-func (x Ref) Reference() string {
-	return "&" + x.String()
-}
-
 func (x Ref) String() string {
 	if len(x.Fields) == 0 {
 		return x.Name
@@ -72,7 +68,7 @@ func Filled(name string, n int, aa ...any) Ref {
 	return Ref{name, aa}
 }
 
-func CompileRef(b Ref) string {
+func Compile(b Ref) string {
 	args := b.Args()
 	if len(args) > 0 {
 		return fmt.Sprintf("&%s %s", b.Name, strings.Join(args, " "))
@@ -80,14 +76,6 @@ func CompileRef(b Ref) string {
 	return "&" + b.Name
 }
 
-func ShowReference(b Ref) string {
-	args := b.Args()
-	if len(args) > 0 {
-		return fmt.Sprintf("%s%s", b.Name, strings.Join(args, ""))
-	}
-	return b.Name
-}
-
-func EqualRef(a, b Ref) bool {
-	return CompileRef(a) == CompileRef(b)
+func Equal(a, b Ref) bool {
+	return Compile(a) == Compile(b)
 }
