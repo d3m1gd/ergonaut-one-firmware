@@ -24,6 +24,15 @@ func Map[T, U any](s []T, f func(T) U) []U {
 	return out
 }
 
+func MapString[T any](s string, f func(byte) T) []T {
+	out := make([]T, len(s))
+	for i := range s {
+		out[i] = f(s[i])
+	}
+
+	return out
+}
+
 func MapEnumerated[T, U any](s []T, f func(int, T) U) []U {
 	us := make([]U, len(s))
 	for i := range s {

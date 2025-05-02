@@ -273,7 +273,7 @@ func Text(name string, keys string) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 0,
-		Refs:  Map(strings.Split(keys, ""), func(x string) ref.T { return Kp(From(x[0])) }),
+		Refs:  MapString(keys, func(b byte) ref.T { return Kp(From(b)) }),
 	})
 
 	return ref0(name)

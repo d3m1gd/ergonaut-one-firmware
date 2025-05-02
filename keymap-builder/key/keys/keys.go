@@ -14,7 +14,7 @@ func From(b byte) key.T {
 	}
 
 	if b >= 'a' && b <= 'z' {
-		return key.T(b)
+		return key.T(b - 'a' + 'A')
 	}
 
 	k, ok := map[byte]key.T{
