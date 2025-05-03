@@ -12,6 +12,11 @@ import (
 	"keyboard/rowcol"
 )
 
+const (
+	comboBothSidesTimeout = 70
+	comboBothSidesIdle    = 100
+)
+
 var (
 	BASE   = layer.New("BASE", InitWith(Trans))
 	MOVER  = layer.New("MOVER", InitWith(Trans))
@@ -150,10 +155,11 @@ func init() {
 	})
 
 	combo.Add(combo.T{
-		Name:   "System",
-		Refs:   []ref.T{Sll(SYS)},
-		Keys:   []rowcol.T{L15, L16},
-		IdleMs: 500,
+		Name:     "System",
+		Refs:     []ref.T{Sll(SYS)},
+		Keys:     []rowcol.T{L15, L16},
+		IdleMs:   500,
+		TimoutMs: 100,
 	})
 
 	combo.Add(combo.T{
@@ -186,48 +192,55 @@ func init() {
 		Name:     "Curlies",
 		Refs:     []ref.T{Curlies(PARENS)},
 		Keys:     []rowcol.T{L25, R22},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
 		Name:     "Parens",
 		Refs:     []ref.T{Parens(PARENS)},
 		Keys:     []rowcol.T{L24, R23},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
 		Name:     "Brackets",
 		Refs:     []ref.T{Brackets(PARENS)},
 		Keys:     []rowcol.T{L23, R24},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
 		Name:     "DoubleQuotes",
 		Refs:     []ref.T{DoubleQuotes(PARENS)},
 		Keys:     []rowcol.T{L15, R12},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
 		Name:     "SingleQuotes",
 		Refs:     []ref.T{SingleQuotes(PARENS)},
 		Keys:     []rowcol.T{L14, R13},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
 		Name:     "BackQuotes",
 		Refs:     []ref.T{BackQuotes(PARENS)},
 		Keys:     []rowcol.T{L13, R14},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
 		Name:     "CodeQuotes",
 		Refs:     []ref.T{Text("CodeBlock", CursorAt("```%```", "%"))},
 		Keys:     []rowcol.T{L16, R11},
-		TimoutMs: 80,
+		TimoutMs: comboBothSidesTimeout,
+		IdleMs:   comboBothSidesIdle,
 	})
 }
