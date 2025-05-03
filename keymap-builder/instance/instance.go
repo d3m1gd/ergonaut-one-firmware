@@ -83,6 +83,22 @@ func Rmt(mod, tap key.T) ref.T {
 	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod, tap)
 }
 
+func Sll(l layer.T) ref.T {
+	name := "sll"
+	behavior.Add(behavior.T{
+		Name:  name,
+		Label: "StickyLayerLong",
+		Cells: behavior.TypeStickyKey.Cells,
+		Type:  behavior.TypeStickyKey.Name,
+		Refs:  []ref.T{ref0("mo")},
+		Props: behavior.Props{
+			"release-after-ms": 2000,
+			"quick-release":    true,
+		},
+	})
+
+	return ref.Filled(name, behavior.TypeStickyKey.Cells, l)
+}
 func KpKp(a, b key.T) ref.T {
 	name := "kpkp"
 	tnr := TapNoRepeat(a).Strip() // instantiate macro

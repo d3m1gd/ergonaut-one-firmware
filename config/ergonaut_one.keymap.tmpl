@@ -17,10 +17,14 @@
     flavor = "tap-preferred";
 };
 
-&caps_word { continue-list = <UNDERSCORE BACKSPACE DELETE LEFT_ARROW RIGHT_ARROW UP_ARROW DOWN_ARROW PAGE_UP PAGE_DOWN>; };
+&caps_word {
+    continue-list = <UNDER BSPC DEL LEFT RIGHT UP DOWN PG_UP PG_DN>;
+};
 
 / {
-    conditional_layers { compatible = "zmk,conditional-layers"; };
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+    };
 
     behaviors {
 {{- range .Behaviors }}
@@ -33,14 +37,6 @@
             {{- end }}{{/* range .Properties */}}
         };
 {{ end }}{{/* range .Behaviors */}}
-
-        sll: sll {
-            compatible = "zmk,behavior-sticky-key";
-            bindings = <&mo>;
-            #binding-cells = <1>;
-            release-after-ms = <2000>;
-            quick-release;
-        };
     };
 
     macros {

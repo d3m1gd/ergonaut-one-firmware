@@ -151,7 +151,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "System",
-		Refs:   []ref.T{ref.Ref1("sll", SYS)}, // todo
+		Refs:   []ref.T{Sll(SYS)},
 		Keys:   []rowcol.T{L15, L16},
 		IdleMs: 500,
 	})
