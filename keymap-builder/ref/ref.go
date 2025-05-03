@@ -14,6 +14,10 @@ type Ref struct {
 	Fields []any
 }
 
+func (x Ref) Strip() Ref {
+	return Ref{Name: x.Name}
+}
+
 func (x Ref) String() string {
 	if len(x.Fields) == 0 {
 		return x.Name

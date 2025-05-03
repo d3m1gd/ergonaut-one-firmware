@@ -85,13 +85,13 @@ func Rmt(mod, tap key.T) ref.T {
 
 func KpKp(a, b key.T) ref.T {
 	name := "kpkp"
-	_ = TapNoRepeat(a) // instantiate macro
+	tnr := TapNoRepeat(a).Strip() // instantiate macro
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "KeyPressKepPress",
 		Cells: behavior.TypeHoldTap.Cells,
 		Type:  behavior.TypeHoldTap.Name,
-		Refs:  []ref.T{ref0("TapNoRepeat"), ref0("kp")},
+		Refs:  []ref.T{tnr, ref0("kp")},
 		Props: behavior.Props{
 			"flavor":          "tap-preferred",
 			"tapping-term-ms": 200,
