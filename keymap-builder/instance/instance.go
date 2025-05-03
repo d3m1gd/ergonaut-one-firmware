@@ -9,6 +9,7 @@ import (
 	"keyboard/key"
 	. "keyboard/key/keys"
 	"keyboard/layer"
+	. "keyboard/layout"
 	"keyboard/macro"
 	"keyboard/ref"
 	"keyboard/rowcol"
@@ -63,7 +64,23 @@ func MKp(tap key.T) ref.T {
 }
 
 func Rmt(mod, tap key.T) ref.T {
-	return ref2("rmt", mod, tap)
+	name := "rmt"
+	behavior.Add(behavior.T{
+		Name:  name,
+		Label: "RightModTap",
+		Cells: behavior.TypeHoldTap.Cells,
+		Type:  behavior.TypeHoldTap.Name,
+		Refs:  []ref.T{ref0("kp"), ref0("kp")},
+		Props: behavior.Props{
+			"hold-trigger-key-positions": Map(LLLL, rowcol.ToSerial),
+			"hold-trigger-on-release":    true,
+			"flavor":                     "tap-preferred",
+			"tapping-term-ms":            250,
+			"quick-tap-ms":               200,
+		},
+	})
+
+	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod, tap)
 }
 
 func KpKp(a, b key.T) ref.T {
@@ -126,7 +143,7 @@ func MoX(mo layer.T, x ref.T) ref.T {
 	name := "mo" + x.Name
 	behavior.Add(behavior.T{
 		Name:  name,
-		Label: fmt.Sprintf("Moment%s%s", mo, x.String()),
+		Label: fmt.Sprintf("Mom%s", x.Show()),
 		Type:  behavior.TypeHoldTap.Name,
 		Cells: behavior.TypeHoldTap.Cells,
 		Refs:  refs,
@@ -159,7 +176,7 @@ func ModX(mod key.T, x ref.T) ref.T {
 
 func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 	refs := []ref.T{a, b}
-	name := "mm" + a.Show() + b.Show()
+	name := "MM" + a.Show() + b.Show()
 	props := behavior.Props{
 		"mods": mods,
 	}

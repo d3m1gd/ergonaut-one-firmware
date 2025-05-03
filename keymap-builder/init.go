@@ -7,6 +7,7 @@ import (
 	"keyboard/key"
 	. "keyboard/key/keys"
 	"keyboard/layer"
+	. "keyboard/layout"
 	"keyboard/ref"
 	"keyboard/rowcol"
 )
@@ -121,19 +122,19 @@ func init() {
 	})
 
 	SYS.Extend(layer.T{
-		L11: ref0("bootloader"),     // tab
-		L15: ref0("sys_reset"),      // r
-		R12: ref1("out", "OUT_USB"), // u
-		L35: ref1("out", "OUT_USB"), // v - left only backup
-		L36: ref1("out", "OUT_BLE"), // b
-		L25: ref2("bt", "BT_SEL", "0"),
-		L24: ref2("bt", "BT_SEL", "1"),
-		L23: ref2("bt", "BT_SEL", "2"),
-		L22: ref2("bt", "BT_SEL", "3"),
-		L21: ref2("bt", "BT_SEL", "4"),
-		L34: ref1("bt", "BT_CLR"),     // c
-		L33: ref1("bt", "BT_CLR_ALL"), // x
-		R31: ref1("bt", "BT_CLR_ALL"), // n - nuke
+		L11: ref.Ref0("bootloader"),     // tab
+		L15: ref.Ref0("sys_reset"),      // r
+		R12: ref.Ref1("out", "OUT_USB"), // u
+		L35: ref.Ref1("out", "OUT_USB"), // v - left only backup
+		L36: ref.Ref1("out", "OUT_BLE"), // b
+		L25: ref.Ref2("bt", "BT_SEL", "0"),
+		L24: ref.Ref2("bt", "BT_SEL", "1"),
+		L23: ref.Ref2("bt", "BT_SEL", "2"),
+		L22: ref.Ref2("bt", "BT_SEL", "3"),
+		L21: ref.Ref2("bt", "BT_SEL", "4"),
+		L34: ref.Ref1("bt", "BT_CLR"),     // c
+		L33: ref.Ref1("bt", "BT_CLR_ALL"), // x
+		R31: ref.Ref1("bt", "BT_CLR_ALL"), // n - nuke
 	})
 
 	PARENS.Fill(InitToLevelTrans(BASE))
@@ -150,7 +151,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "System",
-		Refs:   []ref.T{ref1("sll", SYS)}, // todo
+		Refs:   []ref.T{ref.Ref1("sll", SYS)}, // todo
 		Keys:   []rowcol.T{L15, L16},
 		IdleMs: 500,
 	})

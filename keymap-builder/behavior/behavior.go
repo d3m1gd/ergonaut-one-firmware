@@ -21,9 +21,11 @@ type Type struct {
 
 var behaviors []Behavior
 
-var TypeHoldTap = Type{"behavior-hold-tap", 2}
-var TypeStickyKey = Type{"behavior-sticky-key", 1}
-var TypeModMorph = Type{"behavior-mod-morph", 0}
+var (
+	TypeHoldTap   = Type{"behavior-hold-tap", 2}
+	TypeStickyKey = Type{"behavior-sticky-key", 1}
+	TypeModMorph  = Type{"behavior-mod-morph", 0}
+)
 
 type Props map[string]any
 
@@ -33,6 +35,14 @@ func (p Props) Equal(other Props) bool {
 	}
 
 	for k, v := range p {
+		switch vs := v.(type) {
+		case []int:
+			switch os := other[k].(type) {
+			case []int:
+				return slices.Equal(vs, os)
+			}
+		}
+
 		if v != other[k] {
 			return false
 		}
@@ -52,6 +62,14 @@ func (x Prop) Compile() string {
 		return fmt.Sprintf("%s = <%d>", x.Name, v)
 	case string:
 		return fmt.Sprintf(`%s = "%s"`, x.Name, v)
+	case bool:
+		if v {
+			return fmt.Sprintf(`%s`, x.Name)
+		} else {
+			return fmt.Sprintf(`/delete-property/ %s`, x.Name)
+		}
+	case []int:
+		return fmt.Sprintf(`%s = <%s>`, x.Name, strings.Join(Map(v, ToString), " "))
 	case []key.Mod:
 		return fmt.Sprintf(`%s = <(%s)>`, x.Name, strings.Join(Map(v, AsString), "|"))
 	}

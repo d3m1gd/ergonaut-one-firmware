@@ -83,7 +83,7 @@ func (rc RowCol) Offset() int {
 }
 
 func ToSerial(rc RowCol) int {
-	return rc.Offset() + 12*(rc.Row-1) + rc.Col - 1
+	return rc.Serial()
 }
 
 func (rc RowCol) Serial() int {

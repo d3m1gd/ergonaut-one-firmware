@@ -47,12 +47,12 @@ func ToAny[T any](v T) any {
 	return v
 }
 
-func ToString(x any) string {
-	if s, ok := x.(string); ok {
-		return s
-	}
-
-	return fmt.Sprintf("%s", x)
+func ToString[T any](x T) string {
+	// if s, ok := any(x).(string); ok {
+	// 	return s
+	// }
+	//
+	return fmt.Sprintf("%v", any(x))
 }
 
 func AsString[T ~string](x T) string {
