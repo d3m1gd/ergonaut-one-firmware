@@ -2,7 +2,6 @@ package macro
 
 import (
 	"cmp"
-	"fmt"
 	"slices"
 	"strings"
 
@@ -13,11 +12,6 @@ import (
 type T = Macro
 
 var macros []Macro
-
-var Press = ref.Ref0("macro_press")
-var Release = ref.Ref0("macro_release")
-var Pause = ref.Ref0("macro_pause_for_release")
-var Wait = ref.Ref0("macro_pause_for_release")
 
 type Macro struct {
 	Name  string
@@ -57,29 +51,8 @@ func Add(macro Macro) {
 	macros = append(macros, macro)
 }
 
-var Param11 = macroParamBuilder(1, 1)
-var Param12 = macroParamBuilder(1, 2)
-var Param21 = macroParamBuilder(2, 1)
-var Param22 = macroParamBuilder(2, 2)
-
-func macroParamBuilder(a, b int) ref.T {
-	return ref.Ref0(fmt.Sprintf("macro_param_%dto%d", a, b))
-}
-
 func Placeholder(r ref.T) ref.T {
 	return ref.RefN(r.Name, Map(r.Args(), func(string) any { return "MACRO_PLACEHOLDER" }))
-}
-
-func MapParams(n int) []ref.T {
-	switch n {
-	case 0:
-		return []ref.T{}
-	case 1:
-		return []ref.T{Param11}
-	case 2:
-		return []ref.T{Param11, Param22}
-	}
-	panic(fmt.Sprintf("bad n: %d", n))
 }
 
 func Render() []Macro {

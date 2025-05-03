@@ -15,13 +15,28 @@ import (
 	. "keyboard/util"
 )
 
-var ref0 = ref.Ref0
-var ref1 = ref.Ref1
-var ref2 = ref.Ref2
+var (
+	ref0 = ref.Ref0
+	ref1 = ref.Ref1
+	ref2 = ref.Ref2
 
-var Trans = ref0("trans")
-var None = ref0("none")
-var CapsWord = ref0("caps_word")
+	Trans    = ref0("trans")
+	None     = ref0("none")
+	CapsWord = ref0("caps_word")
+	Press    = ref0("macro_press")
+	Release  = ref0("macro_release")
+	Pause    = ref0("macro_pause_for_release")
+	Wait     = ref0("macro_pause_for_release")
+
+	Param11 = macroParamBuilder(1, 1)
+	Param12 = macroParamBuilder(1, 2)
+	Param21 = macroParamBuilder(2, 1)
+	Param22 = macroParamBuilder(2, 2)
+)
+
+func macroParamBuilder(a, b int) ref.T {
+	return ref.Ref0(fmt.Sprintf("macro_param_%dto%d", a, b))
+}
 
 func Lt(l layer.T, tap key.T) ref.T {
 	return ref2("lt", l.Name(), tap)
@@ -164,15 +179,27 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 	return ref.Filled(name, behavior.TypeModMorph.Cells)
 }
 
+func macroParams(n int) []ref.T {
+	switch n {
+	case 0:
+		return []ref.T{}
+	case 1:
+		return []ref.T{Param11}
+	case 2:
+		return []ref.T{Param11, Param22}
+	}
+	panic(fmt.Sprintf("bad n: %d", n))
+}
+
 func Wrap(r ref.T) ref.T {
 	name := fmt.Sprintf("W%s", r.Name)
-	params := macro.MapParams(len(r.Args()))
+	params := macroParams(len(r.Args()))
 	refs := []ref.T{}
-	refs = append(refs, macro.Press)
+	refs = append(refs, Press)
 	refs = append(refs, params...)
 	refs = append(refs, macro.Placeholder(r))
-	refs = append(refs, macro.Pause)
-	refs = append(refs, macro.Release)
+	refs = append(refs, Pause)
+	refs = append(refs, Release)
 	refs = append(refs, params...)
 	refs = append(refs, macro.Placeholder(r))
 	macro.Add(macro.T{
@@ -197,37 +224,37 @@ func BackspaceDelete() ref.T {
 	return ref0(name)
 }
 
-func Parens() ref.T {
-	return OpenCloseMacro("parens", LPAR, RPAR)
+func Parens(l layer.T) ref.T {
+	return OpenCloseMacro("parens", LPAR, RPAR, l)
 }
 
-func Brackets() ref.T {
-	return OpenCloseMacro("brackets", LBKT, RBKT)
+func Brackets(l layer.T) ref.T {
+	return OpenCloseMacro("brackets", LBKT, RBKT, l)
 }
 
-func Curlies() ref.T {
-	return OpenCloseMacro("curlies", LBRC, RBRC)
+func Curlies(l layer.T) ref.T {
+	return OpenCloseMacro("curlies", LBRC, RBRC, l)
 }
 
-func DoubleQuotes() ref.T {
-	return OpenCloseMacro("dquotes", DQT, DQT)
+func DoubleQuotes(l layer.T) ref.T {
+	return OpenCloseMacro("dquotes", DQT, DQT, l)
 }
 
-func SingleQuotes() ref.T {
-	return OpenCloseMacro("squotes", SQT, SQT)
+func SingleQuotes(l layer.T) ref.T {
+	return OpenCloseMacro("squotes", SQT, SQT, l)
 }
 
-func BackQuotes() ref.T {
-	return OpenCloseMacro("bquotes", GRAVE, GRAVE)
+func BackQuotes(l layer.T) ref.T {
+	return OpenCloseMacro("bquotes", GRAVE, GRAVE, l)
 }
 
-func OpenCloseMacro(name string, left, right key.T) ref.T {
+func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
 	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose_%s", name),
 		Cells: 0,
-		Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT)},
-		// Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT), To(PARENS)}, // todo
+		// Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT)},
+		Refs: []ref.T{Kp(left), Kp(right), Kp(LEFT), To(l)}, // todo
 	})
 
 	return ref0(name)
@@ -239,7 +266,7 @@ func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
 		Name:  name,
 		Label: fmt.Sprintf("%s_Trans_%s", r.Name, l),
 		Cells: 1,
-		Refs:  []ref.T{macro.Param11, macro.Placeholder(r), To(l), l[rc]},
+		Refs:  []ref.T{Param11, macro.Placeholder(r), To(l), l[rc]},
 	})
 
 	return ref.RefN(name, Map(r.Args(), ToAny))
@@ -251,7 +278,7 @@ func XThenLayer(r ref.T, l layer.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{macro.Param11, macro.Placeholder(r), To(l)},
+		Refs:  []ref.T{Param11, macro.Placeholder(r), To(l)},
 	})
 
 	return ref.RefN(name, Map(r.Args(), ToAny))
@@ -263,7 +290,7 @@ func TapNoRepeat(k key.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{macro.Param11, macro.Placeholder(Kp(k)), macro.Pause},
+		Refs:  []ref.T{Param11, macro.Placeholder(Kp(k)), Pause},
 	})
 
 	return ref1(name, Kp(k))
@@ -280,7 +307,7 @@ func InitToLevelTrans(l layer.T) func(layer.T) {
 			Name:  name,
 			Label: fmt.Sprintf("To%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{To(l), macro.Press, l[rc], macro.Pause, macro.Release, l[rc]},
+			Refs:  []ref.T{Press, l[rc], Pause, Release, l[rc], To(l)},
 		})
 		return ref0(name)
 	})

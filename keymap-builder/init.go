@@ -71,8 +71,8 @@ func init() {
 
 	MOVER.Fill(InitToLevelTrans(BASE))
 	MOVER.Extend(layer.T{
-		L43: To(BASE), // row 4
-		R21: Kp(LEFT), // row 2
+		L43: To(BASE),
+		R21: Kp(LEFT),
 		R22: Rmt(LALT, DOWN),
 		R23: Rmt(LGUI, UP),
 		R24: Rmt(LSHIFT, RIGHT),
@@ -84,7 +84,7 @@ func init() {
 		L21: Kp(DELETE),      // row 2
 		L31: Mt(LCTRL, PLUS), // row 3
 		L35: Kp(LS(INSERT)),
-		L42: Kp(UNDERSCORE),
+		L42: Kp(UNDER),
 		R11: Kp(N0), // row 1
 		R12: Kp(N1),
 		R13: Kp(N2),
@@ -183,42 +183,42 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:     "Curlies",
-		Refs:     []ref.T{Curlies()},
+		Refs:     []ref.T{Curlies(PARENS)},
 		Keys:     []rowcol.T{L25, R22},
 		TimoutMs: 80,
 	})
 
 	combo.Add(combo.T{
 		Name:     "Parens",
-		Refs:     []ref.T{Parens()},
+		Refs:     []ref.T{Parens(PARENS)},
 		Keys:     []rowcol.T{L24, R23},
 		TimoutMs: 80,
 	})
 
 	combo.Add(combo.T{
 		Name:     "Brackets",
-		Refs:     []ref.T{Brackets()},
+		Refs:     []ref.T{Brackets(PARENS)},
 		Keys:     []rowcol.T{L23, R24},
 		TimoutMs: 80,
 	})
 
 	combo.Add(combo.T{
 		Name:     "DoubleQuotes",
-		Refs:     []ref.T{DoubleQuotes()},
+		Refs:     []ref.T{DoubleQuotes(PARENS)},
 		Keys:     []rowcol.T{L15, R12},
 		TimoutMs: 80,
 	})
 
 	combo.Add(combo.T{
 		Name:     "SingleQuotes",
-		Refs:     []ref.T{SingleQuotes()},
+		Refs:     []ref.T{SingleQuotes(PARENS)},
 		Keys:     []rowcol.T{L14, R13},
 		TimoutMs: 80,
 	})
 
 	combo.Add(combo.T{
 		Name:     "BackQuotes",
-		Refs:     []ref.T{BackQuotes()},
+		Refs:     []ref.T{BackQuotes(PARENS)},
 		Keys:     []rowcol.T{L13, R14},
 		TimoutMs: 80,
 	})
