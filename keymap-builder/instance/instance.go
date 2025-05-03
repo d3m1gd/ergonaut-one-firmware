@@ -24,10 +24,10 @@ var (
 	Trans    = ref0("trans")
 	None     = ref0("none")
 	CapsWord = ref0("caps_word")
+	Tap      = ref0("macro_tap")
 	Press    = ref0("macro_press")
 	Release  = ref0("macro_release")
 	Pause    = ref0("macro_pause_for_release")
-	Wait     = ref0("macro_pause_for_release")
 
 	Param11 = macroParamBuilder(1, 1)
 	Param12 = macroParamBuilder(1, 2)
@@ -340,7 +340,7 @@ func InitToLevelTrans(l layer.T) func(layer.T) {
 			Name:  name,
 			Label: fmt.Sprintf("To%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{Press, l[rc], Pause, Release, l[rc], To(l)},
+			Refs:  []ref.T{Press, l[rc], Pause, Release, l[rc], Tap, To(l)},
 		})
 		return ref0(name)
 	})
