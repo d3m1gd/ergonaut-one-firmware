@@ -103,7 +103,7 @@ func KpKp(a, b key.T) ref.T {
 }
 
 func XKp(r ref.T, k key.T) ref.T {
-	name := r.Show() + "kp"
+	name := r.Show() + "Kp"
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: r.Show() + "KepPress",
