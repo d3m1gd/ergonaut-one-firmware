@@ -37,6 +37,7 @@
     };
 
     behaviors {
+
         MMkpDQTkpGRAVE: ModMorphkpDQTkpGRAVE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -127,7 +128,6 @@
             quick-release;
             release-after-ms = <2000>;
         };
-
     };
 
     macros {

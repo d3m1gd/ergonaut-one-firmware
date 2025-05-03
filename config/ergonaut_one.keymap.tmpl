@@ -27,16 +27,17 @@
     };
 
     behaviors {
-{{- range .Behaviors }}
+        {{- range .Behaviors }}
+
         {{.Name}}: {{.Label}} {
             compatible = "zmk,{{.Type}}";
             #binding-cells = <{{.Cells}}>;
             bindings = <{{.Bindings}}>;
             {{- range .Properties }}
-            {{.}};
+            {{ . }};
             {{- end }}{{/* range .Properties */}}
         };
-{{ end }}{{/* range .Behaviors */}}
+        {{- end -}}{{/* range .Behaviors */}}
     };
 
     macros {
@@ -55,13 +56,18 @@
         {{- range .Combos }}
 
         {{.Name}} {
-            bindings = <{{.RenderBindings}}>;{{ if .Layers }}
-            layers = <{{.RenderLayers}}>;{{ end }}
-            key-positions = <{{.RenderKeys}}>;{{ if .TimoutMs }}
+            bindings = <{{.RenderBindings}}>;
+            key-positions = <{{.RenderKeys}}>;
+            {{- if .Layers }}
+            layers = <{{.RenderLayers}}>;
+            {{- end }}
+            {{- if .TimoutMs }}
             timeout-ms = <{{.TimoutMs}}>;
-            {{- end}}{{ if .IdleMs }}
+            {{- end }}
+            {{- if .IdleMs }}
             require-prior-idle-ms = <{{.IdleMs}}>;
-            {{- end}}{{ if .SlowRelease }}
+            {{- end}}
+            {{- if .SlowRelease }}
             slow-release = {{.SlowRelease}};
             {{- end}}
         };
