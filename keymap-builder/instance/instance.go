@@ -94,7 +94,7 @@ func HoldTap(hold, tap ref.T) ref.T {
 		Refs:  []ref.T{hold, tap},
 		Props: behavior.Props{
 			"flavor":          "tap-preferred",
-			"tapping-term-ms": 100,
+			"tapping-term-ms": 200,
 			"quick-tap-ms":    200,
 		},
 	})
