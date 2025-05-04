@@ -191,6 +191,12 @@ func init() {
 	})
 
 	combo.Add(combo.T{
+		Name: "RightHomeMods",
+		Refs: []ref.T{Kp(LS(LA(LWIN)))},
+		Keys: []rowcol.T{R22, R23, R24},
+	})
+
+	combo.Add(combo.T{
 		Name:     "MiddleMouse",
 		Refs:     []ref.T{MKp(MCLK)},
 		Keys:     []rowcol.T{L34, L35},
