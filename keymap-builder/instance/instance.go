@@ -65,6 +65,7 @@ func MKp(tap key.T) ref.T {
 
 func Rmt(mod, tap key.T) ref.T {
 	name := "rmt"
+	keys := Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "RightModTap",
@@ -72,7 +73,7 @@ func Rmt(mod, tap key.T) ref.T {
 		Type:  behavior.TypeHoldTap.Name,
 		Refs:  []ref.T{ref0("kp"), ref0("kp")},
 		Props: behavior.Props{
-			"hold-trigger-key-positions": Map(LLLL, rowcol.ToSerial),
+			"hold-trigger-key-positions": keys,
 			"hold-trigger-on-release":    true,
 			"flavor":                     "tap-preferred",
 			"tapping-term-ms":            250,

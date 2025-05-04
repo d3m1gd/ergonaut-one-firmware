@@ -59,9 +59,12 @@ func init() {
 		R15: Kp(P),
 		R16: Kp(LBKT),
 		R21: Kp(H), // row 2
-		R22: Rmt(LALT, J),
-		R23: Rmt(LGUI, K),
-		R24: Rmt(LSHIFT, L),
+		// R22: Rmt(LALT, J),
+		// R23: Rmt(LGUI, K),
+		// R24: Rmt(LSHIFT, L),
+		R22: Mt(LALT, J),
+		R23: Mt(LGUI, K),
+		R24: Mt(LSHIFT, L),
 		R25: KpKp(RG(SEMI), SEMI),
 		R26: KpKp(RG(SQT), SQT),
 		R31: Kp(N), // row 3
@@ -79,9 +82,12 @@ func init() {
 	MOVER.Extend(layer.T{
 		L43: To(BASE),
 		R21: Kp(LEFT),
-		R22: Rmt(LALT, DOWN),
-		R23: Rmt(LGUI, UP),
-		R24: Rmt(LSHIFT, RIGHT),
+		// R22: Rmt(LALT, DOWN),
+		// R23: Rmt(LGUI, UP),
+		// R24: Rmt(LSHIFT, RIGHT),
+		R22: Mt(LALT, DOWN),
+		R23: Mt(LGUI, UP),
+		R24: Mt(LSHIFT, RIGHT),
 	})
 
 	NUMER.Extend(layer.T{
@@ -118,10 +124,14 @@ func init() {
 		R15: Kp(PSCRN), // row 1
 		R16: Kp(LC(RBKT)),
 		R21: Kp(HOME), // row 2
-		R22: Rmt(LALT, PG_DN),
-		R23: Rmt(LGUI, PG_UP),
-		R24: Rmt(LSHIFT, END),
-		R41: Rmt(LCTRL, F10), // row 4
+		// R22: Rmt(LALT, PG_DN),
+		// R23: Rmt(LGUI, PG_UP),
+		// R24: Rmt(LSHIFT, END),
+		// R41: Rmt(LCTRL, F10), // row 4
+		R22: Mt(LALT, PG_DN),
+		R23: Mt(LGUI, PG_UP),
+		R24: Mt(LSHIFT, END),
+		R41: Mt(LCTRL, F10), // row 4
 		R42: Kp(F11),
 		R43: Kp(F12),
 	})
