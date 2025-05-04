@@ -84,6 +84,24 @@ func Rmt(mod, tap key.T) ref.T {
 	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod, tap)
 }
 
+func HoldTap(hold, tap ref.T) ref.T {
+	name := "ht" + hold.Show() + tap.Show()
+	behavior.Add(behavior.T{
+		Name:  name,
+		Label: "HoldTap" + hold.Show() + tap.Show(),
+		Cells: behavior.TypeHoldTap.Cells,
+		Type:  behavior.TypeHoldTap.Name,
+		Refs:  []ref.T{hold, tap},
+		Props: behavior.Props{
+			"flavor":          "tap-preferred",
+			"tapping-term-ms": 100,
+			"quick-tap-ms":    200,
+		},
+	})
+
+	return ref.Filled(name, behavior.TypeHoldTap.Cells, ZERO, ZERO)
+}
+
 func Sll(l layer.T) ref.T {
 	name := "sll"
 	behavior.Add(behavior.T{

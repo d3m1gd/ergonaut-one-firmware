@@ -246,17 +246,17 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:     "BackQuotes",
-		Refs:     []ref.T{BackQuotes(PARENS)},
+		Refs:     []ref.T{HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(PARENS))},
 		Keys:     []rowcol.T{L13, R14},
 		TimoutMs: comboBothSidesTimeout,
 		IdleMs:   comboBothSidesIdle,
 	})
 
-	combo.Add(combo.T{
-		Name:     "CodeQuotes",
-		Refs:     []ref.T{Text("CodeBlock", CursorAt("```%```", "%"))},
-		Keys:     []rowcol.T{L16, R11},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:     "CodeQuotes",
+	// 	Refs:     []ref.T{},
+	// 	Keys:     []rowcol.T{L16, R11},
+	// 	TimoutMs: comboBothSidesTimeout,
+	// 	IdleMs:   comboBothSidesIdle,
+	// })
 }
