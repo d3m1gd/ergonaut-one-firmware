@@ -326,14 +326,27 @@ func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
 
 func XThenLayer(r ref.T, l layer.T) ref.T {
 	name := fmt.Sprintf("%s%s", r.Name, l)
+	params := macroParams(len(r.Args()))
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
-		Cells: 1,
-		Refs:  []ref.T{Param11, macro.Placeholder(r), To(l)},
+		Cells: len(r.Args()),
+		Refs:  append(params, macro.Placeholder(r), To(l)),
 	})
 
 	return ref.RefN(name, Map(r.Args(), ToAny))
+}
+
+func ShiftEnter() ref.T {
+	name := "ShiftEnter"
+	macro.Add(macro.T{
+		Name:  name,
+		Label: name,
+		Cells: 0,
+		Refs:  []ref.T{Kp(RET), Kp(UP), Kp(END), Kp(RET)},
+	})
+
+	return ref.Ref0(name)
 }
 
 func TapNoRepeat(k key.T) ref.T {

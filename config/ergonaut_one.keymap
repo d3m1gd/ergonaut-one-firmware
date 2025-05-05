@@ -142,6 +142,18 @@
             bindings = <&kp G &kp O &kp SPACE &kp I &kp F &kp E &kp LEFT &kp N &kp LEFT &kp I &kp LEFT &kp F &kp LEFT>;
         };
 
+        ShiftEnter: ShiftEnter {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RET &kp UP &kp END &kp RET>;
+        };
+
+        ShiftEnterBASE: ShiftEnterBASE {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&ShiftEnter &to BASE>;
+        };
+
         TapNoRepeat: TapNoRepeat {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -190,10 +202,10 @@
             bindings = <&kp DQT &kp DQT &kp LEFT &to PARENS>;
         };
 
-        kpBASE: kpBASE {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &to BASE>;
+        mtBASE: mtBASE {
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
+            bindings = <&macro_param_1to1 &macro_param_2to2 &mt MACRO_PLACEHOLDER MACRO_PLACEHOLDER &to BASE>;
         };
 
         parens: OpenClose_parens {
@@ -600,10 +612,10 @@
 
         PARENS {
             bindings = <
-&to0l11   &to0l12  &to0l13  &to0l14  &to0l15  &to0l16   &to0r11  &to0r12  &to0r13  &to0r14        &to0r15  &to0r16
-&bspcdel  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26   &to0r21  &to0r22  &to0r23  &kpBASE RIGHT  &to0r25  &to0r26
-&to0l31   &to0l32  &to0l33  &to0l34  &to0l35  &to0l36   &to0r31  &to0r32  &to0r33  &to0r34        &to0r35  &to0r36
-                            &to0l41  &to0l42  &to BASE  &to0r41  &to0r42  &to0r43
+&to0l11   &to0l12  &to0l13  &to0l14  &to0l15  &to0l16   &to0r11          &to0r12  &to0r13  &to0r14               &to0r15  &to0r16
+&bspcdel  &to0l22  &to0l23  &to0l24  &to0l25  &to0l26   &to0r21          &to0r22  &to0r23  &mtBASE LSHIFT RIGHT  &to0r25  &to0r26
+&to0l31   &to0l32  &to0l33  &to0l34  &to0l35  &to0l36   &to0r31          &to0r32  &to0r33  &to0r34               &to0r35  &to0r36
+                            &to0l41  &to0l42  &to BASE  &ShiftEnterBASE  &to0r42  &to0r43
             >;
         };
 
