@@ -326,7 +326,7 @@ func InitWith(b ref.T) func(layer.T) {
 	return layer.InitBy(func(rowcol.T) ref.T { return b })
 }
 
-func InitLevelOffTrans(l layer.T, base layer.T) func(layer.T) {
+func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
 		name := fmt.Sprintf("off%d%s", l.Index(), rc)
 		key := base[rc]

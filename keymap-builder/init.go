@@ -78,7 +78,7 @@ func init() {
 		R43: Wrap(MoTo(QUICK, CHAINS)),
 	})
 
-	MOVER.Fill(InitLevelOffTrans(MOVER, BASE))
+	MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
 		L43: To(BASE),
 		R21: Kp(LEFT),
@@ -152,10 +152,10 @@ func init() {
 		R31: ref.Ref1("bt", "BT_CLR_ALL"), // n - nuke
 	})
 
-	PARENS.Fill(InitLevelOffTrans(PARENS, BASE))
+	PARENS.Fill(InitOffTrans(PARENS, BASE))
 	PARENS.Extend(layer.T{
 		L43: To(BASE),
-		L21: BackspaceDelete(),
+		L21: OffX(PARENS, BackspaceDelete()),
 		R24: OffX(PARENS, Mt(LSHIFT, RIGHT)),
 		R41: OffX(PARENS, ShiftEnter()),
 		L42: OffX(PARENS, MoTo(NUMER, MOVER)), // recreate to prevent macro in macro hold
