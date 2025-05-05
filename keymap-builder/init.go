@@ -207,16 +207,16 @@ func init() {
 	})
 
 	combo.Add(combo.T{
-		Name:     "Curlies",
-		Refs:     []ref.T{Curlies(PARENS)},
+		Name:     "Parens",
+		Refs:     []ref.T{Parens(PARENS)},
 		Keys:     []rowcol.T{L25, R22},
 		TimoutMs: comboBothSidesTimeout,
 		IdleMs:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
-		Name:     "Parens",
-		Refs:     []ref.T{Parens(PARENS)},
+		Name:     "Curlies",
+		Refs:     []ref.T{Curlies(PARENS)},
 		Keys:     []rowcol.T{L24, R23},
 		TimoutMs: comboBothSidesTimeout,
 		IdleMs:   comboBothSidesIdle,
