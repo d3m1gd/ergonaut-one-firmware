@@ -66,7 +66,7 @@ func MKp(tap key.T) ref.T {
 func Rmt(mod, tap key.T) ref.T {
 	name := "rmt"
 	keys := Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{mod, tap}, behavior.T{
 		Name:  name,
 		Label: "RightModTap",
 		Type:  behavior.TypeHoldTap,
@@ -79,13 +79,11 @@ func Rmt(mod, tap key.T) ref.T {
 			"quick-tap-ms":               200,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod, tap)
 }
 
 func HoldTap(hold, tap ref.T) ref.T {
 	name := "ht" + hold.Show() + tap.Show()
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{ZERO, ZERO}, behavior.T{
 		Name:  name,
 		Label: "HoldTap" + hold.Show() + tap.Show(),
 		Type:  behavior.TypeHoldTap,
@@ -96,13 +94,11 @@ func HoldTap(hold, tap ref.T) ref.T {
 			"quick-tap-ms":    200,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, ZERO, ZERO)
 }
 
 func Sll(l layer.T) ref.T {
 	name := "sll"
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{l}, behavior.T{
 		Name:  name,
 		Label: "StickyLayerLong",
 		Type:  behavior.TypeStickyKey,
@@ -112,14 +108,12 @@ func Sll(l layer.T) ref.T {
 			"quick-release":    true,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeStickyKey.Cells, l)
 }
 
 func KpKp(a, b key.T) ref.T {
 	name := "kpkp"
 	tnr := TapNoRepeat(a).Strip() // instantiate macro
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{a, b}, behavior.T{
 		Name:  name,
 		Label: "KeyPressKepPress",
 		Type:  behavior.TypeHoldTap,
@@ -130,13 +124,11 @@ func KpKp(a, b key.T) ref.T {
 			"quick-tap-ms":    200,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, a, b)
 }
 
 func XKp(r ref.T, k key.T) ref.T {
 	name := r.Show() + "Kp"
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{ZERO, k}, behavior.T{
 		Name:  name,
 		Label: r.Show() + "KepPress",
 		Type:  behavior.TypeHoldTap,
@@ -147,14 +139,12 @@ func XKp(r ref.T, k key.T) ref.T {
 			"quick-tap-ms":    200,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, ZERO, k)
 }
 
 func MoTo(mo, to layer.T) ref.T {
 	refs := []ref.T{ref0("mo"), ref0("to")}
 	name := "moto"
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{mo, to}, behavior.T{
 		Name:  name,
 		Label: "MomentaryTo",
 		Type:  behavior.TypeHoldTap,
@@ -164,14 +154,12 @@ func MoTo(mo, to layer.T) ref.T {
 			"tapping-term-ms": 300,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, mo, to)
 }
 
 func MoX(mo layer.T, x ref.T) ref.T {
 	refs := []ref.T{ref0("mo"), x}
 	name := "mo" + x.Name
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{mo, ZERO}, behavior.T{
 		Name:  name,
 		Label: fmt.Sprintf("Mom%s", x.Show()),
 		Type:  behavior.TypeHoldTap,
@@ -181,13 +169,11 @@ func MoX(mo layer.T, x ref.T) ref.T {
 			"tapping-term-ms": 300,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, mo, ZERO)
 }
 
 func ModX(mod key.T, x ref.T) ref.T {
 	name := "m" + x.Show()
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{mod, ZERO}, behavior.T{
 		Name:  name,
 		Label: "Mod" + x.Show(),
 		Type:  behavior.TypeHoldTap,
@@ -198,8 +184,6 @@ func ModX(mod key.T, x ref.T) ref.T {
 			"quick-tap-ms":    200,
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeHoldTap.Cells, mod, ZERO)
 }
 
 func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
@@ -212,20 +196,18 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 		props["keep-mods"] = keep
 	}
 
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{}, behavior.T{
 		Name:  name,
 		Label: "ModMorph" + a.Show() + b.Show(),
 		Type:  behavior.TypeModMorph,
 		Refs:  refs,
 		Props: props,
 	})
-
-	return ref.Filled(name, behavior.TypeModMorph.Cells)
 }
 
 func LayerOff(l layer.T) ref.T {
 	name := "LayerOff"
-	behavior.Add(behavior.T{
+	return behavior.AddX([]any{l}, behavior.T{
 		Name:  name,
 		Label: name,
 		Type:  behavior.TypeToggleLayer,
@@ -234,8 +216,6 @@ func LayerOff(l layer.T) ref.T {
 			"toggle-mode":  "off",
 		},
 	})
-
-	return ref.Filled(name, behavior.TypeToggleLayer.Cells, l)
 }
 
 func macroParams(n int) []ref.T {

@@ -116,6 +116,11 @@ func Add(b Behavior) {
 	behaviors = append(behaviors, b)
 }
 
+func AddX(args []any, b Behavior) ref.T {
+	Add(b)
+	return ref.Filled(b.Name, b.Type.Cells, args...)
+}
+
 func Render() []Behavior {
 	slices.SortFunc(behaviors, func(a, b Behavior) int { return cmp.Compare(a.Name, b.Name) })
 	return behaviors
