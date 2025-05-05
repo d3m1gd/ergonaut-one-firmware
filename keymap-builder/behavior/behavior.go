@@ -22,9 +22,10 @@ type Type struct {
 var behaviors []Behavior
 
 var (
-	TypeHoldTap   = Type{"behavior-hold-tap", 2}
-	TypeStickyKey = Type{"behavior-sticky-key", 1}
-	TypeModMorph  = Type{"behavior-mod-morph", 0}
+	TypeHoldTap     = Type{"behavior-hold-tap", 2}
+	TypeStickyKey   = Type{"behavior-sticky-key", 1}
+	TypeModMorph    = Type{"behavior-mod-morph", 0}
+	TypeToggleLayer = Type{"behavior-toggle-layer", 1}
 )
 
 type Props map[string]any
@@ -79,8 +80,7 @@ func (x Prop) Compile() string {
 type Behavior struct {
 	Name  string
 	Label string
-	Cells int
-	Type  string
+	Type  Type
 	Refs  []ref.T
 	Props Props
 }

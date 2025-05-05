@@ -78,7 +78,7 @@ func init() {
 		R43: Wrap(MoTo(QUICK, CHAINS)),
 	})
 
-	MOVER.Fill(InitToLevelTrans(BASE))
+	MOVER.Fill(InitLevelOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
 		L43: To(BASE),
 		R21: Kp(LEFT),
@@ -152,7 +152,7 @@ func init() {
 		R31: ref.Ref1("bt", "BT_CLR_ALL"), // n - nuke
 	})
 
-	PARENS.Fill(InitToLevelTrans(BASE))
+	PARENS.Fill(InitLevelOffTrans(PARENS, BASE))
 	PARENS.Extend(layer.T{
 		L43: To(BASE),
 		L21: BackspaceDelete(),

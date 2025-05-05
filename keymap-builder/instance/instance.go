@@ -69,8 +69,7 @@ func Rmt(mod, tap key.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "RightModTap",
-		Cells: behavior.TypeHoldTap.Cells,
-		Type:  behavior.TypeHoldTap.Name,
+		Type:  behavior.TypeHoldTap,
 		Refs:  []ref.T{ref0("kp"), ref0("kp")},
 		Props: behavior.Props{
 			"hold-trigger-key-positions": keys,
@@ -89,8 +88,7 @@ func HoldTap(hold, tap ref.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "HoldTap" + hold.Show() + tap.Show(),
-		Cells: behavior.TypeHoldTap.Cells,
-		Type:  behavior.TypeHoldTap.Name,
+		Type:  behavior.TypeHoldTap,
 		Refs:  []ref.T{hold, tap},
 		Props: behavior.Props{
 			"flavor":          "tap-preferred",
@@ -107,8 +105,7 @@ func Sll(l layer.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "StickyLayerLong",
-		Cells: behavior.TypeStickyKey.Cells,
-		Type:  behavior.TypeStickyKey.Name,
+		Type:  behavior.TypeStickyKey,
 		Refs:  []ref.T{ref0("mo")},
 		Props: behavior.Props{
 			"release-after-ms": 2000,
@@ -118,14 +115,14 @@ func Sll(l layer.T) ref.T {
 
 	return ref.Filled(name, behavior.TypeStickyKey.Cells, l)
 }
+
 func KpKp(a, b key.T) ref.T {
 	name := "kpkp"
 	tnr := TapNoRepeat(a).Strip() // instantiate macro
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "KeyPressKepPress",
-		Cells: behavior.TypeHoldTap.Cells,
-		Type:  behavior.TypeHoldTap.Name,
+		Type:  behavior.TypeHoldTap,
 		Refs:  []ref.T{tnr, ref0("kp")},
 		Props: behavior.Props{
 			"flavor":          "tap-preferred",
@@ -142,8 +139,7 @@ func XKp(r ref.T, k key.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: r.Show() + "KepPress",
-		Cells: behavior.TypeHoldTap.Cells,
-		Type:  behavior.TypeHoldTap.Name,
+		Type:  behavior.TypeHoldTap,
 		Refs:  []ref.T{r, ref0("kp")},
 		Props: behavior.Props{
 			"flavor":          "tap-preferred",
@@ -161,8 +157,7 @@ func MoTo(mo, to layer.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "MomentaryTo",
-		Type:  behavior.TypeHoldTap.Name,
-		Cells: behavior.TypeHoldTap.Cells,
+		Type:  behavior.TypeHoldTap,
 		Refs:  refs,
 		Props: behavior.Props{
 			"flavor":          "balanced",
@@ -179,8 +174,7 @@ func MoX(mo layer.T, x ref.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: fmt.Sprintf("Mom%s", x.Show()),
-		Type:  behavior.TypeHoldTap.Name,
-		Cells: behavior.TypeHoldTap.Cells,
+		Type:  behavior.TypeHoldTap,
 		Refs:  refs,
 		Props: behavior.Props{
 			"flavor":          "balanced",
@@ -196,8 +190,7 @@ func ModX(mod key.T, x ref.T) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "Mod" + x.Show(),
-		Type:  behavior.TypeHoldTap.Name,
-		Cells: behavior.TypeHoldTap.Cells,
+		Type:  behavior.TypeHoldTap,
 		Refs:  []ref.T{ref0("kp"), x},
 		Props: behavior.Props{
 			"flavor":          "tap-preferred",
@@ -222,13 +215,27 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 	behavior.Add(behavior.T{
 		Name:  name,
 		Label: "ModMorph" + a.Show() + b.Show(),
-		Cells: behavior.TypeModMorph.Cells,
-		Type:  behavior.TypeModMorph.Name,
+		Type:  behavior.TypeModMorph,
 		Refs:  refs,
 		Props: props,
 	})
 
 	return ref.Filled(name, behavior.TypeModMorph.Cells)
+}
+
+func LayerOff(l layer.T) ref.T {
+	name := "LayerOff"
+	behavior.Add(behavior.T{
+		Name:  name,
+		Label: name,
+		Type:  behavior.TypeToggleLayer,
+		Props: behavior.Props{
+			"display-name": "Layer Off",
+			"toggle-mode":  "off",
+		},
+	})
+
+	return ref.Filled(name, behavior.TypeToggleLayer.Cells, l)
 }
 
 func macroParams(n int) []ref.T {
@@ -365,14 +372,14 @@ func InitWith(b ref.T) func(layer.T) {
 	return layer.InitBy(func(rowcol.T) ref.T { return b })
 }
 
-func InitToLevelTrans(l layer.T) func(layer.T) {
+func InitLevelOffTrans(l layer.T, base layer.T) func(layer.T) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
-		name := fmt.Sprintf("to%d%s", l.Index(), rc)
+		name := fmt.Sprintf("off%d%s", l.Index(), rc)
 		macro.Add(macro.T{
 			Name:  name,
-			Label: fmt.Sprintf("To%s%s", l.Name(), rc.Pretty()),
+			Label: fmt.Sprintf("Off%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{Press, l[rc], Pause, Release, l[rc], Tap, To(l)},
+			Refs:  []ref.T{LayerOff(l), Press, base[rc], Pause, Release, base[rc], Tap},
 		})
 		return ref0(name)
 	})

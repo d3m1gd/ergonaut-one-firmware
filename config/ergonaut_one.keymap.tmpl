@@ -30,9 +30,11 @@
         {{- range .Behaviors }}
 
         {{.Name}}: {{.Label}} {
-            compatible = "zmk,{{.Type}}";
-            #binding-cells = <{{.Cells}}>;
+            compatible = "zmk,{{.Type.Name}}";
+            #binding-cells = <{{.Type.Cells}}>;
+            {{- if gt (len .Bindings) 0 }}
             bindings = <{{.Bindings}}>;
+            {{- end }}{{/* if len .Properties */}}
             {{- range .Properties }}
             {{ . }};
             {{- end }}{{/* range .Properties */}}
