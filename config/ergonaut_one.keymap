@@ -218,505 +218,505 @@
         off1l11: OffMOVERL11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB>;
         };
 
         off1l12: OffMOVERL12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp Q &macro_pause_for_release &macro_release &kp Q>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp Q &macro_pause_for_release &macro_release &kp Q>;
         };
 
         off1l13: OffMOVERL13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp W &macro_pause_for_release &macro_release &kp W>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp W &macro_pause_for_release &macro_release &kp W>;
         };
 
         off1l14: OffMOVERL14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp E &macro_pause_for_release &macro_release &kp E>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp E &macro_pause_for_release &macro_release &kp E>;
         };
 
         off1l15: OffMOVERL15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp R &macro_pause_for_release &macro_release &kp R>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp R &macro_pause_for_release &macro_release &kp R>;
         };
 
         off1l16: OffMOVERL16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
         };
 
         off1l21: OffMOVERL21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE>;
         };
 
         off1l22: OffMOVERL22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp A &macro_pause_for_release &macro_release &kp A>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp A &macro_pause_for_release &macro_release &kp A>;
         };
 
         off1l23: OffMOVERL23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S>;
         };
 
         off1l24: OffMOVERL24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D>;
         };
 
         off1l25: OffMOVERL25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F>;
         };
 
         off1l26: OffMOVERL26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
         };
 
         off1l31: OffMOVERL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0>;
         };
 
         off1l32: OffMOVERL32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp Z &macro_pause_for_release &macro_release &kp Z>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp Z &macro_pause_for_release &macro_release &kp Z>;
         };
 
         off1l33: OffMOVERL33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp X &macro_pause_for_release &macro_release &kp X>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp X &macro_pause_for_release &macro_release &kp X>;
         };
 
         off1l34: OffMOVERL34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &XdgConfigKp 0 C &macro_pause_for_release &macro_release &XdgConfigKp 0 C>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &XdgConfigKp 0 C &macro_pause_for_release &macro_release &XdgConfigKp 0 C>;
         };
 
         off1l35: OffMOVERL35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp V &macro_pause_for_release &macro_release &kp V>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp V &macro_pause_for_release &macro_release &kp V>;
         };
 
         off1l36: OffMOVERL36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
         };
 
         off1l41: OffMOVERL41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
         };
 
         off1l42: OffMOVERL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &moMMtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDER NUMER 0>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &moMMtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDER NUMER 0>;
         };
 
         off1l43: OffMOVERL43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
         };
 
         off1r11: OffMOVERR11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
         };
 
         off1r12: OffMOVERR12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
         };
 
         off1r13: OffMOVERR13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
         };
 
         off1r14: OffMOVERR14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
         };
 
         off1r15: OffMOVERR15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
         };
 
         off1r16: OffMOVERR16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
         };
 
         off1r21: OffMOVERR21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
         };
 
         off1r22: OffMOVERR22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J>;
         };
 
         off1r23: OffMOVERR23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K>;
         };
 
         off1r24: OffMOVERR24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LSHIFT L &macro_pause_for_release &macro_release &mt LSHIFT L>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LSHIFT L &macro_pause_for_release &macro_release &mt LSHIFT L>;
         };
 
         off1r25: OffMOVERR25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
         };
 
         off1r26: OffMOVERR26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
         };
 
         off1r31: OffMOVERR31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp N &macro_pause_for_release &macro_release &kp N>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp N &macro_pause_for_release &macro_release &kp N>;
         };
 
         off1r32: OffMOVERR32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M>;
         };
 
         off1r33: OffMOVERR33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA>;
         };
 
         off1r34: OffMOVERR34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT>;
         };
 
         off1r35: OffMOVERR35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH>;
         };
 
         off1r36: OffMOVERR36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
         };
 
         off1r41: OffMOVERR41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN>;
         };
 
         off1r42: OffMOVERR42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE>;
         };
 
         off1r43: OffMOVERR43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff MOVER &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
+            bindings = <&LayerOff MOVER &kp K_CANCEL &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
         };
 
         off6l11: OffPARENSL11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB>;
         };
 
         off6l12: OffPARENSL12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp Q &macro_pause_for_release &macro_release &kp Q>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp Q &macro_pause_for_release &macro_release &kp Q>;
         };
 
         off6l13: OffPARENSL13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp W &macro_pause_for_release &macro_release &kp W>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp W &macro_pause_for_release &macro_release &kp W>;
         };
 
         off6l14: OffPARENSL14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp E &macro_pause_for_release &macro_release &kp E>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp E &macro_pause_for_release &macro_release &kp E>;
         };
 
         off6l15: OffPARENSL15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp R &macro_pause_for_release &macro_release &kp R>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp R &macro_pause_for_release &macro_release &kp R>;
         };
 
         off6l16: OffPARENSL16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
         };
 
         off6l21: OffPARENSL21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE>;
         };
 
         off6l22: OffPARENSL22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp A &macro_pause_for_release &macro_release &kp A>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp A &macro_pause_for_release &macro_release &kp A>;
         };
 
         off6l23: OffPARENSL23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S>;
         };
 
         off6l24: OffPARENSL24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D>;
         };
 
         off6l25: OffPARENSL25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F>;
         };
 
         off6l26: OffPARENSL26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
         };
 
         off6l31: OffPARENSL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0>;
         };
 
         off6l32: OffPARENSL32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp Z &macro_pause_for_release &macro_release &kp Z>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp Z &macro_pause_for_release &macro_release &kp Z>;
         };
 
         off6l33: OffPARENSL33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp X &macro_pause_for_release &macro_release &kp X>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp X &macro_pause_for_release &macro_release &kp X>;
         };
 
         off6l34: OffPARENSL34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &XdgConfigKp 0 C &macro_pause_for_release &macro_release &XdgConfigKp 0 C>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &XdgConfigKp 0 C &macro_pause_for_release &macro_release &XdgConfigKp 0 C>;
         };
 
         off6l35: OffPARENSL35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp V &macro_pause_for_release &macro_release &kp V>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp V &macro_pause_for_release &macro_release &kp V>;
         };
 
         off6l36: OffPARENSL36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
         };
 
         off6l41: OffPARENSL41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
         };
 
         off6l42: OffPARENSL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &moMMtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDER NUMER 0>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &moMMtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDER NUMER 0>;
         };
 
         off6l43: OffPARENSL43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
         };
 
         off6r11: OffPARENSR11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
         };
 
         off6r12: OffPARENSR12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
         };
 
         off6r13: OffPARENSR13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
         };
 
         off6r14: OffPARENSR14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
         };
 
         off6r15: OffPARENSR15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
         };
 
         off6r16: OffPARENSR16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
         };
 
         off6r21: OffPARENSR21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
         };
 
         off6r22: OffPARENSR22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J>;
         };
 
         off6r23: OffPARENSR23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K>;
         };
 
         off6r24: OffPARENSR24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT L &macro_pause_for_release &macro_release &mt LSHIFT L>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LSHIFT L &macro_pause_for_release &macro_release &mt LSHIFT L>;
         };
 
         off6r25: OffPARENSR25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
         };
 
         off6r26: OffPARENSR26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
         };
 
         off6r31: OffPARENSR31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp N &macro_pause_for_release &macro_release &kp N>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp N &macro_pause_for_release &macro_release &kp N>;
         };
 
         off6r32: OffPARENSR32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M>;
         };
 
         off6r33: OffPARENSR33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA>;
         };
 
         off6r34: OffPARENSR34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT>;
         };
 
         off6r35: OffPARENSR35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH>;
         };
 
         off6r36: OffPARENSR36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
         };
 
         off6r41: OffPARENSR41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN>;
         };
 
         off6r42: OffPARENSR42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE>;
         };
 
         off6r43: OffPARENSR43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOff PARENS &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
+            bindings = <&LayerOff PARENS &kp K_CANCEL &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
         };
 
         parens: OpenClose_parens {
