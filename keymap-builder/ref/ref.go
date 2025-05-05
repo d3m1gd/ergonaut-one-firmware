@@ -38,15 +38,15 @@ func (r Ref) Show() string {
 }
 
 func Ref0(name string) Ref {
-	return Ref{name, []any{}}
+	return RefN(name, []any{})
 }
 
 func Ref1(name string, a any) Ref {
-	return Ref{name, []any{a}}
+	return RefN(name, []any{a})
 }
 
 func Ref2(name string, a, b any) Ref {
-	return Ref{name, []any{a, b}}
+	return RefN(name, []any{a, b})
 }
 
 func RefN(name string, aa []any) Ref {
@@ -55,7 +55,7 @@ func RefN(name string, aa []any) Ref {
 
 func Filled(name string, n int, aa ...any) Ref {
 	Panicif(n != len(aa))
-	return Ref{name, aa}
+	return RefN(name, aa)
 }
 
 func Compile(b Ref) string {

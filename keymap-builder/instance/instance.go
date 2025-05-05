@@ -346,7 +346,7 @@ func OffX(l layer.T, r ref.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{LayerOff(l), Press, r, Pause, Release, r},
+		Refs:  []ref.T{LayerOff(l), Kp(K_CANCEL), Press, r, Pause, Release, r},
 	})
 
 	return ref1(name, l)
