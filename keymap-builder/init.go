@@ -158,7 +158,7 @@ func init() {
 		L21: BackspaceDelete(),
 		R24: OffX(PARENS, Mt(LSHIFT, RIGHT)),
 		R41: OffX(PARENS, ShiftEnter()),
-		L42: MoTo(NUMER, MOVER), // recreate to prevent macro in macro hold
+		L42: OffX(PARENS, MoTo(NUMER, MOVER)), // recreate to prevent macro in macro hold
 	})
 
 	chain.Add(CHAINS, InitWith(To(BASE)), map[string]ref.T{

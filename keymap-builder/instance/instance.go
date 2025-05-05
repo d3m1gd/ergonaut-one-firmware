@@ -334,7 +334,7 @@ func InitLevelOffTrans(l layer.T, base layer.T) func(layer.T) {
 			Name:  name,
 			Label: fmt.Sprintf("Off%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{Kp(K_CANCEL), LayerOff(l), Kp(K_CANCEL), Press, key, Pause, Release, key},
+			Refs:  []ref.T{LayerOff(l), Press, key, Pause, Release, key},
 		})
 		return ref0(name)
 	})
@@ -346,7 +346,7 @@ func OffX(l layer.T, r ref.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{LayerOff(l), Kp(K_CANCEL), Press, r, Pause, Release, r},
+		Refs:  []ref.T{LayerOff(l), Press, r, Pause, Release, r},
 	})
 
 	return ref1(name, l)
