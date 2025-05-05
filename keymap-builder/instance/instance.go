@@ -298,31 +298,6 @@ func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
 	return ref0(name)
 }
 
-func XThenTrans(r ref.T, l layer.T, rc rowcol.T) ref.T {
-	name := fmt.Sprintf("%sTrans%s", r.Show(), l)
-	macro.Add(macro.T{
-		Name:  name,
-		Label: fmt.Sprintf("%s_Trans_%s", r.Name, l),
-		Cells: 1,
-		Refs:  []ref.T{Param11, macro.Placeholder(r), To(l), l[rc]},
-	})
-
-	return ref.RefN(name, Map(r.Args(), ToAny))
-}
-
-func XThenLayer(r ref.T, l layer.T) ref.T {
-	name := fmt.Sprintf("%s%s", r.Name, l)
-	params := macroParams(len(r.Args()))
-	macro.Add(macro.T{
-		Name:  name,
-		Label: name,
-		Cells: len(r.Args()),
-		Refs:  append(params, macro.Placeholder(r), To(l)),
-	})
-
-	return ref.RefN(name, Map(r.Args(), ToAny))
-}
-
 func ShiftEnter() ref.T {
 	name := "ShiftEnter"
 	macro.Add(macro.T{
@@ -365,7 +340,7 @@ func InitLevelOffTrans(l layer.T, base layer.T) func(layer.T) {
 	})
 }
 
-func OffLayerX(l layer.T, r ref.T) ref.T {
+func OffX(l layer.T, r ref.T) ref.T {
 	name := "OffThen" + r.Show()
 	macro.Add(macro.T{
 		Name:  name,

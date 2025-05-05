@@ -156,8 +156,9 @@ func init() {
 	PARENS.Extend(layer.T{
 		L43: To(BASE),
 		L21: BackspaceDelete(),
-		R24: OffLayerX(PARENS, Mt(LSHIFT, RIGHT)),
-		R41: XThenLayer(ShiftEnter(), BASE),
+		R24: OffX(PARENS, Mt(LSHIFT, RIGHT)),
+		R41: OffX(PARENS, ShiftEnter()),
+		L42: MoTo(NUMER, MOVER), // recreate to prevent macro in macro hold
 	})
 
 	chain.Add(CHAINS, InitWith(To(BASE)), map[string]ref.T{
