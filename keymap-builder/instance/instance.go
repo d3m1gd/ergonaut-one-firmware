@@ -355,14 +355,27 @@ func InitWith(b ref.T) func(layer.T) {
 func InitLevelOffTrans(l layer.T, base layer.T) func(layer.T) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
 		name := fmt.Sprintf("off%d%s", l.Index(), rc)
+		key := base[rc]
 		macro.Add(macro.T{
 			Name:  name,
 			Label: fmt.Sprintf("Off%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{LayerOff(l), Press, base[rc], Pause, Release, base[rc], Tap},
+			Refs:  []ref.T{LayerOff(l), Press, key, Pause, Release, key},
 		})
 		return ref0(name)
 	})
+}
+
+func OffLayerX(l layer.T, r ref.T) ref.T {
+	name := "OffThen" + r.Show()
+	macro.Add(macro.T{
+		Name:  name,
+		Label: name,
+		Cells: 1,
+		Refs:  []ref.T{LayerOff(l), r},
+	})
+
+	return ref1(name, l)
 }
 
 func Text(name string, keys string) ref.T {

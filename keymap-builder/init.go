@@ -156,7 +156,7 @@ func init() {
 	PARENS.Extend(layer.T{
 		L43: To(BASE),
 		L21: BackspaceDelete(),
-		R24: XThenLayer(Mt(LSHIFT, RIGHT), BASE),
+		R24: OffLayerX(PARENS, Mt(LSHIFT, RIGHT)),
 		R41: XThenLayer(ShiftEnter(), BASE),
 	})
 
