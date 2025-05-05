@@ -371,7 +371,7 @@ func OffLayerX(l layer.T, r ref.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{LayerOff(l), r},
+		Refs:  []ref.T{LayerOff(l), Press, r, Pause, Release, r},
 	})
 
 	return ref1(name, l)
