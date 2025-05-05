@@ -23,7 +23,7 @@ var (
 	NUMER  = layer.New("NUMER", InitWith(Trans))
 	QUICK  = layer.New("QUICK", InitWith(Trans))
 	REPEAT = layer.New("REPEAT", InitWith(Trans))
-	SYS    = layer.New("SYS", InitWith(None))
+	SYS    = layer.New("SYS", InitWith(To(BASE)))
 	PARENS = layer.New("PARENS", InitWith(Trans))
 	CHAINS = layer.New(chain.Name(""), InitWith(To(BASE)))
 )
@@ -168,7 +168,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:     "System",
-		Refs:     []ref.T{Sll(SYS)},
+		Refs:     []ref.T{To(SYS)},
 		Keys:     []rowcol.T{L15, L16},
 		IdleMs:   500,
 		TimoutMs: 100,

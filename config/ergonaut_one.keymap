@@ -136,14 +136,6 @@
             quick-tap-ms = <200>;
             tapping-term-ms = <250>;
         };
-
-        sll: StickyLayerLong {
-            compatible = "zmk,behavior-sticky-key";
-            #binding-cells = <1>;
-            bindings = <&mo>;
-            quick-release;
-            release-after-ms = <2000>;
-        };
     };
 
     macros {
@@ -759,7 +751,7 @@
         compatible = "zmk,combos";
 
         System {
-            bindings = <&sll SYS>;
+            bindings = <&to SYS>;
             key-positions = <4 5>;
             timeout-ms = <100>;
             require-prior-idle-ms = <500>;
@@ -885,10 +877,10 @@
 
         SYS {
             bindings = <
-&bootloader   &none         &none           &none         &sys_reset    &none         &none           &out OUT_USB  &none  &none  &none  &none
-&bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0  &none         &none           &none         &none  &none  &none  &none
-&none         &none         &bt BT_CLR_ALL  &bt BT_CLR    &out OUT_USB  &out OUT_BLE  &bt BT_CLR_ALL  &none         &none  &none  &none  &none
-                                            &none         &none         &none         &none           &none         &none
+&bootloader   &to BASE      &to BASE        &to BASE      &sys_reset    &to BASE      &to BASE        &out OUT_USB  &to BASE  &to BASE  &to BASE  &to BASE
+&bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0  &to BASE      &to BASE        &to BASE      &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE      &to BASE      &bt BT_CLR_ALL  &bt BT_CLR    &out OUT_USB  &out OUT_BLE  &bt BT_CLR_ALL  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE
+                                            &to BASE      &to BASE      &to BASE      &to BASE        &to BASE      &to BASE
             >;
         };
 
