@@ -257,7 +257,7 @@ func BackspaceDelete() ref.T {
 		Name:  name,
 		Label: "BackspaceDelete",
 		Cells: 0,
-		Refs:  []ref.T{Kp(BSPC), Kp(DEL)},
+		Refs:  []ref.T{Kp(DEL), Kp(BSPC)},
 	})
 
 	return ref0(name)
@@ -292,8 +292,7 @@ func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose_%s", name),
 		Cells: 0,
-		// Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT)},
-		Refs: []ref.T{Kp(left), Kp(right), Kp(LEFT), To(l)}, // todo
+		Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT), To(l)},
 	})
 
 	return ref0(name)

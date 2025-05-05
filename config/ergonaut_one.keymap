@@ -200,7 +200,7 @@
         bspcdel: BackspaceDelete {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp BSPC &kp DEL>;
+            bindings = <&kp DEL &kp BSPC>;
         };
 
         curlies: OpenClose_curlies {
