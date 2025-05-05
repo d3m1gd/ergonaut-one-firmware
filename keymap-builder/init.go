@@ -64,7 +64,7 @@ func init() {
 		// R24: Rmt(LSHIFT, L),
 		R22: Mt(LALT, J),
 		R23: Mt(LGUI, K),
-		R24: Mt(LSHIFT, L),
+		R24: Rmt(LSHIFT, L),
 		R25: KpKp(RG(SEMI), SEMI),
 		R26: KpKp(RG(SQT), SQT),
 		R31: Kp(N), // row 3
