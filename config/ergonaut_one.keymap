@@ -48,21 +48,21 @@
         MMkpDQTkpGRAVE: ModMorphkpDQTkpGRAVE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kpDQT &kpGRAVE>;
+            bindings = <&kp DQT &kp GRAVE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         MMkpEQUALkpEQUAL: ModMorphkpEQUALkpEQUAL {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kpEQUAL &kpEQUAL>;
+            bindings = <&kp EQUAL &kp EQUAL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         MMkpMINUSkpPLUS: ModMorphkpMINUSkpPLUS {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kpMINUS &kpPLUS>;
+            bindings = <&kp MINUS &kp PLUS>;
             keep-mods = <(MOD_LCTL|MOD_RCTL)>;
             mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
         };
@@ -70,7 +70,7 @@
         MMtoMOVERkpUNDER: ModMorphtoMOVERkpUNDER {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&toMOVER &kpUNDER>;
+            bindings = <&to MOVER &kp UNDER>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -143,607 +143,607 @@
         CodeBlock: CodeBlock {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpGRAVE &kpGRAVE &kpGRAVE &kpGRAVE &kpLEFT &kpGRAVE &kpLEFT &kpGRAVE &kpLEFT>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT>;
         };
 
         GoIfError: GoIfError {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpG &kpO &kpSPACE &kpI &kpF &kpE &kpLEFT &kpN &kpLEFT &kpI &kpLEFT &kpF &kpLEFT>;
+            bindings = <&kp G &kp O &kp SPACE &kp I &kp F &kp E &kp LEFT &kp N &kp LEFT &kp I &kp LEFT &kp F &kp LEFT>;
         };
 
         OffReRet: OffReRet {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOffPARENS &macro_press &ReRet &macro_pause_for_release &macro_release &ReRet>;
+            bindings = <&LayerOff PARENS &macro_press &ReRet &macro_pause_for_release &macro_release &ReRet>;
         };
 
         Offbspcdel: Offbspcdel {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOffPARENS &macro_press &bspcdel &macro_pause_for_release &macro_release &bspcdel>;
+            bindings = <&LayerOff PARENS &macro_press &bspcdel &macro_pause_for_release &macro_release &bspcdel>;
         };
 
         OffmotoNUMERMOVER: OffmotoNUMERMOVER {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOffPARENS &macro_press &motoNUMER MOVER &macro_pause_for_release &macro_release &motoNUMER MOVER>;
+            bindings = <&LayerOff PARENS &macro_press &moto NUMER MOVER &macro_pause_for_release &macro_release &moto NUMER MOVER>;
         };
 
         OffmtLSHIFTRIGHT: OffmtLSHIFTRIGHT {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOffPARENS &macro_press &mtLSHIFT RIGHT &macro_pause_for_release &macro_release &mtLSHIFT RIGHT>;
+            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT RIGHT &macro_pause_for_release &macro_release &mt LSHIFT RIGHT>;
         };
 
         ReRet: ReRet {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpRET &kpUP &kpEND &kpRET>;
+            bindings = <&kp RET &kp UP &kp END &kp RET>;
         };
 
         TapNoRepeat: TapNoRepeat {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kpMACRO_PLACEHOLDER &macro_pause_for_release>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_pause_for_release>;
         };
 
         Wmoto: Wrapmoto {
             compatible = "zmk,behavior-macro-two-param";
             #binding-cells = <2>;
-            bindings = <&macro_press &macro_param_1to1 &macro_param_2to2 &motoMACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &macro_param_1to1 &macro_param_2to2 &motoMACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
+            bindings = <&macro_press &macro_param_1to1 &macro_param_2to2 &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &macro_param_1to1 &macro_param_2to2 &moto MACRO_PLACEHOLDER MACRO_PLACEHOLDER>;
         };
 
         XdgConfig: XdgConfig {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpDQT &kpDOLLAR &kpLS(H) &kpLS(O) &kpLS(M) &kpLS(E) &kpSLASH &kpDOT &kpC &kpO &kpN &kpF &kpI &kpG &kpDQT &kpSLASH>;
+            bindings = <&kp DQT &kp DOLLAR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp SLASH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp DQT &kp SLASH>;
         };
 
         bquotes: OpenClose_bquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpGRAVE &kpGRAVE &kpLEFT &toPARENS>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &to PARENS>;
         };
 
         brackets: OpenClose_brackets {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpLBKT &kpRBKT &kpLEFT &toPARENS>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT &to PARENS>;
         };
 
         bspcdel: BackspaceDelete {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpDEL &kpBSPC>;
+            bindings = <&kp DEL &kp BSPC>;
         };
 
         curlies: OpenClose_curlies {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpLBRC &kpRBRC &kpLEFT &toPARENS>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
         };
 
         dquotes: OpenClose_dquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpDQT &kpDQT &kpLEFT &toPARENS>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &to PARENS>;
         };
 
         off1l11: OffMOVERL11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpTAB &macro_pause_for_release &macro_release &kpTAB>;
+            bindings = <&LayerOff MOVER &macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB>;
         };
 
         off1l12: OffMOVERL12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpQ &macro_pause_for_release &macro_release &kpQ>;
+            bindings = <&LayerOff MOVER &macro_press &kp Q &macro_pause_for_release &macro_release &kp Q>;
         };
 
         off1l13: OffMOVERL13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpW &macro_pause_for_release &macro_release &kpW>;
+            bindings = <&LayerOff MOVER &macro_press &kp W &macro_pause_for_release &macro_release &kp W>;
         };
 
         off1l14: OffMOVERL14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpE &macro_pause_for_release &macro_release &kpE>;
+            bindings = <&LayerOff MOVER &macro_press &kp E &macro_pause_for_release &macro_release &kp E>;
         };
 
         off1l15: OffMOVERL15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpR &macro_pause_for_release &macro_release &kpR>;
+            bindings = <&LayerOff MOVER &macro_press &kp R &macro_pause_for_release &macro_release &kp R>;
         };
 
         off1l16: OffMOVERL16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpkpRG(T) T &macro_pause_for_release &macro_release &kpkpRG(T) T>;
+            bindings = <&LayerOff MOVER &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
         };
 
         off1l21: OffMOVERL21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLSHIFT BACKSPACE &macro_pause_for_release &macro_release &mtLSHIFT BACKSPACE>;
+            bindings = <&LayerOff MOVER &macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE>;
         };
 
         off1l22: OffMOVERL22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpA &macro_pause_for_release &macro_release &kpA>;
+            bindings = <&LayerOff MOVER &macro_press &kp A &macro_pause_for_release &macro_release &kp A>;
         };
 
         off1l23: OffMOVERL23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLSHIFT S &macro_pause_for_release &macro_release &mtLSHIFT S>;
+            bindings = <&LayerOff MOVER &macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S>;
         };
 
         off1l24: OffMOVERL24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLGUI D &macro_pause_for_release &macro_release &mtLGUI D>;
+            bindings = <&LayerOff MOVER &macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D>;
         };
 
         off1l25: OffMOVERL25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLALT F &macro_pause_for_release &macro_release &mtLALT F>;
+            bindings = <&LayerOff MOVER &macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F>;
         };
 
         off1l26: OffMOVERL26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpG &macro_pause_for_release &macro_release &kpG>;
+            bindings = <&LayerOff MOVER &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
         };
 
         off1l31: OffMOVERL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mMMkpMINUSkpPLUSLCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUSLCTRL 0>;
+            bindings = <&LayerOff MOVER &macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0>;
         };
 
         off1l32: OffMOVERL32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpZ &macro_pause_for_release &macro_release &kpZ>;
+            bindings = <&LayerOff MOVER &macro_press &kp Z &macro_pause_for_release &macro_release &kp Z>;
         };
 
         off1l33: OffMOVERL33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpX &macro_pause_for_release &macro_release &kpX>;
+            bindings = <&LayerOff MOVER &macro_press &kp X &macro_pause_for_release &macro_release &kp X>;
         };
 
         off1l34: OffMOVERL34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &XdgConfigKp0 C &macro_pause_for_release &macro_release &XdgConfigKp0 C>;
+            bindings = <&LayerOff MOVER &macro_press &XdgConfigKp 0 C &macro_pause_for_release &macro_release &XdgConfigKp 0 C>;
         };
 
         off1l35: OffMOVERL35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpV &macro_pause_for_release &macro_release &kpV>;
+            bindings = <&LayerOff MOVER &macro_press &kp V &macro_pause_for_release &macro_release &kp V>;
         };
 
         off1l36: OffMOVERL36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpB &macro_pause_for_release &macro_release &kpB>;
+            bindings = <&LayerOff MOVER &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
         };
 
         off1l41: OffMOVERL41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &motoQUICK CHAINS &macro_pause_for_release &macro_release &motoQUICK CHAINS>;
+            bindings = <&LayerOff MOVER &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
         };
 
         off1l42: OffMOVERL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &moMMtoMOVERkpUNDERNUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDERNUMER 0>;
+            bindings = <&LayerOff MOVER &macro_press &moMMtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDER NUMER 0>;
         };
 
         off1l43: OffMOVERL43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLCTRL ESCAPE &macro_pause_for_release &macro_release &mtLCTRL ESCAPE>;
+            bindings = <&LayerOff MOVER &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
         };
 
         off1r11: OffMOVERR11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpY &macro_pause_for_release &macro_release &kpY>;
+            bindings = <&LayerOff MOVER &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
         };
 
         off1r12: OffMOVERR12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpU &macro_pause_for_release &macro_release &kpU>;
+            bindings = <&LayerOff MOVER &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
         };
 
         off1r13: OffMOVERR13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpI &macro_pause_for_release &macro_release &kpI>;
+            bindings = <&LayerOff MOVER &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
         };
 
         off1r14: OffMOVERR14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpO &macro_pause_for_release &macro_release &kpO>;
+            bindings = <&LayerOff MOVER &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
         };
 
         off1r15: OffMOVERR15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpP &macro_pause_for_release &macro_release &kpP>;
+            bindings = <&LayerOff MOVER &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
         };
 
         off1r16: OffMOVERR16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpLBKT &macro_pause_for_release &macro_release &kpLBKT>;
+            bindings = <&LayerOff MOVER &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
         };
 
         off1r21: OffMOVERR21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpH &macro_pause_for_release &macro_release &kpH>;
+            bindings = <&LayerOff MOVER &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
         };
 
         off1r22: OffMOVERR22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLALT J &macro_pause_for_release &macro_release &mtLALT J>;
+            bindings = <&LayerOff MOVER &macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J>;
         };
 
         off1r23: OffMOVERR23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLGUI K &macro_pause_for_release &macro_release &mtLGUI K>;
+            bindings = <&LayerOff MOVER &macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K>;
         };
 
         off1r24: OffMOVERR24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &rmtLSHIFT L &macro_pause_for_release &macro_release &rmtLSHIFT L>;
+            bindings = <&LayerOff MOVER &macro_press &rmt LSHIFT L &macro_pause_for_release &macro_release &rmt LSHIFT L>;
         };
 
         off1r25: OffMOVERR25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpkpRG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkpRG(SEMI) SEMI>;
+            bindings = <&LayerOff MOVER &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
         };
 
         off1r26: OffMOVERR26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpkpRG(SQT) SQT &macro_pause_for_release &macro_release &kpkpRG(SQT) SQT>;
+            bindings = <&LayerOff MOVER &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
         };
 
         off1r31: OffMOVERR31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpN &macro_pause_for_release &macro_release &kpN>;
+            bindings = <&LayerOff MOVER &macro_press &kp N &macro_pause_for_release &macro_release &kp N>;
         };
 
         off1r32: OffMOVERR32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpkpRG(M) M &macro_pause_for_release &macro_release &kpkpRG(M) M>;
+            bindings = <&LayerOff MOVER &macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M>;
         };
 
         off1r33: OffMOVERR33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpkpRG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkpRG(COMMA) COMMA>;
+            bindings = <&LayerOff MOVER &macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA>;
         };
 
         off1r34: OffMOVERR34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpkpRG(DOT) DOT &macro_pause_for_release &macro_release &kpkpRG(DOT) DOT>;
+            bindings = <&LayerOff MOVER &macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT>;
         };
 
         off1r35: OffMOVERR35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpSLASH &macro_pause_for_release &macro_release &kpSLASH>;
+            bindings = <&LayerOff MOVER &macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH>;
         };
 
         off1r36: OffMOVERR36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &kpBACKSLASH &macro_pause_for_release &macro_release &kpBACKSLASH>;
+            bindings = <&LayerOff MOVER &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
         };
 
         off1r41: OffMOVERR41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &mtLCTRL RETURN &macro_pause_for_release &macro_release &mtLCTRL RETURN>;
+            bindings = <&LayerOff MOVER &macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN>;
         };
 
         off1r42: OffMOVERR42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &ltNUMER SPACE &macro_pause_for_release &macro_release &ltNUMER SPACE>;
+            bindings = <&LayerOff MOVER &macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE>;
         };
 
         off1r43: OffMOVERR43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffMOVER &macro_press &WmotoQUICK CHAINS &macro_pause_for_release &macro_release &WmotoQUICK CHAINS>;
+            bindings = <&LayerOff MOVER &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
         };
 
         off5l11: OffPARENSL11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpTAB &macro_pause_for_release &macro_release &kpTAB>;
+            bindings = <&LayerOff PARENS &macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB>;
         };
 
         off5l12: OffPARENSL12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpQ &macro_pause_for_release &macro_release &kpQ>;
+            bindings = <&LayerOff PARENS &macro_press &kp Q &macro_pause_for_release &macro_release &kp Q>;
         };
 
         off5l13: OffPARENSL13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpW &macro_pause_for_release &macro_release &kpW>;
+            bindings = <&LayerOff PARENS &macro_press &kp W &macro_pause_for_release &macro_release &kp W>;
         };
 
         off5l14: OffPARENSL14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpE &macro_pause_for_release &macro_release &kpE>;
+            bindings = <&LayerOff PARENS &macro_press &kp E &macro_pause_for_release &macro_release &kp E>;
         };
 
         off5l15: OffPARENSL15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpR &macro_pause_for_release &macro_release &kpR>;
+            bindings = <&LayerOff PARENS &macro_press &kp R &macro_pause_for_release &macro_release &kp R>;
         };
 
         off5l16: OffPARENSL16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpkpRG(T) T &macro_pause_for_release &macro_release &kpkpRG(T) T>;
+            bindings = <&LayerOff PARENS &macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T>;
         };
 
         off5l21: OffPARENSL21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLSHIFT BACKSPACE &macro_pause_for_release &macro_release &mtLSHIFT BACKSPACE>;
+            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE>;
         };
 
         off5l22: OffPARENSL22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpA &macro_pause_for_release &macro_release &kpA>;
+            bindings = <&LayerOff PARENS &macro_press &kp A &macro_pause_for_release &macro_release &kp A>;
         };
 
         off5l23: OffPARENSL23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLSHIFT S &macro_pause_for_release &macro_release &mtLSHIFT S>;
+            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S>;
         };
 
         off5l24: OffPARENSL24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLGUI D &macro_pause_for_release &macro_release &mtLGUI D>;
+            bindings = <&LayerOff PARENS &macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D>;
         };
 
         off5l25: OffPARENSL25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLALT F &macro_pause_for_release &macro_release &mtLALT F>;
+            bindings = <&LayerOff PARENS &macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F>;
         };
 
         off5l26: OffPARENSL26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpG &macro_pause_for_release &macro_release &kpG>;
+            bindings = <&LayerOff PARENS &macro_press &kp G &macro_pause_for_release &macro_release &kp G>;
         };
 
         off5l31: OffPARENSL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mMMkpMINUSkpPLUSLCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUSLCTRL 0>;
+            bindings = <&LayerOff PARENS &macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0>;
         };
 
         off5l32: OffPARENSL32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpZ &macro_pause_for_release &macro_release &kpZ>;
+            bindings = <&LayerOff PARENS &macro_press &kp Z &macro_pause_for_release &macro_release &kp Z>;
         };
 
         off5l33: OffPARENSL33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpX &macro_pause_for_release &macro_release &kpX>;
+            bindings = <&LayerOff PARENS &macro_press &kp X &macro_pause_for_release &macro_release &kp X>;
         };
 
         off5l34: OffPARENSL34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &XdgConfigKp0 C &macro_pause_for_release &macro_release &XdgConfigKp0 C>;
+            bindings = <&LayerOff PARENS &macro_press &XdgConfigKp 0 C &macro_pause_for_release &macro_release &XdgConfigKp 0 C>;
         };
 
         off5l35: OffPARENSL35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpV &macro_pause_for_release &macro_release &kpV>;
+            bindings = <&LayerOff PARENS &macro_press &kp V &macro_pause_for_release &macro_release &kp V>;
         };
 
         off5l36: OffPARENSL36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpB &macro_pause_for_release &macro_release &kpB>;
+            bindings = <&LayerOff PARENS &macro_press &kp B &macro_pause_for_release &macro_release &kp B>;
         };
 
         off5l41: OffPARENSL41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &motoQUICK CHAINS &macro_pause_for_release &macro_release &motoQUICK CHAINS>;
+            bindings = <&LayerOff PARENS &macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS>;
         };
 
         off5l42: OffPARENSL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &moMMtoMOVERkpUNDERNUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDERNUMER 0>;
+            bindings = <&LayerOff PARENS &macro_press &moMMtoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoMOVERkpUNDER NUMER 0>;
         };
 
         off5l43: OffPARENSL43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLCTRL ESCAPE &macro_pause_for_release &macro_release &mtLCTRL ESCAPE>;
+            bindings = <&LayerOff PARENS &macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE>;
         };
 
         off5r11: OffPARENSR11 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpY &macro_pause_for_release &macro_release &kpY>;
+            bindings = <&LayerOff PARENS &macro_press &kp Y &macro_pause_for_release &macro_release &kp Y>;
         };
 
         off5r12: OffPARENSR12 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpU &macro_pause_for_release &macro_release &kpU>;
+            bindings = <&LayerOff PARENS &macro_press &kp U &macro_pause_for_release &macro_release &kp U>;
         };
 
         off5r13: OffPARENSR13 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpI &macro_pause_for_release &macro_release &kpI>;
+            bindings = <&LayerOff PARENS &macro_press &kp I &macro_pause_for_release &macro_release &kp I>;
         };
 
         off5r14: OffPARENSR14 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpO &macro_pause_for_release &macro_release &kpO>;
+            bindings = <&LayerOff PARENS &macro_press &kp O &macro_pause_for_release &macro_release &kp O>;
         };
 
         off5r15: OffPARENSR15 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpP &macro_pause_for_release &macro_release &kpP>;
+            bindings = <&LayerOff PARENS &macro_press &kp P &macro_pause_for_release &macro_release &kp P>;
         };
 
         off5r16: OffPARENSR16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpLBKT &macro_pause_for_release &macro_release &kpLBKT>;
+            bindings = <&LayerOff PARENS &macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT>;
         };
 
         off5r21: OffPARENSR21 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpH &macro_pause_for_release &macro_release &kpH>;
+            bindings = <&LayerOff PARENS &macro_press &kp H &macro_pause_for_release &macro_release &kp H>;
         };
 
         off5r22: OffPARENSR22 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLALT J &macro_pause_for_release &macro_release &mtLALT J>;
+            bindings = <&LayerOff PARENS &macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J>;
         };
 
         off5r23: OffPARENSR23 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLGUI K &macro_pause_for_release &macro_release &mtLGUI K>;
+            bindings = <&LayerOff PARENS &macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K>;
         };
 
         off5r24: OffPARENSR24 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &rmtLSHIFT L &macro_pause_for_release &macro_release &rmtLSHIFT L>;
+            bindings = <&LayerOff PARENS &macro_press &rmt LSHIFT L &macro_pause_for_release &macro_release &rmt LSHIFT L>;
         };
 
         off5r25: OffPARENSR25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpkpRG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkpRG(SEMI) SEMI>;
+            bindings = <&LayerOff PARENS &macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI>;
         };
 
         off5r26: OffPARENSR26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpkpRG(SQT) SQT &macro_pause_for_release &macro_release &kpkpRG(SQT) SQT>;
+            bindings = <&LayerOff PARENS &macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT>;
         };
 
         off5r31: OffPARENSR31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpN &macro_pause_for_release &macro_release &kpN>;
+            bindings = <&LayerOff PARENS &macro_press &kp N &macro_pause_for_release &macro_release &kp N>;
         };
 
         off5r32: OffPARENSR32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpkpRG(M) M &macro_pause_for_release &macro_release &kpkpRG(M) M>;
+            bindings = <&LayerOff PARENS &macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M>;
         };
 
         off5r33: OffPARENSR33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpkpRG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkpRG(COMMA) COMMA>;
+            bindings = <&LayerOff PARENS &macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA>;
         };
 
         off5r34: OffPARENSR34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpkpRG(DOT) DOT &macro_pause_for_release &macro_release &kpkpRG(DOT) DOT>;
+            bindings = <&LayerOff PARENS &macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT>;
         };
 
         off5r35: OffPARENSR35 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpSLASH &macro_pause_for_release &macro_release &kpSLASH>;
+            bindings = <&LayerOff PARENS &macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH>;
         };
 
         off5r36: OffPARENSR36 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &kpBACKSLASH &macro_pause_for_release &macro_release &kpBACKSLASH>;
+            bindings = <&LayerOff PARENS &macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH>;
         };
 
         off5r41: OffPARENSR41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &mtLCTRL RETURN &macro_pause_for_release &macro_release &mtLCTRL RETURN>;
+            bindings = <&LayerOff PARENS &macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN>;
         };
 
         off5r42: OffPARENSR42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &ltNUMER SPACE &macro_pause_for_release &macro_release &ltNUMER SPACE>;
+            bindings = <&LayerOff PARENS &macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE>;
         };
 
         off5r43: OffPARENSR43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&LayerOffPARENS &macro_press &WmotoQUICK CHAINS &macro_pause_for_release &macro_release &WmotoQUICK CHAINS>;
+            bindings = <&LayerOff PARENS &macro_press &Wmoto QUICK CHAINS &macro_pause_for_release &macro_release &Wmoto QUICK CHAINS>;
         };
 
         parens: OpenClose_parens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpLPAR &kpRPAR &kpLEFT &toPARENS>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &to PARENS>;
         };
 
         squotes: OpenClose_squotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kpSQT &kpSQT &kpLEFT &toPARENS>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &to PARENS>;
         };
     };
 
@@ -751,19 +751,19 @@
         compatible = "zmk,combos";
 
         System {
-            bindings = <&toSYS>;
+            bindings = <&to SYS>;
             key-positions = <4 5>;
             timeout-ms = <100>;
             require-prior-idle-ms = <500>;
         };
 
         LeftEnter {
-            bindings = <&kpRETURN>;
+            bindings = <&kp RETURN>;
             key-positions = <37 38>;
         };
 
         LeftSpace {
-            bindings = <&kpSPACE>;
+            bindings = <&kp SPACE>;
             key-positions = <36 37>;
         };
 
@@ -774,12 +774,12 @@
         };
 
         RightHomeMods {
-            bindings = <&kpLS(LA(LWIN))>;
+            bindings = <&kp LS(LA(LWIN))>;
             key-positions = <19 20 21>;
         };
 
         MiddleMouse {
-            bindings = <&mkpMCLK>;
+            bindings = <&mkp MCLK>;
             key-positions = <27 28>;
             timeout-ms = <100>;
             require-prior-idle-ms = <200>;
@@ -821,7 +821,7 @@
         };
 
         BackQuotes {
-            bindings = <&htCodeBlockbquotes0 0>;
+            bindings = <&htCodeBlockbquotes 0 0>;
             key-positions = <2 9>;
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
@@ -833,109 +833,109 @@
 
         BASE {
             bindings = <
-&kpTAB                    &kpQ  &kpW         &kpE               &kpR                        &kpkpRG(T) T     &kpY             &kpU            &kpI                  &kpO              &kpP                &kpLBKT
-&mtLSHIFT BACKSPACE       &kpA  &mtLSHIFT S  &mtLGUI D          &mtLALT F                   &kpG             &kpH             &mtLALT J       &mtLGUI K             &rmtLSHIFT L      &kpkpRG(SEMI) SEMI  &kpkpRG(SQT) SQT
-&mMMkpMINUSkpPLUSLCTRL 0  &kpZ  &kpX         &XdgConfigKp0 C    &kpV                        &kpB             &kpN             &kpkpRG(M) M    &kpkpRG(COMMA) COMMA  &kpkpRG(DOT) DOT  &kpSLASH            &kpBACKSLASH
-                                             &motoQUICK CHAINS  &moMMtoMOVERkpUNDERNUMER 0  &mtLCTRL ESCAPE  &mtLCTRL RETURN  &ltNUMER SPACE  &WmotoQUICK CHAINS
+&kp TAB                    &kp Q  &kp W         &kp E               &kp R                        &kpkp RG(T) T     &kp Y             &kp U            &kp I                  &kp O              &kp P                &kp LBKT
+&mt LSHIFT BACKSPACE       &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F                   &kp G             &kp H             &mt LALT J       &mt LGUI K             &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
+&mMMkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &XdgConfigKp 0 C    &kp V                        &kp B             &kp N             &kpkp RG(M) M    &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
+                                                &moto QUICK CHAINS  &moMMtoMOVERkpUNDER NUMER 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUMER SPACE  &Wmoto QUICK CHAINS
             >;
         };
 
         MOVER {
             bindings = <
-&off1l11  &off1l12  &off1l13  &off1l14  &off1l15  &off1l16  &off1r11  &off1r12      &off1r13    &off1r14         &off1r15  &off1r16
-&off1l21  &off1l22  &off1l23  &off1l24  &off1l25  &off1l26  &kpLEFT   &mtLALT DOWN  &mtLGUI UP  &mtLSHIFT RIGHT  &off1r25  &off1r26
-&off1l31  &off1l32  &off1l33  &off1l34  &off1l35  &off1l36  &off1r31  &off1r32      &off1r33    &off1r34         &off1r35  &off1r36
-                              &off1l41  &off1l42  &toBASE   &off1r41  &off1r42      &off1r43
+&off1l11  &off1l12  &off1l13  &off1l14  &off1l15  &off1l16  &off1r11  &off1r12       &off1r13     &off1r14          &off1r15  &off1r16
+&off1l21  &off1l22  &off1l23  &off1l24  &off1l25  &off1l26  &kp LEFT  &mt LALT DOWN  &mt LGUI UP  &mt LSHIFT RIGHT  &off1r25  &off1r26
+&off1l31  &off1l32  &off1l33  &off1l34  &off1l35  &off1l36  &off1r31  &off1r32       &off1r33     &off1r34          &off1r35  &off1r36
+                              &off1l41  &off1l42  &to BASE  &off1r41  &off1r42       &off1r43
             >;
         };
 
         NUMER {
             bindings = <
-&kpLS(TAB)     &trans  &trans  &trans  &trans         &kpTILDE  &kpN0              &kpN1       &kpN2              &kpN3            &trans        &kpRBKT
-&kpDELETE      &trans  &trans  &trans  &trans         &trans    &MMkpEQUALkpEQUAL  &mtLALT N4  &mtLGUI N5         &mtLSHIFT N6     &kpCOLON      &MMkpDQTkpGRAVE
-&mtLCTRL PLUS  &trans  &trans  &trans  &kpLS(INSERT)  &trans    &kpPLUS            &kpN7       &kpkpRG(COMMA) N8  &kpkpRG(DOT) N9  &kpLS(SLASH)  &kpPIPE
-                               &trans  &kpUNDER       &trans    &trans             &trans      &trans
+&kp LS(TAB)     &trans  &trans  &trans  &trans          &kp TILDE  &kp N0             &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
+&kp DELETE      &trans  &trans  &trans  &trans          &trans     &MMkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &MMkpDQTkpGRAVE
+&mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans     &kp PLUS           &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                &trans  &kp UNDER       &trans     &trans             &trans       &trans
             >;
         };
 
         QUICK {
             bindings = <
-&trans  &trans  &trans  &trans  &kpLG(C_VOL_UP)  &kpC_VOL_UP  &trans        &trans         &trans         &trans         &kpPSCRN  &kpLC(RBKT)
-&trans  &trans  &trans  &trans  &kpLG(C_VOL_DN)  &kpC_VOL_DN  &kpHOME       &mtLALT PG_DN  &mtLGUI PG_UP  &mtLSHIFT END  &trans    &trans
-&trans  &trans  &trans  &trans  &trans           &trans       &trans        &trans         &trans         &trans         &trans    &trans
-                        &trans  &trans           &trans       &mtLCTRL F10  &kpF11         &kpF12
+&trans  &trans  &trans  &trans  &kp LG(C_VOL_UP)  &kp C_VOL_UP  &trans         &trans          &trans          &trans          &kp PSCRN  &kp LC(RBKT)
+&trans  &trans  &trans  &trans  &kp LG(C_VOL_DN)  &kp C_VOL_DN  &kp HOME       &mt LALT PG_DN  &mt LGUI PG_UP  &mt LSHIFT END  &trans     &trans
+&trans  &trans  &trans  &trans  &trans            &trans        &trans         &trans          &trans          &trans          &trans     &trans
+                        &trans  &trans            &trans        &mt LCTRL F10  &kp F11         &kp F12
             >;
         };
 
         SYS {
             bindings = <
-&bootloader  &toBASE      &toBASE        &toBASE      &sys_reset   &toBASE      &toBASE        &outOUT_USB  &toBASE  &toBASE  &toBASE  &toBASE
-&btBT_SEL 4  &btBT_SEL 3  &btBT_SEL 2    &btBT_SEL 1  &btBT_SEL 0  &toBASE      &toBASE        &toBASE      &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE      &toBASE      &btBT_CLR_ALL  &btBT_CLR    &outOUT_USB  &outOUT_BLE  &btBT_CLR_ALL  &toBASE      &toBASE  &toBASE  &toBASE  &toBASE
-                                         &toBASE      &toBASE      &toBASE      &toBASE        &toBASE      &toBASE
+&bootloader   &to BASE      &to BASE        &to BASE      &sys_reset    &to BASE      &to BASE        &out OUT_USB  &to BASE  &to BASE  &to BASE  &to BASE
+&bt BT_SEL 4  &bt BT_SEL 3  &bt BT_SEL 2    &bt BT_SEL 1  &bt BT_SEL 0  &to BASE      &to BASE        &to BASE      &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE      &to BASE      &bt BT_CLR_ALL  &bt BT_CLR    &out OUT_USB  &out OUT_BLE  &bt BT_CLR_ALL  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE
+                                            &to BASE      &to BASE      &to BASE      &to BASE        &to BASE      &to BASE
             >;
         };
 
         PARENS {
             bindings = <
-&off5l11           &off5l12  &off5l13  &off5l14  &off5l15                  &off5l16  &off5r11         &off5r12  &off5r13  &off5r14                 &off5r15  &off5r16
-&OffbspcdelPARENS  &off5l22  &off5l23  &off5l24  &off5l25                  &off5l26  &off5r21         &off5r22  &off5r23  &OffmtLSHIFTRIGHTPARENS  &off5r25  &off5r26
-&off5l31           &off5l32  &off5l33  &off5l34  &off5l35                  &off5l36  &off5r31         &off5r32  &off5r33  &off5r34                 &off5r35  &off5r36
-                                       &off5l41  &OffmotoNUMERMOVERPARENS  &toBASE   &OffReRetPARENS  &off5r42  &off5r43
+&off5l11            &off5l12  &off5l13  &off5l14  &off5l15                   &off5l16  &off5r11          &off5r12  &off5r13  &off5r14                  &off5r15  &off5r16
+&Offbspcdel PARENS  &off5l22  &off5l23  &off5l24  &off5l25                   &off5l26  &off5r21          &off5r22  &off5r23  &OffmtLSHIFTRIGHT PARENS  &off5r25  &off5r26
+&off5l31            &off5l32  &off5l33  &off5l34  &off5l35                   &off5l36  &off5r31          &off5r32  &off5r33  &off5r34                  &off5r35  &off5r36
+                                        &off5l41  &OffmotoNUMERMOVER PARENS  &to BASE  &OffReRet PARENS  &off5r42  &off5r43
             >;
         };
 
         CHAINS {
             bindings = <
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE      &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toCHAINS_F  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE      &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-                           &toBASE  &toBASE      &toBASE  &toBASE  &toBASE  &toBASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_F  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
         CHAINS_F {
             bindings = <
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE      &toBASE      &toBASE  &kpF1   &kpF2   &kpF3  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toCHAINS_F  &toCHAINS_G  &toBASE  &kpF4   &kpF5   &kpF6  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE      &toBASE      &toBASE  &kpF7   &kpF8   &kpF9  &toBASE  &toBASE
-                           &toBASE  &toBASE      &toBASE      &kpF10   &kpF11  &kpF12
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE      &to BASE  &kp F1   &kp F2   &kp F3  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_F  &to CHAINS_G  &to BASE  &kp F4   &kp F5   &kp F6  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE      &to BASE  &kp F7   &kp F8   &kp F9  &to BASE  &to BASE
+                              &to BASE  &to BASE      &to BASE      &kp F10   &kp F11  &kp F12
             >;
         };
 
         CHAINS_G {
             bindings = <
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toCHAINS_GI  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE       &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE       &toBASE  &toBASE  &toBASE
-                           &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_GI  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
         CHAINS_GI {
             bindings = <
-&toBASE  &toBASE  &toBASE      &GoIfError  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toCHAINS_S  &toBASE     &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE      &toBASE     &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-                               &toBASE     &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
+&to BASE  &to BASE  &to BASE      &GoIfError  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to CHAINS_S  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE      &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                                  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
         CHAINS_S {
             bindings = <
-&toBASE  &toBASE  &toBASE  &toBASE       &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toCHAINS_SD  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE       &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-                           &toBASE       &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
+&to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to CHAINS_SD  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
         CHAINS_SD {
             bindings = <
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &kpX     &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-&toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
-                           &toBASE  &toBASE  &toBASE  &toBASE  &toBASE  &toBASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &kp X     &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
     };

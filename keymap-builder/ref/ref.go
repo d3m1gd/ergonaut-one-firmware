@@ -22,7 +22,7 @@ func (x Ref) String() string {
 	if len(x.Fields) == 0 {
 		return x.Name
 	}
-	return x.Name + strings.Join(x.Args(), " ")
+	return x.Name + " " + strings.Join(x.Args(), " ")
 }
 
 func (x Ref) Compile() string {
