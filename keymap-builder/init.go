@@ -178,91 +178,92 @@ func init() {
 	})
 
 	combo.Add(combo.T{
-		Name:     "System",
-		Refs:     []ref.T{To(SYS)},
-		Keys:     []rowcol.T{L15, L16},
-		IdleMs:   500,
-		TimoutMs: 100,
+		Name:   "System",
+		Ref:    To(SYS),
+		Keys:   []rowcol.T{L15, L16},
+		Idle:   500,
+		Timout: 100,
 	})
 
 	combo.Add(combo.T{
 		Name: "LeftEnter",
-		Refs: []ref.T{Kp(RETURN)},
+		Ref:  Kp(RETURN),
 		Keys: []rowcol.T{L42, L43},
 	})
 
 	combo.Add(combo.T{
 		Name: "LeftSpace",
-		Refs: []ref.T{Kp(SPACE)},
+		Ref:  Kp(SPACE),
 		Keys: []rowcol.T{L41, L42},
 	})
 
 	combo.Add(combo.T{
 		Name: "RightCaps",
-		Refs: []ref.T{CapsWord},
+		Ref:  CapsWord,
 		Keys: []rowcol.T{R23, R24},
+		Slow: true,
 	})
 
 	combo.Add(combo.T{
 		Name: "RightHomeMods",
-		Refs: []ref.T{Kp(LS(LA(LWIN)))},
+		Ref:  Kp(LS(LA(LWIN))),
 		Keys: []rowcol.T{R22, R23, R24},
 	})
 
 	combo.Add(combo.T{
-		Name:     "MiddleMouse",
-		Refs:     []ref.T{MKp(MCLK)},
-		Keys:     []rowcol.T{L34, L35},
-		IdleMs:   200,
-		TimoutMs: 100,
+		Name:   "MiddleMouse",
+		Ref:    MKp(MCLK),
+		Keys:   []rowcol.T{L34, L35},
+		Idle:   200,
+		Timout: 100,
 	})
 
 	combo.Add(combo.T{
-		Name:     "Parens",
-		Refs:     []ref.T{Parens(PARENS)},
-		Keys:     []rowcol.T{L25, R22},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
+		Name:   "Parens",
+		Ref:    Parens(PARENS),
+		Keys:   []rowcol.T{L25, R22},
+		Timout: comboBothSidesTimeout,
+		Idle:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
-		Name:     "Curlies",
-		Refs:     []ref.T{Curlies(PARENS)},
-		Keys:     []rowcol.T{L24, R23},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
+		Name:   "Curlies",
+		Ref:    Curlies(PARENS),
+		Keys:   []rowcol.T{L24, R23},
+		Timout: comboBothSidesTimeout,
+		Idle:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
-		Name:     "Brackets",
-		Refs:     []ref.T{Brackets(PARENS)},
-		Keys:     []rowcol.T{L23, R24},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
+		Name:   "Brackets",
+		Ref:    Brackets(PARENS),
+		Keys:   []rowcol.T{L23, R24},
+		Timout: comboBothSidesTimeout,
+		Idle:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
-		Name:     "DoubleQuotes",
-		Refs:     []ref.T{DoubleQuotes(PARENS)},
-		Keys:     []rowcol.T{L15, R12},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
+		Name:   "DoubleQuotes",
+		Ref:    DoubleQuotes(PARENS),
+		Keys:   []rowcol.T{L15, R12},
+		Timout: comboBothSidesTimeout,
+		Idle:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
-		Name:     "SingleQuotes",
-		Refs:     []ref.T{SingleQuotes(PARENS)},
-		Keys:     []rowcol.T{L14, R13},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
+		Name:   "SingleQuotes",
+		Ref:    SingleQuotes(PARENS),
+		Keys:   []rowcol.T{L14, R13},
+		Timout: comboBothSidesTimeout,
+		Idle:   comboBothSidesIdle,
 	})
 
 	combo.Add(combo.T{
-		Name:     "BackQuotes",
-		Refs:     []ref.T{HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(PARENS))},
-		Keys:     []rowcol.T{L13, R14},
-		TimoutMs: comboBothSidesTimeout,
-		IdleMs:   comboBothSidesIdle,
+		Name:   "BackQuotes",
+		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(PARENS)),
+		Keys:   []rowcol.T{L13, R14},
+		Timout: comboBothSidesTimeout,
+		Idle:   comboBothSidesIdle,
 	})
 
 	// combo.Add(combo.T{

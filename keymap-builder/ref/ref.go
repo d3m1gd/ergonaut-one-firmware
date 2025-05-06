@@ -25,6 +25,10 @@ func (x Ref) String() string {
 	return x.Name + strings.Join(x.Args(), " ")
 }
 
+func (x Ref) Compile() string {
+	return "&" + x.String()
+}
+
 func (x Ref) Args() []string {
 	return Map(x.Fields, ToString)
 }
@@ -58,12 +62,8 @@ func Filled(name string, n int, aa ...any) Ref {
 	return RefN(name, aa)
 }
 
-func Compile(b Ref) string {
-	args := b.Args()
-	if len(args) > 0 {
-		return fmt.Sprintf("&%s %s", b.Name, strings.Join(args, " "))
-	}
-	return "&" + b.Name
+func Compile(r Ref) string {
+	return r.Compile()
 }
 
 func Equal(a, b Ref) bool {

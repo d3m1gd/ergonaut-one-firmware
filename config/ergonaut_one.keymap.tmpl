@@ -58,19 +58,19 @@
         {{- range .Combos }}
 
         {{.Name}} {
-            bindings = <{{.RenderBindings}}>;
+            bindings = <{{.Ref.Compile}}>;
             key-positions = <{{.RenderKeys}}>;
             {{- if .Layers }}
             layers = <{{.RenderLayers}}>;
             {{- end }}
-            {{- if .TimoutMs }}
-            timeout-ms = <{{.TimoutMs}}>;
+            {{- if .Timout }}
+            timeout-ms = <{{.Timout}}>;
             {{- end }}
-            {{- if .IdleMs }}
-            require-prior-idle-ms = <{{.IdleMs}}>;
+            {{- if .Idle }}
+            require-prior-idle-ms = <{{.Idle}}>;
             {{- end}}
-            {{- if .SlowRelease }}
-            slow-release = {{.SlowRelease}};
+            {{- if .Slow }}
+            slow-release = {{.Slow}};
             {{- end}}
         };
         {{- end }}{{/* range .Combos */}}
