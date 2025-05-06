@@ -70,7 +70,7 @@
             require-prior-idle-ms = <{{.Idle}}>;
             {{- end}}
             {{- if .Slow }}
-            slow-release = {{.Slow}};
+            slow-release;
             {{- end}}
         };
         {{- end }}{{/* range .Combos */}}
