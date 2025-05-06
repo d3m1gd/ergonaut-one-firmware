@@ -22,7 +22,6 @@ var (
 	MOVER  = layer.New("MOVER", InitWith(Trans))
 	NUMER  = layer.New("NUMER", InitWith(Trans))
 	QUICK  = layer.New("QUICK", InitWith(Trans))
-	REPEAT = layer.New("REPEAT", InitWith(Trans))
 	SYS    = layer.New("SYS", InitWith(To(BASE)))
 	PARENS = layer.New("PARENS", InitWith(Trans))
 	CHAINS = layer.New(chain.Name(""), InitWith(To(BASE)))
@@ -157,13 +156,25 @@ func init() {
 		L43: To(BASE),
 		L21: OffX(PARENS, BackspaceDelete()),
 		R24: OffX(PARENS, Mt(LSHIFT, RIGHT)),
-		R41: OffX(PARENS, ShiftEnter()),
+		R41: OffX(PARENS, ReRet()),
 		L42: OffX(PARENS, MoTo(NUMER, MOVER)), // recreate to prevent macro in macro hold
 	})
 
 	chain.Add(CHAINS, InitWith(To(BASE)), map[string]ref.T{
 		"sdf": Kp(X),
 		"gie": Text("GoIfError", CursorAt("go if%fine", "%")),
+		"fu":  Kp(F1),
+		"fi":  Kp(F2),
+		"fo":  Kp(F3),
+		"fj":  Kp(F4),
+		"fk":  Kp(F5),
+		"fl":  Kp(F6),
+		"fm":  Kp(F7),
+		"f,":  Kp(F8),
+		"f.":  Kp(F9),
+		"f\n": Kp(F10),
+		"f ":  Kp(F11),
+		"f\r": Kp(F12),
 	})
 
 	combo.Add(combo.T{

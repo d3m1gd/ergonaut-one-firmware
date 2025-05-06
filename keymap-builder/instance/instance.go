@@ -298,8 +298,8 @@ func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
 	return ref0(name)
 }
 
-func ShiftEnter() ref.T {
-	name := "ShiftEnter"
+func ReRet() ref.T {
+	name := "ReRet"
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
@@ -341,7 +341,7 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 }
 
 func OffX(l layer.T, r ref.T) ref.T {
-	name := "OffThen" + r.Show()
+	name := "Off" + r.Show()
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
