@@ -19,6 +19,11 @@ func Name(keys string) string {
 		return name
 	}
 
+	for _, k := range keys {
+		// todo map to printable
+		Panicif(k < 'a' || k > 'z')
+	}
+
 	return name + "_" + strings.ToUpper(keys)
 }
 
