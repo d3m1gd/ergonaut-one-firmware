@@ -111,6 +111,21 @@ func HoldModTapX(k key.T, tap ref.T) ref.T {
 	})
 }
 
+func HoldModTapTo(k key.T, l layer.T) ref.T {
+	name := "htModTapTo"
+	return behavior.AddX([]any{k, l}, behavior.T{
+		Name:  name,
+		Label: "HoldTapTo",
+		Type:  behavior.TypeHoldTap,
+		Refs:  []ref.T{Kp(k).Strip(), ref0("to")},
+		Props: behavior.Props{
+			"flavor":          "tap-preferred",
+			"tapping-term-ms": 200,
+			"quick-tap-ms":    200,
+		},
+	})
+}
+
 func Sll(l layer.T) ref.T {
 	name := "sll"
 	return behavior.AddX([]any{l}, behavior.T{
