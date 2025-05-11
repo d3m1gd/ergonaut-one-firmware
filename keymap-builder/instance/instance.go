@@ -364,7 +364,7 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 			Name:  name,
 			Label: fmt.Sprintf("Off%s%s", l.Name(), rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{Press, key, Pause, Release, key, LayerOff(l)},
+			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, LayerOff(l)},
 		})
 		return ref0(name)
 	})
