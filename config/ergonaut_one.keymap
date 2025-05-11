@@ -92,10 +92,10 @@
             tapping-term-ms = <200>;
         };
 
-        htkpLGLSHIFTcaps_word: HoldTapkpLGLSHIFTcaps_word {
+        htModTapcaps_word: HoldTapcaps_word {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&kp LG(LSHIFT) &caps_word>;
+            bindings = <&kp &caps_word>;
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
             tapping-term-ms = <200>;
@@ -771,7 +771,7 @@
         };
 
         RightWinShift_Caps {
-            bindings = <&htkpLGLSHIFTcaps_word 0 0>;
+            bindings = <&htModTapcaps_word LG(LSHIFT) 0>;
             key-positions = <20 21>;
         };
 

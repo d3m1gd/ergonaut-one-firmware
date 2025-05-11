@@ -221,7 +221,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name: "RightWinShift_Caps",
-		Ref:  HoldTap(Kp(LG(LSHIFT)), CapsWord),
+		Ref:  HoldModTapX(LG(LSHIFT), CapsWord),
 		Keys: []rowcol.T{R23, R24},
 	})
 
