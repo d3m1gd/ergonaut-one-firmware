@@ -36,7 +36,10 @@ func (x Ref) Args() []string {
 func (r Ref) Show() string {
 	args := r.Args()
 	if len(args) > 0 {
-		return fmt.Sprintf("%s%s", r.Name, strings.Join(args, ""))
+		s := fmt.Sprintf("%s%s", r.Name, strings.Join(args, ""))
+		s = strings.Replace(s, "(", "", -1)
+		s = strings.Replace(s, ")", "", -1)
+		return s
 	}
 	return r.Name
 }

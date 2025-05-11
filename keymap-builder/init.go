@@ -58,9 +58,6 @@ func init() {
 		R15: Kp(P),
 		R16: Kp(LBKT),
 		R21: Kp(H), // row 2
-		// R22: Rmt(LALT, J),
-		// R23: Rmt(LGUI, K),
-		// R24: Rmt(LSHIFT, L),
 		R22: Mt(LALT, J),
 		R23: Mt(LGUI, K),
 		R24: Rmt(LSHIFT, L),
@@ -74,7 +71,7 @@ func init() {
 		R36: Kp(BACKSLASH),
 		R41: Mt(LCTRL, RETURN), // row 4
 		R42: Lt(NUMER, SPACE),
-		R43: Wrap(MoTo(QUICK, CHAINS)),
+		R43: MoTo(QUICK, CHAINS),
 	})
 
 	MOVER.Fill(InitOffTrans(MOVER, BASE))
@@ -197,17 +194,35 @@ func init() {
 		Keys: []rowcol.T{L41, L42},
 	})
 
-	combo.Add(combo.T{
-		Name: "RightCaps",
-		Ref:  CapsWord,
-		Keys: []rowcol.T{R23, R24},
-		Slow: true,
-	})
+	// combo.Add(combo.T{
+	// 	Name: "RightCaps",
+	// 	Ref:  CapsWord,
+	// 	Keys: []rowcol.T{R23, R24},
+	// 	Slow: true,
+	// })
+
+	// combo.Add(combo.T{
+	// 	Name: "RightAltWinShift",
+	// 	Ref:  HoldTap(Kp(LA(LG(LSHIFT))), XXX),
+	// 	Keys: []rowcol.T{R22, R23, R24},
+	// })
+	//
+	// combo.Add(combo.T{
+	// 	Name: "RightAltWin",
+	// 	Ref:  HoldTap(Kp(LA(LWIN)), XXX),
+	// 	Keys: []rowcol.T{R22, R23},
+	// })
+	//
+	// combo.Add(combo.T{
+	// 	Name: "RightAltShift",
+	// 	Ref:  HoldTap(Kp(LA(LSHIFT)), XXX),
+	// 	Keys: []rowcol.T{R22, R24},
+	// })
 
 	combo.Add(combo.T{
-		Name: "RightHomeMods",
-		Ref:  Kp(LS(LA(LWIN))),
-		Keys: []rowcol.T{R22, R23, R24},
+		Name: "RightWinShift_Caps",
+		Ref:  HoldTap(Kp(LG(LSHIFT)), CapsWord),
+		Keys: []rowcol.T{R23, R24},
 	})
 
 	combo.Add(combo.T{
