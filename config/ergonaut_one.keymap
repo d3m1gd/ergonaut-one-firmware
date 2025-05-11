@@ -101,6 +101,15 @@
             tapping-term-ms = <200>;
         };
 
+        htModTaptoMOVER: HoldTaptoMOVER {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp &to MOVER>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
+        };
+
         kpkp: KeyPressKepPress {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -768,6 +777,16 @@
         LeftSpace {
             bindings = <&kp SPACE>;
             key-positions = <36 37>;
+        };
+
+        RightAltWinShift {
+            bindings = <&kp LA(LG(LSHIFT))>;
+            key-positions = <19 20 21>;
+        };
+
+        RightAltWin {
+            bindings = <&htModTaptoMOVER LA(LWIN) 0>;
+            key-positions = <19 20>;
         };
 
         RightWinShift_Caps {

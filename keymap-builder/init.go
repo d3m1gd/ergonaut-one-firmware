@@ -201,18 +201,19 @@ func init() {
 	// 	Slow: true,
 	// })
 
-	// combo.Add(combo.T{
-	// 	Name: "RightAltWinShift",
-	// 	Ref:  HoldTap(Kp(LA(LG(LSHIFT))), XXX),
-	// 	Keys: []rowcol.T{R22, R23, R24},
-	// })
-	//
-	// combo.Add(combo.T{
-	// 	Name: "RightAltWin",
-	// 	Ref:  HoldTap(Kp(LA(LWIN)), XXX),
-	// 	Keys: []rowcol.T{R22, R23},
-	// })
-	//
+	combo.Add(combo.T{
+		Name: "RightAltWinShift",
+		// Ref:  HoldTap(Kp(LA(LG(LSHIFT))), XXX),
+		Ref:  Kp(LA(LG(LSHIFT))),
+		Keys: []rowcol.T{R22, R23, R24},
+	})
+
+	combo.Add(combo.T{
+		Name: "RightAltWin",
+		Ref:  HoldModTapX(LA(LWIN), To(MOVER)),
+		Keys: []rowcol.T{R22, R23},
+	})
+
 	// combo.Add(combo.T{
 	// 	Name: "RightAltShift",
 	// 	Ref:  HoldTap(Kp(LA(LSHIFT)), XXX),
