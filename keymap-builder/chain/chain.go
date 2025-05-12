@@ -52,6 +52,6 @@ func Add(start layer.T, init func(layer.T), keyrefs map[string]ref.T) {
 		}
 
 		rc := rowcol.FromByte(keys[len(keys)-1])
-		l[rc] = r
+		l[rc] = instance.OffX(l, r)
 	}
 }

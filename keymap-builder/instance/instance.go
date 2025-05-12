@@ -371,15 +371,30 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 }
 
 func OffX(l layer.T, r ref.T) ref.T {
+	if r.Name == "kp" {
+		return OffKey(l, r.Fields[0].(key.T))
+	}
 	name := "Off" + r.Show()
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{LayerOff(l), Press, r, Pause, Release, r},
+		Refs:  []ref.T{Param11, ref0("LayerOff"), Press, r, Pause, Release, r},
 	})
 
 	return ref1(name, l)
+}
+
+func OffKey(l layer.T, k key.T) ref.T {
+	name := "OffKey"
+	macro.Add(macro.T{
+		Name:  name,
+		Label: name,
+		Cells: 1,
+		Refs:  []ref.T{Param11, ref0("LayerOff"), Press, Param21, ref0("kp"), Pause, Release, Param21, ref0("kp")},
+	})
+
+	return ref2(name, l, k)
 }
 
 func Text(name string, keys string) ref.T {

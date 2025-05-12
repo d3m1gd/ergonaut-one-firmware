@@ -170,28 +170,40 @@
             bindings = <&kp G &kp O &kp SPACE &kp I &kp F &kp E &kp LEFT &kp N &kp LEFT &kp I &kp LEFT &kp F &kp LEFT>;
         };
 
+        OffGoIfError: OffGoIfError {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &LayerOff &macro_press &GoIfError &macro_pause_for_release &macro_release &GoIfError>;
+        };
+
+        OffKey: OffKey {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &LayerOff &macro_press &macro_param_2to1 &kp &macro_pause_for_release &macro_release &macro_param_2to1 &kp>;
+        };
+
         OffReRet: OffReRet {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOff PARENS &macro_press &ReRet &macro_pause_for_release &macro_release &ReRet>;
+            bindings = <&macro_param_1to1 &LayerOff &macro_press &ReRet &macro_pause_for_release &macro_release &ReRet>;
         };
 
         Offbspcdel: Offbspcdel {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOff PARENS &macro_press &bspcdel &macro_pause_for_release &macro_release &bspcdel>;
+            bindings = <&macro_param_1to1 &LayerOff &macro_press &bspcdel &macro_pause_for_release &macro_release &bspcdel>;
         };
 
         OffmotoNUMERMOVER: OffmotoNUMERMOVER {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOff PARENS &macro_press &moto NUMER MOVER &macro_pause_for_release &macro_release &moto NUMER MOVER>;
+            bindings = <&macro_param_1to1 &LayerOff &macro_press &moto NUMER MOVER &macro_pause_for_release &macro_release &moto NUMER MOVER>;
         };
 
         OffmtLSHIFTRIGHT: OffmtLSHIFTRIGHT {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&LayerOff PARENS &macro_press &mt LSHIFT RIGHT &macro_pause_for_release &macro_release &mt LSHIFT RIGHT>;
+            bindings = <&macro_param_1to1 &LayerOff &macro_press &mt LSHIFT RIGHT &macro_pause_for_release &macro_release &mt LSHIFT RIGHT>;
         };
 
         ReRet: ReRet {
@@ -912,10 +924,10 @@
 
         CHAINS_F {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &kp F1   &kp F2   &kp F3  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &kp F4   &kp F5   &kp F6  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &kp F7   &kp F8   &kp F9  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &kp F10   &kp F11  &kp F12
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE              &OffKey CHAINS_F F1   &OffKey CHAINS_F F2   &OffKey CHAINS_F F3  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE              &OffKey CHAINS_F F4   &OffKey CHAINS_F F5   &OffKey CHAINS_F F6  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE              &OffKey CHAINS_F F7   &OffKey CHAINS_F F8   &OffKey CHAINS_F F9  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &OffKey CHAINS_F F10  &OffKey CHAINS_F F11  &OffKey CHAINS_F F12
             >;
         };
 
@@ -930,10 +942,10 @@
 
         CHAINS_GI {
             bindings = <
-&to BASE  &to BASE  &to BASE  &GoIfError  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &OffGoIfError CHAINS_GI  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
@@ -948,10 +960,10 @@
 
         CHAINS_SD {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &kp X     &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE             &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_SD X  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE             &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE             &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
     };
