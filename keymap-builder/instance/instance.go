@@ -386,12 +386,13 @@ func OffX(l layer.T, r ref.T) ref.T {
 }
 
 func OffKey(l layer.T, k key.T) ref.T {
+	plhd := "MACRO_PLACEHOLDER" // todo
 	name := "OffKey"
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 2,
-		Refs:  []ref.T{Param11, ref0("LayerOff"), Press, Param21, ref0("kp"), Pause, Release, Param21, ref0("kp")},
+		Refs:  []ref.T{Param11, ref1("LayerOff", plhd), Press, Param21, ref1("kp", plhd), Pause, Release, Param21, ref1("kp", plhd)},
 	})
 
 	return ref2(name, l, k)
