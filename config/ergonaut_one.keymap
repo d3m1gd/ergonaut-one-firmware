@@ -177,8 +177,8 @@
         };
 
         OffKey: OffKey {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
+            compatible = "zmk,behavior-macro-two-param";
+            #binding-cells = <2>;
             bindings = <&macro_param_1to1 &LayerOff &macro_press &macro_param_2to1 &kp &macro_pause_for_release &macro_release &macro_param_2to1 &kp>;
         };
 

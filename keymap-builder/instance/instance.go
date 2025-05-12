@@ -390,7 +390,7 @@ func OffKey(l layer.T, k key.T) ref.T {
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
-		Cells: 1,
+		Cells: 2,
 		Refs:  []ref.T{Param11, ref0("LayerOff"), Press, Param21, ref0("kp"), Pause, Release, Param21, ref0("kp")},
 	})
 
