@@ -27,7 +27,7 @@ func Name(keys string) string {
 	return name + "_" + strings.ToUpper(keys)
 }
 
-func Add(l layer.T, init func(layer.T), keyrefs map[string]ref.T) {
+func Add(start layer.T, init func(layer.T), keyrefs map[string]ref.T) {
 	for keys, r := range SortedMap(keyrefs) {
 		Panicif(len(keys) < 2)
 		Panicif(strings.ToLower(keys) != keys)
@@ -39,6 +39,7 @@ func Add(l layer.T, init func(layer.T), keyrefs map[string]ref.T) {
 
 		prefixes = append(prefixes, keys)
 
+		l := start
 		for i := range len(keys) - 1 {
 			rc := rowcol.FromByte(keys[i])
 			name := Name(keys[:i+1])

@@ -903,19 +903,19 @@
 
         CHAINS {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_F  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE      &to BASE  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to CHAINS_S  &to BASE  &to CHAINS_F  &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE      &to BASE  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                                  &to BASE  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE
             >;
         };
 
         CHAINS_F {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE      &to BASE  &kp F1   &kp F2   &kp F3  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_F  &to CHAINS_G  &to BASE  &kp F4   &kp F5   &kp F6  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE      &to BASE      &to BASE  &kp F7   &kp F8   &kp F9  &to BASE  &to BASE
-                              &to BASE  &to BASE      &to BASE      &kp F10   &kp F11  &kp F12
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &kp F1   &kp F2   &kp F3  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &kp F4   &kp F5   &kp F6  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &kp F7   &kp F8   &kp F9  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &kp F10   &kp F11  &kp F12
             >;
         };
 
@@ -930,10 +930,10 @@
 
         CHAINS_GI {
             bindings = <
-&to BASE  &to BASE  &to BASE      &GoIfError  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to CHAINS_S  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE      &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                                  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &GoIfError  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE    &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
