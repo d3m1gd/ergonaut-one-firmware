@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"keyboard/key"
+	"keyboard/key/keys"
 	"keyboard/ref"
 	. "keyboard/util"
 )
@@ -119,6 +120,33 @@ func Add(b Behavior) {
 func AddX(args []any, b Behavior) ref.T {
 	Add(b)
 	return ref.Filled(b.Name, b.Type.Cells, args...)
+}
+
+func AddY(b Behavior) ref.T {
+	cells := b.Type.Cells
+	args := []any{}
+
+	for i, r := range b.Refs {
+		Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
+
+		if r.Filled() > 0 && cells > 0 {
+			stripped := r.StripN(cells)
+			b.Refs[i] = r
+			args = append(args, stripped...)
+			cells -= len(stripped)
+		}
+
+		b.Name += r.Show()
+		b.Label += r.Show()
+	}
+
+	Add(b)
+
+	for len(args) < b.Type.Cells {
+		args = append(args, keys.ZERO)
+	}
+
+	return ref.RefN(b.Name, args)
 }
 
 func Render() []Behavior {

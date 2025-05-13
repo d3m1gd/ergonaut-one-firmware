@@ -92,16 +92,16 @@
             tapping-term-ms = <200>;
         };
 
-        htModTapTo: HoldTapTo {
+        htTapNoRepeatkp: HoldTapTapNoRepeatkp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&kp &to>;
+            bindings = <&TapNoRepeat &kp>;
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
             tapping-term-ms = <200>;
         };
 
-        htModTapcaps_word: HoldTapcaps_word {
+        htkpcaps_word: HoldTapkpcaps_word {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp &caps_word>;
@@ -110,10 +110,10 @@
             tapping-term-ms = <200>;
         };
 
-        kpkp: KeyPressKepPress {
+        htkpto: HoldTapkpto {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&TapNoRepeat &kp>;
+            bindings = <&kp &to>;
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
             tapping-term-ms = <200>;
@@ -287,7 +287,7 @@
         off1l16: OffMOVERL16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(T) T &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(T) T &macro_tap &LayerOff MOVER>;
         };
 
         off1l21: OffMOVERL21 {
@@ -443,13 +443,13 @@
         off1r25: OffMOVERR25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(SEMI) SEMI &macro_tap &LayerOff MOVER>;
         };
 
         off1r26: OffMOVERR26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(SQT) SQT &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(SQT) SQT &macro_tap &LayerOff MOVER>;
         };
 
         off1r31: OffMOVERR31 {
@@ -461,19 +461,19 @@
         off1r32: OffMOVERR32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(M) M &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(M) M &macro_tap &LayerOff MOVER>;
         };
 
         off1r33: OffMOVERR33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(COMMA) COMMA &macro_tap &LayerOff MOVER>;
         };
 
         off1r34: OffMOVERR34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(DOT) DOT &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(DOT) DOT &macro_tap &LayerOff MOVER>;
         };
 
         off1r35: OffMOVERR35 {
@@ -539,7 +539,7 @@
         off5l16: OffPARENSL16 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(T) T &macro_pause_for_release &macro_release &kpkp RG(T) T &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(T) T &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(T) T &macro_tap &LayerOff PARENS>;
         };
 
         off5l21: OffPARENSL21 {
@@ -695,13 +695,13 @@
         off5r25: OffPARENSR25 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &kpkp RG(SEMI) SEMI &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(SEMI) SEMI &macro_tap &LayerOff PARENS>;
         };
 
         off5r26: OffPARENSR26 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(SQT) SQT &macro_pause_for_release &macro_release &kpkp RG(SQT) SQT &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(SQT) SQT &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(SQT) SQT &macro_tap &LayerOff PARENS>;
         };
 
         off5r31: OffPARENSR31 {
@@ -713,19 +713,19 @@
         off5r32: OffPARENSR32 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(M) M &macro_pause_for_release &macro_release &kpkp RG(M) M &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(M) M &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(M) M &macro_tap &LayerOff PARENS>;
         };
 
         off5r33: OffPARENSR33 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &kpkp RG(COMMA) COMMA &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(COMMA) COMMA &macro_tap &LayerOff PARENS>;
         };
 
         off5r34: OffPARENSR34 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &kpkp RG(DOT) DOT &macro_pause_for_release &macro_release &kpkp RG(DOT) DOT &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &htTapNoRepeatkp RG(DOT) DOT &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(DOT) DOT &macro_tap &LayerOff PARENS>;
         };
 
         off5r35: OffPARENSR35 {
@@ -797,12 +797,12 @@
         };
 
         RightAltWin {
-            bindings = <&htModTapTo LA(LWIN) MOVER>;
+            bindings = <&htkpto LA(LWIN) MOVER>;
             key-positions = <19 20>;
         };
 
         RightWinShift_Caps {
-            bindings = <&htModTapcaps_word LG(LSHIFT) 0>;
+            bindings = <&htkpcaps_word LG(LSHIFT) 0>;
             key-positions = <20 21>;
         };
 
@@ -861,10 +861,10 @@
 
         BASE {
             bindings = <
-&kp TAB                    &kp Q  &kp W         &kp E               &kp R                         &kpkp RG(T) T     &kp Y             &kp U            &kp I                  &kp O              &kp P                &kp LBKT
-&mt LSHIFT BACKSPACE       &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F                    &kp G             &kp H             &mt LALT J       &mt LGUI K             &rmt LSHIFT L      &kpkp RG(SEMI) SEMI  &kpkp RG(SQT) SQT
-&mMMkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &XdgConfigKp 0 C    &kp V                         &kp B             &kp N             &kpkp RG(M) M    &kpkp RG(COMMA) COMMA  &kpkp RG(DOT) DOT  &kp SLASH            &kp BACKSLASH
-                                                &moto QUICK CHAINS  &moMMtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE  &mt LCTRL RETURN  &lt NUMER SPACE  &moto QUICK CHAINS
+&kp TAB                    &kp Q  &kp W         &kp E               &kp R                         &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
+&mt LSHIFT BACKSPACE       &kp A  &mt LSHIFT S  &mt LGUI D          &mt LALT F                    &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmt LSHIFT L                 &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
+&mMMkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &XdgConfigKp 0 C    &kp V                         &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
+                                                &moto QUICK CHAINS  &moMMtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &moto QUICK CHAINS
             >;
         };
 
@@ -879,9 +879,9 @@
 
         NUMER {
             bindings = <
-&kp LS(TAB)     &trans  &trans  &trans  &trans          &kp TILDE  &kp N0             &kp N1       &kp N2              &kp N3            &trans         &kp RBKT
-&kp DELETE      &trans  &trans  &trans  &trans          &trans     &MMkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5         &mt LSHIFT N6     &kp COLON      &MMkpDQTkpGRAVE
-&mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans     &kp PLUS           &kp N7       &kpkp RG(COMMA) N8  &kpkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+&kp LS(TAB)     &trans  &trans  &trans  &trans          &kp TILDE  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
+&kp DELETE      &trans  &trans  &trans  &trans          &trans     &MMkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &MMkpDQTkpGRAVE
+&mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans     &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
                                 &trans  &kp UNDER       &trans     &trans             &trans       &trans
             >;
         };
