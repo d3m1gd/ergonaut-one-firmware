@@ -158,16 +158,26 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 }
 
 func LayerOff(l layer.T) ref.T {
-	name := "LayerOff"
-	return behavior.AddX([]any{l}, behavior.T{
-		Name:  name,
-		Label: name,
+	return behavior.AddY(behavior.T{
+		Name:  "off",
+		Label: "Off",
 		Type:  behavior.TypeToggleLayer,
+		Refs:  []ref.T{ref1("tog", l)},
 		Props: behavior.Props{
 			"display-name": "Layer Off",
 			"toggle-mode":  "off",
 		},
 	})
+	// // todo inline addx
+	// return behavior.AddX([]any{l}, behavior.T{
+	// 	Name:  "off",
+	// 	Label: "Off",
+	// 	Type:  behavior.TypeToggleLayer,
+	// 	Props: behavior.Props{
+	// 		"display-name": "Layer Off",
+	// 		"toggle-mode":  "off",
+	// 	},
+	// })
 }
 
 func macroParams(n int) []ref.T {
