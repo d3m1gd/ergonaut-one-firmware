@@ -287,7 +287,7 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 			Name:  name,
 			Label: fmt.Sprintf("Off%s", rc.Pretty()),
 			Cells: 1,
-			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, macro.Placeholder(Off(l))}, // todo macro strip
+			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, Param11, macro.Placeholder(Off(l))}, // todo macro strip
 		})
 		return ref1(name, l)
 	})
