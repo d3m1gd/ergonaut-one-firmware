@@ -64,34 +64,31 @@ func MKp(tap key.T) ref.T {
 }
 
 func Rmt(mod, tap key.T) ref.T {
-	name := "rmt"
 	keys := Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
-	return behavior.AddX([]any{mod, tap}, behavior.T{
-		Name:  name,
-		Label: "RightModTap",
-		Type:  behavior.TypeHoldTap,
-		Refs:  []ref.T{ref0("kp"), ref0("kp")},
-		Props: behavior.Props{
-			"hold-trigger-key-positions": keys,
-			"hold-trigger-on-release":    true,
-			"flavor":                     "tap-preferred",
-			"tapping-term-ms":            250,
-			"quick-tap-ms":               200,
-		},
+	return HoldTapOpts(Kp(mod), Kp(tap), "rmt", "RightModTap", behavior.Props{
+		"hold-trigger-key-positions": keys,
+		"hold-trigger-on-release":    true,
+		"flavor":                     "tap-preferred",
+		"tapping-term-ms":            250,
+		"quick-tap-ms":               200,
 	})
 }
 
 func HoldTap(h, t ref.T) ref.T {
+	return HoldTapOpts(h, t, "ht", "HoldTap", behavior.Props{
+		"flavor":          "tap-preferred",
+		"tapping-term-ms": 200,
+		"quick-tap-ms":    200,
+	})
+}
+
+func HoldTapOpts(h, t ref.T, name, label string, properties behavior.Props) ref.T {
 	return behavior.AddY(behavior.T{
-		Name:  "ht",
-		Label: "HoldTap",
+		Name:  name,
+		Label: label,
 		Type:  behavior.TypeHoldTap,
 		Refs:  []ref.T{h, t},
-		Props: behavior.Props{
-			"flavor":          "tap-preferred",
-			"tapping-term-ms": 200,
-			"quick-tap-ms":    200,
-		},
+		Props: properties,
 	})
 }
 
@@ -114,17 +111,10 @@ func KpKp(a, b key.T) ref.T {
 }
 
 func XKp(r ref.T, k key.T) ref.T {
-	name := r.Show() + "Kp"
-	return behavior.AddX([]any{ZERO, k}, behavior.T{
-		Name:  name,
-		Label: r.Show() + "KepPress",
-		Type:  behavior.TypeHoldTap,
-		Refs:  []ref.T{r, ref0("kp")},
-		Props: behavior.Props{
-			"flavor":          "tap-preferred",
-			"tapping-term-ms": 350,
-			"quick-tap-ms":    200,
-		},
+	return HoldTapOpts(r, Kp(k), "xkp", "XKeyPress", behavior.Props{
+		"flavor":          "tap-preferred",
+		"tapping-term-ms": 350,
+		"quick-tap-ms":    200,
 	})
 }
 

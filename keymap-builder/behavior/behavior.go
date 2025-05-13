@@ -123,28 +123,44 @@ func AddX(args []any, b Behavior) ref.T {
 }
 
 func AddY(b Behavior) ref.T {
+	Panicif(b.Type.Cells != len(b.Refs))
+	for _, r := range b.Refs {
+		Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
+	}
+
 	cells := b.Type.Cells
 	args := []any{}
 
-	for i, r := range b.Refs {
-		Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
-
-		if r.Filled() > 0 && cells > 0 {
-			stripped := r.StripN(cells)
-			b.Refs[i] = r
+	switch cells {
+	case 2:
+		stripped := b.Refs[0].StripN(1) // todo 1
+		if len(stripped) > 0 {
 			args = append(args, stripped...)
-			cells -= len(stripped)
+		} else {
+			args = append(args, keys.ZERO)
 		}
+		stripped = b.Refs[1].StripN(1) // todo 1
+		if len(stripped) > 0 {
+			args = append(args, stripped...)
+		} else {
+			args = append(args, keys.ZERO)
+		}
+	case 1:
+		stripped := b.Refs[1].StripN(1) // todo 1
+		if len(stripped) > 0 {
+			args = append(args, stripped...)
+		} else {
+			args = append(args, keys.ZERO)
+		}
+	case 0:
+	}
 
+	for _, r := range b.Refs {
 		b.Name += r.Show()
 		b.Label += r.Show()
 	}
 
 	Add(b)
-
-	for len(args) < b.Type.Cells {
-		args = append(args, keys.ZERO)
-	}
 
 	return ref.RefN(b.Name, args)
 }
