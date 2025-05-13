@@ -123,7 +123,6 @@ func AddX(args []any, b Behavior) ref.T {
 }
 
 func AddY(b Behavior) ref.T {
-	Panicif(b.Type.Cells != len(b.Refs))
 	for _, r := range b.Refs {
 		Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
 	}
@@ -133,24 +132,28 @@ func AddY(b Behavior) ref.T {
 
 	switch cells {
 	case 2:
-		stripped := b.Refs[0].StripN(1) // todo 1
-		if len(stripped) > 0 {
-			args = append(args, stripped...)
-		} else {
-			args = append(args, keys.ZERO)
-		}
-		stripped = b.Refs[1].StripN(1) // todo 1
-		if len(stripped) > 0 {
-			args = append(args, stripped...)
-		} else {
-			args = append(args, keys.ZERO)
+		if len(b.Refs) == 2 {
+			stripped := b.Refs[0].StripN(1) // todo 1
+			if len(stripped) > 0 {
+				args = append(args, stripped...)
+			} else {
+				args = append(args, keys.ZERO)
+			}
+			stripped = b.Refs[1].StripN(1) // todo 1
+			if len(stripped) > 0 {
+				args = append(args, stripped...)
+			} else {
+				args = append(args, keys.ZERO)
+			}
 		}
 	case 1:
-		stripped := b.Refs[1].StripN(1) // todo 1
-		if len(stripped) > 0 {
-			args = append(args, stripped...)
-		} else {
-			args = append(args, keys.ZERO)
+		if len(b.Refs) >= 1 {
+			stripped := b.Refs[0].StripN(1) // todo 1
+			if len(stripped) > 0 {
+				args = append(args, stripped...)
+			} else {
+				args = append(args, keys.ZERO)
+			}
 		}
 	case 0:
 	}

@@ -45,35 +45,6 @@
             toggle-mode = "off";
         };
 
-        MMkpDQTkpGRAVE: ModMorphkpDQTkpGRAVE {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DQT &kp GRAVE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        MMkpEQUALkpEQUAL: ModMorphkpEQUALkpEQUAL {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp EQUAL &kp EQUAL>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        MMkpMINUSkpPLUS: ModMorphkpMINUSkpPLUS {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp MINUS &kp PLUS>;
-            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
-            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
-        };
-
-        MMtoCHAINSkpUNDER: ModMorphtoCHAINSkpUNDER {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&to CHAINS &kp UNDER>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         htCodeBlockbquotes: HoldTapCodeBlockbquotes {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -110,19 +81,48 @@
             tapping-term-ms = <200>;
         };
 
-        mkpMMkpMINUSkpPLUS: ModkpMMkpMINUSkpPLUS {
+        mkpmmkpMINUSkpPLUS: ModkpmmkpMINUSkpPLUS {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&kp &MMkpMINUSkpPLUS>;
+            bindings = <&kp &mmkpMINUSkpPLUS>;
             flavor = "tap-preferred";
             quick-tap-ms = <200>;
             tapping-term-ms = <200>;
         };
 
-        momoMMtoCHAINSkpUNDER: MomentarymoMMtoCHAINSkpUNDER {
+        mmkpDQTkpGRAVE: ModMorphkpDQTkpGRAVE {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp GRAVE>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mmkpEQUALkpEQUAL: ModMorphkpEQUALkpEQUAL {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL &kp EQUAL>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        mmkpMINUSkpPLUS: ModMorphkpMINUSkpPLUS {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp MINUS &kp PLUS>;
+            keep-mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
+        };
+
+        mmtoCHAINSkpUNDER: ModMorphtoCHAINSkpUNDER {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&to CHAINS &kp UNDER>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        momommtoCHAINSkpUNDER: MomentarymommtoCHAINSkpUNDER {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&mo &MMtoCHAINSkpUNDER>;
+            bindings = <&mo &mmtoCHAINSkpUNDER>;
             flavor = "balanced";
             tapping-term-ms = <300>;
         };
@@ -329,7 +329,7 @@
         off1l31: OffMOVERL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &mkpmmkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpmmkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff MOVER>;
         };
 
         off1l32: OffMOVERL32 {
@@ -371,7 +371,7 @@
         off1l42: OffMOVERL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &momoMMtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momoMMtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &momommtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momommtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff MOVER>;
         };
 
         off1l43: OffMOVERL43 {
@@ -581,7 +581,7 @@
         off5l31: OffPARENSL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &mkpmmkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpmmkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff PARENS>;
         };
 
         off5l32: OffPARENSL32 {
@@ -623,7 +623,7 @@
         off5l42: OffPARENSL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &momoMMtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momoMMtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &momommtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momommtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff PARENS>;
         };
 
         off5l43: OffPARENSL43 {
@@ -863,8 +863,8 @@
             bindings = <
 &kp TAB                      &kp Q  &kp W         &kp E                   &kp R                           &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
 &mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                      &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
-&mkpMMkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                           &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
-                                                  &motomoto QUICK CHAINS  &momoMMtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto QUICK CHAINS
+&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                           &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
+                                                  &motomoto QUICK CHAINS  &momommtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto QUICK CHAINS
             >;
         };
 
@@ -880,7 +880,7 @@
         NUMER {
             bindings = <
 &kp LS(TAB)     &trans  &trans  &trans  &trans          &kp TILDE  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
-&kp DELETE      &trans  &trans  &trans  &trans          &trans     &MMkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &MMkpDQTkpGRAVE
+&kp DELETE      &trans  &trans  &trans  &trans          &trans     &mmkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &mmkpDQTkpGRAVE
 &mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans     &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
                                 &trans  &kp UNDER       &trans     &trans             &trans       &trans
             >;

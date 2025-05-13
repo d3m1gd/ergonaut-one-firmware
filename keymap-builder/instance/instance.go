@@ -141,8 +141,6 @@ func ModX(mod key.T, x ref.T) ref.T {
 }
 
 func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
-	refs := []ref.T{a, b}
-	name := "MM" + a.Show() + b.Show()
 	props := behavior.Props{
 		"mods": mods,
 	}
@@ -150,11 +148,11 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 		props["keep-mods"] = keep
 	}
 
-	return behavior.AddX([]any{}, behavior.T{
-		Name:  name,
-		Label: "ModMorph" + a.Show() + b.Show(),
+	return behavior.AddY(behavior.T{
+		Name:  "mm",
+		Label: "ModMorph",
 		Type:  behavior.TypeModMorph,
-		Refs:  refs,
+		Refs:  []ref.T{a, b},
 		Props: props,
 	})
 }
