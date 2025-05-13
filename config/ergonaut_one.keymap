@@ -110,7 +110,7 @@
             tapping-term-ms = <200>;
         };
 
-        mMMkpMINUSkpPLUS: ModMMkpMINUSkpPLUS {
+        mkpMMkpMINUSkpPLUS: ModkpMMkpMINUSkpPLUS {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp &MMkpMINUSkpPLUS>;
@@ -119,7 +119,7 @@
             tapping-term-ms = <200>;
         };
 
-        moMMtoCHAINSkpUNDER: MomMMtoCHAINSkpUNDER {
+        momoMMtoCHAINSkpUNDER: MomentarymoMMtoCHAINSkpUNDER {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo &MMtoCHAINSkpUNDER>;
@@ -127,7 +127,7 @@
             tapping-term-ms = <300>;
         };
 
-        moto: MomentaryTo {
+        motomoto: MomentaryTomoto {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo &to>;
@@ -194,10 +194,10 @@
             bindings = <&macro_press &bspcdel &macro_pause_for_release &macro_release &bspcdel &macro_tap &macro_param_1to1 &LayerOff MACRO_PLACEHOLDER>;
         };
 
-        OffmotoNUMERMOVER: OffmotoNUMERMOVER {
+        OffmotomotoNUMERMOVER: OffmotomotoNUMERMOVER {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_press &moto NUMER MOVER &macro_pause_for_release &macro_release &moto NUMER MOVER &macro_tap &macro_param_1to1 &LayerOff MACRO_PLACEHOLDER>;
+            bindings = <&macro_press &motomoto NUMER MOVER &macro_pause_for_release &macro_release &motomoto NUMER MOVER &macro_tap &macro_param_1to1 &LayerOff MACRO_PLACEHOLDER>;
         };
 
         OffmtLSHIFTRIGHT: OffmtLSHIFTRIGHT {
@@ -329,7 +329,7 @@
         off1l31: OffMOVERL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff MOVER>;
         };
 
         off1l32: OffMOVERL32 {
@@ -365,13 +365,13 @@
         off1l41: OffMOVERL41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &motomoto QUICK CHAINS &macro_pause_for_release &macro_release &motomoto QUICK CHAINS &macro_tap &LayerOff MOVER>;
         };
 
         off1l42: OffMOVERL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &moMMtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &momoMMtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momoMMtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff MOVER>;
         };
 
         off1l43: OffMOVERL43 {
@@ -503,7 +503,7 @@
         off1r43: OffMOVERR43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS &macro_tap &LayerOff MOVER>;
+            bindings = <&macro_press &motomoto QUICK CHAINS &macro_pause_for_release &macro_release &motomoto QUICK CHAINS &macro_tap &LayerOff MOVER>;
         };
 
         off5l11: OffPARENSL11 {
@@ -581,7 +581,7 @@
         off5l31: OffPARENSL31 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &mMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mMMkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpMMkpMINUSkpPLUS LCTRL 0 &macro_tap &LayerOff PARENS>;
         };
 
         off5l32: OffPARENSL32 {
@@ -617,13 +617,13 @@
         off5l41: OffPARENSL41 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &motomoto QUICK CHAINS &macro_pause_for_release &macro_release &motomoto QUICK CHAINS &macro_tap &LayerOff PARENS>;
         };
 
         off5l42: OffPARENSL42 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &moMMtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &moMMtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &momoMMtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momoMMtoCHAINSkpUNDER NUMER 0 &macro_tap &LayerOff PARENS>;
         };
 
         off5l43: OffPARENSL43 {
@@ -755,7 +755,7 @@
         off5r43: OffPARENSR43 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&macro_press &moto QUICK CHAINS &macro_pause_for_release &macro_release &moto QUICK CHAINS &macro_tap &LayerOff PARENS>;
+            bindings = <&macro_press &motomoto QUICK CHAINS &macro_pause_for_release &macro_release &motomoto QUICK CHAINS &macro_tap &LayerOff PARENS>;
         };
 
         parens: OpenClose_parens {
@@ -861,10 +861,10 @@
 
         BASE {
             bindings = <
-&kp TAB                    &kp Q  &kp W         &kp E                &kp R                         &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
-&mt LSHIFT BACKSPACE       &kp A  &mt LSHIFT S  &mt LGUI D           &mt LALT F                    &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
-&mMMkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C  &kp V                         &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
-                                                &moto QUICK CHAINS   &moMMtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &moto QUICK CHAINS
+&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                           &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
+&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                      &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
+&mkpMMkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                           &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
+                                                  &motomoto QUICK CHAINS  &momoMMtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto QUICK CHAINS
             >;
         };
 
@@ -906,10 +906,10 @@
 
         PARENS {
             bindings = <
-&off5l11            &off5l12  &off5l13  &off5l14  &off5l15                   &off5l16  &off5r11          &off5r12  &off5r13  &off5r14                  &off5r15  &off5r16
-&Offbspcdel PARENS  &off5l22  &off5l23  &off5l24  &off5l25                   &off5l26  &off5r21          &off5r22  &off5r23  &OffmtLSHIFTRIGHT PARENS  &off5r25  &off5r26
-&off5l31            &off5l32  &off5l33  &off5l34  &off5l35                   &off5l36  &off5r31          &off5r32  &off5r33  &off5r34                  &off5r35  &off5r36
-                                        &off5l41  &OffmotoNUMERMOVER PARENS  &to BASE  &OffReRet PARENS  &off5r42  &off5r43
+&off5l11            &off5l12  &off5l13  &off5l14  &off5l15                       &off5l16  &off5r11          &off5r12  &off5r13  &off5r14                  &off5r15  &off5r16
+&Offbspcdel PARENS  &off5l22  &off5l23  &off5l24  &off5l25                       &off5l26  &off5r21          &off5r22  &off5r23  &OffmtLSHIFTRIGHT PARENS  &off5r25  &off5r26
+&off5l31            &off5l32  &off5l33  &off5l34  &off5l35                       &off5l36  &off5r31          &off5r32  &off5r33  &off5r34                  &off5r35  &off5r36
+                                        &off5l41  &OffmotomotoNUMERMOVER PARENS  &to BASE  &OffReRet PARENS  &off5r42  &off5r43
             >;
         };
 

@@ -119,47 +119,24 @@ func XKp(r ref.T, k key.T) ref.T {
 }
 
 func MoTo(mo, to layer.T) ref.T {
-	refs := []ref.T{ref0("mo"), ref0("to")}
-	name := "moto"
-	return behavior.AddX([]any{mo, to}, behavior.T{
-		Name:  name,
-		Label: "MomentaryTo",
-		Type:  behavior.TypeHoldTap,
-		Refs:  refs,
-		Props: behavior.Props{
-			"flavor":          "balanced",
-			"tapping-term-ms": 300,
-		},
+	return HoldTapOpts(Mo(mo), To(to), "moto", "MomentaryTo", behavior.Props{
+		"flavor":          "balanced",
+		"tapping-term-ms": 300,
 	})
 }
 
 func MoX(mo layer.T, x ref.T) ref.T {
-	refs := []ref.T{ref0("mo"), x}
-	name := "mo" + x.Name
-	return behavior.AddX([]any{mo, ZERO}, behavior.T{
-		Name:  name,
-		Label: fmt.Sprintf("Mom%s", x.Show()),
-		Type:  behavior.TypeHoldTap,
-		Refs:  refs,
-		Props: behavior.Props{
-			"flavor":          "balanced",
-			"tapping-term-ms": 300,
-		},
+	return HoldTapOpts(Mo(mo), x, "mo", "Momentary", behavior.Props{
+		"flavor":          "balanced",
+		"tapping-term-ms": 300,
 	})
 }
 
 func ModX(mod key.T, x ref.T) ref.T {
-	name := "m" + x.Show()
-	return behavior.AddX([]any{mod, ZERO}, behavior.T{
-		Name:  name,
-		Label: "Mod" + x.Show(),
-		Type:  behavior.TypeHoldTap,
-		Refs:  []ref.T{ref0("kp"), x},
-		Props: behavior.Props{
-			"flavor":          "tap-preferred",
-			"tapping-term-ms": 200,
-			"quick-tap-ms":    200,
-		},
+	return HoldTapOpts(Kp(mod), x, "m", "Mod", behavior.Props{
+		"flavor":          "tap-preferred",
+		"tapping-term-ms": 200,
+		"quick-tap-ms":    200,
 	})
 }
 
