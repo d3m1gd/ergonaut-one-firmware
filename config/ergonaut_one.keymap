@@ -255,254 +255,254 @@
         };
 
         offl11: OffL11 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp TAB &macro_pause_for_release &macro_release &kp TAB &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl12: OffL12 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp Q &macro_pause_for_release &macro_release &kp Q &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl13: OffL13 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp W &macro_pause_for_release &macro_release &kp W &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl14: OffL14 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp E &macro_pause_for_release &macro_release &kp E &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl15: OffL15 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp R &macro_pause_for_release &macro_release &kp R &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl16: OffL16 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &htTapNoRepeatkp RG(T) T &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(T) T &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl21: OffL21 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LSHIFT BACKSPACE &macro_pause_for_release &macro_release &mt LSHIFT BACKSPACE &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl22: OffL22 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp A &macro_pause_for_release &macro_release &kp A &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl23: OffL23 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LSHIFT S &macro_pause_for_release &macro_release &mt LSHIFT S &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl24: OffL24 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LGUI D &macro_pause_for_release &macro_release &mt LGUI D &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl25: OffL25 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LALT F &macro_pause_for_release &macro_release &mt LALT F &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl26: OffL26 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp G &macro_pause_for_release &macro_release &kp G &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl31: OffL31 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mkpmmkpMINUSkpPLUS LCTRL 0 &macro_pause_for_release &macro_release &mkpmmkpMINUSkpPLUS LCTRL 0 &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl32: OffL32 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp Z &macro_pause_for_release &macro_release &kp Z &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl33: OffL33 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp X &macro_pause_for_release &macro_release &kp X &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl34: OffL34 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &xkpXdgConfigkp 0 C &macro_pause_for_release &macro_release &xkpXdgConfigkp 0 C &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl35: OffL35 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp V &macro_pause_for_release &macro_release &kp V &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl36: OffL36 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp B &macro_pause_for_release &macro_release &kp B &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl41: OffL41 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &motomoto QUICK CHAINS &macro_pause_for_release &macro_release &motomoto QUICK CHAINS &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl42: OffL42 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &momommtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momommtoCHAINSkpUNDER NUMER 0 &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offl43: OffL43 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LCTRL ESCAPE &macro_pause_for_release &macro_release &mt LCTRL ESCAPE &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr11: OffR11 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp Y &macro_pause_for_release &macro_release &kp Y &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr12: OffR12 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp U &macro_pause_for_release &macro_release &kp U &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr13: OffR13 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp I &macro_pause_for_release &macro_release &kp I &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr14: OffR14 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp O &macro_pause_for_release &macro_release &kp O &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr15: OffR15 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp P &macro_pause_for_release &macro_release &kp P &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr16: OffR16 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp LBKT &macro_pause_for_release &macro_release &kp LBKT &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr21: OffR21 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp H &macro_pause_for_release &macro_release &kp H &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr22: OffR22 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LALT J &macro_pause_for_release &macro_release &mt LALT J &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr23: OffR23 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LGUI K &macro_pause_for_release &macro_release &mt LGUI K &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr24: OffR24 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &rmtkpkp LSHIFT L &macro_pause_for_release &macro_release &rmtkpkp LSHIFT L &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr25: OffR25 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &htTapNoRepeatkp RG(SEMI) SEMI &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(SEMI) SEMI &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr26: OffR26 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &htTapNoRepeatkp RG(SQT) SQT &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(SQT) SQT &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr31: OffR31 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp N &macro_pause_for_release &macro_release &kp N &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr32: OffR32 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &htTapNoRepeatkp RG(M) M &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(M) M &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr33: OffR33 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &htTapNoRepeatkp RG(COMMA) COMMA &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(COMMA) COMMA &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr34: OffR34 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &htTapNoRepeatkp RG(DOT) DOT &macro_pause_for_release &macro_release &htTapNoRepeatkp RG(DOT) DOT &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr35: OffR35 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp SLASH &macro_pause_for_release &macro_release &kp SLASH &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr36: OffR36 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &kp BACKSLASH &macro_pause_for_release &macro_release &kp BACKSLASH &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr41: OffR41 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &mt LCTRL RETURN &macro_pause_for_release &macro_release &mt LCTRL RETURN &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr42: OffR42 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &lt NUMER SPACE &macro_pause_for_release &macro_release &lt NUMER SPACE &macro_tap &off MACRO_PLACEHOLDER>;
         };
 
         offr43: OffR43 {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
             bindings = <&macro_press &motomoto QUICK CHAINS &macro_pause_for_release &macro_release &motomoto QUICK CHAINS &macro_tap &off MACRO_PLACEHOLDER>;
         };
 

@@ -183,26 +183,26 @@ func macroParams(n int) []ref.T {
 	panic(fmt.Sprintf("bad n: %d", n))
 }
 
-func Wrap(r ref.T) ref.T {
-	name := fmt.Sprintf("W%s", r.Name)
-	params := macroParams(len(r.Args()))
-	refs := []ref.T{}
-	refs = append(refs, Press)
-	refs = append(refs, params...)
-	refs = append(refs, macro.Placeholder(r))
-	refs = append(refs, Pause)
-	refs = append(refs, Release)
-	refs = append(refs, params...)
-	refs = append(refs, macro.Placeholder(r))
-	macro.Add(macro.T{
-		Name:  name,
-		Label: fmt.Sprintf("Wrap%s", r.Name),
-		Cells: len(r.Args()),
-		Refs:  refs,
-	})
-
-	return ref.RefN(name, Map(r.Args(), ToAny))
-}
+// func Wrap(r ref.T) ref.T {
+// 	name := fmt.Sprintf("W%s", r.Name)
+// 	params := macroParams(len(r.Args()))
+// 	refs := []ref.T{}
+// 	refs = append(refs, Press)
+// 	refs = append(refs, params...)
+// 	refs = append(refs, macro.Placeholder(r))
+// 	refs = append(refs, Pause)
+// 	refs = append(refs, Release)
+// 	refs = append(refs, params...)
+// 	refs = append(refs, macro.Placeholder(r))
+// 	macro.Add(macro.T{
+// 		Name:  name,
+// 		Label: fmt.Sprintf("Wrap%s", r.Name),
+// 		Cells: len(r.Args()),
+// 		Refs:  refs,
+// 	})
+//
+// 	return ref.RefN(name, Map(r.Args(), ToAny))
+// }
 
 func BackspaceDelete() ref.T {
 	name := "bspcdel"
@@ -286,7 +286,7 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 		macro.Add(macro.T{
 			Name:  name,
 			Label: fmt.Sprintf("Off%s", rc.Pretty()),
-			Cells: 0,
+			Cells: 1,
 			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, macro.Placeholder(Off(l))}, // todo macro strip
 		})
 		return ref1(name, l)
