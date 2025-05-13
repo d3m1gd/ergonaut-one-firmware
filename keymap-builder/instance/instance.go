@@ -157,7 +157,7 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 	})
 }
 
-func LayerOff(l layer.T) ref.T {
+func Off(l layer.T) ref.T {
 	name := "off"
 	behavior.Add(behavior.T{
 		Name:  name,
@@ -287,7 +287,7 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 			Name:  name,
 			Label: fmt.Sprintf("Off%s", rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, macro.Placeholder(LayerOff(l))}, // todo macro strip
+			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, macro.Placeholder(Off(l))}, // todo macro strip
 		})
 		return ref1(name, l)
 	})
@@ -302,7 +302,7 @@ func OffX(l layer.T, r ref.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, macro.Placeholder(LayerOff(l))},
+		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, macro.Placeholder(Off(l))},
 	})
 
 	return ref1(name, l)
@@ -314,7 +314,7 @@ func OffKey(l layer.T, k key.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 2,
-		Refs:  []ref.T{Press, Param21, macro.Placeholder(Kp(k)), Pause, Release, Param21, macro.Placeholder(Kp(k)), Tap, Param11, macro.Placeholder(LayerOff(l))},
+		Refs:  []ref.T{Press, Param21, macro.Placeholder(Kp(k)), Pause, Release, Param21, macro.Placeholder(Kp(k)), Tap, Param11, macro.Placeholder(Off(l))},
 	})
 
 	return ref2(name, l, k)
