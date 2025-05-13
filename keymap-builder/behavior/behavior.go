@@ -117,11 +117,6 @@ func Add(b Behavior) {
 	behaviors = append(behaviors, b)
 }
 
-func AddX(args []any, b Behavior) ref.T {
-	Add(b)
-	return ref.Filled(b.Name, b.Type.Cells, args...)
-}
-
 func AddY(b Behavior) ref.T {
 	for _, r := range b.Refs {
 		Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
