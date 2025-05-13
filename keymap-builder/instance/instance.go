@@ -290,15 +290,15 @@ func InitWith(b ref.T) func(layer.T) {
 
 func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
-		name := fmt.Sprintf("off%d%s", l.Index(), rc)
+		name := fmt.Sprintf("off%s", rc)
 		key := base[rc]
 		macro.Add(macro.T{
 			Name:  name,
-			Label: fmt.Sprintf("Off%s%s", l.Name(), rc.Pretty()),
+			Label: fmt.Sprintf("Off%s", rc.Pretty()),
 			Cells: 0,
-			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, LayerOff(l)},
+			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, macro.Placeholder(LayerOff(l))}, // todo macro strip
 		})
-		return ref0(name)
+		return ref1(name, l)
 	})
 }
 
@@ -306,26 +306,24 @@ func OffX(l layer.T, r ref.T) ref.T {
 	if r.Name == "kp" {
 		return OffKey(l, r.Fields[0].(key.T))
 	}
-	plhd := "MACRO_PLACEHOLDER" // todo
 	name := "Off" + r.Show()
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, ref1("LayerOff", plhd)},
+		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, macro.Placeholder(LayerOff(l))},
 	})
 
 	return ref1(name, l)
 }
 
 func OffKey(l layer.T, k key.T) ref.T {
-	plhd := "MACRO_PLACEHOLDER" // todo
 	name := "OffKey"
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 2,
-		Refs:  []ref.T{Press, Param21, ref1("kp", plhd), Pause, Release, Param21, ref1("kp", plhd), Tap, Param11, ref1("LayerOff", plhd)},
+		Refs:  []ref.T{Press, Param21, macro.Placeholder(Kp(k)), Pause, Release, Param21, macro.Placeholder(Kp(k)), Tap, Param11, macro.Placeholder(LayerOff(l))},
 	})
 
 	return ref2(name, l, k)
