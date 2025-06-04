@@ -547,6 +547,11 @@
             key-positions = <36 37>;
         };
 
+        BottomLeftCtrlShift {
+            bindings = <&kp LC(LSHIFT)>;
+            key-positions = <12 24>;
+        };
+
         RightAltWinShift {
             bindings = <&kp LA(LG(LSHIFT))>;
             key-positions = <19 20 21>;

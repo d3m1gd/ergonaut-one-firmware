@@ -205,8 +205,13 @@ func init() {
 	// })
 
 	combo.Add(combo.T{
+		Name: "BottomLeftCtrlShift",
+		Ref:  Kp(LC(LSHIFT)),
+		Keys: []rowcol.T{L21, L31},
+	})
+
+	combo.Add(combo.T{
 		Name: "RightAltWinShift",
-		// Ref:  HoldTap(Kp(LA(LG(LSHIFT))), XXX),
 		Ref:  Kp(LA(LG(LSHIFT))),
 		Keys: []rowcol.T{R22, R23, R24},
 	})
