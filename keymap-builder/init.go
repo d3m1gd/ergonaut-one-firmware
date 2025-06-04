@@ -48,7 +48,7 @@ func init() {
 		L35: Kp(V),
 		L36: Kp(B),
 		L41: MoTo(QUICK, CHAINS), // row 4
-		L42: MoX(NUMER, ModMorph(To(CHAINS), Kp(UNDER), key.Shifts, nil)),
+		L42: MoX(NUMER, ModMorph(Sll(MOVER), Kp(UNDER), key.Shifts, nil)),
 		L43: Mt(LCTRL, ESCAPE),
 		// BASE RIGHT
 		R11: Kp(Y), // row 1
@@ -74,14 +74,14 @@ func init() {
 		R43: MoTo(QUICK, CHAINS),
 	})
 
-	MOVER.Fill(InitOffTrans(MOVER, BASE))
+	// MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
 		L43: To(BASE),
 		R21: Kp(LEFT),
 		// R22: Rmt(LALT, DOWN),
 		// R23: Rmt(LGUI, UP),
 		// R24: Rmt(LSHIFT, RIGHT),
-		R22: Mt(LALT, DOWN),
+		R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, 2000)),
 		R23: Mt(LGUI, UP),
 		R24: Mt(LSHIFT, RIGHT),
 	})

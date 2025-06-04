@@ -105,17 +105,17 @@
             mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
         };
 
-        mmtoCHAINSkpUNDER: ModMorphtoCHAINSkpUNDER {
+        mmsllmoMOVERkpUNDER: ModMorphsllmoMOVERkpUNDER {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&to CHAINS &kp UNDER>;
+            bindings = <&sllmo MOVER &kp UNDER>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        momommtoCHAINSkpUNDER: MomentarymommtoCHAINSkpUNDER {
+        momommsllmoMOVERkpUNDER: MomentarymommsllmoMOVERkpUNDER {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&mo &mmtoCHAINSkpUNDER>;
+            bindings = <&mo &mmsllmoMOVERkpUNDER>;
             flavor = "balanced";
             tapping-term-ms = <300>;
         };
@@ -144,6 +144,14 @@
             hold-trigger-on-release;
             quick-tap-ms = <200>;
             tapping-term-ms = <250>;
+        };
+
+        sllmo: StickyLayerLongmo {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&mo>;
+            quick-release;
+            release-after-ms = <2000>;
         };
 
         xkpXdgConfigkp: XKeyPressXdgConfigkp {
@@ -227,13 +235,13 @@
         bquotes: OpenClose_bquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &to PARENS>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &sllmo PARENS>;
         };
 
         brackets: OpenClose_brackets {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBKT &kp RBKT &kp LEFT &to PARENS>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT &sllmo PARENS>;
         };
 
         bspcdel: BackspaceDelete {
@@ -245,13 +253,13 @@
         curlies: OpenClose_curlies {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT &to PARENS>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &sllmo PARENS>;
         };
 
         dquotes: OpenClose_dquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT &to PARENS>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &sllmo PARENS>;
         };
 
         offl11: OffL11 {
@@ -371,7 +379,7 @@
         offl42: OffL42 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_press &momommtoCHAINSkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momommtoCHAINSkpUNDER NUMER 0 &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+            bindings = <&macro_press &momommsllmoMOVERkpUNDER NUMER 0 &macro_pause_for_release &macro_release &momommsllmoMOVERkpUNDER NUMER 0 &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         offl43: OffL43 {
@@ -509,13 +517,13 @@
         parens: OpenClose_parens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &to PARENS>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &sllmo PARENS>;
         };
 
         squotes: OpenClose_squotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SQT &kp SQT &kp LEFT &to PARENS>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &sllmo PARENS>;
         };
     };
 
@@ -609,19 +617,19 @@
 
         BASE {
             bindings = <
-&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                           &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
-&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                      &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
-&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                           &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
-                                                  &motomoto QUICK CHAINS  &momommtoCHAINSkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto QUICK CHAINS
+&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                             &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
+&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                        &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
+&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                             &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
+                                                  &motomoto QUICK CHAINS  &momommsllmoMOVERkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto QUICK CHAINS
             >;
         };
 
         MOVER {
             bindings = <
-&offl11 MOVER  &offl12 MOVER  &offl13 MOVER  &offl14 MOVER  &offl15 MOVER  &offl16 MOVER  &offr11 MOVER  &offr12 MOVER  &offr13 MOVER  &offr14 MOVER     &offr15 MOVER  &offr16 MOVER
-&offl21 MOVER  &offl22 MOVER  &offl23 MOVER  &offl24 MOVER  &offl25 MOVER  &offl26 MOVER  &kp LEFT       &mt LALT DOWN  &mt LGUI UP    &mt LSHIFT RIGHT  &offr25 MOVER  &offr26 MOVER
-&offl31 MOVER  &offl32 MOVER  &offl33 MOVER  &offl34 MOVER  &offl35 MOVER  &offl36 MOVER  &offr31 MOVER  &offr32 MOVER  &offr33 MOVER  &offr34 MOVER     &offr35 MOVER  &offr36 MOVER
-                                             &offl41 MOVER  &offl42 MOVER  &to BASE       &offr41 MOVER  &offr42 MOVER  &offr43 MOVER
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans         &trans       &trans            &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &mt LALT DOWN  &mt LGUI UP  &mt LSHIFT RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans         &trans       &trans            &trans  &trans
+                        &trans  &trans  &to BASE  &trans    &trans         &trans
             >;
         };
 

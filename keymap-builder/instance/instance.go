@@ -92,19 +92,43 @@ func HoldTapOpts(h, t ref.T, name, label string, properties behavior.Props) ref.
 	})
 }
 
-// func Sll(l layer.T) ref.T {
-// 	name := "sll"
-// 	return behavior.AddX([]any{l}, behavior.T{
-// 		Name:  name,
-// 		Label: "StickyLayerLong",
-// 		Type:  behavior.TypeStickyKey,
-// 		Refs:  []ref.T{ref0("mo")},
-// 		Props: behavior.Props{
-// 			"release-after-ms": 2000,
-// 			"quick-release":    true,
-// 		},
-// 	})
-// }
+func Sll(l layer.T) ref.T {
+	return behavior.AddY(behavior.T{
+		Name:  "sll",
+		Label: "StickyLayerLong",
+		Type:  behavior.TypeStickyKey,
+		Refs:  []ref.T{Mo(l)},
+		Props: behavior.Props{
+			"release-after-ms": 2000,
+			"quick-release":    true,
+		},
+	})
+}
+
+func Sl(l layer.T, duration int) ref.T {
+	return behavior.AddY(behavior.T{
+		Name:  fmt.Sprintf("sll%d", duration),
+		Label: fmt.Sprintf("StickyLayer%d", duration),
+		Type:  behavior.TypeStickyKey,
+		Refs:  []ref.T{Mo(l)},
+		Props: behavior.Props{
+			"release-after-ms": duration,
+			"quick-release":    true,
+		},
+	})
+}
+
+func KpSl(k key.T, l layer.T, duration int) ref.T {
+	name := fmt.Sprintf("KpSl%d", duration)
+	macro.Add(macro.T{
+		Name:  name,
+		Label: name,
+		Cells: 1,
+		Refs:  []ref.T{Param11, macro.Placeholder(Kp(k)), Param21, macro.Placeholder(Sl(l, duration))},
+	})
+
+	return ref2(name, k, l)
+}
 
 func KpKp(a, b key.T) ref.T {
 	return HoldTap(TapNoRepeat(a), Kp(b))
@@ -216,6 +240,18 @@ func BackspaceDelete() ref.T {
 	return ref0(name)
 }
 
+func BackspaceDelete() ref.T {
+	name := "bspcdel"
+	macro.Add(macro.T{
+		Name:  name,
+		Label: "BackspaceDelete",
+		Cells: 0,
+		Refs:  []ref.T{Kp(DEL), Kp(BSPC)},
+	})
+
+	return ref0(name)
+}
+
 func Parens(l layer.T) ref.T {
 	return OpenCloseMacro("parens", LPAR, RPAR, l)
 }
@@ -245,11 +281,24 @@ func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose_%s", name),
 		Cells: 0,
-		Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT), To(l)},
+		Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT), Sll(l)},
 	})
 
 	return ref0(name)
 }
+
+// todo delme
+// func MSll(mod key.T, l layer.T) ref.T {
+// 	name := "ModSll"
+// 	macro.Add(macro.T{
+// 		Name:  name,
+// 		Label: name,
+// 		Cells: 0,
+// 		Refs:  []ref.T{Param11, macro.Placeholder(Kp(mod)), Sll(l)},
+// 	})
+//
+// 	return ref2(name, mod, l)
+// }
 
 func ReRet() ref.T {
 	name := "ReRet"
