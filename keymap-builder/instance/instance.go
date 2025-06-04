@@ -240,18 +240,6 @@ func BackspaceDelete() ref.T {
 	return ref0(name)
 }
 
-func BackspaceDelete() ref.T {
-	name := "bspcdel"
-	macro.Add(macro.T{
-		Name:  name,
-		Label: "BackspaceDelete",
-		Cells: 0,
-		Refs:  []ref.T{Kp(DEL), Kp(BSPC)},
-	})
-
-	return ref0(name)
-}
-
 func Parens(l layer.T) ref.T {
 	return OpenCloseMacro("parens", LPAR, RPAR, l)
 }

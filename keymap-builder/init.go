@@ -77,13 +77,16 @@ func init() {
 	// MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
 		L43: To(BASE),
-		R21: Kp(LEFT),
+		// R21: Kp(LEFT),
 		// R22: Rmt(LALT, DOWN),
 		// R23: Rmt(LGUI, UP),
 		// R24: Rmt(LSHIFT, RIGHT),
+		R21: KpSl(LEFT, MOVER, 2000),
 		R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, 2000)),
-		R23: Mt(LGUI, UP),
-		R24: Mt(LSHIFT, RIGHT),
+		R23: HoldTap(Kp(LGUI), KpSl(UP, MOVER, 2000)),
+		R23: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, 2000)),
+		// R23: Mt(LGUI, UP),
+		// R24: Mt(LSHIFT, RIGHT),
 	})
 
 	NUMER.Extend(layer.T{

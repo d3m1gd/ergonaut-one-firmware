@@ -56,6 +56,33 @@
             tapping-term-ms = <200>;
         };
 
+        htkpKpSl2000DOWN: HoldTapkpKpSl2000DOWN {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp &KpSl2000 DOWN>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
+        };
+
+        htkpKpSl2000RIGHT: HoldTapkpKpSl2000RIGHT {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp &KpSl2000 RIGHT>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
+        };
+
+        htkpKpSl2000UP: HoldTapkpKpSl2000UP {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp &KpSl2000 UP>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
+        };
+
         htkpcaps_word: HoldTapkpcaps_word {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -146,6 +173,14 @@
             tapping-term-ms = <250>;
         };
 
+        sll2000mo: StickyLayer2000mo {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&mo>;
+            quick-release;
+            release-after-ms = <2000>;
+        };
+
         sllmo: StickyLayerLongmo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -176,6 +211,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp G &kp O &kp SPACE &kp I &kp F &kp E &kp LEFT &kp N &kp LEFT &kp I &kp LEFT &kp F &kp LEFT>;
+        };
+
+        KpSl2000: KpSl2000 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_param_2to1 &sll2000mo MACRO_PLACEHOLDER>;
         };
 
         OffGoIfError: OffGoIfError {
@@ -626,10 +667,10 @@
 
         MOVER {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans         &trans       &trans            &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &mt LALT DOWN  &mt LGUI UP  &mt LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans         &trans       &trans            &trans  &trans
-                        &trans  &trans  &to BASE  &trans    &trans         &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans                &trans                        &trans                           &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &KpSl2000 LEFT MOVER  &htkpKpSl2000DOWN LALT MOVER  &htkpKpSl2000RIGHT LSHIFT MOVER  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans                &trans                        &trans                           &trans  &trans  &trans
+                        &trans  &trans  &to BASE  &trans                &trans                        &trans
             >;
         };
 
