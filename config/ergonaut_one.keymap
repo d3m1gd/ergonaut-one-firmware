@@ -577,43 +577,43 @@
         Parens {
             bindings = <&parens>;
             key-positions = <16 19>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <80>;
         };
 
         Curlies {
             bindings = <&curlies>;
             key-positions = <15 20>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <80>;
         };
 
         Brackets {
             bindings = <&brackets>;
             key-positions = <14 21>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <80>;
         };
 
         DoubleQuotes {
             bindings = <&dquotes>;
             key-positions = <4 7>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <80>;
         };
 
         SingleQuotes {
             bindings = <&squotes>;
             key-positions = <3 8>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <80>;
         };
 
         BackQuotes {
             bindings = <&htCodeBlockbquotes 0 0>;
             key-positions = <2 9>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <100>;
+            timeout-ms = <70>;
+            require-prior-idle-ms = <80>;
         };
     };
 

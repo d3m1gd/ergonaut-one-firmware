@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	comboBothSidesTimeout = 40
-	comboBothSidesIdle    = 100
+	comboBothSidesTimeout = 70
+	comboBothSidesIdle    = 80
 )
 
 var (
