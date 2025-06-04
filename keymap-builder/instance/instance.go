@@ -119,15 +119,15 @@ func Sl(l layer.T, duration int) ref.T {
 }
 
 func KpSl(k key.T, l layer.T, duration int) ref.T {
-	name := fmt.Sprintf("KpSl%d", duration)
+	name := fmt.Sprintf("KpSl%s%d", l, duration)
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Param11, macro.Placeholder(Kp(k)), Param21, macro.Placeholder(Sl(l, duration))},
+		Refs:  []ref.T{Param11, macro.Placeholder(Kp(k)), Sl(l, duration)},
 	})
 
-	return ref2(name, k, l)
+	return ref1(name, k)
 }
 
 func KpKp(a, b key.T) ref.T {
