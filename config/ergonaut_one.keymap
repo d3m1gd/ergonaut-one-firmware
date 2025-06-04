@@ -258,13 +258,13 @@
         bquotes: OpenClose_bquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &sllmo PARENS>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &sllmo MOVER>;
         };
 
         brackets: OpenClose_brackets {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBKT &kp RBKT &kp LEFT &sllmo PARENS>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT &sllmo MOVER>;
         };
 
         bspcdel: BackspaceDelete {
@@ -276,13 +276,13 @@
         curlies: OpenClose_curlies {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT &sllmo PARENS>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &sllmo MOVER>;
         };
 
         dquotes: OpenClose_dquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT &sllmo PARENS>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &sllmo MOVER>;
         };
 
         offl11: OffL11 {
@@ -540,13 +540,13 @@
         parens: OpenClose_parens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &sllmo PARENS>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &sllmo MOVER>;
         };
 
         squotes: OpenClose_squotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SQT &kp SQT &kp LEFT &sllmo PARENS>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &sllmo MOVER>;
         };
     };
 
@@ -649,9 +649,9 @@
 
         MOVER {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans               &trans                        &trans                           &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &KpSlMOVER2000 LEFT  &htkpKpSlMOVER2000 LALT DOWN  &htkpKpSlMOVER2000 LSHIFT RIGHT  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans               &trans                        &trans                           &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans               &trans                        &trans                      &trans                           &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &KpSlMOVER2000 LEFT  &htkpKpSlMOVER2000 LALT DOWN  &htkpKpSlMOVER2000 LGUI UP  &htkpKpSlMOVER2000 LSHIFT RIGHT  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans    &trans               &trans                        &trans                      &trans                           &trans  &trans
                         &trans  &trans  &to BASE  &trans               &trans                        &trans
             >;
         };

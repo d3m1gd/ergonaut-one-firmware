@@ -84,7 +84,7 @@ func init() {
 		R21: KpSl(LEFT, MOVER, 2000),
 		R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, 2000)),
 		R23: HoldTap(Kp(LGUI), KpSl(UP, MOVER, 2000)),
-		R23: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, 2000)),
+		R24: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, 2000)),
 		// R23: Mt(LGUI, UP),
 		// R24: Mt(LSHIFT, RIGHT),
 	})
@@ -239,7 +239,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "Parens",
-		Ref:    Parens(PARENS),
+		Ref:    Parens(MOVER),
 		Keys:   []rowcol.T{L25, R22},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -247,7 +247,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "Curlies",
-		Ref:    Curlies(PARENS),
+		Ref:    Curlies(MOVER),
 		Keys:   []rowcol.T{L24, R23},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -255,7 +255,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "Brackets",
-		Ref:    Brackets(PARENS),
+		Ref:    Brackets(MOVER),
 		Keys:   []rowcol.T{L23, R24},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -263,7 +263,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "DoubleQuotes",
-		Ref:    DoubleQuotes(PARENS),
+		Ref:    DoubleQuotes(MOVER),
 		Keys:   []rowcol.T{L15, R12},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -271,7 +271,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "SingleQuotes",
-		Ref:    SingleQuotes(PARENS),
+		Ref:    SingleQuotes(MOVER),
 		Keys:   []rowcol.T{L14, R13},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -279,7 +279,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "BackQuotes",
-		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(PARENS)),
+		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(MOVER)),
 		Keys:   []rowcol.T{L13, R14},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
