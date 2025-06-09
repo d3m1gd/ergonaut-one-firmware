@@ -19,7 +19,7 @@ const (
 
 var (
 	BASE   = layer.New("BASE", InitWith(Trans))
-	MOVER  = layer.New("MOVER", InitWith(Trans))
+	MOVER  = layer.New("MOVER", InitWith(None))
 	NUMER  = layer.New("NUMER", InitWith(Trans))
 	QUICK  = layer.New("QUICK", InitWith(Trans))
 	SYS    = layer.New("SYS", InitWith(To(BASE)))
@@ -74,19 +74,32 @@ func init() {
 		R43: MoTo(QUICK, CHAINS),
 	})
 
+	const moverDuration = 2000
+
 	// MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
+		L42: Sl(MOVER, moverDuration),
 		L43: To(BASE),
-		R21: Kp(LEFT),
-		R22: Rmt(LALT, DOWN),
-		R23: Rmt(LGUI, UP),
-		R24: Rmt(LSHIFT, RIGHT),
-		// R21: KpSl(LEFT, MOVER, 2000),
-		// R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, 2000)),
-		// R23: HoldTap(Kp(LGUI), KpSl(UP, MOVER, 2000)),
-		// R24: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, 2000)),
+		// R21: Kp(LEFT),
+		// R22: Rmt(LALT, DOWN),
+		// R23: Rmt(LGUI, UP),
+		// R24: Rmt(LSHIFT, RIGHT),
+		// R21: KpSl(LEFT, MOVER, moverDuration),
+		// R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, moverDuration)),
+		// R23: HoldTap(Kp(LGUI), KpSl(UP, MOVER, moverDuration)),
+		// R24: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, moverDuration)),
 		// R23: Mt(LGUI, UP),
 		// R24: Mt(LSHIFT, RIGHT),
+		R11: KpSl(LPAR, MOVER, moverDuration),
+		R12: KpSl(EXCLAMATION, MOVER, moverDuration),
+		R13: KpSl(AT, MOVER, moverDuration),
+		R14: KpSl(HASH, MOVER, moverDuration),
+		R21: KpSl(LEFT, MOVER, moverDuration),
+		R22: KpSl(DOWN, MOVER, moverDuration),
+		R23: KpSl(UP, MOVER, moverDuration),
+		R24: KpSl(RIGHT, MOVER, moverDuration),
+		R34: KpSl(RPAR, MOVER, moverDuration),
+		// R23: Mt(LGUI, UP),
 	})
 
 	NUMER.Extend(layer.T{
@@ -216,11 +229,11 @@ func init() {
 		Keys: []rowcol.T{R22, R23, R24},
 	})
 
-	combo.Add(combo.T{
-		Name: "RightAltWin",
-		Ref:  HoldTap(Kp(LA(LWIN)), To(MOVER)),
-		Keys: []rowcol.T{R22, R23},
-	})
+	// combo.Add(combo.T{
+	// 	Name: "RightAltWin",
+	// 	Ref:  HoldTap(Kp(LA(LWIN)), To(MOVER)),
+	// 	Keys: []rowcol.T{R22, R23},
+	// })
 
 	// combo.Add(combo.T{
 	// 	Name: "RightAltShift",

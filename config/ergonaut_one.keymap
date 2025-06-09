@@ -65,15 +65,6 @@
             tapping-term-ms = <200>;
         };
 
-        htkpto: HoldTapkpto {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&kp &to>;
-            flavor = "tap-preferred";
-            quick-tap-ms = <200>;
-            tapping-term-ms = <200>;
-        };
-
         mkpmmkpMINUSkpPLUS: ModkpmmkpMINUSkpPLUS {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -146,6 +137,14 @@
             tapping-term-ms = <250>;
         };
 
+        sll2000mo: StickyLayer2000mo {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&mo>;
+            quick-release;
+            release-after-ms = <2000>;
+        };
+
         sllmo: StickyLayerLongmo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -176,6 +175,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp G &kp O &kp SPACE &kp I &kp F &kp E &kp LEFT &kp N &kp LEFT &kp I &kp LEFT &kp F &kp LEFT>;
+        };
+
+        KpSlMOVER2000: KpSlMOVER2000 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &sll2000mo MOVER>;
         };
 
         OffGoIfError: OffGoIfError {
@@ -557,11 +562,6 @@
             key-positions = <19 20 21>;
         };
 
-        RightAltWin {
-            bindings = <&htkpto LA(LWIN) MOVER>;
-            key-positions = <19 20>;
-        };
-
         RightWinShift_Caps {
             bindings = <&htkpcaps_word LG(LSHIFT) 0>;
             key-positions = <20 21>;
@@ -631,10 +631,10 @@
 
         MOVER {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans              &trans            &trans                 &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &kp LEFT  &rmtkpkp LALT DOWN  &rmtkpkp LGUI UP  &rmtkpkp LSHIFT RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans    &trans    &trans              &trans            &trans                 &trans  &trans
-                        &trans  &trans  &to BASE  &trans    &trans              &trans
+&none  &none  &none  &none  &none             &none     &KpSlMOVER2000 LPAR  &KpSlMOVER2000 EXCLAMATION  &KpSlMOVER2000 AT  &KpSlMOVER2000 HASH   &none  &none
+&none  &none  &none  &none  &none             &none     &KpSlMOVER2000 LEFT  &KpSlMOVER2000 DOWN         &KpSlMOVER2000 UP  &KpSlMOVER2000 RIGHT  &none  &none
+&none  &none  &none  &none  &none             &none     &none                &none                       &none              &KpSlMOVER2000 RPAR   &none  &none
+                     &none  &sll2000mo MOVER  &to BASE  &none                &none                       &none
             >;
         };
 
