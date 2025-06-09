@@ -137,12 +137,20 @@
             tapping-term-ms = <250>;
         };
 
-        sll2000mo: StickyLayer2000mo {
+        sll1000mo: StickyLayer1000mo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&mo>;
             quick-release;
-            release-after-ms = <2000>;
+            release-after-ms = <1000>;
+        };
+
+        sll250mo: StickyLayer250mo {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&mo>;
+            quick-release;
+            release-after-ms = <250>;
         };
 
         sllmo: StickyLayerLongmo {
@@ -177,10 +185,16 @@
             bindings = <&kp G &kp O &kp SPACE &kp I &kp F &kp E &kp LEFT &kp N &kp LEFT &kp I &kp LEFT &kp F &kp LEFT>;
         };
 
-        KpSlMOVER2000: KpSlMOVER2000 {
+        KpSlMOVER1000: KpSlMOVER1000 {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &sll2000mo MOVER>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &sll1000mo MOVER>;
+        };
+
+        KpSlMOVER250: KpSlMOVER250 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &sll250mo MOVER>;
         };
 
         OffGoIfError: OffGoIfError {
@@ -240,13 +254,13 @@
         bquotes: OpenClose_bquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &sllmo MOVER>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT &sllmo BASE>;
         };
 
         brackets: OpenClose_brackets {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBKT &kp RBKT &kp LEFT &sllmo MOVER>;
+            bindings = <&kp LBKT &kp RBKT &kp LEFT &sllmo BASE>;
         };
 
         bspcdel: BackspaceDelete {
@@ -258,13 +272,13 @@
         curlies: OpenClose_curlies {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LBRC &kp RBRC &kp LEFT &sllmo MOVER>;
+            bindings = <&kp LBRC &kp RBRC &kp LEFT &sllmo BASE>;
         };
 
         dquotes: OpenClose_dquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT &sllmo MOVER>;
+            bindings = <&kp DQT &kp DQT &kp LEFT &sllmo BASE>;
         };
 
         offl11: OffL11 {
@@ -522,13 +536,13 @@
         parens: OpenClose_parens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LPAR &kp RPAR &kp LEFT &sllmo MOVER>;
+            bindings = <&kp LPAR &kp RPAR &kp LEFT &sllmo BASE>;
         };
 
         squotes: OpenClose_squotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp SQT &kp SQT &kp LEFT &sllmo MOVER>;
+            bindings = <&kp SQT &kp SQT &kp LEFT &sllmo BASE>;
         };
     };
 
@@ -577,43 +591,43 @@
         Parens {
             bindings = <&parens>;
             key-positions = <16 19>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <80>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <100>;
         };
 
         Curlies {
             bindings = <&curlies>;
             key-positions = <15 20>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <80>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <100>;
         };
 
         Brackets {
             bindings = <&brackets>;
             key-positions = <14 21>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <80>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <100>;
         };
 
         DoubleQuotes {
             bindings = <&dquotes>;
             key-positions = <4 7>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <80>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <100>;
         };
 
         SingleQuotes {
             bindings = <&squotes>;
             key-positions = <3 8>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <80>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <100>;
         };
 
         BackQuotes {
             bindings = <&htCodeBlockbquotes 0 0>;
             key-positions = <2 9>;
-            timeout-ms = <70>;
-            require-prior-idle-ms = <80>;
+            timeout-ms = <60>;
+            require-prior-idle-ms = <100>;
         };
     };
 
@@ -631,10 +645,10 @@
 
         MOVER {
             bindings = <
-&none  &none  &none  &none  &none             &none     &KpSlMOVER2000 LPAR  &KpSlMOVER2000 EXCLAMATION  &KpSlMOVER2000 AT  &KpSlMOVER2000 HASH   &none  &none
-&none  &none  &none  &none  &none             &none     &KpSlMOVER2000 LEFT  &KpSlMOVER2000 DOWN         &KpSlMOVER2000 UP  &KpSlMOVER2000 RIGHT  &none  &none
-&none  &none  &none  &none  &none             &none     &none                &none                       &none              &KpSlMOVER2000 RPAR   &none  &none
-                     &none  &sll2000mo MOVER  &to BASE  &none                &none                       &none
+&trans  &trans  &trans  &trans  &trans            &trans    &KpSlMOVER1000 LPAR  &KpSlMOVER1000 EXCL  &KpSlMOVER250 AT    &KpSlMOVER250 HASH    &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans    &KpSlMOVER1000 LEFT  &KpSlMOVER1000 DOWN  &KpSlMOVER1000 UP   &KpSlMOVER1000 RIGHT  &trans  &KpSlMOVER250 GRAVE
+&trans  &trans  &trans  &trans  &trans            &trans    &trans               &KpSlMOVER250 AMPS   &KpSlMOVER250 STAR  &KpSlMOVER250 RPAR    &trans  &KpSlMOVER250 PIPE
+                        &trans  &sll1000mo MOVER  &to BASE  &trans               &trans               &trans
             >;
         };
 

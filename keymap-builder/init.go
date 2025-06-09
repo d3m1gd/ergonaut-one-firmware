@@ -15,12 +15,14 @@ import (
 const (
 	comboBothSidesTimeout = 60
 	comboBothSidesIdle    = 100
-	moverDuration         = 2000
+	shortSticky           = 250
+	longSticky            = 500
+	moverDuration         = 1000
 )
 
 var (
 	BASE   = layer.New("BASE", InitWith(Trans))
-	MOVER  = layer.New("MOVER", InitWith(None))
+	MOVER  = layer.New("MOVER", InitWith(Trans))
 	NUMER  = layer.New("NUMER", InitWith(Trans))
 	QUICK  = layer.New("QUICK", InitWith(Trans))
 	SYS    = layer.New("SYS", InitWith(To(BASE)))
@@ -90,14 +92,18 @@ func init() {
 		// R23: Mt(LGUI, UP),
 		// R24: Mt(LSHIFT, RIGHT),
 		R11: KpSl(LPAR, MOVER, moverDuration),
-		R12: KpSl(EXCLAMATION, MOVER, moverDuration),
-		R13: KpSl(AT, MOVER, moverDuration),
-		R14: KpSl(HASH, MOVER, moverDuration),
+		R12: KpSl(EXCL, MOVER, moverDuration),
+		R13: KpSl(AT, MOVER, shortSticky),
+		R14: KpSl(HASH, MOVER, shortSticky),
 		R21: KpSl(LEFT, MOVER, moverDuration),
 		R22: KpSl(DOWN, MOVER, moverDuration),
 		R23: KpSl(UP, MOVER, moverDuration),
 		R24: KpSl(RIGHT, MOVER, moverDuration),
-		R34: KpSl(RPAR, MOVER, moverDuration),
+		R26: KpSl(GRAVE, MOVER, shortSticky),
+		R32: KpSl(AMPS, MOVER, shortSticky),
+		R33: KpSl(STAR, MOVER, shortSticky),
+		R34: KpSl(RPAR, MOVER, shortSticky),
+		R36: KpSl(PIPE, MOVER, shortSticky),
 		// R23: Mt(LGUI, UP),
 	})
 
@@ -256,7 +262,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "Parens",
-		Ref:    Parens(MOVER),
+		Ref:    Parens(BASE),
 		Keys:   []rowcol.T{L25, R22},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -264,7 +270,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "Curlies",
-		Ref:    Curlies(MOVER),
+		Ref:    Curlies(BASE),
 		Keys:   []rowcol.T{L24, R23},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -272,7 +278,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "Brackets",
-		Ref:    Brackets(MOVER),
+		Ref:    Brackets(BASE),
 		Keys:   []rowcol.T{L23, R24},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -280,7 +286,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "DoubleQuotes",
-		Ref:    DoubleQuotes(MOVER),
+		Ref:    DoubleQuotes(BASE),
 		Keys:   []rowcol.T{L15, R12},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -288,7 +294,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "SingleQuotes",
-		Ref:    SingleQuotes(MOVER),
+		Ref:    SingleQuotes(BASE),
 		Keys:   []rowcol.T{L14, R13},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
@@ -296,7 +302,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name:   "BackQuotes",
-		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(MOVER)),
+		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(BASE)),
 		Keys:   []rowcol.T{L13, R14},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
