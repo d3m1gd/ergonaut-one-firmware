@@ -13,8 +13,9 @@ import (
 )
 
 const (
-	comboBothSidesTimeout = 70
-	comboBothSidesIdle    = 80
+	comboBothSidesTimeout = 60
+	comboBothSidesIdle    = 100
+	moverDuration         = 2000
 )
 
 var (
@@ -73,8 +74,6 @@ func init() {
 		R42: Lt(NUMER, SPACE),
 		R43: MoTo(QUICK, CHAINS),
 	})
-
-	const moverDuration = 2000
 
 	// MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
