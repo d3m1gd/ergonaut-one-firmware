@@ -645,9 +645,9 @@
 
         MOVER {
             bindings = <
-&trans  &trans  &trans  &trans  &trans            &trans    &KpSlMOVER1000 LPAR  &KpSlMOVER1000 EXCL  &KpSlMOVER250 AT    &KpSlMOVER250 HASH    &trans  &trans
+&trans  &trans  &trans  &trans  &trans            &trans    &KpSlMOVER1000 RPAR  &KpSlMOVER1000 EXCL  &KpSlMOVER250 AT    &KpSlMOVER250 HASH    &trans  &trans
 &trans  &trans  &trans  &trans  &trans            &trans    &KpSlMOVER1000 LEFT  &KpSlMOVER1000 DOWN  &KpSlMOVER1000 UP   &KpSlMOVER1000 RIGHT  &trans  &KpSlMOVER250 GRAVE
-&trans  &trans  &trans  &trans  &trans            &trans    &trans               &KpSlMOVER250 AMPS   &KpSlMOVER250 STAR  &KpSlMOVER250 RPAR    &trans  &KpSlMOVER250 PIPE
+&trans  &trans  &trans  &trans  &trans            &trans    &trans               &KpSlMOVER250 AMPS   &KpSlMOVER250 STAR  &KpSlMOVER250 LPAR    &trans  &KpSlMOVER250 PIPE
                         &trans  &sll1000mo MOVER  &to BASE  &trans               &trans               &trans
             >;
         };

@@ -91,7 +91,7 @@ func init() {
 		// R24: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, moverDuration)),
 		// R23: Mt(LGUI, UP),
 		// R24: Mt(LSHIFT, RIGHT),
-		R11: KpSl(LPAR, MOVER, moverDuration),
+		R11: KpSl(RPAR, MOVER, moverDuration),
 		R12: KpSl(EXCL, MOVER, moverDuration),
 		R13: KpSl(AT, MOVER, shortSticky),
 		R14: KpSl(HASH, MOVER, shortSticky),
@@ -102,7 +102,7 @@ func init() {
 		R26: KpSl(GRAVE, MOVER, shortSticky),
 		R32: KpSl(AMPS, MOVER, shortSticky),
 		R33: KpSl(STAR, MOVER, shortSticky),
-		R34: KpSl(RPAR, MOVER, shortSticky),
+		R34: KpSl(LPAR, MOVER, shortSticky),
 		R36: KpSl(PIPE, MOVER, shortSticky),
 		// R23: Mt(LGUI, UP),
 	})
