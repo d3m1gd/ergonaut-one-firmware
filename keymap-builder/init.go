@@ -77,7 +77,6 @@ func init() {
 		R43: MoTo(MOVER, CHAINS),
 	})
 
-	// MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
 		// L42: Sl(MOVER, symbolSticky),
 		// L43: Off(MOVER),
@@ -85,6 +84,10 @@ func init() {
 		R22: Kp(DOWN),
 		R23: Kp(UP),
 		R24: Kp(RIGHT),
+		R11: Kp(HOME),
+		R12: Kp(PG_DN),
+		R13: Kp(PG_UP),
+		R14: Kp(END),
 		// R21: KpSl(LEFT, MOVER, moverDuration),
 		// R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, moverDuration)),
 		// R23: HoldTap(Kp(LGUI), KpSl(UP, MOVER, moverDuration)),
@@ -109,7 +112,6 @@ func init() {
 
 	NUMER.Extend(layer.T{
 		L11: Kp(LS(TAB)),
-		L16: Kp(TILDE),
 		L21: Kp(DELETE),      // row 2
 		L31: Mt(LCTRL, PLUS), // row 3
 		L35: Kp(LS(INSERT)),
@@ -171,7 +173,7 @@ func init() {
 
 	SYMBOL.Extend(layer.T{
 		L43: Off(SYMBOL),
-		L11: KpSl(TILDE, SYMBOL, shortSticky),
+		L11: Kp(TILDE),
 		R11: KpSl(RPAR, SYMBOL, shortSticky),
 		R12: KpSl(EXCL, SYMBOL, symbolSticky),
 		R13: KpSl(AT, SYMBOL, shortSticky),
