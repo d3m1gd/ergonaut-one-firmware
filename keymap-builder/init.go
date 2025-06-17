@@ -51,7 +51,7 @@ func init() {
 		L35: Kp(V),
 		L36: Kp(B),
 		L41: MoTo(MOVER, CHAINS), // row 4
-		L42: MoX(NUMER, ModMorph(Sll(MOVER), Kp(UNDER), key.Shifts, nil)),
+		L42: MoX(NUMER, ModMorph(Sl(SYMBOL, longSticky), Kp(UNDER), key.Shifts, nil)),
 		L43: Mt(LCTRL, ESCAPE),
 		// BASE RIGHT
 		R11: Kp(Y), // row 1

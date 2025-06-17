@@ -96,17 +96,17 @@
             mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
         };
 
-        mmsllmoMOVERkpUNDER: ModMorphsllmoMOVERkpUNDER {
+        mmsll500moSYMBOLkpUNDER: ModMorphsll500moSYMBOLkpUNDER {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&sllmo MOVER &kp UNDER>;
+            bindings = <&sll500mo SYMBOL &kp UNDER>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        momommsllmoMOVERkpUNDER: MomentarymommsllmoMOVERkpUNDER {
+        momommsll500moSYMBOLkpUNDER: Momentarymommsll500moSYMBOLkpUNDER {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            bindings = <&mo &mmsllmoMOVERkpUNDER>;
+            bindings = <&mo &mmsll500moSYMBOLkpUNDER>;
             flavor = "balanced";
             tapping-term-ms = <300>;
         };
@@ -143,6 +143,14 @@
             bindings = <&mo>;
             quick-release;
             release-after-ms = <250>;
+        };
+
+        sll500mo: StickyLayer500mo {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&mo>;
+            quick-release;
+            release-after-ms = <500>;
         };
 
         sll750mo: StickyLayer750mo {
@@ -348,10 +356,10 @@
 
         BASE {
             bindings = <
-&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                             &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
-&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                        &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
-&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                             &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
-                                                  &motomoto MOVER CHAINS  &momommsllmoMOVERkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto MOVER CHAINS
+&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                                 &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
+&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                            &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
+&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                                 &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
+                                                  &motomoto MOVER CHAINS  &momommsll500moSYMBOLkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto MOVER CHAINS
             >;
         };
 
