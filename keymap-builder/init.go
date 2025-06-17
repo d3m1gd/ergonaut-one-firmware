@@ -17,7 +17,7 @@ const (
 	comboBothSidesIdle    = 100
 	shortSticky           = 250
 	longSticky            = 500
-	moverDuration         = 1000
+	symbolSticky          = 750
 )
 
 var (
@@ -26,7 +26,7 @@ var (
 	NUMER  = layer.New("NUMER", InitWith(Trans))
 	QUICK  = layer.New("QUICK", InitWith(Trans))
 	SYS    = layer.New("SYS", InitWith(To(BASE)))
-	PARENS = layer.New("PARENS", InitWith(Trans))
+	SYMBOL = layer.New("SYMBOL", InitWith(Trans))
 	CHAINS = layer.New(chain.Name(""), InitWith(To(BASE)))
 )
 
@@ -50,7 +50,7 @@ func init() {
 		L34: XKp(Text("XdgConfig", `"$HOME/.config"/`), C),
 		L35: Kp(V),
 		L36: Kp(B),
-		L41: MoTo(QUICK, CHAINS), // row 4
+		L41: MoTo(MOVER, CHAINS), // row 4
 		L42: MoX(NUMER, ModMorph(Sll(MOVER), Kp(UNDER), key.Shifts, nil)),
 		L43: Mt(LCTRL, ESCAPE),
 		// BASE RIGHT
@@ -74,36 +74,36 @@ func init() {
 		R36: Kp(BACKSLASH),
 		R41: Mt(LCTRL, RETURN), // row 4
 		R42: Lt(NUMER, SPACE),
-		R43: MoTo(QUICK, CHAINS),
+		R43: MoTo(MOVER, CHAINS),
 	})
 
 	// MOVER.Fill(InitOffTrans(MOVER, BASE))
 	MOVER.Extend(layer.T{
-		L42: Sl(MOVER, moverDuration),
-		L43: To(BASE),
-		// R21: Kp(LEFT),
-		// R22: Rmt(LALT, DOWN),
-		// R23: Rmt(LGUI, UP),
-		// R24: Rmt(LSHIFT, RIGHT),
+		// L42: Sl(MOVER, symbolSticky),
+		// L43: Off(MOVER),
+		R21: Kp(LEFT),
+		R22: Kp(DOWN),
+		R23: Kp(UP),
+		R24: Kp(RIGHT),
 		// R21: KpSl(LEFT, MOVER, moverDuration),
 		// R22: HoldTap(Kp(LALT), KpSl(DOWN, MOVER, moverDuration)),
 		// R23: HoldTap(Kp(LGUI), KpSl(UP, MOVER, moverDuration)),
 		// R24: HoldTap(Kp(LSHIFT), KpSl(RIGHT, MOVER, moverDuration)),
 		// R23: Mt(LGUI, UP),
 		// R24: Mt(LSHIFT, RIGHT),
-		R11: KpSl(RPAR, MOVER, moverDuration),
-		R12: KpSl(EXCL, MOVER, moverDuration),
-		R13: KpSl(AT, MOVER, shortSticky),
-		R14: KpSl(HASH, MOVER, shortSticky),
-		R21: KpSl(LEFT, MOVER, moverDuration),
-		R22: KpSl(DOWN, MOVER, moverDuration),
-		R23: KpSl(UP, MOVER, moverDuration),
-		R24: KpSl(RIGHT, MOVER, moverDuration),
-		R26: KpSl(GRAVE, MOVER, shortSticky),
-		R32: KpSl(AMPS, MOVER, shortSticky),
-		R33: KpSl(STAR, MOVER, shortSticky),
-		R34: KpSl(LPAR, MOVER, shortSticky),
-		R36: KpSl(PIPE, MOVER, shortSticky),
+		// R11: KpSl(RPAR, MOVER, symbolSticky),
+		// R12: KpSl(EXCL, MOVER, symbolSticky),
+		// R13: KpSl(AT, MOVER, shortSticky),
+		// R14: KpSl(HASH, MOVER, shortSticky),
+		// R21: KpSl(LEFT, MOVER, symbolSticky),
+		// R22: KpSl(DOWN, MOVER, symbolSticky),
+		// R23: KpSl(UP, MOVER, symbolSticky),
+		// R24: KpSl(RIGHT, MOVER, symbolSticky),
+		// R26: KpSl(GRAVE, MOVER, shortSticky),
+		// R32: KpSl(AMPS, MOVER, shortSticky),
+		// R33: KpSl(STAR, MOVER, shortSticky),
+		// R34: KpSl(LPAR, MOVER, shortSticky),
+		// R36: KpSl(PIPE, MOVER, shortSticky),
 		// R23: Mt(LGUI, UP),
 	})
 
@@ -169,13 +169,25 @@ func init() {
 		R31: ref.Ref1("bt", "BT_CLR_ALL"), // n - nuke
 	})
 
-	PARENS.Fill(InitOffTrans(PARENS, BASE))
-	PARENS.Extend(layer.T{
-		L43: To(BASE),
-		L21: OffX(PARENS, BackspaceDelete()),
-		R24: OffX(PARENS, Mt(LSHIFT, RIGHT)),
-		R41: OffX(PARENS, ReRet()),
-		L42: OffX(PARENS, MoTo(NUMER, MOVER)), // recreate to prevent macro in macro hold
+	SYMBOL.Extend(layer.T{
+		L43: Off(SYMBOL),
+		L11: KpSl(TILDE, SYMBOL, shortSticky),
+		R11: KpSl(RPAR, SYMBOL, shortSticky),
+		R12: KpSl(EXCL, SYMBOL, symbolSticky),
+		R13: KpSl(AT, SYMBOL, shortSticky),
+		R14: KpSl(HASH, SYMBOL, shortSticky),
+		R16: KpSl(RBKT, SYMBOL, shortSticky),
+		R21: KpSl(EQUAL, SYMBOL, symbolSticky),
+		R22: KpSl(DLLR, SYMBOL, symbolSticky),
+		R23: KpSl(PRCNT, SYMBOL, symbolSticky),
+		R24: KpSl(CARET, SYMBOL, symbolSticky),
+		R25: KpSl(COLON, SYMBOL, symbolSticky),
+		R26: KpSl(GRAVE, SYMBOL, shortSticky),
+		R31: KpSl(PLUS, SYMBOL, shortSticky),
+		R32: KpSl(AMPS, SYMBOL, shortSticky),
+		R33: KpSl(STAR, SYMBOL, shortSticky),
+		R34: KpSl(LPAR, SYMBOL, shortSticky),
+		R36: KpSl(PIPE, SYMBOL, shortSticky),
 	})
 
 	chain.Add(CHAINS, InitWith(To(BASE)), map[string]ref.T{
