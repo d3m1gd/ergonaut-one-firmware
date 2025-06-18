@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	comboBothSidesTimeout = 60
+	comboBothSidesTimeout = 80
 	comboBothSidesIdle    = 100
 	shortSticky           = 250
 	longSticky            = 500
@@ -294,7 +294,7 @@ func init() {
 		Name:   "Brackets",
 		Ref:    Brackets(BASE),
 		Keys:   []rowcol.T{L23, R24},
-		Timout: comboBothSidesTimeout,
+		Timout: comboBothSidesTimeout - 30,
 		Idle:   comboBothSidesIdle,
 	})
 
