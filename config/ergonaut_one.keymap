@@ -365,9 +365,9 @@
 
         MOVER {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp PSCRN  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans    &trans     &trans     &trans     &trans     &trans
                         &trans  &trans  &trans  &trans    &trans     &trans
             >;
         };
@@ -401,8 +401,8 @@
 
         SYMBOL {
             bindings = <
-&kp TILDE  &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 RPAR   &KpSlSYMBOL750 EXCL  &KpSlSYMBOL250 AT     &KpSlSYMBOL250 HASH   &trans                &KpSlSYMBOL250 RBKT
-&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL750 EQUAL  &KpSlSYMBOL750 DLLR  &KpSlSYMBOL750 PRCNT  &KpSlSYMBOL750 CARET  &KpSlSYMBOL750 COLON  &KpSlSYMBOL250 GRAVE
+&kp TILDE  &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 RPAR   &KpSlSYMBOL750 EXCL  &kp AT                &KpSlSYMBOL250 HASH   &trans                &KpSlSYMBOL250 RBKT
+&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL750 EQUAL  &kp DLLR             &KpSlSYMBOL750 PRCNT  &KpSlSYMBOL750 CARET  &KpSlSYMBOL750 COLON  &KpSlSYMBOL250 GRAVE
 &trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 PLUS   &KpSlSYMBOL250 AMPS  &KpSlSYMBOL250 STAR   &KpSlSYMBOL250 LPAR   &trans                &KpSlSYMBOL250 PIPE
                            &trans  &trans  &off SYMBOL  &trans                &trans               &trans
             >;
