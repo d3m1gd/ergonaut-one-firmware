@@ -13,8 +13,8 @@ import (
 )
 
 const (
-	comboBothSidesTimeout = 80
-	comboBothSidesIdle    = 100
+	comboBothSidesTimeout = 60
+	comboBothSidesIdle    = 300
 	shortSticky           = 250
 	longSticky            = 500
 	symbolSticky          = 750
