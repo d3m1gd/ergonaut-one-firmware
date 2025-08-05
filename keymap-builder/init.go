@@ -279,7 +279,7 @@ func init() {
 		Name:   "Parens",
 		Ref:    Parens(BASE),
 		Keys:   []rowcol.T{L25, R22},
-		Timout: comboBothSidesTimeout,
+		Timout: comboBothSidesTimeout + 30,
 		Idle:   comboBothSidesIdle,
 	})
 
@@ -287,7 +287,7 @@ func init() {
 		Name:   "Curlies",
 		Ref:    Curlies(BASE),
 		Keys:   []rowcol.T{L24, R23},
-		Timout: comboBothSidesTimeout,
+		Timout: comboBothSidesTimeout + 10,
 		Idle:   comboBothSidesIdle,
 	})
 

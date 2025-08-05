@@ -311,14 +311,14 @@
         Parens {
             bindings = <&parens>;
             key-positions = <16 19>;
-            timeout-ms = <60>;
+            timeout-ms = <90>;
             require-prior-idle-ms = <300>;
         };
 
         Curlies {
             bindings = <&curlies>;
             key-positions = <15 20>;
-            timeout-ms = <60>;
+            timeout-ms = <70>;
             require-prior-idle-ms = <300>;
         };
 
