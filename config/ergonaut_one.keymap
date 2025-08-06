@@ -332,7 +332,7 @@
         DoubleQuotes {
             bindings = <&dquotes>;
             key-positions = <4 7>;
-            timeout-ms = <60>;
+            timeout-ms = <90>;
             require-prior-idle-ms = <300>;
         };
 

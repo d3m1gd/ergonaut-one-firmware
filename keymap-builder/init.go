@@ -303,7 +303,7 @@ func init() {
 		Name:   "DoubleQuotes",
 		Ref:    DoubleQuotes(BASE),
 		Keys:   []rowcol.T{L15, R12},
-		Timout: comboBothSidesTimeout,
+		Timout: comboBothSidesTimeout + 30,
 		Idle:   comboBothSidesIdle,
 	})
 
