@@ -318,7 +318,7 @@
         Curlies {
             bindings = <&curlies>;
             key-positions = <15 20>;
-            timeout-ms = <70>;
+            timeout-ms = <100>;
             require-prior-idle-ms = <300>;
         };
 

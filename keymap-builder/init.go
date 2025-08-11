@@ -287,7 +287,7 @@ func init() {
 		Name:   "Curlies",
 		Ref:    Curlies(BASE),
 		Keys:   []rowcol.T{L24, R23},
-		Timout: comboBothSidesTimeout + 10,
+		Timout: comboBothSidesTimeout + 40,
 		Idle:   comboBothSidesIdle,
 	})
 
