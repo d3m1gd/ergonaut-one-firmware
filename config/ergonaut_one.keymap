@@ -311,42 +311,42 @@
         Parens {
             bindings = <&parens>;
             key-positions = <16 19>;
-            timeout-ms = <90>;
+            timeout-ms = <120>;
             require-prior-idle-ms = <300>;
         };
 
         Curlies {
             bindings = <&curlies>;
             key-positions = <15 20>;
-            timeout-ms = <100>;
+            timeout-ms = <130>;
             require-prior-idle-ms = <300>;
         };
 
         Brackets {
             bindings = <&brackets>;
             key-positions = <14 21>;
-            timeout-ms = <30>;
+            timeout-ms = <60>;
             require-prior-idle-ms = <300>;
         };
 
         DoubleQuotes {
             bindings = <&dquotes>;
             key-positions = <4 7>;
-            timeout-ms = <90>;
+            timeout-ms = <120>;
             require-prior-idle-ms = <300>;
         };
 
         SingleQuotes {
             bindings = <&squotes>;
             key-positions = <3 8>;
-            timeout-ms = <60>;
+            timeout-ms = <90>;
             require-prior-idle-ms = <300>;
         };
 
         BackQuotes {
             bindings = <&htCodeBlockbquotes 0 0>;
             key-positions = <2 9>;
-            timeout-ms = <60>;
+            timeout-ms = <90>;
             require-prior-idle-ms = <300>;
         };
     };
