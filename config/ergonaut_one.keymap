@@ -401,9 +401,9 @@
 
         SYMBOL {
             bindings = <
-&kp TILDE  &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 RPAR   &KpSlSYMBOL750 EXCL  &kp AT                &KpSlSYMBOL250 HASH   &trans                &KpSlSYMBOL250 RBKT
-&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL750 EQUAL  &kp DLLR             &KpSlSYMBOL750 PRCNT  &KpSlSYMBOL750 CARET  &KpSlSYMBOL750 COLON  &KpSlSYMBOL250 GRAVE
-&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 PLUS   &KpSlSYMBOL250 AMPS  &KpSlSYMBOL250 STAR   &KpSlSYMBOL250 LPAR   &trans                &KpSlSYMBOL250 PIPE
+&kp TILDE  &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 RPAR   &KpSlSYMBOL750 EXCL  &kp AT               &KpSlSYMBOL250 HASH  &trans     &kp RBKT
+&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL750 EQUAL  &kp DLLR             &kp PRCNT            &kp CARET            &kp COLON  &KpSlSYMBOL250 GRAVE
+&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 PLUS   &KpSlSYMBOL250 AMPS  &KpSlSYMBOL250 STAR  &kp LPAR             &trans     &KpSlSYMBOL250 PIPE
                            &trans  &trans  &off SYMBOL  &trans                &trans               &trans
             >;
         };
