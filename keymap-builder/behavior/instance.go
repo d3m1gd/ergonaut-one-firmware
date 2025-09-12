@@ -16,7 +16,7 @@ import (
 
 type Layer = layer.Layer
 
-var LayerPlaceholder = layer.Layer{
+var LayerPlaceholder = Layer{
 	Name: "MACRO_PLACEHOLDER",
 }
 
@@ -35,15 +35,11 @@ var (
 	Release  = ref0("macro_release")
 	Pause    = ref0("macro_pause_for_release")
 
-	Param11 = macroParamBuilder(1, 1)
-	Param12 = macroParamBuilder(1, 2)
-	Param21 = macroParamBuilder(2, 1)
-	Param22 = macroParamBuilder(2, 2)
+	Param11 = ref.Ref0("macro_param_1to1")
+	Param12 = ref.Ref0("macro_param_1to2")
+	Param21 = ref.Ref0("macro_param_2to1")
+	Param22 = ref.Ref0("macro_param_2to2")
 )
-
-func macroParamBuilder(a, b int) ref.T {
-	return ref.Ref0(fmt.Sprintf("macro_param_%dto%d", a, b))
-}
 
 func Lt(l Layer, tap key.Key) ref.T {
 	return ref2("lt", l.Name, tap)
@@ -213,18 +209,6 @@ func Off(l Layer) ref.T {
 	return ref.Ref1(name, l)
 }
 
-// func macroParams(n int) []ref.T {
-// 	switch n {
-// 	case 0:
-// 		return []ref.T{}
-// 	case 1:
-// 		return []ref.T{Param11}
-// 	case 2:
-// 		return []ref.T{Param11, Param22}
-// 	}
-// 	panic(fmt.Sprintf("bad n: %d", n))
-// }
-
 // func Wrap(r ref.T) ref.T {
 // 	name := fmt.Sprintf("W%s", r.Name)
 // 	params := macroParams(len(r.Args()))
@@ -283,19 +267,6 @@ func OpenCloseMacro(name string, left, right key.Key, l Layer) ref.T {
 		Refs: []ref.T{Kp(left), Kp(right), Kp(key.LEFT), Sll(l)},
 	}).Invoke()
 }
-
-// todo delme
-// func MSll(mod key.Key, l Layer) ref.T {
-// 	name := "ModSll"
-// 	macro.Add(macro.T{
-// 		Name:  name,
-// 		Label: name,
-// 		Cells: 0,
-// 		Refs:  []ref.T{Param11, macro.Placeholder(Kp(mod)), Sll(l)},
-// 	})
-//
-// 	return ref2(name, mod, l)
-// }
 
 func ReRet() ref.T {
 	return macro.Add(macro.T{
