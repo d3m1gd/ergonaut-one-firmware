@@ -18,6 +18,25 @@ var RW = modBuilder("RG") // Win alias
 var RS = modBuilder("RS")
 var RC = modBuilder("RC")
 
+func ModMap(keys []Key) Key {
+	k := keys[0]
+	for _, mod := range keys[1:] {
+		switch mod {
+		case LALT:
+			k = LA(k)
+		case LGUI:
+			k = LG(k)
+		case LCTRL:
+			k = LC(k)
+		case LSHIFT:
+			k = LS(k)
+		default:
+			panic("unhandled: " + mod)
+		}
+	}
+	return k
+}
+
 func From(b byte) Key {
 	switch {
 	case b >= 'A' && b <= 'Z':

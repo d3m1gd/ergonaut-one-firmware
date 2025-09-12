@@ -10,12 +10,14 @@ import (
 	. "keyboard/behavior"
 	"keyboard/chain"
 	"keyboard/combo"
+	"keyboard/key"
 	. "keyboard/key"
 	"keyboard/layer"
 	. "keyboard/layout"
 	"keyboard/macro"
 	"keyboard/ref"
 	"keyboard/rowcol"
+	"keyboard/util"
 	. "keyboard/util"
 )
 
@@ -228,7 +230,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "System",
 		Ref:    To(SYS),
-		Keys:   []rowcol.T{L15, L16},
+		RCs:    []rowcol.T{L15, L16},
 		Idle:   500,
 		Timout: 100,
 	})
@@ -236,13 +238,13 @@ func init() {
 	combo.Add(combo.T{
 		Name: "LeftEnter",
 		Ref:  Kp(RETURN),
-		Keys: []rowcol.T{L42, L43},
+		RCs:  []rowcol.T{L42, L43},
 	})
 
 	combo.Add(combo.T{
 		Name: "LeftSpace",
 		Ref:  Kp(SPACE),
-		Keys: []rowcol.T{L41, L42},
+		RCs:  []rowcol.T{L41, L42},
 	})
 
 	// combo.Add(combo.T{
@@ -255,73 +257,29 @@ func init() {
 	combo.Add(combo.T{
 		Name: "BottomLeftCtrlShift",
 		Ref:  Kp(LC(LSHIFT)),
-		Keys: []rowcol.T{L21, L31},
+		RCs:  []rowcol.T{L21, L31},
 	})
 
-	combo.Add(combo.T{
-		Name: "LeftAltWinShiftCtrl",
-		Ref:  HoldTapStickyLong(LA(LW(LS(LCTRL)))),
-		Keys: []rowcol.T{L23, L24, L25, L43},
-	})
+	LeftStickyCombo(a, w, s, c)
 
-	combo.Add(combo.T{
-		Name: "LeftAltWinCtrl",
-		Ref:  HoldTapStickyLong(LA(LW(LCTRL))),
-		Keys: []rowcol.T{L24, L25, L43},
-	})
+	LeftStickyCombo(a, w, s)
+	LeftStickyCombo(a, w)
+	LeftStickyCombo(a, s)
+	LeftStickyCombo(w, s)
 
-	combo.Add(combo.T{
-		Name: "LeftAltCtrl",
-		Ref:  HoldTapStickyLong(LA(LCTRL)),
-		Keys: []rowcol.T{L25, L43},
-	})
+	LeftStickyCombo(a, w, c)
+	LeftStickyCombo(a, c)
+	LeftStickyCombo(w, c)
 
-	combo.Add(combo.T{
-		Name: "LeftWinCtrl",
-		Ref:  HoldTapStickyLong(LW(LCTRL)),
-		Keys: []rowcol.T{L24, L43},
-	})
+	LeftStickyCombo(a, s, c)
+	LeftStickyCombo(s, c)
 
-	combo.Add(combo.T{
-		Name: "LeftAltShiftCtrl",
-		Ref:  HoldTapStickyLong(LA(LS(LCTRL))),
-		Keys: []rowcol.T{L23, L25, L43},
-	})
-
-	combo.Add(combo.T{
-		Name: "LeftShiftCtrl",
-		Ref:  HoldTapStickyLong(LS(LCTRL)),
-		Keys: []rowcol.T{L23, L43},
-	})
-
-	combo.Add(combo.T{
-		Name: "LeftWinShiftCtrl",
-		Ref:  HoldTapStickyLong(LW(LS(LCTRL))),
-		Keys: []rowcol.T{L23, L24, L43},
-	})
-
-	combo.Add(combo.T{
-		Name: "LeftAltWinShift",
-		Ref:  HoldTapStickyLong(LA(LW(LSHIFT))),
-		Keys: []rowcol.T{L22, L23, L24},
-	})
-
-	combo.Add(combo.T{
-		Name: "LeftAltWin",
-		Ref:  HoldTapStickyLong(LA(LGUI)),
-		Keys: []rowcol.T{L23, L24},
-	})
-
-	combo.Add(combo.T{
-		Name: "LeftAltShift",
-		Ref:  HoldTapStickyLong(LA(LSHFT)),
-		Keys: []rowcol.T{L22, L24},
-	})
+	LeftStickyCombo(w, s, c)
 
 	combo.Add(combo.T{
 		Name: "RightAltWinShift",
 		Ref:  Kp(LA(LW(LSHIFT))),
-		Keys: []rowcol.T{R22, R23, R24},
+		RCs:  []rowcol.T{R22, R23, R24},
 	})
 
 	// combo.Add(combo.T{
@@ -339,13 +297,13 @@ func init() {
 	combo.Add(combo.T{
 		Name: "RightWinShift_Caps",
 		Ref:  HoldTap(Kp(LG(LSHIFT)), CapsWord),
-		Keys: []rowcol.T{R23, R24},
+		RCs:  []rowcol.T{R23, R24},
 	})
 
 	combo.Add(combo.T{
 		Name:   "MiddleMouse",
 		Ref:    MKp(MCLK),
-		Keys:   []rowcol.T{L34, L35},
+		RCs:    []rowcol.T{L34, L35},
 		Idle:   200,
 		Timout: 100,
 	})
@@ -353,7 +311,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "Parens",
 		Ref:    Parens(BASE),
-		Keys:   []rowcol.T{L25, R22},
+		RCs:    []rowcol.T{L25, R22},
 		Timout: comboBothSidesTimeout + 30,
 		Idle:   comboBothSidesIdle,
 	})
@@ -361,7 +319,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "Curlies",
 		Ref:    Curlies(BASE),
-		Keys:   []rowcol.T{L24, R23},
+		RCs:    []rowcol.T{L24, R23},
 		Timout: comboBothSidesTimeout + 40,
 		Idle:   comboBothSidesIdle,
 	})
@@ -369,7 +327,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "Brackets",
 		Ref:    Brackets(BASE),
-		Keys:   []rowcol.T{L23, R24},
+		RCs:    []rowcol.T{L23, R24},
 		Timout: comboBothSidesTimeout - 30,
 		Idle:   comboBothSidesIdle,
 	})
@@ -377,7 +335,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "DoubleQuotes",
 		Ref:    DoubleQuotes(BASE),
-		Keys:   []rowcol.T{L15, R12},
+		RCs:    []rowcol.T{L15, R12},
 		Timout: comboBothSidesTimeout + 30,
 		Idle:   comboBothSidesIdle,
 	})
@@ -385,7 +343,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "SingleQuotes",
 		Ref:    SingleQuotes(BASE),
-		Keys:   []rowcol.T{L14, R13},
+		RCs:    []rowcol.T{L14, R13},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
 	})
@@ -393,7 +351,7 @@ func init() {
 	combo.Add(combo.T{
 		Name:   "BackQuotes",
 		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(BASE)),
-		Keys:   []rowcol.T{L13, R14},
+		RCs:    []rowcol.T{L13, R14},
 		Timout: comboBothSidesTimeout,
 		Idle:   comboBothSidesIdle,
 	})
@@ -430,4 +388,41 @@ func main() {
 		Combos:    combo.Render(),
 		Layers:    layer.All(),
 	})
+}
+
+const a = key.LALT
+const w = key.LGUI
+const s = key.LSHIFT
+const c = key.LCTRL
+
+func LeftStickyCombo(keys ...key.Key) {
+	rowcols := util.Map(keys, func(k key.Key) rowcol.T {
+		rc, ok := LeftModPositions[k]
+		util.Panicif(!ok)
+		return rc
+	})
+
+	names := util.Map(keys, func(k key.Key) string {
+		return string(k)
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftStickyCombo_" + strings.Join(names, "_"),
+		Ref:  HoldTapStickyLong(key.ModMap(keys)),
+		RCs:  rowcols,
+	})
+}
+
+var LeftModPositions = map[key.Key]rowcol.T{
+	a: L25,
+	w: L24,
+	s: L23,
+	c: L43,
+}
+
+var RightModPositions = map[key.Key]rowcol.T{
+	a: R21,
+	w: R22,
+	s: R23,
+	c: R41,
 }
