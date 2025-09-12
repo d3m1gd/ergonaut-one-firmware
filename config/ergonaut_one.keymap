@@ -308,8 +308,58 @@
             key-positions = <12 24>;
         };
 
-        RightAltWinShift {
+        LeftAltWinShiftCtrl {
+            bindings = <&htkpsklkp LA(LG(LS(LCTRL))) LA(LG(LS(LCTRL)))>;
+            key-positions = <14 15 16 38>;
+        };
+
+        LeftAltWinCtrl {
+            bindings = <&htkpsklkp LA(LG(LCTRL)) LA(LG(LCTRL))>;
+            key-positions = <15 16 38>;
+        };
+
+        LeftAltCtrl {
+            bindings = <&htkpsklkp LA(LCTRL) LA(LCTRL)>;
+            key-positions = <16 38>;
+        };
+
+        LeftWinCtrl {
+            bindings = <&htkpsklkp LG(LCTRL) LG(LCTRL)>;
+            key-positions = <15 38>;
+        };
+
+        LeftAltShiftCtrl {
+            bindings = <&htkpsklkp LA(LS(LCTRL)) LA(LS(LCTRL))>;
+            key-positions = <14 16 38>;
+        };
+
+        LeftShiftCtrl {
+            bindings = <&htkpsklkp LS(LCTRL) LS(LCTRL)>;
+            key-positions = <14 38>;
+        };
+
+        LeftWinShiftCtrl {
+            bindings = <&htkpsklkp LG(LS(LCTRL)) LG(LS(LCTRL))>;
+            key-positions = <14 15 38>;
+        };
+
+        LeftAltWinShift {
             bindings = <&htkpsklkp LA(LG(LSHIFT)) LA(LG(LSHIFT))>;
+            key-positions = <13 14 15>;
+        };
+
+        LeftAltWin {
+            bindings = <&htkpsklkp LA(LGUI) LA(LGUI)>;
+            key-positions = <14 15>;
+        };
+
+        LeftAltShift {
+            bindings = <&htkpsklkp LA(LSHFT) LA(LSHFT)>;
+            key-positions = <13 15>;
+        };
+
+        RightAltWinShift {
+            bindings = <&kp LA(LG(LSHIFT))>;
             key-positions = <19 20 21>;
         };
 

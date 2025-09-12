@@ -10,9 +10,11 @@ import (
 var LA = modBuilder("LA")
 var LC = modBuilder("LC")
 var LG = modBuilder("LG")
+var LW = modBuilder("LG") // Win alias
 var LS = modBuilder("LS")
 var RA = modBuilder("RA")
 var RG = modBuilder("RG")
+var RW = modBuilder("RG") // Win alias
 var RS = modBuilder("RS")
 var RC = modBuilder("RC")
 

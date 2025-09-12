@@ -7,6 +7,7 @@ import (
 	"keyboard/layer"
 	"keyboard/ref"
 	"keyboard/rowcol"
+	"keyboard/util"
 	. "keyboard/util"
 	"keyboard/util/indenter"
 )
@@ -37,6 +38,13 @@ func (c Combo) RenderKeys() string {
 }
 
 func Add(c Combo) {
+	for _, other := range combos {
+		util.Panicif(c.Name == other.Name)
+		util.Panicif(ref.Equal(c.Ref, other.Ref))
+		util.Panicif(slices.EqualFunc(c.Keys, other.Keys, func(a, b rowcol.T) bool {
+			return a == b
+		}))
+	}
 	combos = append(combos, c)
 }
 

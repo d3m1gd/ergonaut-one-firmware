@@ -104,18 +104,7 @@ func (b Behavior) Properties() []string {
 	return util.Map(keys, func(k string) string { return Prop{k, b.Props[k]}.Compile() })
 }
 
-func Add(b Behavior) {
-	i := slices.IndexFunc(behaviors, func(other Behavior) bool {
-		return b.Name == other.Name
-	})
-	if i != -1 {
-		util.Panicif(!b.Equal(behaviors[i]))
-		return
-	}
-	behaviors = append(behaviors, b)
-}
-
-func AddY(b Behavior) ref.T {
+func Add(b Behavior) ref.T {
 	for _, r := range b.Refs {
 		util.Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
 	}
@@ -156,7 +145,14 @@ func AddY(b Behavior) ref.T {
 		b.Label += r.Show()
 	}
 
-	Add(b)
+	i := slices.IndexFunc(behaviors, func(other Behavior) bool {
+		return b.Name == other.Name
+	})
+	if i != -1 {
+		util.Panicif(!b.Equal(behaviors[i]))
+		return ref.RefN(b.Name, args)
+	}
+	behaviors = append(behaviors, b)
 
 	return ref.RefN(b.Name, args)
 }

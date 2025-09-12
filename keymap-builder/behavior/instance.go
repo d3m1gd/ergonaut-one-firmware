@@ -88,8 +88,12 @@ func HoldTap(h, t ref.T) ref.T {
 	})
 }
 
+func HoldTapStickyLong(k key.Key) ref.T {
+	return HoldTap(Kp(k), Skl(k))
+}
+
 func HoldTapOpts(h, t ref.T, name, label string, properties Props) ref.T {
-	return AddY(Behavior{
+	return Add(Behavior{
 		Name:  name,
 		Label: label,
 		Type:  TypeHoldTap,
@@ -99,7 +103,7 @@ func HoldTapOpts(h, t ref.T, name, label string, properties Props) ref.T {
 }
 
 func Skl(k key.Key) ref.T {
-	return AddY(Behavior{
+	return Add(Behavior{
 		Name:  "skl",
 		Label: "skl",
 		Type:  TypeStickyKey,
@@ -113,7 +117,7 @@ func Skl(k key.Key) ref.T {
 }
 
 func Sll(l Layer) ref.T {
-	return AddY(Behavior{
+	return Add(Behavior{
 		Name:  "sll",
 		Label: "StickyLayerLong",
 		Type:  TypeStickyKey,
@@ -126,7 +130,7 @@ func Sll(l Layer) ref.T {
 }
 
 func Sl(l Layer, duration int) ref.T {
-	return AddY(Behavior{
+	return Add(Behavior{
 		Name:  fmt.Sprintf("sll%d", duration),
 		Label: fmt.Sprintf("StickyLayer%d", duration),
 		Type:  TypeStickyKey,
@@ -191,7 +195,7 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 		props["keep-mods"] = keep
 	}
 
-	return AddY(Behavior{
+	return Add(Behavior{
 		Name:  "mm",
 		Label: "ModMorph",
 		Type:  TypeModMorph,
@@ -214,17 +218,17 @@ func Off(l Layer) ref.T {
 	return ref.Ref1(name, l)
 }
 
-func macroParams(n int) []ref.T {
-	switch n {
-	case 0:
-		return []ref.T{}
-	case 1:
-		return []ref.T{Param11}
-	case 2:
-		return []ref.T{Param11, Param22}
-	}
-	panic(fmt.Sprintf("bad n: %d", n))
-}
+// func macroParams(n int) []ref.T {
+// 	switch n {
+// 	case 0:
+// 		return []ref.T{}
+// 	case 1:
+// 		return []ref.T{Param11}
+// 	case 2:
+// 		return []ref.T{Param11, Param22}
+// 	}
+// 	panic(fmt.Sprintf("bad n: %d", n))
+// }
 
 // func Wrap(r ref.T) ref.T {
 // 	name := fmt.Sprintf("W%s", r.Name)

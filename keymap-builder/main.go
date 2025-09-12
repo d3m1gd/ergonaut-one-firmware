@@ -259,8 +259,68 @@ func init() {
 	})
 
 	combo.Add(combo.T{
+		Name: "LeftAltWinShiftCtrl",
+		Ref:  HoldTapStickyLong(LA(LW(LS(LCTRL)))),
+		Keys: []rowcol.T{L23, L24, L25, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftAltWinCtrl",
+		Ref:  HoldTapStickyLong(LA(LW(LCTRL))),
+		Keys: []rowcol.T{L24, L25, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftAltCtrl",
+		Ref:  HoldTapStickyLong(LA(LCTRL)),
+		Keys: []rowcol.T{L25, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftWinCtrl",
+		Ref:  HoldTapStickyLong(LW(LCTRL)),
+		Keys: []rowcol.T{L24, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftAltShiftCtrl",
+		Ref:  HoldTapStickyLong(LA(LS(LCTRL))),
+		Keys: []rowcol.T{L23, L25, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftShiftCtrl",
+		Ref:  HoldTapStickyLong(LS(LCTRL)),
+		Keys: []rowcol.T{L23, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftWinShiftCtrl",
+		Ref:  HoldTapStickyLong(LW(LS(LCTRL))),
+		Keys: []rowcol.T{L23, L24, L43},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftAltWinShift",
+		Ref:  HoldTapStickyLong(LA(LW(LSHIFT))),
+		Keys: []rowcol.T{L22, L23, L24},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftAltWin",
+		Ref:  HoldTapStickyLong(LA(LGUI)),
+		Keys: []rowcol.T{L23, L24},
+	})
+
+	combo.Add(combo.T{
+		Name: "LeftAltShift",
+		Ref:  HoldTapStickyLong(LA(LSHFT)),
+		Keys: []rowcol.T{L22, L24},
+	})
+
+	combo.Add(combo.T{
 		Name: "RightAltWinShift",
-		Ref:  HoldTap(Kp(LA(LG(LSHIFT))), Skl(LA(LG(LSHIFT)))),
+		Ref:  Kp(LA(LW(LSHIFT))),
 		Keys: []rowcol.T{R22, R23, R24},
 	})
 
