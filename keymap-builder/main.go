@@ -23,7 +23,7 @@ func renderKeymap(path string, params Params) {
 }
 
 type Params struct {
-	Layers    []layer.R
+	Layers    []layer.T
 	Macros    []macro.T
 	Combos    []combo.T
 	Behaviors []behavior.T
@@ -34,6 +34,6 @@ func main() {
 		Behaviors: behavior.Render(),
 		Macros:    macro.Render(),
 		Combos:    combo.Render(),
-		Layers:    layer.Render(),
+		Layers:    layer.All(),
 	})
 }

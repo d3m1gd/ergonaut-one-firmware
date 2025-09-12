@@ -10,18 +10,12 @@ import (
 	"keyboard/ref"
 	"keyboard/rowcol"
 	. "keyboard/util"
+	"keyboard/util/indenter"
 )
 
 type T = Layer
-type R = Rendered
 
 type Layer map[rowcol.T]ref.T
-
-type Rendered struct {
-	Index int
-	Name  string
-	Rows  []string
-}
 
 var layers []Layer
 var namerc = rowcol.T{}
@@ -56,12 +50,6 @@ func (l Layer) String() string {
 	return l.Name()
 }
 
-func (l Layer) Index() int {
-	return slices.IndexFunc(layers, func(other Layer) bool {
-		return l.Equal(other)
-	})
-}
-
 func (l Layer) Equal(other Layer) bool {
 	return l[namerc].Name == other[namerc].Name
 }
@@ -74,7 +62,7 @@ func (l Layer) Less(other Layer) int {
 	return cmp.Compare(l[namerc].Name, other[namerc].Name)
 }
 
-func (l Layer) Render() []string {
+func (l Layer) rows() []string {
 	widths := slices.Repeat([]int{0}, 12)
 	cells := make([][]string, 4)
 	for i := range cells {
@@ -107,6 +95,20 @@ func (l Layer) Render() []string {
 	})
 }
 
+func (l Layer) Compile(indent, level int) string {
+	ir := indenter.New(indent)
+
+	ir.Sprintf(0, "\n")
+	ir.Sprintf(level, "%s {\n", l.Name())
+	ir.Sprintf(level+1, "bindings = <\n")
+	for _, row := range l.rows() {
+		ir.Sprintf(0, "%s\n", row)
+	}
+	ir.Sprintf(level+1, ">;\n")
+	ir.Sprintf(level, "};\n")
+	return ir.String()
+}
+
 func (l Layer) Extend(other Layer) {
 	maps.Copy(l, other)
 }
@@ -123,12 +125,6 @@ func InitBy(f func(rowcol.T) ref.T) func(Layer) {
 	}
 }
 
-func Render() []Rendered {
-	return MapEnumerated(layers, func(n int, l Layer) Rendered {
-		return Rendered{
-			Index: n,
-			Name:  l.Name(),
-			Rows:  l.Render(),
-		}
-	})
+func All() []Layer {
+	return layers
 }

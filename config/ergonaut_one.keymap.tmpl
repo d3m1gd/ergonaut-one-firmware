@@ -3,8 +3,8 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/pointing.h>
-{{ range .Layers }}
-#define {{ .Name }} {{ .Index }}
+{{ range $i, $l := .Layers }}
+#define {{ $l.Name }} {{ $i }}
 {{- end }}
 
 &lt {
@@ -27,66 +27,20 @@
     };
 
     behaviors {
-        {{- range .Behaviors }}
-
-        {{.Name}}: {{.Label}} {
-            compatible = "zmk,{{.Type.Name}}";
-            #binding-cells = <{{.Type.Cells}}>;
-            {{- if gt (len .Bindings) 0 }}
-            bindings = <{{.Bindings}}>;
-            {{- end }}{{/* if len .Properties */}}
-            {{- range .Properties }}
-            {{ . }};
-            {{- end }}{{/* range .Properties */}}
-        };
-        {{- end -}}{{/* range .Behaviors */}}
+        {{- range .Behaviors -}}{{ .Compile 4 2 }}{{- end }}
     };
 
     macros {
-        {{- range .Macros }}
-
-        {{.Name}}: {{.Label}} {
-            compatible = "zmk,{{.Type}}";
-            #binding-cells = <{{.Cells}}>;
-            bindings = <{{.Bindings}}>;
-        };
-        {{- end }}{{/* range .Macros */}}
+        {{- range .Macros -}}{{ .Compile 4 2 }}{{- end }}
     };
 
     combos {
         compatible = "zmk,combos";
-        {{- range .Combos }}
-
-        {{.Name}} {
-            bindings = <{{.Ref.Compile}}>;
-            key-positions = <{{.RenderKeys}}>;
-            {{- if .Layers }}
-            layers = <{{.RenderLayers}}>;
-            {{- end }}
-            {{- if .Timout }}
-            timeout-ms = <{{.Timout}}>;
-            {{- end }}
-            {{- if .Idle }}
-            require-prior-idle-ms = <{{.Idle}}>;
-            {{- end}}
-            {{- if .Slow }}
-            slow-release;
-            {{- end}}
-        };
-        {{- end }}{{/* range .Combos */}}
+        {{- range .Combos -}}{{ .Compile 4 2 }}{{- end }}
     };
 
     keymap {
         compatible = "zmk,keymap";
-        {{- range .Layers }}
-
-        {{ .Name }} {
-            bindings = <
-            {{- range .Rows }}{{ "\n" -}}
-            {{ . }}
-            {{- end }}
-            >;
-        };
-        {{- end }}{{/* range .Layers */}}
+        {{- range .Layers -}}{{ .Compile 4 2 }}{{- end }}
     };
 };

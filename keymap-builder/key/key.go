@@ -4,19 +4,8 @@ import (
 	"cmp"
 )
 
-// Key ...
-//
-// Deprecated: use something else
 type Key string
-
-// Mod ...
-//
-// Deprecated: use something else
 type Mod string
-
-func (k Key) Less(other Key) int {
-	return cmp.Compare(k, other)
-}
 
 const (
 	LControlMod Mod = "MOD_LCTL"
@@ -32,3 +21,7 @@ const (
 var Shifts = []Mod{LShiftMod, RShiftMod}
 var Ctrls = []Mod{LControlMod, RControlMod}
 var ShiftsAndCtrls = []Mod{LShiftMod, RShiftMod, LControlMod, RControlMod}
+
+func (k Key) Less(other Key) int {
+	return cmp.Compare(k, other)
+}

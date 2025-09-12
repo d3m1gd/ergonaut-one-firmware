@@ -10,6 +10,7 @@ import (
 	"keyboard/key"
 	"keyboard/ref"
 	. "keyboard/util"
+	"keyboard/util/indenter"
 )
 
 type T = Behavior
@@ -95,14 +96,14 @@ func (b Behavior) Equal(other Behavior) bool {
 	return eq
 }
 
-func (m Behavior) Bindings() string {
-	return strings.Join(Map(m.Refs, ref.Compile), " ")
+func (b Behavior) Bindings() string {
+	return strings.Join(Map(b.Refs, ref.Compile), " ")
 }
 
-func (m Behavior) Properties() []string {
-	keys := slices.Collect(maps.Keys(m.Props))
+func (b Behavior) Properties() []string {
+	keys := slices.Collect(maps.Keys(b.Props))
 	slices.Sort(keys)
-	return Map(keys, func(k string) string { return Prop{k, m.Props[k]}.Compile() })
+	return Map(keys, func(k string) string { return Prop{k, b.Props[k]}.Compile() })
 }
 
 func Add(b Behavior) {
@@ -165,4 +166,21 @@ func AddY(b Behavior) ref.T {
 func Render() []Behavior {
 	slices.SortFunc(behaviors, func(a, b Behavior) int { return cmp.Compare(a.Name, b.Name) })
 	return behaviors
+}
+
+func (b Behavior) Compile(indent, level int) string {
+	ir := indenter.New(indent)
+
+	ir.Sprintf(0, "\n")
+	ir.Sprintf(level, "%s: %s {\n", b.Name, b.Label)
+	ir.Sprintf(level+1, "compatible = \"zmk,%s\";\n", b.Type.Name)
+	ir.Sprintf(level+1, "#binding-cells = <%d>;\n", b.Type.Cells)
+	if len(b.Bindings()) > 0 {
+		ir.Sprintf(level+1, "bindings = <%s>;\n", b.Bindings())
+	}
+	for _, p := range b.Properties() {
+		ir.Sprintf(level+1, "%s;\n", p)
+	}
+	ir.Sprintf(level, "};\n")
+	return ir.String()
 }

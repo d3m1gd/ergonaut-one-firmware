@@ -8,6 +8,7 @@ import (
 	"keyboard/ref"
 	"keyboard/rowcol"
 	. "keyboard/util"
+	"keyboard/util/indenter"
 )
 
 type T = Combo
@@ -41,4 +42,27 @@ func Add(c Combo) {
 
 func Render() []Combo {
 	return combos
+}
+
+func (c Combo) Compile(indent, level int) string {
+	ir := indenter.New(indent)
+
+	ir.Sprintf(0, "\n")
+	ir.Sprintf(level, "%s {\n", c.Name)
+	ir.Sprintf(level+1, "bindings = <%s>;\n", c.Ref.Compile())
+	ir.Sprintf(level+1, "key-positions = <%s>;\n", c.RenderKeys())
+	if len(c.Layers) > 0 {
+		ir.Sprintf(level+1, "layers = <%s>\n", c.RenderLayers())
+	}
+	if c.Timout > 0 {
+		ir.Sprintf(level+1, "timeout-ms = <%d>;\n", c.Timout)
+	}
+	if c.Idle > 0 {
+		ir.Sprintf(level+1, "require-prior-idle-ms = <%d>;\n", c.Idle)
+	}
+	if c.Slow {
+		ir.Sprintf(level+1, "slow-release;\n")
+	}
+	ir.Sprintf(level, "};\n")
+	return ir.String()
 }

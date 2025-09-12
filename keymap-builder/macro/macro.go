@@ -7,6 +7,7 @@ import (
 
 	"keyboard/ref"
 	. "keyboard/util"
+	"keyboard/util/indenter"
 )
 
 type T = Macro
@@ -58,4 +59,16 @@ func Placeholder(r ref.T) ref.T {
 func Render() []Macro {
 	slices.SortFunc(macros, func(a, b Macro) int { return cmp.Compare(a.Name, b.Name) })
 	return macros
+}
+
+func (m Macro) Compile(indent, level int) string {
+	ir := indenter.New(indent)
+
+	ir.Sprintf(0, "\n")
+	ir.Sprintf(level, "%s: %s {\n", m.Name, m.Label)
+	ir.Sprintf(level+1, "compatible = \"zmk,%s\";\n", m.Type())
+	ir.Sprintf(level+1, "#binding-cells = <%d>;\n", m.Cells)
+	ir.Sprintf(level+1, "bindings = <%s>;\n", m.Bindings())
+	ir.Sprintf(level, "};\n")
+	return ir.String()
 }
