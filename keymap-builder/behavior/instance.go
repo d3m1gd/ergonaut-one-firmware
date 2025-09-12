@@ -98,6 +98,20 @@ func HoldTapOpts(h, t ref.T, name, label string, properties Props) ref.T {
 	})
 }
 
+func Skl(k key.Key) ref.T {
+	return AddY(Behavior{
+		Name:  "skl",
+		Label: "skl",
+		Type:  TypeStickyKey,
+		Refs:  []ref.T{Kp(k)},
+		Props: Props{
+			"release-after-ms": 9000,
+			"quick-release":    true,
+			"lazy":             true,
+		},
+	})
+}
+
 func Sll(l Layer) ref.T {
 	return AddY(Behavior{
 		Name:  "sll",

@@ -60,7 +60,7 @@ func init() {
 		L41: MoTo(MOVER, CHAINS), // row 4
 		L42: MoX(NUMER, ModMorph(Sl(SYMBOL, longSticky), Kp(UNDER), Shifts, nil)),
 		L43: Mt(LCTRL, ESCAPE),
-		// BASE RIGHT
+		// ------------------------
 		R11: Kp(Y), // row 1
 		R12: Kp(U),
 		R13: Kp(I),
@@ -87,6 +87,7 @@ func init() {
 	MOVER.Extend(layer.Cells{
 		// L42: Sl(MOVER, symbolSticky),
 		// L43: Off(MOVER),
+		// ------------------------
 		R21: Kp(LEFT),
 		R22: Kp(DOWN),
 		R23: Kp(UP),
@@ -124,6 +125,7 @@ func init() {
 		L31: Mt(LCTRL, PLUS), // row 3
 		L35: Kp(LS(INSERT)),
 		L42: Kp(UNDER),
+		// ------------------------
 		R11: Kp(N0), // row 1
 		R12: Kp(N1),
 		R13: Kp(N2),
@@ -144,10 +146,11 @@ func init() {
 	})
 
 	QUICK.Extend(layer.Cells{
-		L15: Kp(LG(C_VOL_UP)), // row 1
-		L16: Kp(C_VOL_UP),
-		L25: Kp(LG(C_VOL_DN)), // row 2
-		L26: Kp(C_VOL_DN),
+		// L15: Kp(LG(C_VOL_UP)), // row 1
+		// L16: Kp(C_VOL_UP),
+		// L25: Kp(LG(C_VOL_DN)), // row 2
+		// L26: Kp(C_VOL_DN),
+		// ------------------------
 		R15: Kp(PSCRN), // row 1
 		R16: Kp(LC(RBKT)),
 		R21: Kp(HOME), // row 2
@@ -166,7 +169,6 @@ func init() {
 	SYS.Extend(layer.Cells{
 		L11: ref.Ref0("bootloader"),     // tab
 		L15: ref.Ref0("sys_reset"),      // r
-		R12: ref.Ref1("out", "OUT_USB"), // u
 		L35: ref.Ref1("out", "OUT_USB"), // v - left only backup
 		L36: ref.Ref1("out", "OUT_BLE"), // b
 		L25: ref.Ref2("bt", "BT_SEL", "0"),
@@ -176,12 +178,18 @@ func init() {
 		L21: ref.Ref2("bt", "BT_SEL", "4"),
 		L34: ref.Ref1("bt", "BT_CLR"),     // c
 		L33: ref.Ref1("bt", "BT_CLR_ALL"), // x
+		// ------------------------
+		R12: ref.Ref1("out", "OUT_USB"),   // u
 		R31: ref.Ref1("bt", "BT_CLR_ALL"), // n - nuke
 	})
 
 	SYMBOL.Extend(layer.Cells{
-		L43: Off(SYMBOL),
+		// L23: Skl(LSHIFT),
+		// L24: Skl(LGUI),
+		// L25: Skl(LALT),
+		// L43: Skl(LCTRL),
 		L11: Kp(TILDE),
+		// ------------------------
 		R11: KpSl(RPAR, SYMBOL, shortSticky),
 		R12: KpSl(EXCL, SYMBOL, symbolSticky),
 		R13: Kp(AT),
@@ -252,7 +260,7 @@ func init() {
 
 	combo.Add(combo.T{
 		Name: "RightAltWinShift",
-		Ref:  Kp(LA(LG(LSHIFT))),
+		Ref:  HoldTap(Kp(LA(LG(LSHIFT))), Skl(LA(LG(LSHIFT)))),
 		Keys: []rowcol.T{R22, R23, R24},
 	})
 
