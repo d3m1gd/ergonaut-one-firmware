@@ -112,6 +112,7 @@ func Skl(k key.Key) ref.T {
 			"release-after-ms": 9000,
 			"quick-release":    true,
 			"lazy":             true,
+			"ignore-modifiers": true,
 		},
 	})
 }

@@ -6,11 +6,9 @@ import (
 	"strings"
 	"text/template"
 
-	"keyboard/behavior"
 	. "keyboard/behavior"
 	"keyboard/chain"
 	"keyboard/combo"
-	"keyboard/key"
 	. "keyboard/key"
 	"keyboard/layer"
 	. "keyboard/layout"
@@ -18,7 +16,6 @@ import (
 	"keyboard/ref"
 	"keyboard/rowcol"
 	"keyboard/util"
-	. "keyboard/util"
 )
 
 const (
@@ -27,6 +24,13 @@ const (
 	shortSticky           = 250
 	longSticky            = 500
 	symbolSticky          = 750
+)
+
+const (
+	a = LALT
+	w = LGUI
+	s = LSHIFT
+	c = LCTRL
 )
 
 var (
@@ -247,13 +251,6 @@ func init() {
 		RCs:  []rowcol.T{L41, L42},
 	})
 
-	// combo.Add(combo.T{
-	// 	Name: "RightCaps",
-	// 	Ref:  CapsWord,
-	// 	Keys: []rowcol.T{R23, R24},
-	// 	Slow: true,
-	// })
-
 	combo.Add(combo.T{
 		Name: "BottomLeftCtrlShift",
 		Ref:  Kp(LC(LSHIFT)),
@@ -281,18 +278,6 @@ func init() {
 		Ref:  Kp(LA(LW(LSHIFT))),
 		RCs:  []rowcol.T{R22, R23, R24},
 	})
-
-	// combo.Add(combo.T{
-	// 	Name: "RightAltWin",
-	// 	Ref:  HoldTap(Kp(LA(LWIN)), To(MOVER)),
-	// 	Keys: []rowcol.T{R22, R23},
-	// })
-
-	// combo.Add(combo.T{
-	// 	Name: "RightAltShift",
-	// 	Ref:  HoldTap(Kp(LA(LSHIFT)), XXX),
-	// 	Keys: []rowcol.T{R22, R24},
-	// })
 
 	combo.Add(combo.T{
 		Name: "RightWinShift_Caps",
@@ -368,59 +353,54 @@ func init() {
 func renderKeymap(path string, params Params) {
 	tmplPath := path + ".tmpl"
 	var funcs = template.FuncMap{"join": strings.Join}
-	t := Must(template.New(filepath.Base(path + ".tmpl")).Funcs(funcs).ParseFiles(tmplPath))
-	outFile := Must(os.Create(path))
+	t := util.Must(template.New(filepath.Base(path + ".tmpl")).Funcs(funcs).ParseFiles(tmplPath))
+	outFile := util.Must(os.Create(path))
 	defer outFile.Close()
-	Check(t.Execute(outFile, params))
+	util.Check(t.Execute(outFile, params))
 }
 
 type Params struct {
 	Layers    []layer.T
 	Macros    []macro.T
 	Combos    []combo.T
-	Behaviors []behavior.Behavior
+	Behaviors []Behavior
 }
 
 func main() {
 	renderKeymap("../config/ergonaut_one.keymap", Params{
-		Behaviors: behavior.Render(),
+		Behaviors: Render(), // todo
 		Macros:    macro.Render(),
 		Combos:    combo.Render(),
 		Layers:    layer.All(),
 	})
 }
 
-const a = key.LALT
-const w = key.LGUI
-const s = key.LSHIFT
-const c = key.LCTRL
-
-func LeftStickyCombo(keys ...key.Key) {
-	rowcols := util.Map(keys, func(k key.Key) rowcol.T {
+func LeftStickyCombo(keys ...Key) {
+	rowcols := util.Map(keys, func(k Key) rowcol.T {
 		rc, ok := LeftModPositions[k]
 		util.Panicif(!ok)
 		return rc
 	})
 
-	names := util.Map(keys, func(k key.Key) string {
+	names := util.Map(keys, func(k Key) string {
 		return string(k)
 	})
 
 	combo.Add(combo.T{
 		Name: "LeftStickyCombo_" + strings.Join(names, "_"),
-		Ref:  HoldTapStickyLong(key.ModMap(keys)),
+		Ref:  HoldTapStickyLong(ModMap(keys)),
 		RCs:  rowcols,
 	})
 }
 
-var LeftModPositions = map[key.Key]rowcol.T{
+var LeftModPositions = map[Key]rowcol.T{
 	a: L25,
 	w: L24,
 	s: L23,
 	c: L43,
 }
 
-var RightModPositions = map[key.Key]rowcol.T{
+var RightModPositions = map[Key]rowcol.T{
 	a: R21,
 	w: R22,
 	s: R23,

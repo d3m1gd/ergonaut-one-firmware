@@ -149,6 +149,7 @@
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&kp>;
+            ignore-modifiers;
             lazy;
             quick-release;
             release-after-ms = <9000>;
