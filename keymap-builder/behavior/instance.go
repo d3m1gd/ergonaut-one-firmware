@@ -71,7 +71,7 @@ func MKp(tap key.Key) ref.T {
 
 func Rmt(mod, tap key.Key) ref.T {
 	keys := util.Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
-	return HoldTapOpts(Kp(mod), Kp(tap), "rmt", "RightModTap", Props{
+	return HoldTapOpts(Kp(mod), Kp(tap), "rmt", Props{
 		"hold-trigger-key-positions": keys,
 		"hold-trigger-on-release":    true,
 		"flavor":                     "tap-preferred",
@@ -81,7 +81,7 @@ func Rmt(mod, tap key.Key) ref.T {
 }
 
 func HoldTap(h, t ref.T) ref.T {
-	return HoldTapOpts(h, t, "ht", "HoldTap", Props{
+	return HoldTapOpts(h, t, "ht", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
 		"quick-tap-ms":    200,
@@ -92,10 +92,9 @@ func HoldTapStickyLong(k key.Key) ref.T {
 	return HoldTap(Kp(k), Skl(k))
 }
 
-func HoldTapOpts(h, t ref.T, name, label string, properties Props) ref.T {
+func HoldTapOpts(h, t ref.T, name string, properties Props) ref.T {
 	return Add(Behavior{
 		Name:  name,
-		Label: label,
 		Type:  TypeHoldTap,
 		Refs:  []ref.T{h, t},
 		Props: properties,
@@ -104,10 +103,9 @@ func HoldTapOpts(h, t ref.T, name, label string, properties Props) ref.T {
 
 func Skl(k key.Key) ref.T {
 	return Add(Behavior{
-		Name:  "skl",
-		Label: "skl",
-		Type:  TypeStickyKey,
-		Refs:  []ref.T{Kp(k)},
+		Name: "skl",
+		Type: TypeStickyKey,
+		Refs: []ref.T{Kp(k)},
 		Props: Props{
 			"release-after-ms": 9000,
 			"quick-release":    true,
@@ -119,10 +117,9 @@ func Skl(k key.Key) ref.T {
 
 func Sll(l Layer) ref.T {
 	return Add(Behavior{
-		Name:  "sll",
-		Label: "StickyLayerLong",
-		Type:  TypeStickyKey,
-		Refs:  []ref.T{Mo(l)},
+		Name: "sll",
+		Type: TypeStickyKey,
+		Refs: []ref.T{Mo(l)},
 		Props: Props{
 			"release-after-ms": 2000,
 			"quick-release":    true,
@@ -132,10 +129,9 @@ func Sll(l Layer) ref.T {
 
 func Sl(l Layer, duration int) ref.T {
 	return Add(Behavior{
-		Name:  fmt.Sprintf("sll%d", duration),
-		Label: fmt.Sprintf("StickyLayer%d", duration),
-		Type:  TypeStickyKey,
-		Refs:  []ref.T{Mo(l)},
+		Name: fmt.Sprintf("sll%d", duration),
+		Type: TypeStickyKey,
+		Refs: []ref.T{Mo(l)},
 		Props: Props{
 			"release-after-ms": duration,
 			"quick-release":    true,
@@ -159,7 +155,7 @@ func KpKp(a, b key.Key) ref.T {
 }
 
 func XKp(r ref.T, k key.Key) ref.T {
-	return HoldTapOpts(r, Kp(k), "xkp", "XKeyPress", Props{
+	return HoldTapOpts(r, Kp(k), "xkp", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 350,
 		"quick-tap-ms":    200,
@@ -167,21 +163,21 @@ func XKp(r ref.T, k key.Key) ref.T {
 }
 
 func MoTo(mo, to Layer) ref.T {
-	return HoldTapOpts(Mo(mo), To(to), "moto", "MomentaryTo", Props{
+	return HoldTapOpts(Mo(mo), To(to), "moto", Props{
 		"flavor":          "balanced",
 		"tapping-term-ms": 300,
 	})
 }
 
 func MoX(mo Layer, x ref.T) ref.T {
-	return HoldTapOpts(Mo(mo), x, "mo", "Momentary", Props{
+	return HoldTapOpts(Mo(mo), x, "mo", Props{
 		"flavor":          "balanced",
 		"tapping-term-ms": 300,
 	})
 }
 
 func ModX(mod key.Key, x ref.T) ref.T {
-	return HoldTapOpts(Kp(mod), x, "m", "Mod", Props{
+	return HoldTapOpts(Kp(mod), x, "m", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
 		"quick-tap-ms":    200,
@@ -198,7 +194,6 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 
 	return Add(Behavior{
 		Name:  "mm",
-		Label: "ModMorph",
 		Type:  TypeModMorph,
 		Refs:  []ref.T{a, b},
 		Props: props,
@@ -208,9 +203,8 @@ func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
 func Off(l Layer) ref.T {
 	name := "off"
 	Add(Behavior{
-		Name:  name,
-		Label: "Off",
-		Type:  TypeToggleLayer,
+		Name: name,
+		Type: TypeToggleLayer,
 		Props: Props{
 			"display-name": "Layer Off",
 			"toggle-mode":  "off",

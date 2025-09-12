@@ -37,7 +37,7 @@
     };
 
     behaviors {
-        htCodeBlockbquotes: HoldTapCodeBlockbquotes {
+        htCodeBlockbquotes: htCodeBlockbquotes {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&CodeBlock &bquotes>;
@@ -46,7 +46,7 @@
             tapping-term-ms = <200>;
         };
 
-        htTapNoRepeatkp: HoldTapTapNoRepeatkp {
+        htTapNoRepeatkp: htTapNoRepeatkp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&TapNoRepeat &kp>;
@@ -55,7 +55,7 @@
             tapping-term-ms = <200>;
         };
 
-        htkpcaps_word: HoldTapkpcaps_word {
+        htkpcaps_word: htkpcaps_word {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp &caps_word>;
@@ -64,7 +64,7 @@
             tapping-term-ms = <200>;
         };
 
-        htkpsklkp: HoldTapkpsklkp {
+        htkpsklkp: htkpsklkp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp &sklkp>;
@@ -73,7 +73,7 @@
             tapping-term-ms = <200>;
         };
 
-        mkpmmkpMINUSkpPLUS: ModkpmmkpMINUSkpPLUS {
+        mkpmmkpMINUSkpPLUS: mkpmmkpMINUSkpPLUS {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp &mmkpMINUSkpPLUS>;
@@ -82,21 +82,21 @@
             tapping-term-ms = <200>;
         };
 
-        mmkpDQTkpGRAVE: ModMorphkpDQTkpGRAVE {
+        mmkpDQTkpGRAVE: mmkpDQTkpGRAVE {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp GRAVE>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        mmkpEQUALkpEQUAL: ModMorphkpEQUALkpEQUAL {
+        mmkpEQUALkpEQUAL: mmkpEQUALkpEQUAL {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp EQUAL &kp EQUAL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        mmkpMINUSkpPLUS: ModMorphkpMINUSkpPLUS {
+        mmkpMINUSkpPLUS: mmkpMINUSkpPLUS {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp MINUS &kp PLUS>;
@@ -104,14 +104,14 @@
             mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
         };
 
-        mmsll500moSYMBOLkpUNDER: ModMorphsll500moSYMBOLkpUNDER {
+        mmsll500moSYMBOLkpUNDER: mmsll500moSYMBOLkpUNDER {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&sll500mo SYMBOL &kp UNDER>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        momommsll500moSYMBOLkpUNDER: Momentarymommsll500moSYMBOLkpUNDER {
+        momommsll500moSYMBOLkpUNDER: momommsll500moSYMBOLkpUNDER {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo &mmsll500moSYMBOLkpUNDER>;
@@ -119,7 +119,7 @@
             tapping-term-ms = <300>;
         };
 
-        motomoto: MomentaryTomoto {
+        motomoto: motomoto {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&mo &to>;
@@ -127,14 +127,14 @@
             tapping-term-ms = <300>;
         };
 
-        off: Off {
+        off: off {
             compatible = "zmk,behavior-toggle-layer";
             #binding-cells = <1>;
             display-name = "Layer Off";
             toggle-mode = "off";
         };
 
-        rmtkpkp: RightModTapkpkp {
+        rmtkpkp: rmtkpkp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp &kp>;
@@ -155,7 +155,7 @@
             release-after-ms = <9000>;
         };
 
-        sll250mo: StickyLayer250mo {
+        sll250mo: sll250mo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&mo>;
@@ -163,7 +163,7 @@
             release-after-ms = <250>;
         };
 
-        sll500mo: StickyLayer500mo {
+        sll500mo: sll500mo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&mo>;
@@ -171,7 +171,7 @@
             release-after-ms = <500>;
         };
 
-        sll750mo: StickyLayer750mo {
+        sll750mo: sll750mo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&mo>;
@@ -179,7 +179,7 @@
             release-after-ms = <750>;
         };
 
-        sllmo: StickyLayerLongmo {
+        sllmo: sllmo {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
             bindings = <&mo>;
@@ -187,7 +187,7 @@
             release-after-ms = <2000>;
         };
 
-        xkpXdgConfigkp: XKeyPressXdgConfigkp {
+        xkpXdgConfigkp: xkpXdgConfigkp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&XdgConfig &kp>;

@@ -78,7 +78,6 @@ func (x Prop) Compile() string {
 
 type Behavior struct {
 	Name  string
-	Label string
 	Type  Type
 	Refs  []ref.T
 	Props Props
@@ -87,7 +86,6 @@ type Behavior struct {
 func (b Behavior) Equal(other Behavior) bool {
 	eq := true
 	eq = eq && b.Name == other.Name
-	eq = eq && b.Label == other.Label
 	eq = eq && b.Type == other.Type
 	eq = eq && slices.EqualFunc(b.Refs, other.Refs, ref.Equal)
 	eq = eq && b.Props.Equal(other.Props)
@@ -142,7 +140,6 @@ func Add(b Behavior) ref.T {
 
 	for _, r := range b.Refs {
 		b.Name += r.Show()
-		b.Label += r.Show()
 	}
 
 	i := slices.IndexFunc(behaviors, func(other Behavior) bool {
@@ -166,7 +163,7 @@ func (b Behavior) Compile(indent, level int) string {
 	ir := indenter.New(indent)
 
 	ir.Sprintf(0, "\n")
-	ir.Sprintf(level, "%s: %s {\n", b.Name, b.Label)
+	ir.Sprintf(level, "%s: %s {\n", b.Name, b.Name)
 	ir.Sprintf(level+1, "compatible = \"zmk,%s\";\n", b.Type.Name)
 	ir.Sprintf(level+1, "#binding-cells = <%d>;\n", b.Type.Cells)
 	if len(b.Bindings()) > 0 {
