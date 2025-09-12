@@ -64,6 +64,15 @@
             tapping-term-ms = <200>;
         };
 
+        htkpsklkp: HoldTapkpsklkp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp &sklkp>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
+        };
+
         mkpmmkpMINUSkpPLUS: ModkpmmkpMINUSkpPLUS {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -134,6 +143,15 @@
             hold-trigger-on-release;
             quick-tap-ms = <200>;
             tapping-term-ms = <250>;
+        };
+
+        sklkp: sklkp {
+            compatible = "zmk,behavior-sticky-key";
+            #binding-cells = <1>;
+            bindings = <&kp>;
+            lazy;
+            quick-release;
+            release-after-ms = <9000>;
         };
 
         sll250mo: StickyLayer250mo {
@@ -291,7 +309,7 @@
         };
 
         RightAltWinShift {
-            bindings = <&kp LA(LG(LSHIFT))>;
+            bindings = <&htkpsklkp LA(LG(LSHIFT)) LA(LG(LSHIFT))>;
             key-positions = <19 20 21>;
         };
 
@@ -382,10 +400,10 @@
 
         QUICK {
             bindings = <
-&trans  &trans  &trans  &trans  &kp LG(C_VOL_UP)  &kp C_VOL_UP  &trans         &trans          &trans          &trans          &kp PSCRN  &kp LC(RBKT)
-&trans  &trans  &trans  &trans  &kp LG(C_VOL_DN)  &kp C_VOL_DN  &kp HOME       &mt LALT PG_DN  &mt LGUI PG_UP  &mt LSHIFT END  &trans     &trans
-&trans  &trans  &trans  &trans  &trans            &trans        &trans         &trans          &trans          &trans          &trans     &trans
-                        &trans  &trans            &trans        &mt LCTRL F10  &kp F11         &kp F12
+&trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans          &trans          &trans          &kp PSCRN  &kp LC(RBKT)
+&trans  &trans  &trans  &trans  &trans  &trans  &kp HOME       &mt LALT PG_DN  &mt LGUI PG_UP  &mt LSHIFT END  &trans     &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans         &trans          &trans          &trans          &trans     &trans
+                        &trans  &trans  &trans  &mt LCTRL F10  &kp F11         &kp F12
             >;
         };
 
@@ -400,10 +418,10 @@
 
         SYMBOL {
             bindings = <
-&kp TILDE  &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 RPAR   &KpSlSYMBOL750 EXCL  &kp AT               &KpSlSYMBOL250 HASH  &trans     &kp RBKT
-&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL750 EQUAL  &kp DLLR             &kp PRCNT            &kp CARET            &kp COLON  &KpSlSYMBOL250 GRAVE
-&trans     &trans  &trans  &trans  &trans  &trans       &KpSlSYMBOL250 PLUS   &KpSlSYMBOL250 AMPS  &KpSlSYMBOL250 STAR  &kp LPAR             &trans     &KpSlSYMBOL250 PIPE
-                           &trans  &trans  &off SYMBOL  &trans                &trans               &trans
+&kp TILDE  &trans  &trans  &trans  &trans  &trans  &KpSlSYMBOL250 RPAR   &KpSlSYMBOL750 EXCL  &kp AT               &KpSlSYMBOL250 HASH  &trans     &kp RBKT
+&trans     &trans  &trans  &trans  &trans  &trans  &KpSlSYMBOL750 EQUAL  &kp DLLR             &kp PRCNT            &kp CARET            &kp COLON  &KpSlSYMBOL250 GRAVE
+&trans     &trans  &trans  &trans  &trans  &trans  &KpSlSYMBOL250 PLUS   &KpSlSYMBOL250 AMPS  &KpSlSYMBOL250 STAR  &kp LPAR             &trans     &KpSlSYMBOL250 PIPE
+                           &trans  &trans  &trans  &trans                &trans               &trans
             >;
         };
 
