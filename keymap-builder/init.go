@@ -4,8 +4,7 @@ import (
 	"keyboard/chain"
 	"keyboard/combo"
 	. "keyboard/instance"
-	"keyboard/key"
-	. "keyboard/key/keys"
+	. "keyboard/key"
 	"keyboard/layer"
 	. "keyboard/layout"
 	"keyboard/ref"
@@ -44,14 +43,14 @@ func init() {
 		L24: Mt(LGUI, D),
 		L25: Mt(LALT, F),
 		L26: Kp(G),
-		L31: ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), key.ShiftsCtrls, key.Ctrls)), // row 3
+		L31: ModX(LCTRL, ModMorph(Kp(MINUS), Kp(PLUS), ShiftsAndCtrls, Ctrls)), // row 3
 		L32: Kp(Z),
 		L33: Kp(X),
 		L34: XKp(Text("XdgConfig", `"$HOME/.config"/`), C),
 		L35: Kp(V),
 		L36: Kp(B),
 		L41: MoTo(MOVER, CHAINS), // row 4
-		L42: MoX(NUMER, ModMorph(Sl(SYMBOL, longSticky), Kp(UNDER), key.Shifts, nil)),
+		L42: MoX(NUMER, ModMorph(Sl(SYMBOL, longSticky), Kp(UNDER), Shifts, nil)),
 		L43: Mt(LCTRL, ESCAPE),
 		// BASE RIGHT
 		R11: Kp(Y), // row 1
@@ -122,12 +121,12 @@ func init() {
 		R13: Kp(N2),
 		R14: Kp(N3),
 		R16: Kp(RBKT),
-		R21: ModMorph(Kp(EQUAL), Kp(EQUAL), key.Shifts, nil), // row 2
+		R21: ModMorph(Kp(EQUAL), Kp(EQUAL), Shifts, nil), // row 2
 		R22: Mt(LALT, N4),
 		R23: Mt(LGUI, N5),
 		R24: Mt(LSHIFT, N6),
 		R25: Kp(COLON),
-		R26: ModMorph(Kp(DQT), Kp(GRAVE), key.Shifts, nil),
+		R26: ModMorph(Kp(DQT), Kp(GRAVE), Shifts, nil),
 		R31: Kp(PLUS), // row 3
 		R32: Kp(N7),
 		R33: KpKp(RG(COMMA), N8),

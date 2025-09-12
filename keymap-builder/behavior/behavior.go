@@ -8,7 +8,6 @@ import (
 	"strings"
 
 	"keyboard/key"
-	"keyboard/key/keys"
 	"keyboard/ref"
 	. "keyboard/util"
 )
@@ -132,13 +131,13 @@ func AddY(b Behavior) ref.T {
 			if len(stripped) > 0 {
 				args = append(args, stripped...)
 			} else {
-				args = append(args, keys.ZERO)
+				args = append(args, key.ZERO)
 			}
 			stripped = b.Refs[1].StripN(1) // todo 1
 			if len(stripped) > 0 {
 				args = append(args, stripped...)
 			} else {
-				args = append(args, keys.ZERO)
+				args = append(args, key.ZERO)
 			}
 		}
 	case 1:
@@ -147,7 +146,7 @@ func AddY(b Behavior) ref.T {
 			if len(stripped) > 0 {
 				args = append(args, stripped...)
 			} else {
-				args = append(args, keys.ZERO)
+				args = append(args, key.ZERO)
 			}
 		}
 	case 0:

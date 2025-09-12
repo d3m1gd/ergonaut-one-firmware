@@ -6,8 +6,7 @@ import (
 	"strings"
 
 	"keyboard/behavior"
-	"keyboard/key"
-	. "keyboard/key/keys"
+	. "keyboard/key"
 	"keyboard/layer"
 	. "keyboard/layout"
 	"keyboard/macro"
@@ -39,7 +38,7 @@ func macroParamBuilder(a, b int) ref.T {
 	return ref.Ref0(fmt.Sprintf("macro_param_%dto%d", a, b))
 }
 
-func Lt(l layer.T, tap key.T) ref.T {
+func Lt(l layer.T, tap Key) ref.T {
 	return ref2("lt", l.Name(), tap)
 }
 
@@ -51,19 +50,19 @@ func Mo(l layer.T) ref.T {
 	return ref1("mo", l.Name())
 }
 
-func Mt(mod, tap key.T) ref.T {
+func Mt(mod, tap Key) ref.T {
 	return ref2("mt", mod, tap)
 }
 
-func Kp(k key.T) ref.T {
+func Kp(k Key) ref.T {
 	return ref1("kp", k)
 }
 
-func MKp(tap key.T) ref.T {
+func MKp(tap Key) ref.T {
 	return ref1("mkp", tap)
 }
 
-func Rmt(mod, tap key.T) ref.T {
+func Rmt(mod, tap Key) ref.T {
 	keys := Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
 	return HoldTapOpts(Kp(mod), Kp(tap), "rmt", "RightModTap", behavior.Props{
 		"hold-trigger-key-positions": keys,
@@ -118,7 +117,7 @@ func Sl(l layer.T, duration int) ref.T {
 	})
 }
 
-func KpSl(k key.T, l layer.T, duration int) ref.T {
+func KpSl(k Key, l layer.T, duration int) ref.T {
 	name := fmt.Sprintf("KpSl%s%d", l, duration)
 	macro.Add(macro.T{
 		Name:  name,
@@ -130,11 +129,11 @@ func KpSl(k key.T, l layer.T, duration int) ref.T {
 	return ref1(name, k)
 }
 
-func KpKp(a, b key.T) ref.T {
+func KpKp(a, b Key) ref.T {
 	return HoldTap(TapNoRepeat(a), Kp(b))
 }
 
-func XKp(r ref.T, k key.T) ref.T {
+func XKp(r ref.T, k Key) ref.T {
 	return HoldTapOpts(r, Kp(k), "xkp", "XKeyPress", behavior.Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 350,
@@ -156,7 +155,7 @@ func MoX(mo layer.T, x ref.T) ref.T {
 	})
 }
 
-func ModX(mod key.T, x ref.T) ref.T {
+func ModX(mod Key, x ref.T) ref.T {
 	return HoldTapOpts(Kp(mod), x, "m", "Mod", behavior.Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
@@ -164,7 +163,7 @@ func ModX(mod key.T, x ref.T) ref.T {
 	})
 }
 
-func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
+func ModMorph(a, b ref.T, mods []Mod, keep []Mod) ref.T {
 	props := behavior.Props{
 		"mods": mods,
 	}
@@ -264,7 +263,7 @@ func BackQuotes(l layer.T) ref.T {
 	return OpenCloseMacro("bquotes", GRAVE, GRAVE, l)
 }
 
-func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
+func OpenCloseMacro(name string, left, right Key, l layer.T) ref.T {
 	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose_%s", name),
@@ -276,7 +275,7 @@ func OpenCloseMacro(name string, left, right key.T, l layer.T) ref.T {
 }
 
 // todo delme
-// func MSll(mod key.T, l layer.T) ref.T {
+// func MSll(mod Key, l layer.T) ref.T {
 // 	name := "ModSll"
 // 	macro.Add(macro.T{
 // 		Name:  name,
@@ -300,7 +299,7 @@ func ReRet() ref.T {
 	return ref.Ref0(name)
 }
 
-func TapNoRepeat(k key.T) ref.T {
+func TapNoRepeat(k Key) ref.T {
 	name := "TapNoRepeat"
 	macro.Add(macro.T{
 		Name:  name,
@@ -332,7 +331,7 @@ func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
 
 func OffX(l layer.T, r ref.T) ref.T {
 	if r.Name == "kp" {
-		return OffKey(l, r.Fields[0].(key.T))
+		return OffKey(l, r.Fields[0].(Key))
 	}
 	name := "Off" + r.Show()
 	macro.Add(macro.T{
@@ -345,7 +344,7 @@ func OffX(l layer.T, r ref.T) ref.T {
 	return ref1(name, l)
 }
 
-func OffKey(l layer.T, k key.T) ref.T {
+func OffKey(l layer.T, k Key) ref.T {
 	name := "OffKey"
 	macro.Add(macro.T{
 		Name:  name,
