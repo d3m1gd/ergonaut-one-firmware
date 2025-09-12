@@ -15,6 +15,12 @@ import (
 	. "keyboard/util"
 )
 
+type Layer = layer.Layer
+
+var LayerPlaceholder = layer.Layer{
+	Name: "MACRO_PLACEHOLDER",
+}
+
 var (
 	ref0 = ref.Ref0
 	ref1 = ref.Ref1
@@ -38,16 +44,16 @@ func macroParamBuilder(a, b int) ref.T {
 	return ref.Ref0(fmt.Sprintf("macro_param_%dto%d", a, b))
 }
 
-func Lt(l layer.T, tap Key) ref.T {
-	return ref2("lt", l.Name(), tap)
+func Lt(l Layer, tap Key) ref.T {
+	return ref2("lt", l.Name, tap)
 }
 
-func To(l layer.T) ref.T {
-	return ref1("to", l.Name())
+func To(l Layer) ref.T {
+	return ref1("to", l.Name)
 }
 
-func Mo(l layer.T) ref.T {
-	return ref1("mo", l.Name())
+func Mo(l Layer) ref.T {
+	return ref1("mo", l.Name)
 }
 
 func Mt(mod, tap Key) ref.T {
@@ -91,7 +97,7 @@ func HoldTapOpts(h, t ref.T, name, label string, properties behavior.Props) ref.
 	})
 }
 
-func Sll(l layer.T) ref.T {
+func Sll(l Layer) ref.T {
 	return behavior.AddY(behavior.T{
 		Name:  "sll",
 		Label: "StickyLayerLong",
@@ -104,7 +110,7 @@ func Sll(l layer.T) ref.T {
 	})
 }
 
-func Sl(l layer.T, duration int) ref.T {
+func Sl(l Layer, duration int) ref.T {
 	return behavior.AddY(behavior.T{
 		Name:  fmt.Sprintf("sll%d", duration),
 		Label: fmt.Sprintf("StickyLayer%d", duration),
@@ -117,16 +123,17 @@ func Sl(l layer.T, duration int) ref.T {
 	})
 }
 
-func KpSl(k Key, l layer.T, duration int) ref.T {
+func KpSl(k Key, l Layer, duration int) ref.T {
 	name := fmt.Sprintf("KpSl%s%d", l, duration)
-	macro.Add(macro.T{
+
+	m := macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Param11, macro.Placeholder(Kp(k)), Sl(l, duration)},
+		Refs:  []ref.T{Param11, Kp(MACRO_PLACEHOLDER), Sl(l, duration)},
 	})
 
-	return ref1(name, k)
+	return m.Invoke(k)
 }
 
 func KpKp(a, b Key) ref.T {
@@ -141,14 +148,14 @@ func XKp(r ref.T, k Key) ref.T {
 	})
 }
 
-func MoTo(mo, to layer.T) ref.T {
+func MoTo(mo, to Layer) ref.T {
 	return HoldTapOpts(Mo(mo), To(to), "moto", "MomentaryTo", behavior.Props{
 		"flavor":          "balanced",
 		"tapping-term-ms": 300,
 	})
 }
 
-func MoX(mo layer.T, x ref.T) ref.T {
+func MoX(mo Layer, x ref.T) ref.T {
 	return HoldTapOpts(Mo(mo), x, "mo", "Momentary", behavior.Props{
 		"flavor":          "balanced",
 		"tapping-term-ms": 300,
@@ -180,7 +187,7 @@ func ModMorph(a, b ref.T, mods []Mod, keep []Mod) ref.T {
 	})
 }
 
-func Off(l layer.T) ref.T {
+func Off(l Layer) ref.T {
 	name := "off"
 	behavior.Add(behavior.T{
 		Name:  name,
@@ -239,31 +246,31 @@ func BackspaceDelete() ref.T {
 	return ref0(name)
 }
 
-func Parens(l layer.T) ref.T {
+func Parens(l Layer) ref.T {
 	return OpenCloseMacro("parens", LPAR, RPAR, l)
 }
 
-func Brackets(l layer.T) ref.T {
+func Brackets(l Layer) ref.T {
 	return OpenCloseMacro("brackets", LBKT, RBKT, l)
 }
 
-func Curlies(l layer.T) ref.T {
+func Curlies(l Layer) ref.T {
 	return OpenCloseMacro("curlies", LBRC, RBRC, l)
 }
 
-func DoubleQuotes(l layer.T) ref.T {
+func DoubleQuotes(l Layer) ref.T {
 	return OpenCloseMacro("dquotes", DQT, DQT, l)
 }
 
-func SingleQuotes(l layer.T) ref.T {
+func SingleQuotes(l Layer) ref.T {
 	return OpenCloseMacro("squotes", SQT, SQT, l)
 }
 
-func BackQuotes(l layer.T) ref.T {
+func BackQuotes(l Layer) ref.T {
 	return OpenCloseMacro("bquotes", GRAVE, GRAVE, l)
 }
 
-func OpenCloseMacro(name string, left, right Key, l layer.T) ref.T {
+func OpenCloseMacro(name string, left, right Key, l Layer) ref.T {
 	macro.Add(macro.T{
 		Name:  name,
 		Label: fmt.Sprintf("OpenClose_%s", name),
@@ -275,7 +282,7 @@ func OpenCloseMacro(name string, left, right Key, l layer.T) ref.T {
 }
 
 // todo delme
-// func MSll(mod Key, l layer.T) ref.T {
+// func MSll(mod Key, l Layer) ref.T {
 // 	name := "ModSll"
 // 	macro.Add(macro.T{
 // 		Name:  name,
@@ -288,48 +295,42 @@ func OpenCloseMacro(name string, left, right Key, l layer.T) ref.T {
 // }
 
 func ReRet() ref.T {
-	name := "ReRet"
-	macro.Add(macro.T{
-		Name:  name,
-		Label: name,
+	return macro.Add(macro.T{
+		Name:  "ReRet",
 		Cells: 0,
 		Refs:  []ref.T{Kp(RET), Kp(UP), Kp(END), Kp(RET)},
-	})
-
-	return ref.Ref0(name)
+	}).Invoke()
 }
 
 func TapNoRepeat(k Key) ref.T {
 	name := "TapNoRepeat"
-	macro.Add(macro.T{
+	return macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Param11, macro.Placeholder(Kp(k)), Pause},
-	})
-
-	return ref1(name, k)
+		Refs:  []ref.T{Param11, Kp(MACRO_PLACEHOLDER), Pause},
+	}).Invoke(k)
 }
 
-func InitWith(b ref.T) func(layer.T) {
+func InitWith(b ref.T) func(Layer) {
 	return layer.InitBy(func(rowcol.T) ref.T { return b })
 }
 
-func InitOffTrans(l layer.T, base layer.T) func(layer.T) {
+func InitOffTrans(l Layer, base Layer) func(Layer) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
 		name := fmt.Sprintf("off%s", rc)
-		key := base[rc]
+		key := base.Cells[rc]
 		macro.Add(macro.T{
 			Name:  name,
 			Label: fmt.Sprintf("Off%s", rc.Pretty()),
 			Cells: 1,
-			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, Param11, macro.Placeholder(Off(l))}, // todo macro strip
+			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, Param11, Off(LayerPlaceholder)}, // todo macro strip
 		})
 		return ref1(name, l)
 	})
 }
 
-func OffX(l layer.T, r ref.T) ref.T {
+func OffX(l Layer, r ref.T) ref.T {
 	if r.Name == "kp" {
 		return OffKey(l, r.Fields[0].(Key))
 	}
@@ -338,19 +339,19 @@ func OffX(l layer.T, r ref.T) ref.T {
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, macro.Placeholder(Off(l))},
+		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, Off(LayerPlaceholder)},
 	})
 
 	return ref1(name, l)
 }
 
-func OffKey(l layer.T, k Key) ref.T {
+func OffKey(l Layer, k Key) ref.T {
 	name := "OffKey"
 	macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 2,
-		Refs:  []ref.T{Press, Param21, macro.Placeholder(Kp(k)), Pause, Release, Param21, macro.Placeholder(Kp(k)), Tap, Param11, macro.Placeholder(Off(l))},
+		Refs:  []ref.T{Press, Param21, Kp(MACRO_PLACEHOLDER), Pause, Release, Param21, Kp(MACRO_PLACEHOLDER), Tap, Param11, Off(LayerPlaceholder)},
 	})
 
 	return ref2(name, l, k)

@@ -30,7 +30,7 @@ var (
 )
 
 func init() {
-	BASE.Extend(layer.T{
+	BASE.Extend(layer.Cells{
 		L11: Kp(TAB), // row 1
 		L12: Kp(Q),
 		L13: Kp(W),
@@ -76,7 +76,7 @@ func init() {
 		R43: MoTo(MOVER, CHAINS),
 	})
 
-	MOVER.Extend(layer.T{
+	MOVER.Extend(layer.Cells{
 		// L42: Sl(MOVER, symbolSticky),
 		// L43: Off(MOVER),
 		R21: Kp(LEFT),
@@ -110,7 +110,7 @@ func init() {
 		// R23: Mt(LGUI, UP),
 	})
 
-	NUMER.Extend(layer.T{
+	NUMER.Extend(layer.Cells{
 		L11: Kp(LS(TAB)),
 		L21: Kp(DELETE),      // row 2
 		L31: Mt(LCTRL, PLUS), // row 3
@@ -135,7 +135,7 @@ func init() {
 		R36: Kp(PIPE),
 	})
 
-	QUICK.Extend(layer.T{
+	QUICK.Extend(layer.Cells{
 		L15: Kp(LG(C_VOL_UP)), // row 1
 		L16: Kp(C_VOL_UP),
 		L25: Kp(LG(C_VOL_DN)), // row 2
@@ -155,7 +155,7 @@ func init() {
 		R43: Kp(F12),
 	})
 
-	SYS.Extend(layer.T{
+	SYS.Extend(layer.Cells{
 		L11: ref.Ref0("bootloader"),     // tab
 		L15: ref.Ref0("sys_reset"),      // r
 		R12: ref.Ref1("out", "OUT_USB"), // u
@@ -171,7 +171,7 @@ func init() {
 		R31: ref.Ref1("bt", "BT_CLR_ALL"), // n - nuke
 	})
 
-	SYMBOL.Extend(layer.T{
+	SYMBOL.Extend(layer.Cells{
 		L43: Off(SYMBOL),
 		L11: Kp(TILDE),
 		R11: KpSl(RPAR, SYMBOL, shortSticky),

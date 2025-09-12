@@ -41,19 +41,22 @@ func (m Macro) Equal(other Macro) bool {
 	return eq
 }
 
-func Add(macro Macro) {
+func Add(macro Macro) Macro {
+	macro.Label = macro.Name
 	i := slices.IndexFunc(macros, func(other Macro) bool {
 		return macro.Name == other.Name
 	})
 	if i != -1 {
 		Panicif(!macro.Equal(macros[i]))
-		return
+		return macro
 	}
 	macros = append(macros, macro)
+	return macro
 }
 
-func Placeholder(r ref.T) ref.T {
-	return ref.RefN(r.Name, Map(r.Args(), func(string) any { return "MACRO_PLACEHOLDER" }))
+func (m Macro) Invoke(args ...any) ref.Ref {
+	Panicif(len(args) != m.Cells)
+	return ref.RefN(m.Name, args)
 }
 
 func Render() []Macro {

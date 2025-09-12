@@ -15,22 +15,29 @@ import (
 
 type T = Layer
 
-type Layer map[rowcol.T]ref.T
+type Cells = map[rowcol.T]ref.T
+
+type Layer struct {
+	Name  string
+	Cells Cells
+}
 
 var layers []Layer
-var namerc = rowcol.T{}
 
 func New(name string, init func(Layer)) Layer {
-	layer := make(Layer)
+	layer := Layer{
+		Name:  name,
+		Cells: Cells{},
+	}
 	layer.Fill(init)
-	layer[namerc] = ref.Ref0(name) // store name in special slot
 	layers = append(layers, layer)
 	return layer
 }
 
+// todo delme
 func Get(name string) (Layer, bool) {
 	for _, l := range layers {
-		if l.Name() == name {
+		if l.Name == name {
 			return l, true
 		}
 	}
@@ -39,19 +46,15 @@ func Get(name string) (Layer, bool) {
 }
 
 func Name(l Layer) string {
-	return l.Name()
-}
-
-func (l Layer) Name() string {
-	return l[namerc].Name
+	return l.Name
 }
 
 func (l Layer) String() string {
-	return l.Name()
+	return l.Name
 }
 
 func (l Layer) Equal(other Layer) bool {
-	return l[namerc].Name == other[namerc].Name
+	return l.Name == other.Name
 }
 
 func Less(l, other Layer) int {
@@ -59,7 +62,7 @@ func Less(l, other Layer) int {
 }
 
 func (l Layer) Less(other Layer) int {
-	return cmp.Compare(l[namerc].Name, other[namerc].Name)
+	return cmp.Compare(l.Name, other.Name)
 }
 
 func (l Layer) rows() []string {
@@ -69,7 +72,7 @@ func (l Layer) rows() []string {
 		cells[i] = slices.Repeat([]string{""}, 12)
 	}
 	for rc := range rowcol.All() {
-		b := l[rc]
+		b := l.Cells[rc]
 		rendered := ref.Compile(b)
 		row := rc.Row - 1
 		col := rc.Col - 1
@@ -99,7 +102,7 @@ func (l Layer) Compile(indent, level int) string {
 	ir := indenter.New(indent)
 
 	ir.Sprintf(0, "\n")
-	ir.Sprintf(level, "%s {\n", l.Name())
+	ir.Sprintf(level, "%s {\n", l.Name)
 	ir.Sprintf(level+1, "bindings = <\n")
 	for _, row := range l.rows() {
 		ir.Sprintf(0, "%s\n", row)
@@ -109,8 +112,8 @@ func (l Layer) Compile(indent, level int) string {
 	return ir.String()
 }
 
-func (l Layer) Extend(other Layer) {
-	maps.Copy(l, other)
+func (l Layer) Extend(cells Cells) {
+	maps.Copy(l.Cells, cells)
 }
 
 func (l Layer) Fill(fn func(Layer)) {
@@ -120,7 +123,7 @@ func (l Layer) Fill(fn func(Layer)) {
 func InitBy(f func(rowcol.T) ref.T) func(Layer) {
 	return func(l Layer) {
 		for rc := range rowcol.All() {
-			l[rc] = f(rc)
+			l.Cells[rc] = f(rc)
 		}
 	}
 }

@@ -47,11 +47,11 @@ func Add(start layer.T, init func(layer.T), keyrefs map[string]ref.T) {
 			if !ok {
 				newl = layer.New(name, init)
 			}
-			l[rc] = instance.To(newl)
+			l.Cells[rc] = instance.To(newl)
 			l = newl
 		}
 
 		rc := rowcol.FromByte(keys[len(keys)-1])
-		l[rc] = instance.OffX(l, r)
+		l.Cells[rc] = instance.OffX(l, r)
 	}
 }

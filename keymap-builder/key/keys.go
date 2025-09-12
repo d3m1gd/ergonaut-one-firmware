@@ -87,6 +87,7 @@ func (n Number) String() string {
 var ZERO = Number(0)
 
 const (
+	MACRO_PLACEHOLDER                      Key = "MACRO_PLACEHOLDER"
 	MCLK                                   Key = "MCLK"
 	LCLK                                   Key = "LCLK"
 	RCLK                                   Key = "RCLK"

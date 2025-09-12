@@ -228,37 +228,37 @@
             bindings = <&kp DQT &kp DOLLAR &kp LS(H) &kp LS(O) &kp LS(M) &kp LS(E) &kp SLASH &kp DOT &kp C &kp O &kp N &kp F &kp I &kp G &kp DQT &kp SLASH>;
         };
 
-        bquotes: OpenClose_bquotes {
+        bquotes: bquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp GRAVE &kp GRAVE &kp LEFT &sllmo BASE>;
         };
 
-        brackets: OpenClose_brackets {
+        brackets: brackets {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LBKT &kp RBKT &kp LEFT &sllmo BASE>;
         };
 
-        curlies: OpenClose_curlies {
+        curlies: curlies {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LBRC &kp RBRC &kp LEFT &sllmo BASE>;
         };
 
-        dquotes: OpenClose_dquotes {
+        dquotes: dquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp LEFT &sllmo BASE>;
         };
 
-        parens: OpenClose_parens {
+        parens: parens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp LPAR &kp RPAR &kp LEFT &sllmo BASE>;
         };
 
-        squotes: OpenClose_squotes {
+        squotes: squotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp SQT &kp SQT &kp LEFT &sllmo BASE>;
