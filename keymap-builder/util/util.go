@@ -48,10 +48,6 @@ func ToAny[T any](v T) any {
 }
 
 func ToString[T any](x T) string {
-	// if s, ok := any(x).(string); ok {
-	// 	return s
-	// }
-	//
 	return fmt.Sprintf("%v", any(x))
 }
 

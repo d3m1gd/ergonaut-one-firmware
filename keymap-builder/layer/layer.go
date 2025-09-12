@@ -34,15 +34,14 @@ func New(name string, init func(Layer)) Layer {
 	return layer
 }
 
-// todo delme
-func Get(name string) (Layer, bool) {
+func Get(name string, init func(Layer)) Layer {
 	for _, l := range layers {
 		if l.Name == name {
-			return l, true
+			return l
 		}
 	}
 
-	return Layer{}, false
+	return New(name, init)
 }
 
 func Name(l Layer) string {
@@ -130,4 +129,8 @@ func InitBy(f func(rowcol.T) ref.T) func(Layer) {
 
 func All() []Layer {
 	return layers
+}
+
+func InitWith(b ref.T) func(Layer) {
+	return InitBy(func(rowcol.T) ref.T { return b })
 }

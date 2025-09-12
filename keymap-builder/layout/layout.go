@@ -3,15 +3,10 @@ package layout
 import (
 	"slices"
 
-	"keyboard/ref"
 	"keyboard/rowcol"
 )
 
 var (
-	ref0 = ref.Ref0
-	ref1 = ref.Ref1
-	ref2 = ref.Ref2
-
 	L11 = rowcol.L(1, 1)
 	L12 = rowcol.L(1, 2)
 	L13 = rowcol.L(1, 3)

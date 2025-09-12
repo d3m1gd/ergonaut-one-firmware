@@ -1,18 +1,17 @@
-package instance
+package behavior
 
 import (
 	"fmt"
 	"slices"
 	"strings"
 
-	"keyboard/behavior"
-	. "keyboard/key"
+	"keyboard/key"
 	"keyboard/layer"
 	. "keyboard/layout"
 	"keyboard/macro"
 	"keyboard/ref"
 	"keyboard/rowcol"
-	. "keyboard/util"
+	"keyboard/util"
 )
 
 type Layer = layer.Layer
@@ -20,6 +19,8 @@ type Layer = layer.Layer
 var LayerPlaceholder = layer.Layer{
 	Name: "MACRO_PLACEHOLDER",
 }
+
+var KeyPlaceholder = key.MACRO_PLACEHOLDER
 
 var (
 	ref0 = ref.Ref0
@@ -44,7 +45,7 @@ func macroParamBuilder(a, b int) ref.T {
 	return ref.Ref0(fmt.Sprintf("macro_param_%dto%d", a, b))
 }
 
-func Lt(l Layer, tap Key) ref.T {
+func Lt(l Layer, tap key.Key) ref.T {
 	return ref2("lt", l.Name, tap)
 }
 
@@ -56,21 +57,21 @@ func Mo(l Layer) ref.T {
 	return ref1("mo", l.Name)
 }
 
-func Mt(mod, tap Key) ref.T {
+func Mt(mod, tap key.Key) ref.T {
 	return ref2("mt", mod, tap)
 }
 
-func Kp(k Key) ref.T {
+func Kp(k key.Key) ref.T {
 	return ref1("kp", k)
 }
 
-func MKp(tap Key) ref.T {
+func MKp(tap key.Key) ref.T {
 	return ref1("mkp", tap)
 }
 
-func Rmt(mod, tap Key) ref.T {
-	keys := Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
-	return HoldTapOpts(Kp(mod), Kp(tap), "rmt", "RightModTap", behavior.Props{
+func Rmt(mod, tap key.Key) ref.T {
+	keys := util.Map(slices.Concat(LLLL, []rowcol.T{R22, R23, R24, R41, R42, R43}), rowcol.ToSerial)
+	return HoldTapOpts(Kp(mod), Kp(tap), "rmt", "RightModTap", Props{
 		"hold-trigger-key-positions": keys,
 		"hold-trigger-on-release":    true,
 		"flavor":                     "tap-preferred",
@@ -80,30 +81,30 @@ func Rmt(mod, tap Key) ref.T {
 }
 
 func HoldTap(h, t ref.T) ref.T {
-	return HoldTapOpts(h, t, "ht", "HoldTap", behavior.Props{
+	return HoldTapOpts(h, t, "ht", "HoldTap", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
 		"quick-tap-ms":    200,
 	})
 }
 
-func HoldTapOpts(h, t ref.T, name, label string, properties behavior.Props) ref.T {
-	return behavior.AddY(behavior.T{
+func HoldTapOpts(h, t ref.T, name, label string, properties Props) ref.T {
+	return AddY(Behavior{
 		Name:  name,
 		Label: label,
-		Type:  behavior.TypeHoldTap,
+		Type:  TypeHoldTap,
 		Refs:  []ref.T{h, t},
 		Props: properties,
 	})
 }
 
 func Sll(l Layer) ref.T {
-	return behavior.AddY(behavior.T{
+	return AddY(Behavior{
 		Name:  "sll",
 		Label: "StickyLayerLong",
-		Type:  behavior.TypeStickyKey,
+		Type:  TypeStickyKey,
 		Refs:  []ref.T{Mo(l)},
-		Props: behavior.Props{
+		Props: Props{
 			"release-after-ms": 2000,
 			"quick-release":    true,
 		},
@@ -111,37 +112,35 @@ func Sll(l Layer) ref.T {
 }
 
 func Sl(l Layer, duration int) ref.T {
-	return behavior.AddY(behavior.T{
+	return AddY(Behavior{
 		Name:  fmt.Sprintf("sll%d", duration),
 		Label: fmt.Sprintf("StickyLayer%d", duration),
-		Type:  behavior.TypeStickyKey,
+		Type:  TypeStickyKey,
 		Refs:  []ref.T{Mo(l)},
-		Props: behavior.Props{
+		Props: Props{
 			"release-after-ms": duration,
 			"quick-release":    true,
 		},
 	})
 }
 
-func KpSl(k Key, l Layer, duration int) ref.T {
+func KpSl(k key.Key, l Layer, duration int) ref.T {
 	name := fmt.Sprintf("KpSl%s%d", l, duration)
 
-	m := macro.Add(macro.T{
+	return macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 1,
-		Refs:  []ref.T{Param11, Kp(MACRO_PLACEHOLDER), Sl(l, duration)},
-	})
-
-	return m.Invoke(k)
+		Refs:  []ref.T{Param11, Kp(KeyPlaceholder), Sl(l, duration)},
+	}).Invoke(k)
 }
 
-func KpKp(a, b Key) ref.T {
+func KpKp(a, b key.Key) ref.T {
 	return HoldTap(TapNoRepeat(a), Kp(b))
 }
 
-func XKp(r ref.T, k Key) ref.T {
-	return HoldTapOpts(r, Kp(k), "xkp", "XKeyPress", behavior.Props{
+func XKp(r ref.T, k key.Key) ref.T {
+	return HoldTapOpts(r, Kp(k), "xkp", "XKeyPress", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 350,
 		"quick-tap-ms":    200,
@@ -149,39 +148,39 @@ func XKp(r ref.T, k Key) ref.T {
 }
 
 func MoTo(mo, to Layer) ref.T {
-	return HoldTapOpts(Mo(mo), To(to), "moto", "MomentaryTo", behavior.Props{
+	return HoldTapOpts(Mo(mo), To(to), "moto", "MomentaryTo", Props{
 		"flavor":          "balanced",
 		"tapping-term-ms": 300,
 	})
 }
 
 func MoX(mo Layer, x ref.T) ref.T {
-	return HoldTapOpts(Mo(mo), x, "mo", "Momentary", behavior.Props{
+	return HoldTapOpts(Mo(mo), x, "mo", "Momentary", Props{
 		"flavor":          "balanced",
 		"tapping-term-ms": 300,
 	})
 }
 
-func ModX(mod Key, x ref.T) ref.T {
-	return HoldTapOpts(Kp(mod), x, "m", "Mod", behavior.Props{
+func ModX(mod key.Key, x ref.T) ref.T {
+	return HoldTapOpts(Kp(mod), x, "m", "Mod", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
 		"quick-tap-ms":    200,
 	})
 }
 
-func ModMorph(a, b ref.T, mods []Mod, keep []Mod) ref.T {
-	props := behavior.Props{
+func ModMorph(a, b ref.T, mods []key.Mod, keep []key.Mod) ref.T {
+	props := Props{
 		"mods": mods,
 	}
 	if len(keep) > 0 {
 		props["keep-mods"] = keep
 	}
 
-	return behavior.AddY(behavior.T{
+	return AddY(Behavior{
 		Name:  "mm",
 		Label: "ModMorph",
-		Type:  behavior.TypeModMorph,
+		Type:  TypeModMorph,
 		Refs:  []ref.T{a, b},
 		Props: props,
 	})
@@ -189,11 +188,11 @@ func ModMorph(a, b ref.T, mods []Mod, keep []Mod) ref.T {
 
 func Off(l Layer) ref.T {
 	name := "off"
-	behavior.Add(behavior.T{
+	Add(Behavior{
 		Name:  name,
 		Label: "Off",
-		Type:  behavior.TypeToggleLayer,
-		Props: behavior.Props{
+		Type:  TypeToggleLayer,
+		Props: Props{
 			"display-name": "Layer Off",
 			"toggle-mode":  "off",
 		},
@@ -235,54 +234,45 @@ func macroParams(n int) []ref.T {
 // }
 
 func BackspaceDelete() ref.T {
-	name := "bspcdel"
-	macro.Add(macro.T{
-		Name:  name,
-		Label: "BackspaceDelete",
-		Cells: 0,
-		Refs:  []ref.T{Kp(DEL), Kp(BSPC)},
-	})
-
-	return ref0(name)
+	return macro.Add(macro.T{
+		Name: "BackspaceDelete",
+		Refs: []ref.T{Kp(key.DEL), Kp(key.BSPC)},
+	}).Invoke()
 }
 
 func Parens(l Layer) ref.T {
-	return OpenCloseMacro("parens", LPAR, RPAR, l)
+	return OpenCloseMacro("parens", key.LPAR, key.RPAR, l)
 }
 
 func Brackets(l Layer) ref.T {
-	return OpenCloseMacro("brackets", LBKT, RBKT, l)
+	return OpenCloseMacro("brackets", key.LBKT, key.RBKT, l)
 }
 
 func Curlies(l Layer) ref.T {
-	return OpenCloseMacro("curlies", LBRC, RBRC, l)
+	return OpenCloseMacro("curlies", key.LBRC, key.RBRC, l)
 }
 
 func DoubleQuotes(l Layer) ref.T {
-	return OpenCloseMacro("dquotes", DQT, DQT, l)
+	return OpenCloseMacro("dquotes", key.DQT, key.DQT, l)
 }
 
 func SingleQuotes(l Layer) ref.T {
-	return OpenCloseMacro("squotes", SQT, SQT, l)
+	return OpenCloseMacro("squotes", key.SQT, key.SQT, l)
 }
 
 func BackQuotes(l Layer) ref.T {
-	return OpenCloseMacro("bquotes", GRAVE, GRAVE, l)
+	return OpenCloseMacro("bquotes", key.GRAVE, key.GRAVE, l)
 }
 
-func OpenCloseMacro(name string, left, right Key, l Layer) ref.T {
-	macro.Add(macro.T{
-		Name:  name,
-		Label: fmt.Sprintf("OpenClose_%s", name),
-		Cells: 0,
-		Refs:  []ref.T{Kp(left), Kp(right), Kp(LEFT), Sll(l)},
-	})
-
-	return ref0(name)
+func OpenCloseMacro(name string, left, right key.Key, l Layer) ref.T {
+	return macro.Add(macro.T{
+		Name: name,
+		Refs: []ref.T{Kp(left), Kp(right), Kp(key.LEFT), Sll(l)},
+	}).Invoke()
 }
 
 // todo delme
-// func MSll(mod Key, l Layer) ref.T {
+// func MSll(mod key.Key, l Layer) ref.T {
 // 	name := "ModSll"
 // 	macro.Add(macro.T{
 // 		Name:  name,
@@ -296,81 +286,61 @@ func OpenCloseMacro(name string, left, right Key, l Layer) ref.T {
 
 func ReRet() ref.T {
 	return macro.Add(macro.T{
-		Name:  "ReRet",
-		Cells: 0,
-		Refs:  []ref.T{Kp(RET), Kp(UP), Kp(END), Kp(RET)},
+		Name: "ReRet",
+		Refs: []ref.T{Kp(key.RET), Kp(key.UP), Kp(key.END), Kp(key.RET)},
 	}).Invoke()
 }
 
-func TapNoRepeat(k Key) ref.T {
-	name := "TapNoRepeat"
+func TapNoRepeat(k key.Key) ref.T {
 	return macro.Add(macro.T{
-		Name:  name,
-		Label: name,
+		Name:  "TapNoRepeat",
 		Cells: 1,
-		Refs:  []ref.T{Param11, Kp(MACRO_PLACEHOLDER), Pause},
+		Refs:  []ref.T{Param11, Kp(KeyPlaceholder), Pause},
 	}).Invoke(k)
-}
-
-func InitWith(b ref.T) func(Layer) {
-	return layer.InitBy(func(rowcol.T) ref.T { return b })
 }
 
 func InitOffTrans(l Layer, base Layer) func(Layer) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
-		name := fmt.Sprintf("off%s", rc)
 		key := base.Cells[rc]
-		macro.Add(macro.T{
-			Name:  name,
-			Label: fmt.Sprintf("Off%s", rc.Pretty()),
+		return macro.Add(macro.T{
+			Name:  fmt.Sprintf("off%s", rc),
 			Cells: 1,
-			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, Param11, Off(LayerPlaceholder)}, // todo macro strip
-		})
-		return ref1(name, l)
+			Refs:  []ref.T{Press, key, Pause, Release, key, Tap, Param11, Off(LayerPlaceholder)},
+		}).Invoke(l)
 	})
 }
 
 func OffX(l Layer, r ref.T) ref.T {
 	if r.Name == "kp" {
-		return OffKey(l, r.Fields[0].(Key))
+		return OffKey(l, r.Fields[0].(key.Key))
 	}
-	name := "Off" + r.Show()
-	macro.Add(macro.T{
-		Name:  name,
-		Label: name,
+	return macro.Add(macro.T{
+		Name:  "Off" + r.Show(),
 		Cells: 1,
 		Refs:  []ref.T{Press, r, Pause, Release, r, Tap, Param11, Off(LayerPlaceholder)},
-	})
-
-	return ref1(name, l)
+	}).Invoke(l)
 }
 
-func OffKey(l Layer, k Key) ref.T {
-	name := "OffKey"
-	macro.Add(macro.T{
-		Name:  name,
-		Label: name,
+func OffKey(l Layer, k key.Key) ref.T {
+	return macro.Add(macro.T{
+		Name:  "OffKey",
 		Cells: 2,
-		Refs:  []ref.T{Press, Param21, Kp(MACRO_PLACEHOLDER), Pause, Release, Param21, Kp(MACRO_PLACEHOLDER), Tap, Param11, Off(LayerPlaceholder)},
-	})
-
-	return ref2(name, l, k)
+		Refs:  []ref.T{Press, Param21, Kp(KeyPlaceholder), Pause, Release, Param21, Kp(KeyPlaceholder), Tap, Param11, Off(LayerPlaceholder)},
+	}).Invoke(l, k)
 }
 
 func Text(name string, keys string) ref.T {
-	macro.Add(macro.T{
+	return macro.Add(macro.T{
 		Name:  name,
 		Label: name,
 		Cells: 0,
-		Refs:  MapString(keys, func(b byte) ref.T { return Kp(From(b)) }),
-	})
-
-	return ref0(name)
+		Refs:  util.MapString(keys, func(b byte) ref.T { return Kp(key.From(b)) }),
+	}).Invoke()
 }
 
 func CursorAt(str, marker string) string {
 	subs := strings.Split(str, marker)
-	Panicif(len(subs) != 2, "want exactly one marker (%s): %s", marker, str)
+	util.Panicif(len(subs) != 2, "want exactly one marker (%s): %s", marker, str)
 	left := subs[0]
 	right := strings.Split(subs[1], "")
 	slices.Reverse(right)

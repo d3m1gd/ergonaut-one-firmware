@@ -9,11 +9,9 @@ import (
 
 	"keyboard/key"
 	"keyboard/ref"
-	. "keyboard/util"
+	"keyboard/util"
 	"keyboard/util/indenter"
 )
-
-type T = Behavior
 
 type Type struct {
 	Name  string
@@ -66,14 +64,14 @@ func (x Prop) Compile() string {
 		return fmt.Sprintf(`%s = "%s"`, x.Name, v)
 	case bool:
 		if v {
-			return fmt.Sprintf(`%s`, x.Name)
+			return x.Name
 		} else {
-			return fmt.Sprintf(`/delete-property/ %s`, x.Name)
+			return fmt.Sprintf("/delete-property/ %s", x.Name)
 		}
 	case []int:
-		return fmt.Sprintf(`%s = <%s>`, x.Name, strings.Join(Map(v, ToString), " "))
+		return fmt.Sprintf("%s = <%s>", x.Name, strings.Join(util.Map(v, util.ToString), " "))
 	case []key.Mod:
-		return fmt.Sprintf(`%s = <(%s)>`, x.Name, strings.Join(Map(v, AsString), "|"))
+		return fmt.Sprintf("%s = <(%s)>", x.Name, strings.Join(util.Map(v, util.AsString), "|"))
 	}
 	panic(fmt.Sprintf("unknown device tree property: %T", x.Value))
 }
@@ -97,13 +95,13 @@ func (b Behavior) Equal(other Behavior) bool {
 }
 
 func (b Behavior) Bindings() string {
-	return strings.Join(Map(b.Refs, ref.Compile), " ")
+	return strings.Join(util.Map(b.Refs, ref.Compile), " ")
 }
 
 func (b Behavior) Properties() []string {
 	keys := slices.Collect(maps.Keys(b.Props))
 	slices.Sort(keys)
-	return Map(keys, func(k string) string { return Prop{k, b.Props[k]}.Compile() })
+	return util.Map(keys, func(k string) string { return Prop{k, b.Props[k]}.Compile() })
 }
 
 func Add(b Behavior) {
@@ -111,7 +109,7 @@ func Add(b Behavior) {
 		return b.Name == other.Name
 	})
 	if i != -1 {
-		Panicif(!b.Equal(behaviors[i]))
+		util.Panicif(!b.Equal(behaviors[i]))
 		return
 	}
 	behaviors = append(behaviors, b)
@@ -119,7 +117,7 @@ func Add(b Behavior) {
 
 func AddY(b Behavior) ref.T {
 	for _, r := range b.Refs {
-		Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
+		util.Panicif(slices.ContainsFunc(r.Fields, func(a any) bool { return a == nil }))
 	}
 
 	cells := b.Type.Cells
