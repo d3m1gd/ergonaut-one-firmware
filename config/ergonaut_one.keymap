@@ -12,14 +12,11 @@
 #define SYMBOL 5
 #define CHAINS 6
 #define CHAINS_C 7
-#define CHAINS_CO 8
-#define CHAINS_D 9
-#define CHAINS_DO 10
-#define CHAINS_F 11
-#define CHAINS_G 12
-#define CHAINS_GI 13
-#define CHAINS_S 14
-#define CHAINS_SD 15
+#define CHAINS_F 8
+#define CHAINS_G 9
+#define CHAINS_GI 10
+#define CHAINS_S 11
+#define CHAINS_SD 12
 
 &lt {
     quick-tap-ms = <200>;
@@ -488,7 +485,7 @@
         CHAINS {
             bindings = <
 &to BASE  &to BASE  &to BASE      &to BASE      &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to CHAINS_S  &to CHAINS_D  &to CHAINS_F  &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to CHAINS_S  &to BASE      &to CHAINS_F  &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
 &to BASE  &to BASE  &to BASE      &to CHAINS_C  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
                                   &to BASE      &to BASE      &to BASE      &to BASE  &to BASE  &to BASE
             >;
@@ -496,37 +493,10 @@
 
         CHAINS_C {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_CO  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-            >;
-        };
-
-        CHAINS_CO {
-            bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                          &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                          &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_CO LA(LG(LS(F1)))  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                          &to BASE
-            >;
-        };
-
-        CHAINS_D {
-            bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to CHAINS_DO  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-            >;
-        };
-
-        CHAINS_DO {
-            bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_DO LA(LG(LS(F2)))  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                          &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                          &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE                          &to BASE  &to BASE  &to BASE
+&to BASE  &OffKey CHAINS_C RA(RG(LS(Q)))  &OffKey CHAINS_C RA(RG(LS(W)))  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE                        &to BASE                        &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE                        &to BASE                        &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                                                                          &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
