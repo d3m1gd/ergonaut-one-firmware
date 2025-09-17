@@ -493,10 +493,10 @@
 
         CHAINS_C {
             bindings = <
-&to BASE  &OffKey CHAINS_C RA(RG(LS(Q)))  &OffKey CHAINS_C RA(RG(LS(W)))  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE                        &to BASE                        &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE                        &to BASE                        &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                                                                          &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_C RG(LS(F1))      &OffKey CHAINS_C RG(LS(F2))      &OffKey CHAINS_C RG(LS(F3))      &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_C RA(RG(LS(F4)))  &OffKey CHAINS_C RA(RG(LS(F5)))  &OffKey CHAINS_C RA(RG(LS(F6)))  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE                         &to BASE                         &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE
             >;
         };
 

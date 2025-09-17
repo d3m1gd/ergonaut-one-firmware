@@ -218,7 +218,7 @@ func init() {
 		"sdf": Kp(X),
 		"gie": Text("GoIfError", CursorAt("go if%fine", "%")),
 		"fu":  Kp(F1),
-		"fi":  Kp(F2),
+		"fi":  Kp(F2), // todo i -> 2 alias
 		"fo":  Kp(F3),
 		"fj":  Kp(F4),
 		"fk":  Kp(F5),
@@ -230,8 +230,12 @@ func init() {
 		"f ":  Kp(F11),
 		"f\r": Kp(F12),
 
-		"cq": Kp(RA(RG(LS(Q)))),
-		"cw": Kp(RA(RG(LS(W)))),
+		"c1": Kp(RG(LS(F1))),
+		"c2": Kp(RG(LS(F2))),
+		"c3": Kp(RG(LS(F3))),
+		"c4": Kp(RA(RG(LS(F4)))),
+		"c5": Kp(RA(RG(LS(F5)))),
+		"c6": Kp(RA(RG(LS(F6)))),
 	})
 
 	combo.Add(combo.T{
