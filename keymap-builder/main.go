@@ -229,6 +229,9 @@ func init() {
 		"f\n": Kp(F10),
 		"f ":  Kp(F11),
 		"f\r": Kp(F12),
+
+		"com": Kp(LA(LG(LS(F1)))),
+		"dot": Kp(LA(LG(LS(F2)))),
 	})
 
 	combo.Add(combo.T{
