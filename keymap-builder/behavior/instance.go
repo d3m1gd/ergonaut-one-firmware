@@ -332,6 +332,7 @@ func Reliable(k key.Key, mods ...key.Key) ref.T {
 	}
 
 	refs = append(refs, Tap)
+	refs = append(refs, Param11)
 	refs = append(refs, Kp(KeyPlaceholder))
 	refs = append(refs, Release)
 

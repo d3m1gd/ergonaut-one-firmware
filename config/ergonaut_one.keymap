@@ -258,7 +258,7 @@
         ReliableRALTRWINLSHIFT: ReliableRALTRWINLSHIFT {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_press &kp RALT &kp RWIN &kp LSHIFT &macro_tap &kp MACRO_PLACEHOLDER &macro_release &kp RALT &kp RWIN &kp LSHIFT>;
+            bindings = <&macro_press &kp RALT &kp RWIN &kp LSHIFT &macro_tap &macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_release &kp RALT &kp RWIN &kp LSHIFT>;
         };
 
         TapNoRepeat: TapNoRepeat {
