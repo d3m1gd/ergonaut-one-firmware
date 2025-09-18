@@ -32,7 +32,6 @@ func Name(keys string) string {
 func Add(start layer.T, init func(layer.T), keyrefs KeyRefs) {
 	for keys, r := range SortedMap(keyrefs) {
 		Panicif(len(keys) < 2)
-		Panicif(strings.ToLower(keys) != keys)
 
 		for _, p := range prefixes {
 			Panicif(strings.HasPrefix(keys, p))

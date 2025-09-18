@@ -44,6 +44,8 @@ var (
 )
 
 func init() {
+	defer util.Reporter(nil)
+
 	BASE.Extend(layer.Cells{
 		L11: Kp(TAB), // row 1
 		L12: Kp(Q),
@@ -226,9 +228,9 @@ func init() {
 		"fm":  Kp(F7),
 		"f,":  Kp(F8),
 		"f.":  Kp(F9),
-		"f\n": Kp(F10),
-		"f ":  Kp(F11),
-		"f\r": Kp(F12),
+		"fR":  Kp(F10),
+		"fS":  Kp(F11),
+		"f>":  Kp(F12),
 
 		"c1": Kp(RG(LS(F1))),
 		"c2": Kp(RG(LS(F2))),

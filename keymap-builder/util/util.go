@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"iter"
 	"maps"
+	"os"
+	"runtime"
 	"slices"
 )
 
@@ -90,14 +92,14 @@ func SortedMap[K cmp.Ordered, V any](m map[K]V) iter.Seq2[K, V] {
 
 func Must[T any](v T, err error) T {
 	if err != nil {
-		panic(err)
+		panic(newError(err.Error()))
 	}
 	return v
 }
 
 func Check(err error) {
 	if err != nil {
-		panic(err)
+		panic(newError(err.Error()))
 	}
 }
 
@@ -105,9 +107,50 @@ func Panicif(cond bool, extras ...any) {
 	if cond {
 		if len(extras) > 0 {
 			if v, ok := extras[0].(string); ok {
-				panic(fmt.Sprintf(v, extras[1:]...))
+				panic(newError(fmt.Sprintf(v, extras[1:]...)))
 			}
 		}
-		panic("condition failed")
+		panic(newError("condition failed"))
 	}
+}
+
+type Error struct {
+	File    string
+	Line    int
+	Message string
+}
+
+func newError(message string) Error {
+	_, file, line, ok := runtime.Caller(2)
+	if !ok {
+		file = "<nofile>"
+		line = 0
+	}
+	return Error{file, line, message}
+}
+
+func Catcher(fn func(any)) {
+	if r := recover(); r != nil {
+		if fn != nil {
+			fn(r)
+		} else {
+			panic(r)
+		}
+	}
+}
+
+func Reporter(out *error) {
+	Catcher(func(x any) {
+		var err error
+		if c, ok := x.(Error); ok {
+			err = fmt.Errorf("%s:%d: %s", c.File, c.Line, c.Message)
+		} else {
+			err = fmt.Errorf("uncaught panic: %v (%T)", x, x)
+		}
+		if out == nil {
+			fmt.Printf("%s\n", err)
+			os.Exit(1)
+		}
+		*out = err
+	})
 }
