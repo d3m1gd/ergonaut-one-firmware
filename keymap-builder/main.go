@@ -44,9 +44,8 @@ var (
 )
 
 var (
-	ReliableComma = F2
-	ReliableDot   = F3
-	ReliableHard  = F12
+	ReliableComma = N1
+	ReliableDot   = N2
 )
 
 func init() {
@@ -89,8 +88,8 @@ func init() {
 		R26: KpKp(RG(SQT), SQT),
 		R31: Kp(N), // row 3
 		R32: Kp(M),
-		R33: HoldTap(TapReliableNoRepeat(ReliableComma, RALT, RWIN, LSHIFT), Kp(COMMA)),
-		R34: HoldTap(TapReliableNoRepeat(ReliableDot, RALT, RWIN, LSHIFT), Kp(DOT)),
+		R33: HoldTap(TapReliableNoRepeat(ReliableComma, RALT, RWIN, LCTRL), Kp(COMMA)),
+		R34: HoldTap(TapReliableNoRepeat(ReliableDot, RALT, RWIN, LCTRL), Kp(DOT)),
 		R35: Kp(SLASH),
 		R36: Kp(BACKSLASH),
 		R41: Mt(LCTRL, RETURN), // row 4
