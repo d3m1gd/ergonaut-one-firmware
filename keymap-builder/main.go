@@ -249,8 +249,8 @@ func init() {
 		"c9": Kp(RG(F3)),
 
 		"r1": ReliableExcl,
-		"r,": ReliableComma,
-		"r.": ReliableDot,
+		"r,": Kp((RA(LS(F2)))),
+		"r.": Kp((RA(LS(F3)))),
 
 		"cm": Kp(K_APP),
 		"cn": Kp(K_CONTEXT_MENU),
