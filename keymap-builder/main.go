@@ -44,10 +44,9 @@ var (
 )
 
 var (
-	ReliableExcl  = (RG(RA(LS(F1))))
-	ReliableComma = (RG(RA(LS(F2))))
-	ReliableDot   = (RG(RA(LS(F3))))
-	ReliableHard  = (RG(RA(LS(F12))))
+	ReliableComma = F2
+	ReliableDot   = F3
+	ReliableHard  = F12
 )
 
 func init() {
@@ -89,9 +88,9 @@ func init() {
 		R25: KpKp(RG(SEMI), SEMI),
 		R26: KpKp(RG(SQT), SQT),
 		R31: Kp(N), // row 3
-		R32: HoldTap(TapReliableNoRepeat(M, RALT, RWIN, LSHIFT), Kp(M)),
-		R33: HoldTap(TapReliableNoRepeat(COMMA, RALT, RWIN, LSHIFT), Kp(COMMA)),
-		R34: HoldTap(TapReliableNoRepeat(DOT, RALT, RWIN, LSHIFT), Kp(DOT)),
+		R32: Kp(M),
+		R33: HoldTap(TapReliableNoRepeat(ReliableComma, RALT, RWIN, LSHIFT), Kp(COMMA)),
+		R34: HoldTap(TapReliableNoRepeat(ReliableDot, RALT, RWIN, LSHIFT), Kp(DOT)),
 		R35: Kp(SLASH),
 		R36: Kp(BACKSLASH),
 		R41: Mt(LCTRL, RETURN), // row 4
