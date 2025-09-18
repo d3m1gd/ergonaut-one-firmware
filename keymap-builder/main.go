@@ -44,9 +44,10 @@ var (
 )
 
 var (
-	ReliableExcl  = Kp(RG(RA(LS(F1))))
-	ReliableComma = Kp(RG(RA(LS(F2))))
-	ReliableDot   = Kp(RG(RA(LS(F3))))
+	ReliableExcl  = (RG(RA(LS(F1))))
+	ReliableComma = (RG(RA(LS(F2))))
+	ReliableDot   = (RG(RA(LS(F3))))
+	ReliableHard  = (RG(RA(LS(F12))))
 )
 
 func init() {
@@ -88,9 +89,9 @@ func init() {
 		R25: KpKp(RG(SEMI), SEMI),
 		R26: KpKp(RG(SQT), SQT),
 		R31: Kp(N), // row 3
-		R32: KpKp(RG(M), M),
-		R33: KpKp(RG(COMMA), COMMA),
-		R34: KpKp(RG(DOT), DOT),
+		R32: HoldTap(TapReliableNoRepeat(M, RALT, RWIN, LSHIFT), Kp(M)),
+		R33: HoldTap(TapReliableNoRepeat(COMMA, RALT, RWIN, LSHIFT), Kp(COMMA)),
+		R34: HoldTap(TapReliableNoRepeat(DOT, RALT, RWIN, LSHIFT), Kp(DOT)),
 		R35: Kp(SLASH),
 		R36: Kp(BACKSLASH),
 		R41: Mt(LCTRL, RETURN), // row 4
@@ -225,15 +226,15 @@ func init() {
 	chain.Add(CHAINS, layer.InitWith(To(BASE)), chain.KeyRefs{
 		"sdf": Kp(X),
 		"gie": Text("GoIfError", CursorAt("go if%fine", "%")),
-		"fu":  Kp(F1),
-		"fi":  Kp(F2), // todo i -> 2 alias
-		"fo":  Kp(F3),
-		"fj":  Kp(F4),
-		"fk":  Kp(F5),
-		"fl":  Kp(F6),
-		"fm":  Kp(F7),
-		"f,":  Kp(F8),
-		"f.":  Kp(F9),
+		"f1":  Kp(F1),
+		"f2":  Kp(F2),
+		"f3":  Kp(F3),
+		"f4":  Kp(F4),
+		"f5":  Kp(F5),
+		"f6":  Kp(F6),
+		"f7":  Kp(F7),
+		"f8":  Kp(F8),
+		"f9":  Kp(F9),
 		"fR":  Kp(F10),
 		"fS":  Kp(F11),
 		"f>":  Kp(F12),

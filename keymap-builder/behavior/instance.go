@@ -282,6 +282,14 @@ func TapNoRepeat(k key.Key) ref.T {
 	}).Invoke(k)
 }
 
+func TapReliableNoRepeat(k key.Key, mods ...key.Key) ref.T {
+	return macro.Add(macro.T{
+		Name:  "TapReliableNoRepeat",
+		Cells: 1,
+		Refs:  []ref.T{Param11, Reliable(KeyPlaceholder, mods...), Pause},
+	}).Invoke(k)
+}
+
 func InitOffTrans(l Layer, base Layer) func(Layer) {
 	return layer.InitBy(func(rc rowcol.T) ref.T {
 		key := base.Cells[rc]

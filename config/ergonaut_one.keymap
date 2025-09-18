@@ -57,6 +57,15 @@
             tapping-term-ms = <200>;
         };
 
+        htTapReliableNoRepeatkp: htTapReliableNoRepeatkp {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&TapReliableNoRepeat &kp>;
+            flavor = "tap-preferred";
+            quick-tap-ms = <200>;
+            tapping-term-ms = <200>;
+        };
+
         htkpcaps_word: htkpcaps_word {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -267,6 +276,12 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_pause_for_release>;
         };
 
+        TapReliableNoRepeat: TapReliableNoRepeat {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1 &ReliableRALTRWINLSHIFT MACRO_PLACEHOLDER &macro_pause_for_release>;
+        };
+
         XdgConfig: XdgConfig {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -455,10 +470,10 @@
         compatible = "zmk,keymap";
         BASE {
             bindings = <
-&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                                 &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                     &kp I                             &kp O                         &kp P                           &kp LBKT
-&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                            &kp G                     &kp H             &mt LALT J                &mt LGUI K                        &rmtkpkp LSHIFT L             &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
-&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                                 &kp B                     &kp N             &htTapNoRepeatkp RG(M) M  &htTapNoRepeatkp RG(COMMA) COMMA  &htTapNoRepeatkp RG(DOT) DOT  &kp SLASH                       &kp BACKSLASH
-                                                  &motomoto MOVER CHAINS  &momommsll500moSYMBOLkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE           &motomoto MOVER CHAINS
+&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                                 &htTapNoRepeatkp RG(T) T  &kp Y             &kp U                         &kp I                                 &kp O                             &kp P                           &kp LBKT
+&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                            &kp G                     &kp H             &mt LALT J                    &mt LGUI K                            &rmtkpkp LSHIFT L                 &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
+&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                                 &kp B                     &kp N             &htTapReliableNoRepeatkp M M  &htTapReliableNoRepeatkp COMMA COMMA  &htTapReliableNoRepeatkp DOT DOT  &kp SLASH                       &kp BACKSLASH
+                                                  &motomoto MOVER CHAINS  &momommsll500moSYMBOLkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE               &motomoto MOVER CHAINS
             >;
         };
 
