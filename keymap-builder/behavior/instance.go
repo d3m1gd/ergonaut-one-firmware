@@ -140,7 +140,6 @@ func KpSl(k key.Key, l Layer, duration int) ref.T {
 
 	return macro.Add(macro.T{
 		Name:  name,
-		Label: name,
 		Cells: 1,
 		Refs:  []ref.T{Param11, Kp(KeyPlaceholder), Sl(l, duration)},
 	}).Invoke(k)
@@ -316,10 +315,35 @@ func OffKey(l Layer, k key.Key) ref.T {
 func Text(name string, keys string) ref.T {
 	return macro.Add(macro.T{
 		Name:  name,
-		Label: name,
 		Cells: 0,
 		Refs:  util.MapString(keys, func(b byte) ref.T { return Kp(key.From(b)) }),
 	}).Invoke()
+}
+
+func Reliable(k key.Key, mods ...key.Key) ref.T {
+	name := fmt.Sprintf("Reliable%s", strings.Join(util.Map(mods, func(k key.Key) string {
+		return string(k)
+	}), ""))
+
+	refs := []ref.T{Press}
+
+	for _, m := range mods {
+		refs = append(refs, Kp(m))
+	}
+
+	refs = append(refs, Tap)
+	refs = append(refs, Kp(KeyPlaceholder))
+	refs = append(refs, Release)
+
+	for _, m := range mods {
+		refs = append(refs, Kp(m))
+	}
+
+	return macro.Add(macro.T{
+		Name:  name,
+		Cells: 1,
+		Refs:  refs,
+	}).Invoke(k)
 }
 
 func CursorAt(str, marker string) string {

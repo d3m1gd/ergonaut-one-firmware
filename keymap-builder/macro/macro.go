@@ -16,7 +16,6 @@ var macros []Macro
 
 type Macro struct {
 	Name  string
-	Label string
 	Cells int
 	Refs  []ref.T
 }
@@ -42,7 +41,6 @@ func (m Macro) Equal(other Macro) bool {
 }
 
 func Add(macro Macro) Macro {
-	macro.Label = macro.Name
 	i := slices.IndexFunc(macros, func(other Macro) bool {
 		return macro.Name == other.Name
 	})
@@ -68,7 +66,7 @@ func (m Macro) Compile(indent, level int) string {
 	ir := indenter.New(indent)
 
 	ir.Sprintf(0, "\n")
-	ir.Sprintf(level, "%s: %s {\n", m.Name, m.Label)
+	ir.Sprintf(level, "%s: %s {\n", m.Name, m.Name)
 	ir.Sprintf(level+1, "compatible = \"zmk,%s\";\n", m.Type())
 	ir.Sprintf(level+1, "#binding-cells = <%d>;\n", m.Cells)
 	ir.Sprintf(level+1, "bindings = <%s>;\n", m.Bindings())

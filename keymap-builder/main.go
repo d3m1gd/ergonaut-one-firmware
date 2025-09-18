@@ -248,9 +248,9 @@ func init() {
 		"c8": Kp(RG(F2)),
 		"c9": Kp(RG(F3)),
 
-		"r1": ReliableExcl,
-		"r,": Kp((RA(LS(F2)))),
-		"r.": Kp((RA(LS(F3)))),
+		"r1": Reliable(F1, RALT, RWIN, LSHIFT),
+		"r,": Reliable(F2, RALT, RWIN, LSHIFT),
+		"r.": Reliable(F3, RALT, RWIN, LSHIFT),
 
 		"cm": Kp(K_APP),
 		"cn": Kp(K_CONTEXT_MENU),

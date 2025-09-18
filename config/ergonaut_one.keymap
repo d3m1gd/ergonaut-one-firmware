@@ -237,6 +237,30 @@
             bindings = <&macro_press &macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
+        OffReliableRALTRWINLSHIFTF1: OffReliableRALTRWINLSHIFTF1 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &ReliableRALTRWINLSHIFT F1 &macro_pause_for_release &macro_release &ReliableRALTRWINLSHIFT F1 &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffReliableRALTRWINLSHIFTF2: OffReliableRALTRWINLSHIFTF2 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &ReliableRALTRWINLSHIFT F2 &macro_pause_for_release &macro_release &ReliableRALTRWINLSHIFT F2 &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffReliableRALTRWINLSHIFTF3: OffReliableRALTRWINLSHIFTF3 {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &ReliableRALTRWINLSHIFT F3 &macro_pause_for_release &macro_release &ReliableRALTRWINLSHIFT F3 &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        ReliableRALTRWINLSHIFT: ReliableRALTRWINLSHIFT {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &kp RALT &kp RWIN &kp LSHIFT &macro_tap &kp MACRO_PLACEHOLDER &macro_release &kp RALT &kp RWIN &kp LSHIFT>;
+        };
+
         TapNoRepeat: TapNoRepeat {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -530,10 +554,10 @@
 
         CHAINS_R {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_R RG(RA(LS(F1)))  &to BASE                     &to BASE                     &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE                     &to BASE                     &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &OffKey CHAINS_R RA(LS(F2))  &OffKey CHAINS_R RA(LS(F3))  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffReliableRALTRWINLSHIFTF1 CHAINS_R  &to BASE                               &to BASE                               &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                               &to BASE                               &to BASE                               &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                               &OffReliableRALTRWINLSHIFTF2 CHAINS_R  &OffReliableRALTRWINLSHIFTF3 CHAINS_R  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                               &to BASE
             >;
         };
 
