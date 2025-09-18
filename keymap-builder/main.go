@@ -43,6 +43,12 @@ var (
 	CHAINS = layer.New(chain.Name(""), layer.InitWith(To(BASE)))
 )
 
+var (
+	ReliableExcl  = Kp(RG(RA(LS(F1))))
+	ReliableComma = Kp(RG(RA(LS(F2))))
+	ReliableDot   = Kp(RG(RA(LS(F3))))
+)
+
 func init() {
 	defer util.Reporter(nil)
 
@@ -238,6 +244,16 @@ func init() {
 		"c4": Kp(RA(RG(LS(F4)))),
 		"c5": Kp(RA(RG(LS(F5)))),
 		"c6": Kp(RA(RG(LS(F6)))),
+		"c7": Kp(RG(F1)),
+		"c8": Kp(RG(F2)),
+		"c9": Kp(RG(F3)),
+
+		"r1": ReliableExcl,
+		"r,": ReliableComma,
+		"r.": ReliableDot,
+
+		"cm": Kp(K_APP),
+		"cn": Kp(K_CONTEXT_MENU),
 	})
 
 	combo.Add(combo.T{

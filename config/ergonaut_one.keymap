@@ -15,8 +15,9 @@
 #define CHAINS_F 8
 #define CHAINS_G 9
 #define CHAINS_GI 10
-#define CHAINS_S 11
-#define CHAINS_SD 12
+#define CHAINS_R 11
+#define CHAINS_S 12
+#define CHAINS_SD 13
 
 &lt {
     quick-tap-ms = <200>;
@@ -484,7 +485,7 @@
 
         CHAINS {
             bindings = <
-&to BASE  &to BASE  &to BASE      &to BASE      &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE      &to BASE      &to CHAINS_R  &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
 &to BASE  &to BASE  &to CHAINS_S  &to BASE      &to CHAINS_F  &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
 &to BASE  &to BASE  &to BASE      &to CHAINS_C  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
                                   &to BASE      &to BASE      &to BASE      &to BASE  &to BASE  &to BASE
@@ -493,10 +494,10 @@
 
         CHAINS_C {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_C RG(LS(F1))      &OffKey CHAINS_C RG(LS(F2))      &OffKey CHAINS_C RG(LS(F3))      &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_C RA(RG(LS(F4)))  &OffKey CHAINS_C RA(RG(LS(F5)))  &OffKey CHAINS_C RA(RG(LS(F6)))  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE                         &to BASE                         &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &OffKey CHAINS_C RG(LS(F1))      &OffKey CHAINS_C RG(LS(F2))      &OffKey CHAINS_C RG(LS(F3))      &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &OffKey CHAINS_C RA(RG(LS(F4)))  &OffKey CHAINS_C RA(RG(LS(F5)))  &OffKey CHAINS_C RA(RG(LS(F6)))  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_C K_CONTEXT_MENU  &OffKey CHAINS_C K_APP           &OffKey CHAINS_C RG(F2)          &OffKey CHAINS_C RG(F3)          &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE                         &to BASE
             >;
         };
 
@@ -524,6 +525,15 @@
 &to BASE  &to BASE  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
 &to BASE  &to BASE  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
                               &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+            >;
+        };
+
+        CHAINS_R {
+            bindings = <
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffKey CHAINS_R RG(RA(LS(F1)))  &to BASE                         &to BASE                         &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE                         &to BASE                         &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &OffKey CHAINS_R RG(RA(LS(F2)))  &OffKey CHAINS_R RG(RA(LS(F3)))  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                         &to BASE
             >;
         };
 
