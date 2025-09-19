@@ -44,8 +44,9 @@ var (
 )
 
 var (
-	ReliableComma = N1
-	ReliableDot   = N2
+	ReliableComma = F1
+	ReliableDot   = F2
+	LayoutToggle  = LG(SPACE)
 )
 
 func init() {
@@ -88,8 +89,8 @@ func init() {
 		R26: KpKp(RG(SQT), SQT),
 		R31: Kp(N), // row 3
 		R32: Kp(M),
-		R33: HoldTap(TapReliableNoRepeat(ReliableComma, RALT, RWIN, LCTRL), Kp(COMMA)),
-		R34: HoldTap(TapReliableNoRepeat(ReliableDot, RALT, RWIN, LCTRL), Kp(DOT)),
+		R33: OtherLayoutHoldTap(COMMA),
+		R34: OtherLayoutHoldTap(DOT),
 		R35: Kp(SLASH),
 		R36: Kp(BACKSLASH),
 		R41: Mt(LCTRL, RETURN), // row 4
@@ -236,23 +237,6 @@ func init() {
 		"fR":  Kp(F10),
 		"fS":  Kp(F11),
 		"f>":  Kp(F12),
-
-		"c1": Kp(RG(LS(F1))),
-		"c2": Kp(RG(LS(F2))),
-		"c3": Kp(RG(LS(F3))),
-		"c4": Kp(RA(RG(LS(F4)))),
-		"c5": Kp(RA(RG(LS(F5)))),
-		"c6": Kp(RA(RG(LS(F6)))),
-		"c7": Kp(RG(F1)),
-		"c8": Kp(RG(F2)),
-		"c9": Kp(RG(F3)),
-
-		"r1": Reliable(F1, RALT, RWIN, LSHIFT),
-		"r,": Reliable(F2, RALT, RWIN, LSHIFT),
-		"r.": Reliable(F3, RALT, RWIN, LSHIFT),
-
-		"cm": Kp(K_APP),
-		"cn": Kp(K_CONTEXT_MENU),
 	})
 
 	combo.Add(combo.T{
@@ -429,4 +413,20 @@ var RightModPositions = map[Key]rowcol.T{
 	w: R22,
 	s: R23,
 	c: R41,
+}
+
+func OtherLayoutKp(k Key) ref.T {
+	return macro.Add(macro.T{
+		Name:  "OlKp",
+		Cells: 1,
+		Refs:  []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Kp(LayoutToggle)},
+	}).Invoke(k)
+}
+
+func OtherLayoutHoldTap(k Key) ref.T {
+	return HoldTapOpts(OtherLayoutKp(k), Kp(k), "OlHt", Props{
+		"flavor":          "tap-preferred",
+		"tapping-term-ms": 100,
+		"quick-tap-ms":    100,
+	})
 }

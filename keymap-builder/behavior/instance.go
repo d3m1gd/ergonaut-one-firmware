@@ -84,6 +84,14 @@ func HoldTap(h, t ref.T) ref.T {
 	})
 }
 
+func HoldTapFast(h, t ref.T) ref.T {
+	return HoldTapOpts(h, t, "htf", Props{
+		"flavor":          "tap-preferred",
+		"tapping-term-ms": 100,
+		"quick-tap-ms":    100,
+	})
+}
+
 func HoldTapStickyLong(k key.Key) ref.T {
 	return HoldTap(Kp(k), Skl(k))
 }
@@ -135,14 +143,23 @@ func Sl(l Layer, duration int) ref.T {
 	})
 }
 
-func KpSl(k key.Key, l Layer, duration int) ref.T {
-	name := fmt.Sprintf("KpSl%s%d", l, duration)
-
+func XSl(x ref.T, l Layer, duration int) ref.T {
+	sl := Sl(LayerPlaceholder, duration)
 	return macro.Add(macro.T{
-		Name:  name,
+		Name:  fmt.Sprintf("%s%s", x.Name, sl.Name),
 		Cells: 1,
-		Refs:  []ref.T{Param11, Kp(KeyPlaceholder), Sl(l, duration)},
-	}).Invoke(k)
+		Refs:  []ref.T{x, Param11, sl},
+	}).Invoke(l)
+}
+
+func KpSl(k key.Key, l Layer, duration int) ref.T {
+	kp := Kp(KeyPlaceholder)
+	sl := Sl(LayerPlaceholder, duration)
+	return macro.Add(macro.T{
+		Name:  fmt.Sprintf("%s%s", kp.Name, sl.Name),
+		Cells: 2,
+		Refs:  []ref.T{Param11, kp, Param21, sl},
+	}).Invoke(k, l)
 }
 
 func KpKp(a, b key.Key) ref.T {
