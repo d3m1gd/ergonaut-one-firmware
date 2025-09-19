@@ -426,7 +426,7 @@ func OtherLayoutKp(k Key) ref.T {
 func OtherLayoutHoldTap(k Key) ref.T {
 	return HoldTapOpts(OtherLayoutKp(k), Kp(k), "OlHt", Props{
 		"flavor":          "tap-preferred",
-		"tapping-term-ms": 100,
-		"quick-tap-ms":    100,
+		"tapping-term-ms": 200,
+		"quick-tap-ms":    200,
 	})
 }
