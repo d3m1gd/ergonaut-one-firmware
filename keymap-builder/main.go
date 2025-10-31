@@ -441,9 +441,14 @@ func OtherLayoutKp(k Key) ref.T {
 }
 
 func OtherLayoutHoldTap(k Key) ref.T {
-	return HoldTapOpts(OtherLayoutKp(k), Kp(k), "OlHt", Props{
+	name := "OlHt"
+	props := Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
 		"quick-tap-ms":    0,
-	})
+	}
+	plain := HoldTapOpts(OtherLayoutKp(k), Kp(k), name, props)
+	shifted := HoldTapOpts(OtherLayoutKp(LS(k)), Kp(LS(k)), name, props)
+
+	return ModMorph(plain, shifted, []key.Mod{key.LShiftMod}, nil)
 }
