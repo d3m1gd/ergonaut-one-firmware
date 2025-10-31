@@ -254,30 +254,37 @@ func BackspaceDelete() ref.T {
 }
 
 func Parens(l Layer) ref.T {
-	return OpenCloseMacro("parens", key.LPAR, key.RPAR, l)
+	return OpenCloseLayerMacro("parens", key.LPAR, key.RPAR, l)
 }
 
 func Brackets(l Layer) ref.T {
-	return OpenCloseMacro("brackets", key.LBKT, key.RBKT, l)
+	return OpenCloseLayerMacro("brackets", key.LBKT, key.RBKT, l)
 }
 
 func Curlies(l Layer) ref.T {
-	return OpenCloseMacro("curlies", key.LBRC, key.RBRC, l)
+	return OpenCloseLayerMacro("curlies", key.LBRC, key.RBRC, l)
 }
 
 func DoubleQuotes(l Layer) ref.T {
-	return OpenCloseMacro("dquotes", key.DQT, key.DQT, l)
+	return OpenCloseLayerMacro("dquotes", key.DQT, key.DQT, l)
 }
 
 func SingleQuotes(l Layer) ref.T {
-	return OpenCloseMacro("squotes", key.SQT, key.SQT, l)
+	return OpenCloseLayerMacro("squotes", key.SQT, key.SQT, l)
 }
 
 func BackQuotes(l Layer) ref.T {
-	return OpenCloseMacro("bquotes", key.GRAVE, key.GRAVE, l)
+	return OpenCloseLayerMacro("bquotes", key.GRAVE, key.GRAVE, l)
 }
 
-func OpenCloseMacro(name string, left, right key.Key, l Layer) ref.T {
+func OpenCloseMacro(name string, left, right key.Key) ref.T {
+	return macro.Add(macro.T{
+		Name: "OC" + name,
+		Refs: []ref.T{Kp(left), Kp(right), Kp(key.LEFT)},
+	}).Invoke()
+}
+
+func OpenCloseLayerMacro(name string, left, right key.Key, l Layer) ref.T {
 	return macro.Add(macro.T{
 		Name: name,
 		Refs: []ref.T{Kp(left), Kp(right), Kp(key.LEFT), Sll(l)},

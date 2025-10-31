@@ -9,6 +9,7 @@ import (
 	. "keyboard/behavior"
 	"keyboard/chain"
 	"keyboard/combo"
+	"keyboard/key"
 	. "keyboard/key"
 	"keyboard/layer"
 	. "keyboard/layout"
@@ -237,6 +238,18 @@ func init() {
 		"fR":  Kp(F10),
 		"fS":  Kp(F11),
 		"f>":  Kp(F12),
+		"db":  OpenCloseMacro("brackets", key.LBKT, key.RBKT),
+		"dp":  OpenCloseMacro("parens", key.LPAR, key.RPAR),
+		"dc":  OpenCloseMacro("curlies", key.LBRC, key.RBRC),
+		"dd":  OpenCloseMacro("dquotes", key.DQT, key.DQT),
+		"dq":  OpenCloseMacro("dquotes", key.DQT, key.DQT),
+		"ds":  OpenCloseMacro("squotes", key.SQT, key.SQT),
+		"da":  OpenCloseMacro("aquotes", key.GRAVE, key.GRAVE),
+		"gt":  Text("GoTemplate", CursorAt("{{%}}", "%")),
+		"cb":  Text("CodeBlock", CursorAt("```%```", "%")),
+		"ta":  Text("TripleAQuote", CursorAt("```%```", "%")),
+		"td":  Text("TripleDQuote", `"""`),
+		"tq":  Text("TripleDQuote", `"""`),
 	})
 
 	combo.Add(combo.T{
@@ -301,53 +314,53 @@ func init() {
 		Timout: 100,
 	})
 
-	combo.Add(combo.T{
-		Name:   "Parens",
-		Ref:    Parens(BASE),
-		RCs:    []rowcol.T{L25, R22},
-		Timout: comboBothSidesTimeout + 30,
-		Idle:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:   "Parens",
+	// 	Ref:    Parens(BASE),
+	// 	RCs:    []rowcol.T{L25, R22},
+	// 	Timout: comboBothSidesTimeout + 30,
+	// 	Idle:   comboBothSidesIdle,
+	// })
 
-	combo.Add(combo.T{
-		Name:   "Curlies",
-		Ref:    Curlies(BASE),
-		RCs:    []rowcol.T{L24, R23},
-		Timout: comboBothSidesTimeout + 40,
-		Idle:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:   "Curlies",
+	// 	Ref:    Curlies(BASE),
+	// 	RCs:    []rowcol.T{L24, R23},
+	// 	Timout: comboBothSidesTimeout + 40,
+	// 	Idle:   comboBothSidesIdle,
+	// })
 
-	combo.Add(combo.T{
-		Name:   "Brackets",
-		Ref:    Brackets(BASE),
-		RCs:    []rowcol.T{L23, R24},
-		Timout: comboBothSidesTimeout - 30,
-		Idle:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:   "Brackets",
+	// 	Ref:    Brackets(BASE),
+	// 	RCs:    []rowcol.T{L23, R24},
+	// 	Timout: comboBothSidesTimeout - 30,
+	// 	Idle:   comboBothSidesIdle,
+	// })
 
-	combo.Add(combo.T{
-		Name:   "DoubleQuotes",
-		Ref:    DoubleQuotes(BASE),
-		RCs:    []rowcol.T{L15, R12},
-		Timout: comboBothSidesTimeout + 30,
-		Idle:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:   "DoubleQuotes",
+	// 	Ref:    DoubleQuotes(BASE),
+	// 	RCs:    []rowcol.T{L15, R12},
+	// 	Timout: comboBothSidesTimeout + 30,
+	// 	Idle:   comboBothSidesIdle,
+	// })
 
-	combo.Add(combo.T{
-		Name:   "SingleQuotes",
-		Ref:    SingleQuotes(BASE),
-		RCs:    []rowcol.T{L14, R13},
-		Timout: comboBothSidesTimeout,
-		Idle:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:   "SingleQuotes",
+	// 	Ref:    SingleQuotes(BASE),
+	// 	RCs:    []rowcol.T{L14, R13},
+	// 	Timout: comboBothSidesTimeout,
+	// 	Idle:   comboBothSidesIdle,
+	// })
 
-	combo.Add(combo.T{
-		Name:   "BackQuotes",
-		Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(BASE)),
-		RCs:    []rowcol.T{L13, R14},
-		Timout: comboBothSidesTimeout,
-		Idle:   comboBothSidesIdle,
-	})
+	// combo.Add(combo.T{
+	// 	Name:   "BackQuotes",
+	// 	Ref:    HoldTap(Text("CodeBlock", CursorAt("```%```", "%")), BackQuotes(BASE)),
+	// 	RCs:    []rowcol.T{L13, R14},
+	// 	Timout: comboBothSidesTimeout,
+	// 	Idle:   comboBothSidesIdle,
+	// })
 
 	// combo.Add(combo.T{
 	// 	Name:     "CodeQuotes",
@@ -417,9 +430,10 @@ var RightModPositions = map[Key]rowcol.T{
 
 func OtherLayoutKp(k Key) ref.T {
 	return macro.Add(macro.T{
-		Name:  "OlKp",
-		Cells: 1,
-		Refs:  []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Kp(LayoutToggle)},
+		Name:   "OlKp",
+		Cells:  1,
+		WaitMs: 50,
+		Refs:   []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Kp(LayoutToggle)},
 	}).Invoke(k)
 }
 
@@ -427,6 +441,6 @@ func OtherLayoutHoldTap(k Key) ref.T {
 	return HoldTapOpts(OtherLayoutKp(k), Kp(k), "OlHt", Props{
 		"flavor":          "tap-preferred",
 		"tapping-term-ms": 200,
-		"quick-tap-ms":    200,
+		"quick-tap-ms":    0,
 	})
 }

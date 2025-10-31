@@ -15,9 +15,10 @@ type T = Macro
 var macros []Macro
 
 type Macro struct {
-	Name  string
-	Cells int
-	Refs  []ref.T
+	Name   string
+	Cells  int
+	WaitMs int
+	Refs   []ref.T
 }
 
 func (m Macro) Type() string {
@@ -69,6 +70,9 @@ func (m Macro) Compile(indent, level int) string {
 	ir.Sprintf(level, "%s: %s {\n", m.Name, m.Name)
 	ir.Sprintf(level+1, "compatible = \"zmk,%s\";\n", m.Type())
 	ir.Sprintf(level+1, "#binding-cells = <%d>;\n", m.Cells)
+	if m.WaitMs != 0 {
+		ir.Sprintf(level+1, "wait-ms = <%d>;\n", m.WaitMs)
+	}
 	ir.Sprintf(level+1, "bindings = <%s>;\n", m.Bindings())
 	ir.Sprintf(level, "};\n")
 	return ir.String()
