@@ -11,13 +11,13 @@
 #define SYS 4
 #define SYMBOL 5
 #define CHAINS 6
-#define CHAINS_C 7
-#define CHAINS_D 8
-#define CHAINS_F 9
-#define CHAINS_G 10
-#define CHAINS_GI 11
-#define CHAINS_S 12
-#define CHAINS_SD 13
+#define CHAINS_F 7
+#define CHAINS_G 8
+#define CHAINS_GI 9
+#define CHAINS_S 10
+#define CHAINS_SD 11
+#define CHAINS_C 12
+#define CHAINS_D 13
 #define CHAINS_T 14
 
 &lt {
@@ -242,6 +242,12 @@
             bindings = <&kp LPAR &kp RPAR &kp LEFT>;
         };
 
+        OCqquotes: OCqquotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp LEFT>;
+        };
+
         OCsquotes: OCsquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -302,6 +308,12 @@
             bindings = <&macro_press &OCparens &macro_pause_for_release &macro_release &OCparens &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
+        OffOCqquotes: OffOCqquotes {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &OCqquotes &macro_pause_for_release &macro_release &OCqquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
         OffOCsquotes: OffOCsquotes {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -318,6 +330,12 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_press &TripleDQuote &macro_pause_for_release &macro_release &TripleDQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffTripleQQuote: OffTripleQQuote {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &TripleQQuote &macro_pause_for_release &macro_release &TripleQQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         OlKp: OlKp {
@@ -340,6 +358,12 @@
         };
 
         TripleDQuote: TripleDQuote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp DQT &kp DQT>;
+        };
+
+        TripleQQuote: TripleQQuote {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp DQT>;
@@ -485,10 +509,10 @@
 
         NUMER {
             bindings = <
-&kp LS(TAB)     &trans  &trans  &trans  &trans          &trans  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
-&kp DELETE      &trans  &trans  &trans  &trans          &trans  &mmkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &mmkpDQTkpGRAVE
-&mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans  &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
-                                &trans  &kp UNDER       &trans  &trans             &trans       &trans
+&kp LS(TAB)     &trans  &trans  &trans        &trans          &to CHAINS_T  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
+&kp DELETE      &trans  &trans  &to CHAINS_D  &trans          &to CHAINS_G  &mmkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &mmkpDQTkpGRAVE
+&mt LCTRL PLUS  &trans  &trans  &to CHAINS_C  &kp LS(INSERT)  &trans        &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                &trans        &kp UNDER       &trans        &trans             &trans       &trans
             >;
         };
 
@@ -521,28 +545,10 @@
 
         CHAINS {
             bindings = <
-&to BASE  &to BASE  &to BASE      &to BASE      &to BASE      &to CHAINS_T  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to CHAINS_S  &to CHAINS_D  &to CHAINS_F  &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE      &to CHAINS_C  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                                  &to BASE      &to BASE      &to BASE      &to BASE  &to BASE  &to BASE
-            >;
-        };
-
-        CHAINS_C {
-            bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffCodeBlock CHAINS_C  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE
-            >;
-        };
-
-        CHAINS_D {
-            bindings = <
-&to BASE  &OffOCdquotes CHAINS_D  &to BASE                &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &OffOCparens CHAINS_D  &to BASE
-&to BASE  &OffOCaquotes CHAINS_D  &OffOCsquotes CHAINS_D  &OffOCdquotes CHAINS_D  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
-&to BASE  &to BASE                &to BASE                &OffOCcurlies CHAINS_D  &to BASE  &OffOCbrackets CHAINS_D  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
-                                                          &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE      &to BASE  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to CHAINS_S  &to BASE  &to CHAINS_F  &to CHAINS_G  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE      &to BASE  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                                  &to BASE  &to BASE      &to BASE      &to BASE  &to BASE  &to BASE
             >;
         };
 
@@ -591,9 +597,27 @@
             >;
         };
 
+        CHAINS_C {
+            bindings = <
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffCodeBlock CHAINS_C  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE
+            >;
+        };
+
+        CHAINS_D {
+            bindings = <
+&to BASE  &OffOCqquotes CHAINS_D  &to BASE                &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &OffOCparens CHAINS_D  &to BASE
+&to BASE  &OffOCaquotes CHAINS_D  &OffOCsquotes CHAINS_D  &OffOCdquotes CHAINS_D  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
+&to BASE  &to BASE                &to BASE                &OffOCcurlies CHAINS_D  &to BASE  &OffOCbrackets CHAINS_D  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
+                                                          &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE
+            >;
+        };
+
         CHAINS_T {
             bindings = <
-&to BASE  &OffTripleDQuote CHAINS_T  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &OffTripleQQuote CHAINS_T  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
 &to BASE  &OffTripleAQuote CHAINS_T  &to BASE  &OffTripleDQuote CHAINS_T  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
 &to BASE  &to BASE                   &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
                                                &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
