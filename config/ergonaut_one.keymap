@@ -509,10 +509,10 @@
 
         NUMER {
             bindings = <
-&kp LS(TAB)     &trans  &trans  &trans        &trans          &to CHAINS_T  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
-&kp DELETE      &trans  &trans  &to CHAINS_D  &trans          &to CHAINS_G  &mmkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &mmkpDQTkpGRAVE
-&mt LCTRL PLUS  &trans  &trans  &to CHAINS_C  &kp LS(INSERT)  &trans        &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
-                                &trans        &kp UNDER       &trans        &trans             &trans       &trans
+&kp LS(TAB)     &trans  &trans  &trans  &trans          &trans  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
+&kp DELETE      &trans  &trans  &trans  &trans          &trans  &mmkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &mmkpDQTkpGRAVE
+&mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans  &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
+                                &trans  &kp UNDER       &trans  &trans             &trans       &trans
             >;
         };
 
@@ -536,10 +536,10 @@
 
         SYMBOL {
             bindings = <
-&kp TILDE  &trans  &trans  &trans  &trans  &trans  &kpsll250mo RPAR SYMBOL   &kpsll750mo EXCL SYMBOL  &kp AT                   &kpsll250mo HASH SYMBOL  &trans     &kp RBKT
-&trans     &trans  &trans  &trans  &trans  &trans  &kpsll750mo EQUAL SYMBOL  &kp DLLR                 &kp PRCNT                &kp CARET                &kp COLON  &kpsll250mo GRAVE SYMBOL
-&trans     &trans  &trans  &trans  &trans  &trans  &kpsll250mo PLUS SYMBOL   &kpsll250mo AMPS SYMBOL  &kpsll250mo STAR SYMBOL  &kp LPAR                 &trans     &kpsll250mo PIPE SYMBOL
-                           &trans  &trans  &trans  &trans                    &trans                   &trans
+&kp TILDE  &trans  &trans  &trans        &trans  &to CHAINS_T  &kpsll250mo RPAR SYMBOL   &kpsll750mo EXCL SYMBOL  &kp AT                   &kpsll250mo HASH SYMBOL  &trans     &kp RBKT
+&trans     &trans  &trans  &to CHAINS_D  &trans  &to CHAINS_G  &kpsll750mo EQUAL SYMBOL  &kp DLLR                 &kp PRCNT                &kp CARET                &kp COLON  &kpsll250mo GRAVE SYMBOL
+&trans     &trans  &trans  &to CHAINS_C  &trans  &trans        &kpsll250mo PLUS SYMBOL   &kpsll250mo AMPS SYMBOL  &kpsll250mo STAR SYMBOL  &kp LPAR                 &trans     &kpsll250mo PIPE SYMBOL
+                           &trans        &trans  &trans        &trans                    &trans                   &trans
             >;
         };
 

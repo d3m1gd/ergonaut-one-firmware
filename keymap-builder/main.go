@@ -240,7 +240,7 @@ func init() {
 		"f>":  Kp(F12),
 	})
 
-	chain.Add(NUMER, layer.InitWith(To(BASE)), chain.KeyRefs{
+	chain.Add(SYMBOL, layer.InitWith(To(BASE)), chain.KeyRefs{
 		"db": OpenCloseMacro("brackets", key.LBKT, key.RBKT),
 		"dp": OpenCloseMacro("parens", key.LPAR, key.RPAR),
 		"dc": OpenCloseMacro("curlies", key.LBRC, key.RBRC),
