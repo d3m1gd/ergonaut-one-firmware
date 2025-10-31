@@ -86,8 +86,8 @@ func init() {
 		R22: Mt(LALT, J),
 		R23: Mt(LGUI, K),
 		R24: Rmt(LSHIFT, L),
-		R25: KpKp(RG(SEMI), SEMI),
-		R26: KpKp(RG(SQT), SQT),
+		R25: OtherLayoutHoldTap(SEMI),
+		R26: OtherLayoutHoldTap(SQT),
 		R31: Kp(N), // row 3
 		R32: Kp(M),
 		R33: OtherLayoutHoldTap(COMMA),

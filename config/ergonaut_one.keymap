@@ -491,9 +491,9 @@
         compatible = "zmk,keymap";
         BASE {
             bindings = <
-&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                                 &htTapNoRepeatkp RG(T) T  &kp Y             &kp U            &kp I                    &kp O                &kp P                           &kp LBKT
-&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                            &kp G                     &kp H             &mt LALT J       &mt LGUI K               &rmtkpkp LSHIFT L    &htTapNoRepeatkp RG(SEMI) SEMI  &htTapNoRepeatkp RG(SQT) SQT
-&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                                 &kp B                     &kp N             &kp M            &OlHtOlKpkp COMMA COMMA  &OlHtOlKpkp DOT DOT  &kp SLASH                       &kp BACKSLASH
+&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                                 &htTapNoRepeatkp RG(T) T  &kp Y             &kp U            &kp I                    &kp O                &kp P                  &kp LBKT
+&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                            &kp G                     &kp H             &mt LALT J       &mt LGUI K               &rmtkpkp LSHIFT L    &OlHtOlKpkp SEMI SEMI  &OlHtOlKpkp SQT SQT
+&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                                 &kp B                     &kp N             &kp M            &OlHtOlKpkp COMMA COMMA  &OlHtOlKpkp DOT DOT  &kp SLASH              &kp BACKSLASH
                                                   &motomoto MOVER CHAINS  &momommsll500moSYMBOLkpUNDER NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE  &motomoto MOVER CHAINS
             >;
         };
