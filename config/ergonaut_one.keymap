@@ -370,7 +370,7 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             wait-ms = <100>;
-            bindings = <&kp LG(SPACE) &macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_pause_for_release &kp LG(SPACE)>;
+            bindings = <&kp LG(SPACE) &macro_param_1to1 &kp MACRO_PLACEHOLDER &kp LG(SPACE)>;
         };
 
         TapNoRepeat: TapNoRepeat {

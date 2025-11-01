@@ -436,7 +436,7 @@ func OtherLayoutKp(k Key) ref.T {
 		Name:   "OlKp",
 		Cells:  1,
 		WaitMs: 100,
-		Refs:   []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Pause, Kp(LayoutToggle)},
+		Refs:   []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Kp(LayoutToggle)},
 	}).Invoke(k)
 }
 
