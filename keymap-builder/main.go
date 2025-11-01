@@ -435,8 +435,8 @@ func OtherLayoutKp(k Key) ref.T {
 	return macro.Add(macro.T{
 		Name:   "OlKp",
 		Cells:  1,
-		WaitMs: 50,
-		Refs:   []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Kp(LayoutToggle)},
+		WaitMs: 100,
+		Refs:   []ref.T{Kp(LayoutToggle), Param11, Kp(KeyPlaceholder), Pause, Kp(LayoutToggle)},
 	}).Invoke(k)
 }
 
