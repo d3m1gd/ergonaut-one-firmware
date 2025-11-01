@@ -145,7 +145,7 @@ func Add(b Behavior) ref.T {
 
 	if len(b.Name) > 20 {
 		sum := sha256.Sum256([]byte(b.Name))
-		b.Name = string(fmt.Sprintf("%x", sum[:10]))
+		b.Name = string(fmt.Sprintf("x%x", sum[:6]))
 	}
 
 	i := slices.IndexFunc(behaviors, func(other Behavior) bool {

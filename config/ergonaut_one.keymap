@@ -40,42 +40,6 @@
     };
 
     behaviors {
-        245476459fa23a05acc6: 245476459fa23a05acc6 {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&OlHtOlKpkp SQT SQT &OlHtOlKpkp LS(SQT) LS(SQT)>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        30c69db44f69f2e0b914: 30c69db44f69f2e0b914 {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            bindings = <&mo &f08165acddbe3bea03a8>;
-            flavor = "balanced";
-            tapping-term-ms = <300>;
-        };
-
-        7308c75c96cff03668bc: 7308c75c96cff03668bc {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&OlHtOlKpkp COMMA COMMA &OlHtOlKpkp LS(COMMA) LS(COMMA)>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        7b3ac633c15b86c795ae: 7b3ac633c15b86c795ae {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&OlHtOlKpkp DOT DOT &OlHtOlKpkp LS(DOT) LS(DOT)>;
-            mods = <(MOD_LSFT)>;
-        };
-
-        919039aa9eaff3dddb57: 919039aa9eaff3dddb57 {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&OlHtOlKpkp SEMI SEMI &OlHtOlKpkp LS(SEMI) LS(SEMI)>;
-            mods = <(MOD_LSFT)>;
-        };
-
         OlHtOlKpkp: OlHtOlKpkp {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -83,13 +47,6 @@
             flavor = "tap-preferred";
             quick-tap-ms = <0>;
             tapping-term-ms = <200>;
-        };
-
-        f08165acddbe3bea03a8: f08165acddbe3bea03a8 {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&sll500mo SYMBOL &kp UNDER>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         htTapNoRepeatkp: htTapNoRepeatkp {
@@ -150,6 +107,14 @@
             mods = <(MOD_LSFT|MOD_RSFT|MOD_LCTL|MOD_RCTL)>;
         };
 
+        momoxf08165acddbe: momoxf08165acddbe {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&mo &xf08165acddbe>;
+            flavor = "balanced";
+            tapping-term-ms = <300>;
+        };
+
         motomoto: motomoto {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -208,6 +173,41 @@
             bindings = <&mo>;
             quick-release;
             release-after-ms = <750>;
+        };
+
+        x245476459fa2: x245476459fa2 {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&OlHtOlKpkp SQT SQT &OlHtOlKpkp LS(SQT) LS(SQT)>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        x7308c75c96cf: x7308c75c96cf {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&OlHtOlKpkp COMMA COMMA &OlHtOlKpkp LS(COMMA) LS(COMMA)>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        x7b3ac633c15b: x7b3ac633c15b {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&OlHtOlKpkp DOT DOT &OlHtOlKpkp LS(DOT) LS(DOT)>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        x919039aa9eaf: x919039aa9eaf {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&OlHtOlKpkp SEMI SEMI &OlHtOlKpkp LS(SEMI) LS(SEMI)>;
+            mods = <(MOD_LSFT)>;
+        };
+
+        xf08165acddbe: xf08165acddbe {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&sll500mo SYMBOL &kp UNDER>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         xkpXdgConfigkp: xkpXdgConfigkp {
@@ -519,10 +519,10 @@
         compatible = "zmk,keymap";
         BASE {
             bindings = <
-&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                          &htTapNoRepeatkp RG(T) T  &kp Y             &kp U            &kp I                   &kp O                  &kp P                  &kp LBKT
-&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                     &kp G                     &kp H             &mt LALT J       &mt LGUI K              &rmtkpkp LSHIFT L      &919039aa9eaff3dddb57  &245476459fa23a05acc6
-&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                          &kp B                     &kp N             &kp M            &7308c75c96cff03668bc   &7b3ac633c15b86c795ae  &kp SLASH              &kp BACKSLASH
-                                                  &motomoto MOVER CHAINS  &30c69db44f69f2e0b914 NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE  &motomoto MOVER CHAINS
+&kp TAB                      &kp Q  &kp W         &kp E                   &kp R                       &htTapNoRepeatkp RG(T) T  &kp Y             &kp U            &kp I                   &kp O              &kp P           &kp LBKT
+&mt LSHIFT BACKSPACE         &kp A  &mt LSHIFT S  &mt LGUI D              &mt LALT F                  &kp G                     &kp H             &mt LALT J       &mt LGUI K              &rmtkpkp LSHIFT L  &x919039aa9eaf  &x245476459fa2
+&mkpmmkpMINUSkpPLUS LCTRL 0  &kp Z  &kp X         &xkpXdgConfigkp 0 C     &kp V                       &kp B                     &kp N             &kp M            &x7308c75c96cf          &x7b3ac633c15b     &kp SLASH       &kp BACKSLASH
+                                                  &motomoto MOVER CHAINS  &momoxf08165acddbe NUMER 0  &mt LCTRL ESCAPE          &mt LCTRL RETURN  &lt NUMER SPACE  &motomoto MOVER CHAINS
             >;
         };
 
