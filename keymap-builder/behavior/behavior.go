@@ -2,6 +2,7 @@ package behavior
 
 import (
 	"cmp"
+	"crypto/sha256"
 	"fmt"
 	"maps"
 	"slices"
@@ -140,6 +141,11 @@ func Add(b Behavior) ref.T {
 
 	for _, r := range b.Refs {
 		b.Name += r.Show()
+	}
+
+	if len(b.Name) > 20 {
+		sum := sha256.Sum256([]byte(b.Name))
+		b.Name = string(fmt.Sprintf("%x", sum[:10]))
 	}
 
 	i := slices.IndexFunc(behaviors, func(other Behavior) bool {
