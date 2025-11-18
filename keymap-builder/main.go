@@ -47,7 +47,8 @@ var (
 var (
 	ReliableComma = F1
 	ReliableDot   = F2
-	LayoutToggle  = LG(SPACE)
+	// LayoutToggle  = LG(SPACE)
+	LayoutToggle = CAPSLOCK
 )
 
 func init() {
@@ -139,7 +140,7 @@ func init() {
 		L21: Kp(DELETE),      // row 2
 		L31: Mt(LCTRL, PLUS), // row 3
 		L35: Kp(LS(INSERT)),
-		L42: Kp(UNDER),
+		L42: Kp(CAPSLOCK),
 		// ------------------------
 		R11: Kp(N0), // row 1
 		R12: Kp(N1),
