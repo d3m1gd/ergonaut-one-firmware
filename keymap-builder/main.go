@@ -47,8 +47,8 @@ var (
 var (
 	ReliableComma = F1
 	ReliableDot   = F2
-	// LayoutToggle  = LG(SPACE)
-	LayoutToggle = CAPSLOCK
+	LayoutToggle  = LG(SPACE)
+	// LayoutToggle = CAPSLOCK
 )
 
 func init() {
@@ -445,7 +445,7 @@ func OtherLayoutHoldTap(k Key) ref.T {
 	name := "OlHt"
 	props := Props{
 		"flavor":          "tap-preferred",
-		"tapping-term-ms": 200,
+		"tapping-term-ms": 300,
 		"quick-tap-ms":    0,
 	}
 	plain := HoldTapOpts(OtherLayoutKp(k), Kp(k), name, props)

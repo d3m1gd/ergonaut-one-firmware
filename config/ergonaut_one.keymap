@@ -46,7 +46,7 @@
             bindings = <&OlKp &kp>;
             flavor = "tap-preferred";
             quick-tap-ms = <0>;
-            tapping-term-ms = <200>;
+            tapping-term-ms = <300>;
         };
 
         htTapNoRepeatkp: htTapNoRepeatkp {
@@ -370,7 +370,7 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             wait-ms = <100>;
-            bindings = <&kp CAPSLOCK &macro_param_1to1 &kp MACRO_PLACEHOLDER &kp CAPSLOCK>;
+            bindings = <&kp LG(SPACE) &macro_param_1to1 &kp MACRO_PLACEHOLDER &kp LG(SPACE)>;
         };
 
         TapNoRepeat: TapNoRepeat {
