@@ -140,7 +140,7 @@ func init() {
 		L21: Kp(DELETE),      // row 2
 		L31: Mt(LCTRL, PLUS), // row 3
 		L35: Kp(LS(INSERT)),
-		L42: Kp(CAPSLOCK),
+		L42: Kp(UNDERSCORE),
 		// ------------------------
 		R11: Kp(N0), // row 1
 		R12: Kp(N1),
@@ -205,6 +205,7 @@ func init() {
 		// L25: Skl(LALT),
 		// L43: Skl(LCTRL),
 		L11: Kp(TILDE),
+		L42: Kp(LayoutToggle),
 		// ------------------------
 		R11: KpSl(RPAR, SYMBOL, shortSticky),
 		R12: KpSl(EXCL, SYMBOL, symbolSticky),
