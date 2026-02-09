@@ -136,7 +136,7 @@ func init() {
 	})
 
 	NUMER.Extend(layer.Cells{
-		L11: Kp(LS(TAB)),
+		L11: Kp(key.GRAVE),
 		L21: Kp(DELETE),      // row 2
 		L31: Mt(LCTRL, PLUS), // row 3
 		L35: Kp(LS(INSERT)),
@@ -205,12 +205,21 @@ func init() {
 		// L25: Skl(LALT),
 		// L43: Skl(LCTRL),
 		L11: Kp(TILDE),
+		L12: OpenCloseMacro("qquotes", key.GRAVE, key.GRAVE), // quasi
+		L21: DeleteBackspaceMacro(),
+		L22: OpenCloseMacro("angles", key.LT, key.GT),        // a
+		L23: OpenCloseMacro("squotes", key.SQT, key.SQT),     // s
+		L24: OpenCloseMacro("dquotes", key.DQT, key.DQT),     // d
+		L26: OpenCloseMacro("gquotes", key.GRAVE, key.GRAVE), // grave
+		L34: OpenCloseMacro("curlies", key.LBRC, key.RBRC),   // c
+		L36: OpenCloseMacro("brackets", key.LBKT, key.RBKT),  // b
 		L42: Kp(LayoutToggle),
 		// ------------------------
 		R11: KpSl(RPAR, SYMBOL, shortSticky),
 		R12: KpSl(EXCL, SYMBOL, symbolSticky),
 		R13: Kp(AT),
 		R14: KpSl(HASH, SYMBOL, shortSticky),
+		R15: OpenCloseMacro("parens", key.LPAR, key.RPAR),
 		R16: Kp(RBKT),
 		R21: KpSl(EQUAL, SYMBOL, symbolSticky),
 		R22: Kp(DLLR),
@@ -243,25 +252,20 @@ func init() {
 	})
 
 	chain.Add(SYMBOL, layer.InitWith(To(BASE)), chain.KeyRefs{
-		"db":  OpenCloseMacro("brackets", key.LBKT, key.RBKT),
-		"dp":  OpenCloseMacro("parens", key.LPAR, key.RPAR),
-		"dc":  OpenCloseMacro("curlies", key.LBRC, key.RBRC),
-		"dd":  OpenCloseMacro("dquotes", key.DQT, key.DQT),
-		"ds":  OpenCloseMacro("squotes", key.SQT, key.SQT),
-		"da":  OpenCloseMacro("angles", key.LT, key.GT),
-		"dq":  OpenCloseMacro("qquotes", key.GRAVE, key.GRAVE), // quasi
-		"edb": EscapedOpenCloseMacro("brackets", key.LBKT, key.RBKT),
-		"edp": EscapedOpenCloseMacro("parens", key.LPAR, key.RPAR),
-		"edc": EscapedOpenCloseMacro("curlies", key.LBRC, key.RBRC),
-		"edd": EscapedOpenCloseMacro("dquotes", key.DQT, key.DQT),
-		"eds": EscapedOpenCloseMacro("squotes", key.SQT, key.SQT),
-		"eda": EscapedOpenCloseMacro("angles", key.LT, key.GT),
-		"edq": EscapedOpenCloseMacro("qquotes", key.GRAVE, key.GRAVE),
-		"gt":  Text("GoTemplate", CursorAt("{{%}}", "%")),
-		"mc":  Text("MarkdownCode", CursorAt("```%```", "%")),
-		"tq":  Text("TripleQQuote", "```"),
-		"td":  Text("TripleDQuote", `"""`),
-		"ts":  Text("TripleSQuote", `'''`),
+		"eb": EscapedOpenCloseMacro("brackets", key.LBKT, key.RBKT),
+		"ep": EscapedOpenCloseMacro("parens", key.LPAR, key.RPAR),
+		"ec": EscapedOpenCloseMacro("curlies", key.LBRC, key.RBRC),
+		"ed": EscapedOpenCloseMacro("dquotes", key.DQT, key.DQT),
+		"es": EscapedOpenCloseMacro("squotes", key.SQT, key.SQT),
+		"ea": EscapedOpenCloseMacro("angles", key.LT, key.GT),
+		"eq": EscapedOpenCloseMacro("qquotes", key.GRAVE, key.GRAVE),
+		"eg": EscapedOpenCloseMacro("gquotes", key.GRAVE, key.GRAVE),
+		"gt": Text("GoTemplate", CursorAt("{{%}}", "%")),
+		"mc": Text("MarkdownCode", CursorAt("```%```", "%")),
+		"tq": Text("TripleQQuote", "```"),
+		"tg": Text("TripleGQuote", "```"),
+		"td": Text("TripleDQuote", `"""`),
+		"ts": Text("TripleSQuote", `'''`),
 	})
 
 	combo.Add(combo.T{

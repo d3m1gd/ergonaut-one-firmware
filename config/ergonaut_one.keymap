@@ -16,11 +16,9 @@
 #define CHAINS_GI 9
 #define CHAINS_S 10
 #define CHAINS_SD 11
-#define CHAINS_D 12
-#define CHAINS_E 13
-#define CHAINS_ED 14
-#define CHAINS_M 15
-#define CHAINS_T 16
+#define CHAINS_E 12
+#define CHAINS_M 13
+#define CHAINS_T 14
 
 &lt {
     quick-tap-ms = <200>;
@@ -224,6 +222,12 @@
     };
 
     macros {
+        DelBspc: DelBspc {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DEL &kp BSPC>;
+        };
+
         EOCangles: EOCangles {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -246,6 +250,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp BACKSLASH &kp DQT &kp BACKSLASH &kp DQT &kp LEFT &kp LEFT>;
+        };
+
+        EOCgquotes: EOCgquotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp GRAVE &kp BACKSLASH &kp GRAVE &kp LEFT &kp LEFT>;
         };
 
         EOCparens: EOCparens {
@@ -308,6 +318,12 @@
             bindings = <&kp DQT &kp DQT &kp LEFT>;
         };
 
+        OCgquotes: OCgquotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT>;
+        };
+
         OCparens: OCparens {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -348,6 +364,12 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_press &EOCdquotes &macro_pause_for_release &macro_release &EOCdquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCgquotes: OffEOCgquotes {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCgquotes &macro_pause_for_release &macro_release &EOCgquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         OffEOCparens: OffEOCparens {
@@ -392,52 +414,16 @@
             bindings = <&macro_press &MarkdownCode &macro_pause_for_release &macro_release &MarkdownCode &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
-        OffOCangles: OffOCangles {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCangles &macro_pause_for_release &macro_release &OCangles &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
-        OffOCbrackets: OffOCbrackets {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCbrackets &macro_pause_for_release &macro_release &OCbrackets &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
-        OffOCcurlies: OffOCcurlies {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCcurlies &macro_pause_for_release &macro_release &OCcurlies &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
-        OffOCdquotes: OffOCdquotes {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCdquotes &macro_pause_for_release &macro_release &OCdquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
-        OffOCparens: OffOCparens {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCparens &macro_pause_for_release &macro_release &OCparens &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
-        OffOCqquotes: OffOCqquotes {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCqquotes &macro_pause_for_release &macro_release &OCqquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
-        OffOCsquotes: OffOCsquotes {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &OCsquotes &macro_pause_for_release &macro_release &OCsquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
         OffTripleDQuote: OffTripleDQuote {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_press &TripleDQuote &macro_pause_for_release &macro_release &TripleDQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffTripleGQuote: OffTripleGQuote {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &TripleGQuote &macro_pause_for_release &macro_release &TripleGQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         OffTripleQQuote: OffTripleQQuote {
@@ -469,6 +455,12 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp DQT &kp DQT &kp DQT>;
+        };
+
+        TripleGQuote: TripleGQuote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE>;
         };
 
         TripleQQuote: TripleQQuote {
@@ -623,7 +615,7 @@
 
         NUMER {
             bindings = <
-&kp LS(TAB)     &trans  &trans  &trans  &trans          &trans  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
+&kp GRAVE       &trans  &trans  &trans  &trans          &trans  &kp N0             &kp N1       &kp N2                         &kp N3                       &trans         &kp RBKT
 &kp DELETE      &trans  &trans  &trans  &trans          &trans  &mmkpEQUALkpEQUAL  &mt LALT N4  &mt LGUI N5                    &mt LSHIFT N6                &kp COLON      &mmkpDQTkpGRAVE
 &mt LCTRL PLUS  &trans  &trans  &trans  &kp LS(INSERT)  &trans  &kp PLUS           &kp N7       &htTapNoRepeatkp RG(COMMA) N8  &htTapNoRepeatkp RG(DOT) N9  &kp LS(SLASH)  &kp PIPE
                                 &trans  &kp UNDERSCORE  &trans  &trans             &trans       &trans
@@ -650,10 +642,10 @@
 
         SYMBOL {
             bindings = <
-&kp TILDE  &trans  &trans  &to CHAINS_E  &trans         &to CHAINS_T  &kpsll250mo RPAR SYMBOL   &kpsll750mo EXCL SYMBOL  &kp AT                   &kpsll250mo HASH SYMBOL  &trans     &kp RBKT
-&trans     &trans  &trans  &to CHAINS_D  &trans         &to CHAINS_G  &kpsll750mo EQUAL SYMBOL  &kp DLLR                 &kp PRCNT                &kp CARET                &kp COLON  &kpsll250mo GRAVE SYMBOL
-&trans     &trans  &trans  &trans        &trans         &trans        &kpsll250mo PLUS SYMBOL   &to CHAINS_M             &kpsll250mo STAR SYMBOL  &kp LPAR                 &trans     &kpsll250mo PIPE SYMBOL
-                           &trans        &kp LG(SPACE)  &trans        &trans                    &trans                   &trans
+&kp TILDE  &OCqquotes  &trans      &to CHAINS_E  &trans         &to CHAINS_T  &kpsll250mo RPAR SYMBOL   &kpsll750mo EXCL SYMBOL  &kp AT                   &kpsll250mo HASH SYMBOL  &OCparens  &kp RBKT
+&DelBspc   &OCangles   &OCsquotes  &OCdquotes    &trans         &to CHAINS_G  &kpsll750mo EQUAL SYMBOL  &kp DLLR                 &kp PRCNT                &kp CARET                &kp COLON  &kpsll250mo GRAVE SYMBOL
+&trans     &trans      &trans      &OCcurlies    &trans         &OCbrackets   &kpsll250mo PLUS SYMBOL   &to CHAINS_M             &kpsll250mo STAR SYMBOL  &kp LPAR                 &trans     &kpsll250mo PIPE SYMBOL
+                                   &trans        &kp LG(SPACE)  &trans        &trans                    &trans                   &trans
             >;
         };
 
@@ -711,30 +703,12 @@
             >;
         };
 
-        CHAINS_D {
-            bindings = <
-&to BASE  &OffOCqquotes CHAINS_D  &to BASE                &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &OffOCparens CHAINS_D  &to BASE
-&to BASE  &OffOCangles CHAINS_D   &OffOCsquotes CHAINS_D  &OffOCdquotes CHAINS_D  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
-&to BASE  &to BASE                &to BASE                &OffOCcurlies CHAINS_D  &to BASE  &OffOCbrackets CHAINS_D  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
-                                                          &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE
-            >;
-        };
-
         CHAINS_E {
             bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to CHAINS_ED  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-            >;
-        };
-
-        CHAINS_ED {
-            bindings = <
-&to BASE  &OffEOCqquotes CHAINS_ED  &to BASE                  &to BASE                  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &OffEOCparens CHAINS_ED  &to BASE
-&to BASE  &OffEOCangles CHAINS_ED   &OffEOCsquotes CHAINS_ED  &OffEOCdquotes CHAINS_ED  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                 &to BASE
-&to BASE  &to BASE                  &to BASE                  &OffEOCcurlies CHAINS_ED  &to BASE  &OffEOCbrackets CHAINS_ED  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                 &to BASE
-                                                              &to BASE                  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE
+&to BASE  &OffEOCqquotes CHAINS_E  &to BASE                 &to BASE                 &to BASE  &to BASE                  &to BASE  &to BASE  &to BASE  &to BASE  &OffEOCparens CHAINS_E  &to BASE
+&to BASE  &OffEOCangles CHAINS_E   &OffEOCsquotes CHAINS_E  &OffEOCdquotes CHAINS_E  &to BASE  &OffEOCgquotes CHAINS_E   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE
+&to BASE  &to BASE                 &to BASE                 &OffEOCcurlies CHAINS_E  &to BASE  &OffEOCbrackets CHAINS_E  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE
+                                                            &to BASE                 &to BASE  &to BASE                  &to BASE  &to BASE  &to BASE
             >;
         };
 
@@ -749,10 +723,10 @@
 
         CHAINS_T {
             bindings = <
-&to BASE  &OffTripleQQuote CHAINS_T  &to BASE                   &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE                   &OffTripleSQuote CHAINS_T  &OffTripleDQuote CHAINS_T  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE                   &to BASE                   &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                                                                &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &OffTripleQQuote CHAINS_T  &to BASE                   &to BASE                   &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE                   &OffTripleSQuote CHAINS_T  &OffTripleDQuote CHAINS_T  &to BASE  &OffTripleGQuote CHAINS_T  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE                   &to BASE                   &to BASE                   &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                                                                &to BASE                   &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE
             >;
         };
 

@@ -284,6 +284,13 @@ func OpenCloseMacro(name string, left, right key.Key) ref.T {
 	}).Invoke()
 }
 
+func DeleteBackspaceMacro() ref.T {
+	return macro.Add(macro.T{
+		Name: "DelBspc",
+		Refs: []ref.T{Kp(key.DEL), Kp(key.BSPC)},
+	}).Invoke()
+}
+
 func EscapedOpenCloseMacro(name string, left, right key.Key) ref.T {
 	return macro.Add(macro.T{
 		Name: "EOC" + name,
