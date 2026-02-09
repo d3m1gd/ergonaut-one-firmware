@@ -284,6 +284,13 @@ func OpenCloseMacro(name string, left, right key.Key) ref.T {
 	}).Invoke()
 }
 
+func EscapedOpenCloseMacro(name string, left, right key.Key) ref.T {
+	return macro.Add(macro.T{
+		Name: "EOC" + name,
+		Refs: []ref.T{Kp(key.BACKSLASH), Kp(left), Kp(key.BACKSLASH), Kp(right), Kp(key.LEFT), Kp(key.LEFT)},
+	}).Invoke()
+}
+
 func OpenCloseLayerMacro(name string, left, right key.Key, l Layer) ref.T {
 	return macro.Add(macro.T{
 		Name: name,

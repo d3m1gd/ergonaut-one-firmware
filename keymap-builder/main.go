@@ -243,18 +243,25 @@ func init() {
 	})
 
 	chain.Add(SYMBOL, layer.InitWith(To(BASE)), chain.KeyRefs{
-		"db": OpenCloseMacro("brackets", key.LBKT, key.RBKT),
-		"dp": OpenCloseMacro("parens", key.LPAR, key.RPAR),
-		"dc": OpenCloseMacro("curlies", key.LBRC, key.RBRC),
-		"dd": OpenCloseMacro("dquotes", key.DQT, key.DQT),
-		"dq": OpenCloseMacro("qquotes", key.DQT, key.DQT),
-		"ds": OpenCloseMacro("squotes", key.SQT, key.SQT),
-		"da": OpenCloseMacro("aquotes", key.GRAVE, key.GRAVE),
-		"gt": Text("GoTemplate", CursorAt("{{%}}", "%")),
-		"cb": Text("CodeBlock", CursorAt("```%```", "%")),
-		"ta": Text("TripleAQuote", CursorAt("```%```", "%")),
-		"td": Text("TripleDQuote", `"""`),
-		"tq": Text("TripleQQuote", `"""`),
+		"db":  OpenCloseMacro("brackets", key.LBKT, key.RBKT),
+		"dp":  OpenCloseMacro("parens", key.LPAR, key.RPAR),
+		"dc":  OpenCloseMacro("curlies", key.LBRC, key.RBRC),
+		"dd":  OpenCloseMacro("dquotes", key.DQT, key.DQT),
+		"ds":  OpenCloseMacro("squotes", key.SQT, key.SQT),
+		"da":  OpenCloseMacro("angles", key.LT, key.GT),
+		"dq":  OpenCloseMacro("qquotes", key.GRAVE, key.GRAVE), // quasi
+		"edb": EscapedOpenCloseMacro("brackets", key.LBKT, key.RBKT),
+		"edp": EscapedOpenCloseMacro("parens", key.LPAR, key.RPAR),
+		"edc": EscapedOpenCloseMacro("curlies", key.LBRC, key.RBRC),
+		"edd": EscapedOpenCloseMacro("dquotes", key.DQT, key.DQT),
+		"eds": EscapedOpenCloseMacro("squotes", key.SQT, key.SQT),
+		"eda": EscapedOpenCloseMacro("angles", key.LT, key.GT),
+		"edq": EscapedOpenCloseMacro("qquotes", key.GRAVE, key.GRAVE),
+		"gt":  Text("GoTemplate", CursorAt("{{%}}", "%")),
+		"mc":  Text("MarkdownCode", CursorAt("```%```", "%")),
+		"tq":  Text("TripleQQuote", "```"),
+		"td":  Text("TripleDQuote", `"""`),
+		"ts":  Text("TripleSQuote", `'''`),
 	})
 
 	combo.Add(combo.T{

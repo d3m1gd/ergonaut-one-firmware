@@ -16,9 +16,11 @@
 #define CHAINS_GI 9
 #define CHAINS_S 10
 #define CHAINS_SD 11
-#define CHAINS_C 12
-#define CHAINS_D 13
-#define CHAINS_T 14
+#define CHAINS_D 12
+#define CHAINS_E 13
+#define CHAINS_ED 14
+#define CHAINS_M 15
+#define CHAINS_T 16
 
 &lt {
     quick-tap-ms = <200>;
@@ -222,10 +224,46 @@
     };
 
     macros {
-        CodeBlock: CodeBlock {
+        EOCangles: EOCangles {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT>;
+            bindings = <&kp BACKSLASH &kp LT &kp BACKSLASH &kp GT &kp LEFT &kp LEFT>;
+        };
+
+        EOCbrackets: EOCbrackets {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp LBKT &kp BACKSLASH &kp RBKT &kp LEFT &kp LEFT>;
+        };
+
+        EOCcurlies: EOCcurlies {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp LBRC &kp BACKSLASH &kp RBRC &kp LEFT &kp LEFT>;
+        };
+
+        EOCdquotes: EOCdquotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp DQT &kp BACKSLASH &kp DQT &kp LEFT &kp LEFT>;
+        };
+
+        EOCparens: EOCparens {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp LPAR &kp BACKSLASH &kp RPAR &kp LEFT &kp LEFT>;
+        };
+
+        EOCqquotes: EOCqquotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp GRAVE &kp BACKSLASH &kp GRAVE &kp LEFT &kp LEFT>;
+        };
+
+        EOCsquotes: EOCsquotes {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSLASH &kp SQT &kp BACKSLASH &kp SQT &kp LEFT &kp LEFT>;
         };
 
         GoIfError: GoIfError {
@@ -240,10 +278,16 @@
             bindings = <&kp LBRC &kp LBRC &kp RBRC &kp LEFT &kp RBRC &kp LEFT>;
         };
 
-        OCaquotes: OCaquotes {
+        MarkdownCode: MarkdownCode {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp LEFT>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT>;
+        };
+
+        OCangles: OCangles {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LT &kp GT &kp LEFT>;
         };
 
         OCbrackets: OCbrackets {
@@ -273,7 +317,7 @@
         OCqquotes: OCqquotes {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp LEFT>;
+            bindings = <&kp GRAVE &kp GRAVE &kp LEFT>;
         };
 
         OCsquotes: OCsquotes {
@@ -282,10 +326,46 @@
             bindings = <&kp SQT &kp SQT &kp LEFT>;
         };
 
-        OffCodeBlock: OffCodeBlock {
+        OffEOCangles: OffEOCangles {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_press &CodeBlock &macro_pause_for_release &macro_release &CodeBlock &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+            bindings = <&macro_press &EOCangles &macro_pause_for_release &macro_release &EOCangles &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCbrackets: OffEOCbrackets {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCbrackets &macro_pause_for_release &macro_release &EOCbrackets &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCcurlies: OffEOCcurlies {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCcurlies &macro_pause_for_release &macro_release &EOCcurlies &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCdquotes: OffEOCdquotes {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCdquotes &macro_pause_for_release &macro_release &EOCdquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCparens: OffEOCparens {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCparens &macro_pause_for_release &macro_release &EOCparens &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCqquotes: OffEOCqquotes {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCqquotes &macro_pause_for_release &macro_release &EOCqquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffEOCsquotes: OffEOCsquotes {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &EOCsquotes &macro_pause_for_release &macro_release &EOCsquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         OffGoIfError: OffGoIfError {
@@ -306,10 +386,16 @@
             bindings = <&macro_press &macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_pause_for_release &macro_release &macro_param_2to1 &kp MACRO_PLACEHOLDER &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
-        OffOCaquotes: OffOCaquotes {
+        OffMarkdownCode: OffMarkdownCode {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
-            bindings = <&macro_press &OCaquotes &macro_pause_for_release &macro_release &OCaquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+            bindings = <&macro_press &MarkdownCode &macro_pause_for_release &macro_release &MarkdownCode &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffOCangles: OffOCangles {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &OCangles &macro_pause_for_release &macro_release &OCangles &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         OffOCbrackets: OffOCbrackets {
@@ -348,12 +434,6 @@
             bindings = <&macro_press &OCsquotes &macro_pause_for_release &macro_release &OCsquotes &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
-        OffTripleAQuote: OffTripleAQuote {
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            bindings = <&macro_press &TripleAQuote &macro_pause_for_release &macro_release &TripleAQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
-        };
-
         OffTripleDQuote: OffTripleDQuote {
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
@@ -364,6 +444,12 @@
             compatible = "zmk,behavior-macro-one-param";
             #binding-cells = <1>;
             bindings = <&macro_press &TripleQQuote &macro_pause_for_release &macro_release &TripleQQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
+        };
+
+        OffTripleSQuote: OffTripleSQuote {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_press &TripleSQuote &macro_pause_for_release &macro_release &TripleSQuote &macro_tap &macro_param_1to1 &off MACRO_PLACEHOLDER>;
         };
 
         OlKp: OlKp {
@@ -379,12 +465,6 @@
             bindings = <&macro_param_1to1 &kp MACRO_PLACEHOLDER &macro_pause_for_release>;
         };
 
-        TripleAQuote: TripleAQuote {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT &kp GRAVE &kp LEFT>;
-        };
-
         TripleDQuote: TripleDQuote {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -394,7 +474,13 @@
         TripleQQuote: TripleQQuote {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp DQT &kp DQT &kp DQT>;
+            bindings = <&kp GRAVE &kp GRAVE &kp GRAVE>;
+        };
+
+        TripleSQuote: TripleSQuote {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SQT &kp SQT &kp SQT>;
         };
 
         XdgConfig: XdgConfig {
@@ -564,9 +650,9 @@
 
         SYMBOL {
             bindings = <
-&kp TILDE  &trans  &trans  &trans        &trans         &to CHAINS_T  &kpsll250mo RPAR SYMBOL   &kpsll750mo EXCL SYMBOL  &kp AT                   &kpsll250mo HASH SYMBOL  &trans     &kp RBKT
+&kp TILDE  &trans  &trans  &to CHAINS_E  &trans         &to CHAINS_T  &kpsll250mo RPAR SYMBOL   &kpsll750mo EXCL SYMBOL  &kp AT                   &kpsll250mo HASH SYMBOL  &trans     &kp RBKT
 &trans     &trans  &trans  &to CHAINS_D  &trans         &to CHAINS_G  &kpsll750mo EQUAL SYMBOL  &kp DLLR                 &kp PRCNT                &kp CARET                &kp COLON  &kpsll250mo GRAVE SYMBOL
-&trans     &trans  &trans  &to CHAINS_C  &trans         &trans        &kpsll250mo PLUS SYMBOL   &kpsll250mo AMPS SYMBOL  &kpsll250mo STAR SYMBOL  &kp LPAR                 &trans     &kpsll250mo PIPE SYMBOL
+&trans     &trans  &trans  &trans        &trans         &trans        &kpsll250mo PLUS SYMBOL   &to CHAINS_M             &kpsll250mo STAR SYMBOL  &kp LPAR                 &trans     &kpsll250mo PIPE SYMBOL
                            &trans        &kp LG(SPACE)  &trans        &trans                    &trans                   &trans
             >;
         };
@@ -625,30 +711,48 @@
             >;
         };
 
-        CHAINS_C {
-            bindings = <
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &OffCodeBlock CHAINS_C  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                              &to BASE  &to BASE  &to BASE                &to BASE  &to BASE  &to BASE
-            >;
-        };
-
         CHAINS_D {
             bindings = <
 &to BASE  &OffOCqquotes CHAINS_D  &to BASE                &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &OffOCparens CHAINS_D  &to BASE
-&to BASE  &OffOCaquotes CHAINS_D  &OffOCsquotes CHAINS_D  &OffOCdquotes CHAINS_D  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
+&to BASE  &OffOCangles CHAINS_D   &OffOCsquotes CHAINS_D  &OffOCdquotes CHAINS_D  &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
 &to BASE  &to BASE                &to BASE                &OffOCcurlies CHAINS_D  &to BASE  &OffOCbrackets CHAINS_D  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE               &to BASE
                                                           &to BASE                &to BASE  &to BASE                 &to BASE  &to BASE  &to BASE
             >;
         };
 
+        CHAINS_E {
+            bindings = <
+&to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to CHAINS_ED  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE       &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+            >;
+        };
+
+        CHAINS_ED {
+            bindings = <
+&to BASE  &OffEOCqquotes CHAINS_ED  &to BASE                  &to BASE                  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &OffEOCparens CHAINS_ED  &to BASE
+&to BASE  &OffEOCangles CHAINS_ED   &OffEOCsquotes CHAINS_ED  &OffEOCdquotes CHAINS_ED  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                 &to BASE
+&to BASE  &to BASE                  &to BASE                  &OffEOCcurlies CHAINS_ED  &to BASE  &OffEOCbrackets CHAINS_ED  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE                 &to BASE
+                                                              &to BASE                  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE
+            >;
+        };
+
+        CHAINS_M {
+            bindings = <
+&to BASE  &to BASE  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE  &to BASE  &OffMarkdownCode CHAINS_M  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                              &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+            >;
+        };
+
         CHAINS_T {
             bindings = <
-&to BASE  &OffTripleQQuote CHAINS_T  &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &OffTripleAQuote CHAINS_T  &to BASE  &OffTripleDQuote CHAINS_T  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-&to BASE  &to BASE                   &to BASE  &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
-                                               &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &OffTripleQQuote CHAINS_T  &to BASE                   &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE                   &OffTripleSQuote CHAINS_T  &OffTripleDQuote CHAINS_T  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+&to BASE  &to BASE                   &to BASE                   &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
+                                                                &to BASE                   &to BASE  &to BASE  &to BASE  &to BASE  &to BASE
             >;
         };
 
