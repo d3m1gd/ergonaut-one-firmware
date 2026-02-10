@@ -40,7 +40,7 @@ var (
 	NUMER  = layer.New("NUMER", layer.InitWith(Trans))
 	QUICK  = layer.New("QUICK", layer.InitWith(Trans))
 	SYS    = layer.New("SYS", layer.InitWith(To(BASE)))
-	SYMBOL = layer.New("SYMBOL", layer.InitWith(Trans))
+	SYMBOL = layer.New("SYMBOL", layer.InitWith(To(BASE)))
 	CHAINS = layer.New(chain.Name(""), layer.InitWith(To(BASE)))
 )
 
@@ -258,12 +258,8 @@ func init() {
 		"ed": EscapedOpenCloseMacro("dquotes", key.DQT, key.DQT),
 		"es": EscapedOpenCloseMacro("squotes", key.SQT, key.SQT),
 		"ea": EscapedOpenCloseMacro("angles", key.LT, key.GT),
-		"eq": EscapedOpenCloseMacro("qquotes", key.GRAVE, key.GRAVE),
 		"eg": EscapedOpenCloseMacro("gquotes", key.GRAVE, key.GRAVE),
-		"gt": Text("GoTemplate", CursorAt("{{%}}", "%")),
-		"mc": Text("MarkdownCode", CursorAt("```%```", "%")),
-		"tq": Text("TripleQQuote", "```"),
-		"tg": Text("TripleGQuote", "```"),
+		"tg": Text("TriplgGQuote", CursorAt("```%```", "%")),
 		"td": Text("TripleDQuote", `"""`),
 		"ts": Text("TripleSQuote", `'''`),
 	})
