@@ -12,4 +12,4 @@ push: build
 	git push
 
 up:
-	~/.local/libexec/update-ergonaut-firmware
+	./update.sh
